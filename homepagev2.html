@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <style>
+  .tt-hero {
+    position: relative;
+    min-height: 520px;
+    width: 100%;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .tt-hero__bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('YOUR_HERO_IMAGE_URL');
+    background-size: cover;
+    background-position: center center;
+    transform: scale(1.02);
+  }
+
+  /* Dark overlay so white text is readable */
+  .tt-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.70) 0%,
+      rgba(0, 0, 0, 0.35) 45%,
+      rgba(0, 0, 0, 0.15) 100%
+    );
+  }
+
+  .tt-hero__inner {
+    position: relative;
+    z-index: 2;
+    max-width: 1180px;
+    width: 100%;
+    padding: 72px 32px;
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+    gap: 32px;
+  }
+
+  .tt-hero__headline {
+    font-size: 40px;
+    line-height: 1.2;
+    font-weight: 600;
+    margin: 0;
+    opacity: 0;
+    animation: tt-fade-in-up 0.8s ease-out 0.1s forwards;
+  }
+
+  .tt-hero__sub {
+    font-size: 14px;
+    line-height: 1.6;
+    max-width: 460px;
+    opacity: 0;
+    animation: tt-fade-in-up 0.8s ease-out 0.3s forwards;
+  }
+
+  .tt-hero__buttons {
+    margin-top: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    opacity: 0;
+    animation: tt-fade-in-up 0.8s ease-out 0.5s forwards;
+  }
+
+  .tt-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 22px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 500;
+    border: 1px solid transparent;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.18s ease, color 0.18s ease,
+                border-color 0.18s ease, transform 0.18s ease;
+    white-space: nowrap;
+  }
+
+  .tt-btn--primary {
+    background-color: #16a34a; /* green */
+    border-color: #16a34a;
+    color: #ffffff;
+  }
+
+  .tt-btn--primary:hover {
+    background-color: #15803d;
+    border-color: #15803d;
+    transform: translateY(-1px);
+  }
+
+  .tt-btn--secondary {
+    background-color: transparent;
+    border-color: #ffffff;
+    color: #ffffff;
+  }
+
+  .tt-btn--secondary:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-1px);
+  }
+
+  @keyframes tt-fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Responsive */
+  @media (max-width: 992px) {
+    .tt-hero {
+      min-height: 480px;
+    }
+    .tt-hero__inner {
+      grid-template-columns: 1fr;
+      padding: 64px 20px 72px;
+      gap: 20px;
+    }
+    .tt-hero__headline {
+      font-size: 32px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .tt-hero {
+      min-height: 420px;
+    }
+    .tt-hero__inner {
+      padding: 56px 16px 64px;
+    }
+    .tt-hero__headline {
+      font-size: 26px;
+    }
+    .tt-hero__buttons {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .tt-btn {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+
+  /* --- New page sections styles --- */
+  .container {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 56px 32px;
+  }
+
+  .intro-grid {
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 28px;
+    align-items: center;
+  }
+
+  .intro-card {
+    background: #f3faf2;
+    padding: 36px;
+    border-radius: 6px;
+    box-shadow: 0 6px 18px rgba(6, 95, 70, 0.04);
+  }
+
+  .intro-card h2 {
+    margin: 0 0 12px 0;
+    font-size: 26px;
+    color: #0b3f2d;
+  }
+
+  .intro-card p { color: #2d3748; margin: 0; }
+
+  .intro-image {
+    width: 100%;
+    height: 220px;
+    background: url('YOUR_INTRO_IMAGE_URL') center/cover no-repeat;
+    border-radius: 6px;
+  }
+
+  /* Solutions */
+  .section-heading {
+    text-align: center;
+    margin: 28px 0 18px;
+  }
+
+  .solutions {
+    display: grid;
+    gap: 34px;
+    padding: 24px 0 56px;
+  }
+
+  .solution-item {
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 32px;
+    align-items: center;
+  }
+
+  .solution-item--alt { grid-template-columns: 420px 1fr; }
+
+  .solution-img {
+    width: 100%;
+    height: 220px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 6px;
+  }
+
+  .solution-content h3 { margin: 0 0 10px; font-size: 20px; }
+  .solution-content p { margin: 0 0 12px; color: #374151; }
+
+  .feature-list { list-style: none; padding: 0; margin: 0 0 12px 0; }
+  .feature-list li { margin: 8px 0; color: #065f46; }
+
+  .green-cta { background-color: #e6f5ea; padding: 12px; display:inline-block; border-radius:6px; color:#065f46; text-decoration:none; border:1px solid rgba(6,95,70,0.08); }
+
+  /* Trust grid */
+  .trust-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; padding: 56px 0; }
+  .trust-card { background:#f7faf7; padding:18px; border-radius:6px; text-align:center; }
+  .trust-card h4 { margin:8px 0 0; font-size:14px; }
+
+  /* CTA strip */
+  .speak-cta { background:#2f9b5a; color:#fff; padding:36px 0; text-align:center; }
+  .speak-cta .btn { background:#ffffff; color:#0b3f2d; padding:10px 18px; border-radius:999px; text-decoration:none; font-weight:600; }
+
+  @media (max-width: 992px) {
+    .intro-grid, .solution-item, .solution-item--alt { grid-template-columns: 1fr; }
+    .intro-image, .solution-img { height: 200px; }
+    .trust-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 640px) {
+    .container { padding: 32px 16px; }
+    .trust-grid { grid-template-columns: 1fr; }
+  }
+</style>
+
+</head>
+<body>
+    <section class="tt-hero">
+  <div class="tt-hero__bg"></div>
+  <div class="tt-hero__overlay"></div>
+
+  <div class="tt-hero__inner">
+    <!-- Left: Headline -->
+    <div>
+      <h1 class="tt-hero__headline">
+        Smart Mobility Solutions. Built For Saudi Arabia
+      </h1>
+    </div>
+
+    <!-- Right: Subtext + CTAs -->
+    <div>
+      <p class="tt-hero__sub">
+        A suite of independent platforms for logistics, fleet management,
+        AI telematics, smart waste operations, and 3-D virtual facility tours
+        — all developed under one Saudi smart mobility ecosystem.
+      </p>
+
+      <div class="tt-hero__buttons">
+        <a href="/solutions" class="tt-btn tt-btn--primary">
+          Explore Solutions
+        </a>
+        <a href="/contact" class="tt-btn tt-btn--secondary">
+          Request Consultation
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Intro card: Smart Mobility Starts Here -->
+<section class="container">
+  <div class="intro-grid">
+    <div class="intro-card">
+      <div style="font-size:12px;color:#16a34a;margin-bottom:8px;font-weight:600">Solutions Portfolio</div>
+      <h2>Smart Mobility Starts Here</h2>
+      <p>
+        Each TawasulTech solution is available independently, with the flexibility to adapt multiple
+        systems to your operations. Choose only what you need today — with optional interoperability in the future.
+      </p>
+      <div style="margin-top:18px">
+        <a class="green-cta" href="/solutions">Explore Marketplace</a>
+      </div>
+    </div>
+
+    <div class="intro-image" aria-hidden="true"></div>
+  </div>
+</section>
+
+<!-- Solutions portfolio -->
+<section class="container">
+  <div class="section-heading">
+    <h2>Solutions Portfolio</h2>
+    <p style="color:#55606a;max-width:760px;margin:10px auto 0;">A suite of independent platforms built to support logistics operations, fleet systems, smart waste services, and immersive 3-D tours — all under one Saudi smart mobility ecosystem.</p>
+  </div>
+
+  <div class="solutions">
+    <article class="solution-item">
+      <div class="solution-content">
+        <h3>Tawasul Logistics Marketplace</h3>
+        <p>Digital freight platform connecting shippers and transporters across Saudi Arabia with secure on-demand trucking, bookings and tracking.</p>
+        <ul class="feature-list">
+          <li>On-demand Trucking & Booking</li>
+          <li>Digital Proof-of-Delivery</li>
+          <li>Pricing & Dispatch Automation</li>
+        </ul>
+        <a class="tt-btn tt-btn--primary" href="/marketplace">Explore Marketplace</a>
+      </div>
+
+      <div class="solution-img" style="background-image:url('YOUR_MARKETPLACE_IMAGE_URL')"></div>
+    </article>
+
+    <article class="solution-item solution-item--alt">
+      <div class="solution-img" style="background-image:url('YOUR_FMS_IMAGE_URL')"></div>
+
+      <div class="solution-content">
+        <h3>Fleet Management System (FMS)</h3>
+        <p>Comprehensive fleet telematics for real-time visibility, driver behaviour monitoring, and maintenance planning.</p>
+        <ul class="feature-list">
+          <li>Real-time GPS Tracking & Trip History</li>
+          <li>Driver Coaching & Safety Alerts</li>
+          <li>Maintenance Scheduling</li>
+        </ul>
+        <a class="tt-btn tt-btn--primary" href="/fleet">Explore Fleet Management</a>
+      </div>
+    </article>
+
+    <article class="solution-item">
+      <div class="solution-content">
+        <h3>AI & Driver Safety Telematics</h3>
+        <p>AI-assisted safety systems combining video, analytics and alerts to reduce risk and help drivers stay safe on the road.</p>
+        <ul class="feature-list">
+          <li>ADAS & Driver Alerts</li>
+          <li>Event Detection & Video Recording</li>
+          <li>Risk Scoring & Reports</li>
+        </ul>
+        <a class="tt-btn tt-btn--primary" href="/safety">Explore Driver Safety</a>
+      </div>
+
+      <div class="solution-img" style="background-image:url('YOUR_SAFETY_IMAGE_URL')"></div>
+    </article>
+
+    <article class="solution-item solution-item--alt">
+      <div class="solution-img" style="background-image:url('YOUR_SWMS_IMAGE_URL')"></div>
+
+      <div class="solution-content">
+        <h3>Smart Waste Operations System (SWMS)</h3>
+        <p>Manage municipal and private waste collection fleets with route optimization, collection telemetry, and reporting.</p>
+        <ul class="feature-list">
+          <li>Route Optimization & Analytics</li>
+          <li>Collection Telemetry</li>
+          <li>Performance Dashboards</li>
+        </ul>
+        <a class="tt-btn tt-btn--primary" href="/waste">Explore Waste Operations</a>
+      </div>
+    </article>
+
+    <article class="solution-item">
+      <div class="solution-content">
+        <h3>3‑D Virtual Tours & Space Walkthroughs</h3>
+        <p>Immersive 3-D digital twins for training, planning and remote site walkthroughs.</p>
+        <ul class="feature-list">
+          <li>Interactive Facility Tours</li>
+          <li>Space Planning Tools</li>
+          <li>Integration with Safety & Ops</li>
+        </ul>
+        <a class="tt-btn tt-btn--primary" href="/tours">View 3‑D Tours</a>
+      </div>
+
+      <div class="solution-img" style="background-image:url('YOUR_TOURS_IMAGE_URL')"></div>
+    </article>
+  </div>
+</section>
+
+<!-- Trusted by / sectors -->
+<section class="container">
+  <h3 style="text-align:center;margin-bottom:18px">Trusted By Operators Across Every Sector</h3>
+  <p style="text-align:center;color:#55606a;max-width:820px;margin:0 auto 24px">Our solutions are used by fleets, municipalities, industrial facilities and smart-city operators across Saudi Arabia.</p>
+
+  <div class="trust-grid">
+    <div class="trust-card"><div style="font-size:28px;color:#16a34a">🚚</div><h4>Transportation & Logistics</h4></div>
+    <div class="trust-card"><div style="font-size:28px;color:#16a34a">🏛️</div><h4>Municipal & Public Services</h4></div>
+    <div class="trust-card"><div style="font-size:28px;color:#16a34a">⚡</div><h4>Energy, Oil & Gas</h4></div>
+    <div class="trust-card"><div style="font-size:28px;color:#16a34a">🏗️</div><h4>Construction & Industrial</h4></div>
+    <div class="trust-card"><div style="font-size:28px;color:#16a34a">🏬</div><h4>Retail & Distribution</h4></div>
+    <div class="trust-card"><div style="font-size:28px;color:#16a34a">⚓</div><h4>Ports, Terminals & Free Zones</h4></div>
+  </div>
+</section>
+
+<!-- Speak with solutions team CTA -->
+<section class="speak-cta">
+  <div class="container">
+    <h2 style="color:#fff;margin:0 0 8px">Speak With Our Solutions Team</h2>
+    <p style="color:#f0fff4;max-width:760px;margin:0 auto 16px">Get guidance on which TawasulTech solution fits your operational needs.</p>
+    <a class="btn" href="/contact">Chat on WhatsApp</a>
+  </div>
+</section>
+</body>
+</html>
