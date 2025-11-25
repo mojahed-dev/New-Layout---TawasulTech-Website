@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Solutions Portfolio – Tawasul Ecosystem</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: "Satoshi", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background-color: #ffffff;
+      color: #1e1e1e;
+    }
+    .solutions-section {
+      padding: 80px 16px;
+      display: flex;
+      justify-content: center;
+    }
+    .solutions-container {
+      width: 100%;
+      max-width: 1170px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .solutions-heading {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    .solutions-heading h2 {
+      margin: 0;
+      font-weight: 500;
+      font-size: 48px;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      text-transform: capitalize;
+      color: #1e1e1e;
+    }
+    .solutions-heading p {
+      margin: 0;
+      max-width: 1028px;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 1.5;
+      text-transform: capitalize;
+      color: #4c4c4c;
+    }
+
+    /* Timeline column */
+    .solutions-timeline {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 60px;
+    }
+    .solutions-timeline::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      border-left: 1px dashed #00a738;
+
+       border-left: 1px dashed #00A738;
+  border-left-width: 1px;
+  border-left-style: dashed;
+  border-image: repeating-linear-gradient(
+    #00A738 0 10px,
+    transparent 10px 20px
+  ) 1;
+    }
+
+    .solutions-item {
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 130px; /* matches Figma gap between image & content */
+    }
+
+    .timeline-node {
+      position: absolute;
+      left: 50%;
+      width: 16px;
+      height: 16px;
+      background-color: #00a738;
+      transform: translateX(-50%) rotate(45deg);
+      top: 0; /* will be set by JS */
+    }
+
+    .solutions-item-image,
+    .solutions-item-content {
+      width: 100%;
+      max-width: 520px;
+    }
+
+    .solutions-item-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      /* border-radius: 8px; */
+      object-fit: cover;
+    }
+
+    .solutions-item-content {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .solutions-item-text-group {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .solutions-item-title {
+      margin: 0;
+      font-weight: 500;
+      font-size: 40px;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      text-transform: capitalize;
+      color: #1e1e1e;
+    }
+
+    .solutions-item-subtitle {
+      margin: 0;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 1.5;
+      text-transform: none;
+      color: #4c4c4c;
+    }
+
+    .solutions-item-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .solutions-item-list li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 1.5;
+      text-transform: none;
+      color: #4c4c4c;
+    }
+
+    .solutions-item-list-icon {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      display: block;
+    }
+
+    .solutions-item-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 32px;
+      /* border-radius: 4px; */
+      border: none;
+      background-color: #00a738;
+      color: #ffffff;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 1.5;
+      text-decoration: none;
+      cursor: pointer;
+      text-transform: capitalize;
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .solutions-heading h2 {
+        font-size: 36px;
+      }
+      .solutions-item {
+        flex-direction: column;
+        gap: 32px;
+        align-items: flex-start;
+      }
+      .solutions-timeline::before {
+        left: 8px;
+        transform: none;
+
+         border-left: 1px dashed #00A738;
+  border-left-width: 1px;
+  border-left-style: dashed;
+  border-image: repeating-linear-gradient(
+    #00A738 0 10px,
+    transparent 10px 20px
+  ) 1;
+      }
+      .timeline-node {
+        left: 8px;
+        transform: translateX(-50%) rotate(45deg);
+      }
+      .solutions-item-image,
+      .solutions-item-content {
+        max-width: 100%;
+        padding-left: 32px;
+      }
+      /* Force image first, then content on mobile for all items */
+      .solutions-item-image {
+        order: 1;
+      }
+      .solutions-item-content {
+        order: 2;
+        padding-left: 32px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .solutions-section {
+        padding: 48px 16px;
+      }
+      .solutions-heading h2 {
+        font-size: 30px;
+      }
+      .solutions-heading p {
+        font-size: 14px;
+      }
+      .solutions-item-title {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="solutions-section">
+    <div class="solutions-container">
+      <header class="solutions-heading">
+        <h2>Solutions Portfolio</h2>
+        <p>
+          A suite of independent platforms built to support logistics operations, fleet safety, smart waste services,
+          and immersive facility planning — each deployable on its own, with the flexibility to expand as your needs grow.
+        </p>
+      </header>
+
+      <div class="solutions-timeline">
+        <!-- 1. Tawasul Logistics Marketplace -->
+        <article class="solutions-item">
+          <span class="timeline-node" aria-hidden="true"></span>
+
+          <div class="solutions-item-image">
+            <img src="images/tawasul-logistics-marketplace.png" alt="Tawasul Logistics Marketplace dashboard" />
+          </div>
+
+          <div class="solutions-item-content">
+            <div class="solutions-item-text-group">
+              <h3 class="solutions-item-title">Tawasul Logistics Marketplace</h3>
+              <p class="solutions-item-subtitle">
+                A digital freight platform connecting shippers and transporters across Saudi Arabia. Enable fair, transparent
+                deals with end-to-end visibility from request to delivery.
+              </p>
+            </div>
+
+            <ul class="solutions-item-list">
+              <li>
+                <img src="Vector.svg" alt="" class="solutions-item-list-icon" />
+                <span>Post on-demand truck requests in seconds</span>
+              </li>
+              <li>
+                <img src="Vector.svg" alt="" class="solutions-item-list-icon" />
+                <span>Receive competitive bids from verified transporters</span>
+              </li>
+              <li>
+                <img src="Vector.svg" alt="" class="solutions-item-list-icon" />
+                <span>Agree on transparent pricing and service levels</span>
+              </li>
+              <li>
+                <img src="Vector.svg" alt="" class="solutions-item-list-icon" />
+                <span>Track shipment status and ETAs in real time</span>
+              </li>
+              <li>
+                <img src="Vector.svg" alt="" class="solutions-item-list-icon" />
+                <span>Issue digital POD and automate invoicing</span>
+              </li>
+            </ul>
+
+            <a href="#" class="solutions-item-cta">Explore marketplace</a>
+          </div>
+        </article>
+
+        <!-- 2. Fleet Management System (FMS) – reversed -->
+        <article class="solutions-item">
+          <span class="timeline-node" aria-hidden="true"></span>
+
+          <div class="solutions-item-content">
+            <div class="solutions-item-text-group">
+              <h3 class="solutions-item-title">Fleet Management System (FMS)</h3>
+              <p class="solutions-item-subtitle">
+                A connected fleet operations layer for AVLs, trailers, and assets. Combine live tracking, CAN-bus data,
+                and service workflows in a single operational view.
+              </p>
+            </div>
+
+            <ul class="solutions-item-list">
+              <li>
+                <img src="Vector.svg" alt="" class="solutions-item-list-icon" />
+                <span>Real-time GPS tracking for vehicles and trailers</span>
+              </li>
+              <li>
+                <img src="Vector.svg" alt="" class="solutions-item-list-icon" />
+                <span>Engine, odometer, and fuel data from CAN-bus / FMS</span>
+              </li>
+              <li>
+                <img src="Vector.svg" alt="" class="solutions-item-list-icon" />
+                <span>Configurable alerts for idling, speeding, and misuse</span>
+              </li>
+              <li>
+                <img src="Vector.svg" alt="" class="solutions-item-list-icon" />
+                <span>Maintenance planning by mileage, hours, or dates</span>
+              </li>
+              <li>
+                <img src="Vector.svg" alt="" class="solutions-item-list-icon" />
+                <span>Dashboards for fleet utilization and cost per km</span>
+              </li>
+            </ul>
+
+            <a href="#" class="solutions-item-cta">Explore FMS</a>
+          </div>
+
+          <div class="solutions-item-image">
+            <img src="images/fms.png" alt="Fleet Management System live tracking" />
+          </div>
+        </article>
+
+        <!-- 3. AI & Driver Safety Telematics -->
+        <article class="solutions-item">
+          <span class="timeline-node" aria-hidden="true"></span>
+
+          <div class="solutions-item-image">
+            <img src="images/telematics.png" alt="AI-based driver safety telematics" />
+          </div>
+
+          <div class="solutions-item-content">
+            <div class="solutions-item-text-group">
+              <h3 class="solutions-item-title">AI &amp; Driver Safety Telematics</h3>
+              <p class="solutions-item-subtitle">
+                Strengthen road safety with driver-centric analytics. Combine trip scoring, harsh-event detection, and
+                coaching workflows to reward safer driving habits.
+              </p>
+            </div>
+
+            <ul class="solutions-item-list">
+              <li>
+                <img src="Vector.svg" alt="" class="solutions-item-list-icon" />
+                <span>Harsh braking, acceleration, and cornering detection</span>
+              </li>
+              <li>
+                <img src="Vector.svg" alt="" class="solutions-item-list-icon" />
+                <span>Driver scorecards by trip, day, and fleet segment</span>
+              </li>
+              <li>
+                <img src="Vector.svg" alt="" class="solutions-item-list-icon" />
+                <span>Exception reports for high-risk drivers and routes</span>
+              </li>
+              <li>
+                <img src="Vector.svg" alt="" class="solutions-item-list-icon" />
+                <span>Optional in-cab alerts and coaching notifications</span>
+              </li>
+              <li>
+                <img src="Vector.svg" alt="" class="solutions-item-list-icon" />
+                <span>Evidence exports for safety and insurance teams</span>
+              </li>
+            </ul>
+
+            <a href="#" class="solutions-item-cta">Explore driver safety</a>
+          </div>
+        </article>
+
+        <!-- 4. Smart Waste Operations (SWMS) – reversed -->
+        <article class="solutions-item">
+          <span class="timeline-node" aria-hidden="true"></span>
+
+          <div class="solutions-item-content">
+            <div class="solutions-item-text-group">
+              <h3 class="solutions-item-title">Smart Waste Operations (SWMS)</h3>
+              <p class="solutions-item-subtitle">
+                An operations system for waste haulers and municipalities. Optimize collection routes, container pickups,
+                and field crews with live status and SLAs.
+              </p>
+            </div>
+
+            <ul class="solutions-item-list">
+              <li>
+                <img src="Vector.svg" alt="" class="solutions-item-list-icon" />
+                <span>Digitized work orders for collection and sweeping</span>
+              </li>
+              <li>
+                <img src="Vector.svg" alt="" class="solutions-item-list-icon" />
+                <span>Configurable routes with live truck progress</span>
+              </li>
+              <li>
+                <img src="Vector.svg" alt="" class="solutions-item-list-icon" />
+                <span>Container inventory with RFID / QR tagging options</span>
+              </li>
+              <li>
+                <img src="Vector.svg" alt="" class="solutions-item-list-icon" />
+                <span>Service-level tracking per zone, customer, or contract</span>
+              </li>
+              <li>
+                <img src="Vector.svg" alt="" class="solutions-item-list-icon" />
+                <span>Operations reports for regulators and municipalities</span>
+              </li>
+            </ul>
+
+            <a href="#" class="solutions-item-cta">Explore SWMS</a>
+          </div>
+
+          <div class="solutions-item-image">
+            <img src="images/swms.png" alt="Smart waste management operations view" />
+          </div>
+        </article>
+
+        <!-- 5. 3D Virtual Tours & Space Walkthroughs -->
+        <article class="solutions-item">
+          <span class="timeline-node" aria-hidden="true"></span>
+
+          <div class="solutions-item-image">
+            <img src="images/tours.png" alt="3D virtual tour and digital twin" />
+          </div>
+
+          <div class="solutions-item-content">
+            <div class="solutions-item-text-group">
+              <h3 class="solutions-item-title">3D Virtual Tours &amp; Space Walkthroughs</h3>
+              <p class="solutions-item-subtitle">
+                Immersive digital twins for facilities, yards, and sites. Plan layouts, inspections, and stakeholder walkthroughs
+                without needing everyone physically on location.
+              </p>
+            </div>
+
+            <ul class="solutions-item-list">
+              <li>
+                <img src="Vector.svg" alt="" class="solutions-item-list-icon" />
+                <span>High-fidelity 3D scans of logistics hubs and depots</span>
+              </li>
+              <li>
+                <img src="Vector.svg" alt="" class="solutions-item-list-icon" />
+                <span>Interactive, browser-based walkthrough experiences</span>
+              </li>
+              <li>
+                <img src="Vector.svg" alt="" class="solutions-item-list-icon" />
+                <span>Hotspots for SOPs, safety notes, and assets in-place</span>
+              </li>
+              <li>
+                <img src="Vector.svg" alt="" class="solutions-item-list-icon" />
+                <span>Support for pre-handover and O&amp;M documentation</span>
+              </li>
+              <li>
+                <img src="Vector.svg" alt="" class="solutions-item-list-icon" />
+                <span>Embeds for websites, training portals, and reports</span>
+              </li>
+            </ul>
+
+            <a href="#" class="solutions-item-cta">Explore 3D tours</a>
+          </div>
+        </article>
+
+        <!-- 6. Tawasul Store (Hardware & Installation) – reversed -->
+        <article class="solutions-item">
+          <span class="timeline-node" aria-hidden="true"></span>
+
+          <div class="solutions-item-content">
+            <div class="solutions-item-text-group">
+              <h3 class="solutions-item-title">Tawasul Store – Hardware &amp; Installation</h3>
+              <p class="solutions-item-subtitle">
+                A curated catalogue of tracking devices, sensors, and accessories tuned for Saudi fleets. From supply to
+                installation and after-sales support under one roof.
+              </p>
+            </div>
+
+            <ul class="solutions-item-list">
+              <li>
+                <img src="Vector.svg" alt="" class="solutions-item-list-icon" />
+                <span>AVL devices from leading global manufacturers</span>
+              </li>
+              <li>
+                <img src="Vector.svg" alt="" class="solutions-item-list-icon" />
+                <span>Fuel, temperature, and door sensors for cold-chain</span>
+              </li>
+              <li>
+                <img src="Vector.svg" alt="" class="solutions-item-list-icon" />
+                <span>Accessories for trailers, tankers, and special fleets</span>
+              </li>
+              <li>
+                <img src="Vector.svg" alt="" class="solutions-item-list-icon" />
+                <span>Certified installation teams across key regions</span>
+              </li>
+              <li>
+                <img src="Vector.svg" alt="" class="solutions-item-list-icon" />
+                <span>Local support for replacements, RMAs, and warranty</span>
+              </li>
+            </ul>
+
+            <a href="#" class="solutions-item-cta">Explore Tawasul Store</a>
+          </div>
+
+          <div class="solutions-item-image">
+            <img src="images/hardware.png" alt="Hardware catalogue and installation teams" />
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Align each diamond node with the vertical center of its corresponding h3
+    (function () {
+      function alignTimelineNodes() {
+        const items = document.querySelectorAll('.solutions-item');
+        items.forEach(function (item) {
+          const title = item.querySelector('.solutions-item-title');
+          const node  = item.querySelector('.timeline-node');
+          if (!title || !node) return;
+
+          const itemRect  = item.getBoundingClientRect();
+          const titleRect = title.getBoundingClientRect();
+
+          const offset = (titleRect.top - itemRect.top) + (titleRect.height / 2);
+          node.style.top = offset + 'px';
+        });
+      }
+
+      window.addEventListener('load', alignTimelineNodes);
+      window.addEventListener('resize', function () {
+        window.requestAnimationFrame(alignTimelineNodes);
+      });
+    })();
+  </script>
+</body>
+</html>
