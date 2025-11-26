@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Trusted By Operators Across Every Sector</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    /* ==== GLOBAL RESET (scoped to this block) ==== */
+    .tws-tos-root * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    .tws-tos-root {
+      font-family: "Satoshi", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background-color: #EBF4EE;
+      color: #1E1E1E;
+    }
+
+    /* ==== SECTION WRAPPER ==== */
+    .trusted-operators-section {
+      padding: 72px 16px;
+      display: flex;
+      justify-content: center;
+    }
+
+    @media (min-width: 1200px) {
+      .trusted-operators-section {
+        padding: 72px 135px;
+      }
+    }
+
+    .trusted-operators-container {
+      width: 100%;
+      max-width: 1170px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+    }
+
+    /* ==== HEADING AREA ==== */
+    .trusted-operators-header {
+      text-align: center;
+      max-width: 1170px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .trusted-operators-title {
+      font-weight: 500;
+      font-size: clamp(28px, 3.4vw, 48px);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      text-transform: capitalize;
+      color: #1E1E1E;
+    }
+
+    .trusted-operators-subtitle {
+      max-width: 1028px;
+      margin: 0 auto;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 1.5;
+      color: #4C4C4C;
+      text-transform: capitalize;
+    }
+
+    /* ==== GRID ==== */
+    .trusted-operators-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 30px;
+    }
+
+    @media (max-width: 1024px) {
+      .trusted-operators-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .trusted-operators-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ==== CARD ==== */
+    .trusted-card {
+      background-color: #FFFFFF;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .trusted-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.06);
+    }
+
+    .trusted-card-icon {
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 4px;
+    }
+
+    .trusted-card-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .trusted-card-title {
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 1.3;
+      color: #1E1E1E;
+      margin-bottom: 8px;
+    }
+
+    .trusted-card-text {
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 1.5;
+      color: #4C4C4C;
+    }
+  
+
+    /* ==== SCROLL-IN TRANSITIONS (no keyframes to keep hover working) ==== */
+
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+    }
+
+    .animate-on-scroll.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+   
+
+    /* staggered delay for cards */
+    .trusted-card.animate-on-scroll:nth-child(1) { transition-delay: 0.05s; }
+    .trusted-card.animate-on-scroll:nth-child(2) { transition-delay: 0.12s; }
+    .trusted-card.animate-on-scroll:nth-child(3) { transition-delay: 0.19s; }
+    .trusted-card.animate-on-scroll:nth-child(4) { transition-delay: 0.26s; }
+    .trusted-card.animate-on-scroll:nth-child(5) { transition-delay: 0.33s; }
+    .trusted-card.animate-on-scroll:nth-child(6) { transition-delay: 0.40s; }
+  
+    /* Ensure hover transform always wins over scroll state */
+    .trusted-card.animate-on-scroll.is-visible:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.06);
+    }
+
+    /* .trusted-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.06);
+    } */
+</style>
+</head>
+<body>
+  <div class="tws-tos-root">
+  <section class="trusted-operators-section">
+    <div class="trusted-operators-container">
+      <!-- Heading -->
+      <header class="trusted-operators-header animate-on-scroll">
+        <h2 class="trusted-operators-title">
+          Trusted By Operators Across Every Sector
+        </h2>
+        <p class="trusted-operators-subtitle">
+          Our solutions are used by fleets, municipalities, industrial facilities, and smart-city operators across Saudi Arabia.
+        </p>
+      </header>
+
+      <!-- Cards Grid -->
+      <div class="trusted-operators-grid">
+        <!-- Card 1 -->
+        <article class="trusted-card animate-on-scroll">
+          <div class="trusted-card-icon">
+            <!-- Replace src with your actual icon path -->
+            <img src="https://tawasul.tech/images/TawasulTech/image/vehicle-icon.webp" alt="Transportation &amp; Logistics icon" loading="lazy"/>
+          </div>
+          <div>
+            <h3 class="trusted-card-title">Transportation &amp; Logistics</h3>
+            <p class="trusted-card-text">
+              Fleet operators, freight providers, and commercial transport companies.
+            </p>
+          </div>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="trusted-card animate-on-scroll">
+          <div class="trusted-card-icon">
+            <img src="https://tawasul.tech/images/TawasulTech/image/municipal-icon.webp" alt="Municipal &amp; Public Services icon" loading="lazy"/>
+          </div>
+          <div>
+            <h3 class="trusted-card-title">Municipal &amp; Public Services</h3>
+            <p class="trusted-card-text">
+              City fleet operations, waste collection services, and public works departments.
+            </p>
+          </div>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="trusted-card animate-on-scroll">
+          <div class="trusted-card-icon">
+            <img src="https://tawasul.tech/images/TawasulTech/image/energy-icon.webp" alt="Energy, Oil &amp; Gas icon" loading="lazy"/>
+          </div>
+          <div>
+            <h3 class="trusted-card-title">Energy, Oil &amp; Gas</h3>
+            <p class="trusted-card-text">
+              Upstream, midstream, and downstream fleet and site operations.
+            </p>
+          </div>
+        </article>
+
+        <!-- Card 4 -->
+        <article class="trusted-card animate-on-scroll">
+          <div class="trusted-card-icon">
+            <img src="https://tawasul.tech/images/TawasulTech/image/construction-icon.webp" alt="Construction &amp; Industrial icon" loading="lazy"/>
+          </div>
+          <div>
+            <h3 class="trusted-card-title">Construction &amp; Industrial</h3>
+            <p class="trusted-card-text">
+              Heavy equipment transport, materials delivery, and contractor fleets.
+            </p>
+          </div>
+        </article>
+
+        <!-- Card 5 -->
+        <article class="trusted-card animate-on-scroll">
+          <div class="trusted-card-icon">
+            <img src="https://tawasul.tech/images/TawasulTech/image/retail-icon.webp" alt="Retail &amp; Distribution icon" loading="lazy"/>
+          </div>
+          <div>
+            <h3 class="trusted-card-title">Retail &amp; Distribution</h3>
+            <p class="trusted-card-text">
+              Fleet operations serving warehouses, suppliers, and multi-site retail networks.
+            </p>
+          </div>
+        </article>
+
+        <!-- Card 6 -->
+        <article class="trusted-card animate-on-scroll">
+          <div class="trusted-card-icon">
+            <img src="https://tawasul.tech/images/TawasulTech/image/ports-icon.webp" alt="Ports, Terminals &amp; Free Zones icon" loading="lazy"/>
+          </div>
+          <div>
+            <h3 class="trusted-card-title">Ports, Terminals &amp; Free Zones</h3>
+            <p class="trusted-card-text">
+              Fleet logistics, yard movement, container haulage, and scheduled transport operations.
+            </p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var animated = document.querySelectorAll(".animate-on-scroll");
+
+    if ("IntersectionObserver" in window) {
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.2 });
+
+      animated.forEach(function (el) {
+        observer.observe(el);
+      });
+    } else {
+      animated.forEach(function (el) {
+        el.classList.add("is-visible");
+      });
+    }
+  });
+</script>
+
+  </div>
+</body>
+</html>
