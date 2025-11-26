@@ -7,432 +7,356 @@
   <title>Hero Section</title>
 
   <style>
-    body {
-      margin: 0;
-      font-family: Satoshi, sans-serif;
-    }
 
-    /* ========================
-     HERO SECTION
-     ======================== */
-    .hero {
-      position: relative;
-      width: 100%;
-      min-height: 700px;
-      color: #fff;
-      overflow: hidden;
-
-      display: flex;
-      align-items: flex-end;
-      padding: 0 98px 90px;
-      box-sizing: border-box;
-    }
-
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      background-image: url('https://tawasul.tech/images/TawasulTech/image/hero.jpg');
-      background-size: cover;
-      background-position: center;
-      z-index: 0;
-    }
-
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 100%);
-      z-index: 1;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      width: 100%;
-      max-width: 1440px;
-      height: 210px;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 51px;
-    }
-
-    .hero-title {
-      max-width: 622px;
-      font-size: 64px;
-      line-height: 1.1;
-      font-weight: 500;
-      letter-spacing: -0.03em;
-      margin: 0;
-      opacity: 0;
-      animation: fadeUp 0.8s ease-out 0.1s forwards;
-    }
-
-    .hero-side {
-      max-width: 498px;
-      display: flex;
-      flex-direction: column;
-      gap: 48px;
-    }
-
-    .hero-text {
-      font-size: 18px;
-      line-height: 1.5;
-      font-weight: 500;
-      opacity: 0;
-      animation: fadeUp 0.8s ease-out 0.25s forwards;
-      margin: 0;
-    }
-
-    .hero-buttons {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-      opacity: 0;
-      animation: fadeUp 0.8s ease-out 0.4s forwards;
-    }
-
-    /* ========================
-     BUTTONS
-     ======================== */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      height: 48px;
-      padding: 0 28px;
-      /* border-radius: 999px; */
-      font-size: 15px;
-      font-weight: 500;
-      font-family: Satoshi, sans-serif;
-      cursor: pointer;
-      white-space: nowrap;
-      text-decoration: none;
-      transition: 0.15s ease;
-      border: 1px solid transparent;
-    }
-
-    .btn-primary {
-      background: #00A738;
-      font-family: Satoshi, sans-serif;
-      border-color: #16a34a;
-      color: #fff;
-    }
-
-    .btn-primary:hover {
-      background: #15803d;
-      border-color: #15803d;
-      transform: translateY(-2px);
-    }
-
-    .btn-outline {
-      background: transparent;
-      border-color: #fff;
-      color: #fff;
-    }
-
-    .btn-outline:hover {
-      background: rgba(255, 255, 255, 0.15);
-      transform: translateY(-2px);
-    }
-
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(14px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* ========================
-     RESPONSIVE BREAKPOINTS
-     ======================== */
-
-    /* Tablet */
-    @media (max-width: 992px) {
-      .hero {
-        min-height: 70vh;
-        /* full screen height */
-        /* keep align-items: flex-end; from desktop */
-        padding: 40px 32px 40px;
-        /* a bit smaller but still bottom padding */
-      }
-
-      .hero-content {
-        flex-direction: column;
-        align-items: flex-start;
-        height: auto;
-        gap: 24px;
-      }
-
-      .hero-title {
-        font-size: 40px;
-        max-width: 100%;
-      }
-
-      .hero-side {
-        max-width: 100%;
-        gap: 24px;
-      }
-
-      .hero-text {
-        font-size: 17px;
-      }
-    }
-
-    /* Mobile */
-    @media (max-width: 640px) {
-      .hero {
-        min-height: 60vh;
-        /* full viewport height */
-        padding: 32px 16px 36px;
-        /* bottom padding keeps text a bit above edge */
-        /* still align-items: flex-end; */
-      }
-
-      .hero-content {
-        gap: 20px;
-        height: auto;
-      }
-
-      .hero-title {
-        font-size: 30px;
-        line-height: 1.2;
-      }
-
-      .hero-text {
-        font-size: 16px;
-      }
-
-      .hero-buttons {
-        flex-direction: column;
-        width: 100%;
-        max-width: 320px;
-        /* keeps buttons not too wide */
-      }
-
-      .btn {
-        width: 100%;
-        justify-content: center;
-      }
-    }
-
-
-    /* Smart Mobility Starts Here – Section  */
-
-    /* ====== Base section ====== */
-    .solutions-section {
-      /* background: #000000;             */
-      padding: 107px 90px;
-
-      box-sizing: border-box;
-    }
-
-    .solutions-inner {
-      max-width: 1170px;
-      /* Figma: inner width */
-      margin: 0 auto;
-      display: flex;
-      gap: 30px;
-      align-items: stretch;
-    }
-
-    /* ====== Left card ====== */
-    .solutions-card {
-      background: #EBF4EE;
-      flex: 0 0 570px;
-      /* Figma: 570px width */
-      padding: 100px 48px;
-      box-sizing: border-box;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      gap: 24px;
-    }
-
-    /* badge: "Solutions Portfolio" */
-    .solutions-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      /* space between dots & text */
-      padding: 12px 16px;
-      background: #ffffff;
-      /* border-radius: 999px; */
-      font-size: 14px;
-      font-weight: 500;
-    }
-
-    .solutions-badge-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: #00A738;
-    }
-
-    .solutions-title {
-      font-size: 48px;
-      line-height: 110.00000000000001%;
-      letter-spacing: -3%;
-      font-weight: 500;
-      margin: 0;
-      color: #111827;
-    }
-
-    .solutions-text {
-      font-size: 16px;
-      line-height: 150%;
-      font-weight: 500;
-      margin: 0;
-      color: #4C4C4C;
-      width: 474px;
-    }
-
-    /* ====== Right image ====== */
-    .solutions-image-wrap {
-      flex: 1 1 auto;
-      height: 550px;
-      /* Figma: fixed 550px */
-      overflow: hidden;
-    }
-
-    .solutions-image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    /* =========================
-     RESPONSIVE TABLET
-     ========================= */
-    @media (max-width: 992px) {
-      .solutions-section {
-        padding: 56px 40px;
-      }
-
-      .solutions-inner {
-        max-width: 100%;
-        flex-direction: column;
-        gap: 24px;
-      }
-
-      .solutions-card {
-        flex: 1 1 auto;
-        padding: 72px 40px;
-      }
-
-      .solutions-title {
-        font-size: 36px;
-      }
-
-      .solutions-image-wrap {
-        height: 380px;
-      }
-    }
-
-    /* =========================
-     RESPONSIVE MOBILE
-     ========================= */
-    @media (max-width: 640px) {
-      .solutions-inner {
-        flex-direction: column-reverse;
-        /* << IMAGE ON TOP */
-      }
-
-      .solutions-section {
-        padding: 40px 16px;
-      }
-
-      .solutions-card {
-        padding: 56px 20px;
-        gap: 20px;
-      }
-
-      .solutions-title {
-        font-size: 28px;
-      }
-
-      .solutions-text {
-        font-size: 15px;
-        width: 100%;
-      }
-
-      .solutions-image-wrap {
-        height: 260px;
-      }
-    }
+    body {margin: 0px;}
+/* =============================
+   NAMESPACE WRAPPER (IMPORTANT)
+   ============================= */
+.ut-override-hero * {
+  all: unset;
+  all: revert-layer; /* keeps CSS behavior but blocks theme overrides */
+  box-sizing: border-box;
+}
+/* We apply our custom styles ONLY inside this wrapper */
+.ut-override-hero {
+  font-family: Satoshi, sans-serif !important;
+}
+/* =============================
+   HERO SECTION (PROTECTED)
+   ============================= */
+.ut-override-hero .hero {
+  position: relative;
+  width: 100%;
+  min-height: 700px;
+  color: #fff;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  padding: 0 98px 90px;
+}
+.ut-override-hero .hero-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('https://tawasul.tech/images/TawasulTech/image/hero.jpg');
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+.ut-override-hero .hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 100%);
+  z-index: 1;
+}
+.ut-override-hero .hero-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1440px;
+  height: 210px;
+  display: flex;
+  justify-content: space-between;
+  gap: 51px;
+}
+.ut-override-hero .hero-title {
+  max-width: 622px;
+  font-size: 64px;
+  line-height: 1.1;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  margin: 0;
+  opacity: 0;
+  animation: fadeUp 0.8s ease-out forwards;
+}
+.ut-override-hero .hero-side {
+  max-width: 498px;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+.ut-override-hero .hero-text {
+  font-size: 18px;
+  line-height: 1.5;
+  font-weight: 500;
+  opacity: 0;
+  animation: fadeUp 0.8s ease-out 0.25s forwards;
+  margin: 0;
+}
+.ut-override-hero .hero-buttons {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: fadeUp 0.8s ease-out 0.4s forwards;
+}
+/* =============================
+   BUTTONS (NO THEME OVERRIDES)
+   ============================= */
+.ut-override-hero .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  padding: 0 28px;
+  font-size: 15px;
+  font-weight: 500;
+  font-family: Satoshi, sans-serif !important;
+  cursor: pointer;
+  white-space: nowrap;
+  text-decoration: none !important;
+  border: 1px solid transparent;
+  transition: 0.15s ease;
+}
+.ut-override-hero .btn-primary {
+  background: #00A738;
+  border-color: #16a34a;
+  color: #fff !important;
+}
+.ut-override-hero .btn-primary:hover {
+  background: #15803d;
+  border-color: #15803d;
+  transform: translateY(-2px);
+}
+.ut-override-hero .btn-outline {
+  background: transparent;
+  border-color: #fff;
+  color: #fff !important;
+}
+.ut-override-hero .btn-outline:hover {
+  background: rgba(255,255,255,0.15);
+  transform: translateY(-2px);
+}
+/* =============================
+   ANIMATION
+   ============================= */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+/* =============================
+   RESPONSIVE (PROTECTED)
+   ============================= */
+@media (max-width: 992px) {
+  .ut-override-hero .hero {
+    min-height: 70vh;
+    padding: 40px 32px 40px;
+  }
+  .ut-override-hero .hero-content {
+    flex-direction: column;
+    gap: 24px;
+    height: auto;
+  }
+  .ut-override-hero .hero-title {
+    font-size: 40px;
+    max-width: 100%;
+  }
+}
+@media (max-width: 640px) {
+  .ut-override-hero .hero {
+    min-height: 60vh;
+    padding: 32px 16px 36px;
+  }
+  .ut-override-hero .hero-title {
+    font-size: 30px;
+  }
+  .ut-override-hero .hero-buttons {
+    flex-direction: column;
+    width: 100%;
+    max-width: 320px;
+  }
+  .ut-override-hero .btn {
+    width: 100%;
+  }
+}
+/* =============================
+   SOLUTIONS SECTION
+   ============================= */
+.ut-override-hero .solutions-section {
+  padding: 107px 90px;
+}
+.ut-override-hero .solutions-inner {
+  max-width: 1170px;
+  margin: 0 auto;
+  display: flex;
+  gap: 30px;
+}
+.ut-override-hero .solutions-card {
+  background: #EBF4EE;
+  flex: 0 0 570px;
+  padding: 100px 48px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+.ut-override-hero .solutions-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: #fff;
+  padding: 12px 16px;
+  font-size: 14px;
+  font-weight: 500;
+}
+.ut-override-hero .solutions-badge-dot {
+  width: 10px;
+  height: 10px;
+  background: #00A738;
+  border-radius: 5px
+}
+.ut-override-hero .solutions-title {
+  font-size: 48px;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  font-weight: 500;
+  margin: 0;
+}
+.ut-override-hero .solutions-text {
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 500;
+  margin: 0;
+  color: #4C4C4C;
+  width: 474px;
+}
+.ut-override-hero .solutions-image-wrap {
+  flex: 1;
+  height: 550px;
+  overflow: hidden;
+}
+.ut-override-hero .solutions-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* Mobile */
+@media (max-width: 640px) {
+  .ut-override-hero .solutions-inner {
+    flex-direction: column-reverse;
+  }
+  .ut-override-hero .solutions-section {
+    padding: 40px 16px;
+  }
+  .ut-override-hero .solutions-card {
+    padding: 56px 20px;
+  }
+  .ut-override-hero .solutions-title {
+    font-size: 28px;
+  }
+  .ut-override-hero .solutions-text {
+    font-size: 15px;
+    width: 100%;
+  }
+  .ut-override-hero .solutions-image-wrap {
+    height: 260px;
+  }
+}
 
 
+/* START ANIMATION: solutions section under hero */
+.ut-override-hero .solutions-section {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
 
+.ut-override-hero .solutions-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 
-    
-  </style>
+/* Stagger card + image a bit */
+.ut-override-hero .solutions-card,
+.ut-override-hero .solutions-image-wrap {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+.ut-override-hero .solutions-section.is-visible .solutions-card {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.1s;
+}
+
+.ut-override-hero .solutions-section.is-visible .solutions-image-wrap {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.25s;
+}
+
+/* END ANIMATION: solutions section under hero */
+
+</style>
 </head>
 
 <body>
-  <section class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-overlay"></div>
-
-    <div class="hero-content">
-
-      <h1 class="hero-title">
-        Smart Mobility<br>
-        Solutions. Built For<br>
-        Saudi Arabia
-      </h1>
-
-      <div class="hero-side">
-
-        <p class="hero-text">
-          A suite of independent platforms for logistics, fleet management,
-          AI telematics, smart waste operations, and 3-D virtual facility tours —
-          all developed under one Saudi smart mobility ecosystem.
-        </p>
-
-        <div class="hero-buttons">
-          <a href="/solutions" class="btn btn-primary">Explore Solutions</a>
-          <a href="/contact" class="btn btn-outline">Request Consultation</a>
-        </div>
-
+<div class="ut-override-hero">
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1 class="hero-title">
+      Smart Mobility<br>Solutions. Built For<br>Saudi Arabia
+    </h1>
+    <div class="hero-side">
+      <p class="hero-text">
+        A suite of independent platforms for logistics, fleet management,
+        AI telematics, smart waste operations, and 3-D virtual facility tours &mdash;
+        all developed under one Saudi smart mobility ecosystem.
+      </p>
+      <div class="hero-buttons">
+        <a href="/solutions" class="btn btn-primary">Explore Solutions</a>
+        <a href="/contact" class="btn btn-outline">Request Consultation</a>
       </div>
     </div>
-  </section>
-
-  <section class="solutions-section">
-    <div class="solutions-inner">
-
-      <!-- Left card -->
-      <div class="solutions-card">
-        <div class="solutions-badge">
-          <span class="solutions-badge-dot"></span>
-          <span>Solutions Portfolio</span>
-          <span class="solutions-badge-dot"></span>
-        </div>
-
-        <h2 class="solutions-title">
-          Smart Mobility Starts<br>Here
-        </h2>
-
-        <p class="solutions-text">
-          Each TawasulTech solution is available independently, with the flexibility
-          to adopt multiple systems as your operations evolve. Choose only what your
-          organization needs today — with optional interoperability in the future.
-        </p>
+  </div>
+</section>
+<section class="solutions-section">
+  <div class="solutions-inner">
+    <div class="solutions-card">
+      <div class="solutions-badge">
+        <span class="solutions-badge-dot"></span>
+        Solutions Portfolio
+        <span class="solutions-badge-dot"></span>
       </div>
-
-      <!-- Right image -->
-      <div class="solutions-image-wrap">
-        <img src="solutions.png" alt="Highway aerial view" class="solutions-image">
-      </div>
-
+      <h2 class="solutions-title">Smart Mobility Starts<br>Here</h2>
+      <p class="solutions-text">
+        Each TawasulTech solution is available independently, with the flexibility
+        to adopt multiple systems as your operations evolve. Choose only what your
+        organization needs today &mdash; with optional interoperability in the future.
+      </p>
     </div>
-  </section>
+    <div class="solutions-image-wrap">
+      <img src="https://tawasul.tech/images/TawasulTech/image/solutions.jpg" class="solutions-image" loading="lazy">
+    </div>
+  </div>
+</section>
+</div>
+
+
+<script>
+  (function () {
+    const section = document.querySelector('.ut-override-hero .solutions-section');
+    if (!section) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          section.classList.add('is-visible');
+          observer.unobserve(section); // run once
+        }
+      });
+    }, {
+      threshold: 0.25
+    });
+
+    observer.observe(section);
+  })();
+</script>
+
 </body>
 
 </html>
