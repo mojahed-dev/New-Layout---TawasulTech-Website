@@ -37,6 +37,16 @@
             gap: 20px;
             text-align: center;
             margin-bottom: 60px;
+
+            /* subtle intro animation */
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        }
+
+        .solutions-heading.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .solutions-heading h2 {
@@ -75,8 +85,6 @@
             left: 50%;
             transform: translateX(-50%);
             border-left: 1px dashed #00a738;
-
-            border-left: 1px dashed #00A738;
             border-left-width: 1px;
             border-left-style: dashed;
             border-image: repeating-linear-gradient(#00A738 0 10px,
@@ -91,6 +99,16 @@
             justify-content: center;
             gap: 130px;
             /* matches Figma gap between image & content */
+
+            /* animation base state */
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .solutions-item.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .timeline-node {
@@ -102,6 +120,12 @@
             transform: translateX(-50%) rotate(45deg);
             top: 0;
             /* will be set by JS */
+            opacity: 0;
+            transition: opacity 0.5s ease-out 0.15s;
+        }
+
+        .solutions-item.visible .timeline-node {
+            opacity: 1;
         }
 
         .solutions-item-image,
@@ -172,8 +196,11 @@
         .solutions-item-list-icon {
             width: 20px;
             height: 20px;
-            flex-shrink: 0;
-            display: block;
+            /* flex-shrink: 0;
+            display: block; */
+            /* display: inline-block; */
+            /* vertical-align: middle; */
+            image-rendering: crisp-edges;
         }
 
         .solutions-item-cta {
@@ -234,7 +261,6 @@
 
             .solutions-item-content {
                 order: 2;
-                padding-left: 32px;
             }
         }
 
@@ -277,7 +303,7 @@
                     <span class="timeline-node" aria-hidden="true"></span>
 
                     <div class="solutions-item-image">
-                        <img src="images/tawasul-logistics-marketplace.png"
+                        <img src="https://tawasul.tech/images/TawasulTech/image/tawasul-logistics-marketplace.png"
                             alt="Tawasul Logistics Marketplace dashboard" />
                     </div>
 
@@ -293,23 +319,23 @@
 
                         <ul class="solutions-item-list">
                             <li>
-                                <img src="Vector.svg" alt="" class="solutions-item-list-icon" />
+                                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt="" class="solutions-item-list-icon" />
                                 <span>Post on-demand truck requests in seconds</span>
                             </li>
                             <li>
-                                <img src="Vector.svg" alt="" class="solutions-item-list-icon" />
+                                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt="" class="solutions-item-list-icon" />
                                 <span>Receive competitive bids from verified transporters</span>
                             </li>
                             <li>
-                                <img src="Vector.svg" alt="" class="solutions-item-list-icon" />
+                                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt="" class="solutions-item-list-icon" />
                                 <span>Agree on transparent pricing and service levels</span>
                             </li>
                             <li>
-                                <img src="Vector.svg" alt="" class="solutions-item-list-icon" />
+                                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt="" class="solutions-item-list-icon" />
                                 <span>Track shipment status and ETAs in real time</span>
                             </li>
                             <li>
-                                <img src="Vector.svg" alt="" class="solutions-item-list-icon" />
+                                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt="" class="solutions-item-list-icon" />
                                 <span>Issue digital POD and automate invoicing</span>
                             </li>
                         </ul>
@@ -334,23 +360,23 @@
 
                         <ul class="solutions-item-list">
                             <li>
-                                <img src="Vector.svg" alt="" class="solutions-item-list-icon" />
+                                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt="" class="solutions-item-list-icon" />
                                 <span>Real-time GPS tracking for vehicles and trailers</span>
                             </li>
                             <li>
-                                <img src="Vector.svg" alt="" class="solutions-item-list-icon" />
+                                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt="" class="solutions-item-list-icon" />
                                 <span>Engine, odometer, and fuel data from CAN-bus / FMS</span>
                             </li>
                             <li>
-                                <img src="Vector.svg" alt="" class="solutions-item-list-icon" />
+                                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt="" class="solutions-item-list-icon" />
                                 <span>Configurable alerts for idling, speeding, and misuse</span>
                             </li>
                             <li>
-                                <img src="Vector.svg" alt="" class="solutions-item-list-icon" />
+                                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt="" class="solutions-item-list-icon" />
                                 <span>Maintenance planning by mileage, hours, or dates</span>
                             </li>
                             <li>
-                                <img src="Vector.svg" alt="" class="solutions-item-list-icon" />
+                                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt="" class="solutions-item-list-icon" />
                                 <span>Dashboards for fleet utilization and cost per km</span>
                             </li>
                         </ul>
@@ -359,7 +385,7 @@
                     </div>
 
                     <div class="solutions-item-image">
-                        <img src="images/fms.png" alt="Fleet Management System live tracking" />
+                        <img src="https://tawasul.tech/images/TawasulTech/image/fms.png" alt="Fleet Management System live tracking" />
                     </div>
                 </article>
 
@@ -368,7 +394,7 @@
                     <span class="timeline-node" aria-hidden="true"></span>
 
                     <div class="solutions-item-image">
-                        <img src="images/telematics.png" alt="AI-based driver safety telematics" />
+                        <img src="https://tawasul.tech/images/TawasulTech/image/telematics.png" alt="AI-based driver safety telematics" />
                     </div>
 
                     <div class="solutions-item-content">
@@ -383,23 +409,23 @@
 
                         <ul class="solutions-item-list">
                             <li>
-                                <img src="Vector.svg" alt="" class="solutions-item-list-icon" />
+                                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt="" class="solutions-item-list-icon" />
                                 <span>Harsh braking, acceleration, and cornering detection</span>
                             </li>
                             <li>
-                                <img src="Vector.svg" alt="" class="solutions-item-list-icon" />
+                                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt="" class="solutions-item-list-icon" />
                                 <span>Driver scorecards by trip, day, and fleet segment</span>
                             </li>
                             <li>
-                                <img src="Vector.svg" alt="" class="solutions-item-list-icon" />
+                                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt="" class="solutions-item-list-icon" />
                                 <span>Exception reports for high-risk drivers and routes</span>
                             </li>
                             <li>
-                                <img src="Vector.svg" alt="" class="solutions-item-list-icon" />
+                                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt="" class="solutions-item-list-icon" />
                                 <span>Optional in-cab alerts and coaching notifications</span>
                             </li>
                             <li>
-                                <img src="Vector.svg" alt="" class="solutions-item-list-icon" />
+                                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt="" class="solutions-item-list-icon" />
                                 <span>Evidence exports for safety and insurance teams</span>
                             </li>
                         </ul>
@@ -424,23 +450,23 @@
 
                         <ul class="solutions-item-list">
                             <li>
-                                <img src="Vector.svg" alt="" class="solutions-item-list-icon" />
+                                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt="" class="solutions-item-list-icon" />
                                 <span>Digitized work orders for collection and sweeping</span>
                             </li>
                             <li>
-                                <img src="Vector.svg" alt="" class="solutions-item-list-icon" />
+                                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt="" class="solutions-item-list-icon" />
                                 <span>Configurable routes with live truck progress</span>
                             </li>
                             <li>
-                                <img src="Vector.svg" alt="" class="solutions-item-list-icon" />
+                                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt="" class="solutions-item-list-icon" />
                                 <span>Container inventory with RFID / QR tagging options</span>
                             </li>
                             <li>
-                                <img src="Vector.svg" alt="" class="solutions-item-list-icon" />
+                                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt="" class="solutions-item-list-icon" />
                                 <span>Service-level tracking per zone, customer, or contract</span>
                             </li>
                             <li>
-                                <img src="Vector.svg" alt="" class="solutions-item-list-icon" />
+                                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt="" class="solutions-item-list-icon" />
                                 <span>Operations reports for regulators and municipalities</span>
                             </li>
                         </ul>
@@ -449,7 +475,7 @@
                     </div>
 
                     <div class="solutions-item-image">
-                        <img src="images/swms.png" alt="Smart waste management operations view" />
+                        <img src="https://tawasul.tech/images/TawasulTech/image/swms.png" alt="Smart waste management operations view" />
                     </div>
                 </article>
 
@@ -458,7 +484,7 @@
                     <span class="timeline-node" aria-hidden="true"></span>
 
                     <div class="solutions-item-image">
-                        <img src="images/tours.png" alt="3D virtual tour and digital twin" />
+                        <img src="https://tawasul.tech/images/TawasulTech/image/tours.png" alt="3D virtual tour and digital twin" />
                     </div>
 
                     <div class="solutions-item-content">
@@ -473,23 +499,23 @@
 
                         <ul class="solutions-item-list">
                             <li>
-                                <img src="Vector.svg" alt="" class="solutions-item-list-icon" />
+                                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt="" class="solutions-item-list-icon" />
                                 <span>High-fidelity 3D scans of logistics hubs and depots</span>
                             </li>
                             <li>
-                                <img src="Vector.svg" alt="" class="solutions-item-list-icon" />
+                                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt="" class="solutions-item-list-icon" />
                                 <span>Interactive, browser-based walkthrough experiences</span>
                             </li>
                             <li>
-                                <img src="Vector.svg" alt="" class="solutions-item-list-icon" />
+                                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt="" class="solutions-item-list-icon" />
                                 <span>Hotspots for SOPs, safety notes, and assets in-place</span>
                             </li>
                             <li>
-                                <img src="Vector.svg" alt="" class="solutions-item-list-icon" />
+                                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt="" class="solutions-item-list-icon" />
                                 <span>Support for pre-handover and O&amp;M documentation</span>
                             </li>
                             <li>
-                                <img src="Vector.svg" alt="" class="solutions-item-list-icon" />
+                                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt="" class="solutions-item-list-icon" />
                                 <span>Embeds for websites, training portals, and reports</span>
                             </li>
                         </ul>
@@ -514,23 +540,23 @@
 
                         <ul class="solutions-item-list">
                             <li>
-                                <img src="Vector.svg" alt="" class="solutions-item-list-icon" />
+                                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt="" class="solutions-item-list-icon" />
                                 <span>AVL devices from leading global manufacturers</span>
                             </li>
                             <li>
-                                <img src="Vector.svg" alt="" class="solutions-item-list-icon" />
+                                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt="" class="solutions-item-list-icon" />
                                 <span>Fuel, temperature, and door sensors for cold-chain</span>
                             </li>
                             <li>
-                                <img src="Vector.svg" alt="" class="solutions-item-list-icon" />
+                                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt="" class="solutions-item-list-icon" />
                                 <span>Accessories for trailers, tankers, and special fleets</span>
                             </li>
                             <li>
-                                <img src="Vector.svg" alt="" class="solutions-item-list-icon" />
+                                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt="" class="solutions-item-list-icon" />
                                 <span>Certified installation teams across key regions</span>
                             </li>
                             <li>
-                                <img src="Vector.svg" alt="" class="solutions-item-list-icon" />
+                                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt="" class="solutions-item-list-icon" />
                                 <span>Local support for replacements, RMAs, and warranty</span>
                             </li>
                         </ul>
@@ -539,7 +565,7 @@
                     </div>
 
                     <div class="solutions-item-image">
-                        <img src="images/hardware.png" alt="Hardware catalogue and installation teams" />
+                        <img src="https://tawasul.tech/images/TawasulTech/image/hardware.png" alt="Hardware catalogue and installation teams" />
                     </div>
                 </article>
             </div>
@@ -564,7 +590,29 @@
                 });
             }
 
-            window.addEventListener('load', alignTimelineNodes);
+            window.addEventListener('load', function () {
+                alignTimelineNodes();
+
+                // Heading fade-in
+                const heading = document.querySelector('.solutions-heading');
+                if (heading) heading.classList.add('visible');
+
+                // IntersectionObserver for items (fade + slide-up)
+                const items = document.querySelectorAll('.solutions-item');
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.25
+                });
+
+                items.forEach(item => observer.observe(item));
+            });
+
             window.addEventListener('resize', function () {
                 window.requestAnimationFrame(alignTimelineNodes);
             });
