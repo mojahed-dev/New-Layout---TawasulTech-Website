@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CTA – Scroll Animated</title>
+    <style>
+        body { margin: 0; }
+
+        /* NAMESPACE WRAPPER TO REDUCE CSCART OVERRIDES */
+        .tws-tawasul-cta * {
+          box-sizing: border-box !important;
+        }
+
+        /* WRAPPER */
+        .tws-tawasul-cta .tws-contact-cta {
+          background: #71BB82 !important;
+          padding: 100px 135px !important;
+          display: flex !important;
+          justify-content: center !important;
+          width: 100% !important;
+          font-family: "Satoshi", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+        }
+
+        /* INNER CONTAINER – VISIBLE BY DEFAULT */
+        .tws-tawasul-cta .cta-container {
+          display: flex !important;
+          flex-direction: column !important;
+          align-items: center !important;
+          gap: 48px !important;
+          max-width: 1170px !important;
+          width: 100% !important;
+          text-align: center !important;
+
+          /* default state (no animation if JS is stripped) */
+          opacity: 1 !important;
+          transform: translateY(0) !important;
+        }
+
+        /* When visible (on scroll), play fade-up */
+        .tws-tawasul-cta .cta-container.tws-visible {
+          animation: twsCtaFadeUp 0.7s ease-out forwards !important;
+        }
+
+        /* TEXT BLOCK */
+        .tws-tawasul-cta .cta-text-wrap {
+          display: flex !important;
+          flex-direction: column !important;
+          align-items: center !important;
+          gap: 20px !important;
+          max-width: 642px !important;
+        }
+
+        /* TITLE */
+        .tws-tawasul-cta .cta-title {
+          font-size: 48px !important;
+          font-weight: 500 !important;
+          letter-spacing: -0.03em !important;
+          line-height: 1.1 !important;
+          margin: 0 !important;
+          color: #1E1E1E !important;
+          text-transform: capitalize !important;
+        }
+
+        /* DESCRIPTION */
+        .tws-tawasul-cta .cta-desc {
+          max-width: 544px !important;
+          font-size: 16px !important;
+          font-weight: 500 !important;
+          line-height: 1.5 !important;
+          color: #1E1E1E !important;
+          margin: 0 !important;
+          text-transform: capitalize !important;
+        }
+
+        /* BUTTON */
+        .tws-tawasul-cta .cta-button {
+          background: #ffffff !important;
+          padding: 16px 20px !important;
+          display: flex !important;
+          align-items: center !important;
+          gap: 10px !important;
+          text-decoration: none !important;
+          height: 48px !important;
+          width: 216px !important;
+          justify-content: center !important;
+          border: none !important;
+
+          transition:
+            background-color 0.2s ease,
+            transform 0.2s ease,
+            box-shadow 0.2s ease !important;
+        }
+
+        /* BUTTON TEXT */
+        .tws-tawasul-cta .cta-button span {
+          font-size: 16px !important;
+          font-weight: 700 !important;
+          line-height: 1.5 !important;
+          color: #00A738 !important;
+          white-space: nowrap !important;
+        }
+
+        /* ICON */
+        .tws-tawasul-cta .cta-button .cta-icon {
+          width: 24px !important;
+          height: 24px !important;
+          flex-shrink: 0 !important;
+        }
+
+        /* HOVER EFFECT */
+        .tws-tawasul-cta .cta-button:hover {
+          background: #f1f1f1 !important;
+          transform: translateY(-2px) !important;
+          box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12) !important;
+        }
+
+        /* FADE-UP KEYFRAMES (used only when .tws-visible is added) */
+        @keyframes twsCtaFadeUp {
+          from {
+            opacity: 0;
+            transform: translateY(28px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        /* TABLET */
+        @media (max-width: 992px) {
+          .tws-tawasul-cta .tws-contact-cta {
+            padding: 80px 40px !important;
+          }
+
+          .tws-tawasul-cta .cta-title {
+            font-size: 40px !important;
+          }
+
+          .tws-tawasul-cta .cta-desc {
+            font-size: 15px !important;
+          }
+        }
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+          .tws-tawasul-cta .tws-contact-cta {
+            padding: 60px 24px !important;
+          }
+
+          .tws-tawasul-cta .cta-title {
+            font-size: 32px !important;
+          }
+
+          .tws-tawasul-cta .cta-desc {
+            font-size: 14px !important;
+          }
+
+          .tws-tawasul-cta .cta-button {
+            width: 100% !important;
+            max-width: 260px !important;
+          }
+        }
+
+        /* SMALL MOBILE */
+        @media (max-width: 480px) {
+          .tws-tawasul-cta .tws-contact-cta {
+            padding: 48px 16px !important;
+          }
+
+          .tws-tawasul-cta .cta-title {
+            font-size: 28px !important;
+          }
+
+          .tws-tawasul-cta .cta-button span {
+            font-size: 15px !important;
+          }
+        }
+    </style>
+</head>
+<body>
+  <div class="tws-tawasul-cta">
+    <section class="tws-contact-cta">
+      <div class="cta-container">
+
+        <div class="cta-text-wrap">
+          <h2 class="cta-title">Speak With Our Solutions Team</h2>
+          <p class="cta-desc">
+            Get guidance on which TawasulTech solution fits your operational needs.
+          </p>
+        </div>
+
+        <a href="https://wa.me/966XXXXXXXXX" target="_blank" class="cta-button">
+          <img src="https://tawasul.tech/images/TawasulTech/image/whatsapp-icon.webp" alt="WhatsApp Icon" class="cta-icon" loading="lazy">
+          <span>Chat on WhatsApp</span>
+        </a>
+
+      </div>
+    </section>
+  </div>
+
+  <!-- Scroll-trigger script (if CS-Cart keeps scripts, you'll get on-scroll animation;
+       if it strips scripts, the section will still show normally). -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var target = document.querySelector(".tws-tawasul-cta .cta-container");
+      if (!target || typeof IntersectionObserver === "undefined") return;
+
+      var observer = new IntersectionObserver(function (entries, obs) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("tws-visible");
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.3 });
+
+      observer.observe(target);
+    });
+  </script>
+</body>
+</html>
