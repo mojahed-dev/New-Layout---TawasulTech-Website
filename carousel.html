@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero Section – Swiper with Video Slides (v6)</title>
+
+    <!-- Swiper CSS (CDN) -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper@9/swiper-bundle.min.css" />
+
+    <style>
+        body {
+            margin: 0;
+            background: #ffffff;
+        }
+
+        /* =============================
+       NAMESPACE WRAPPER
+       ============================= */
+        .ut-override-hero {
+            font-family: "Satoshi", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            color: #ffffff;
+        }
+
+        .ut-override-hero * {
+            box-sizing: border-box;
+        }
+
+        /* =============================
+       HERO SWIPER CONTAINER
+       ============================= */
+        .ut-override-hero .hero-swiper {
+            position: relative;
+            width: 100%;
+            min-height: 700px;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        .ut-override-hero .hero-swiper .swiper-wrapper {
+            height: 100%;
+        }
+
+        .ut-override-hero .hero-swiper .swiper-slide {
+            height: 100%;
+        }
+
+        /* Single slide layout */
+        .ut-override-hero .hero-slide {
+            position: relative;
+            width: 100%;
+            min-height: 700px;
+            display: flex;
+            align-items: center;
+            /* ⬅ center vertically instead of bottom */
+            padding: 0 98px;
+            /* ⬅ remove extra bottom padding */
+        }
+
+        .ut-override-hero .hero-bg {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .ut-override-hero .hero-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .ut-override-hero .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 100%);
+            z-index: 1;
+        }
+
+        .ut-override-hero .hero-content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 1740px;
+            height: auto;
+            display: flex;
+            justify-content: space-between;
+            gap: 51px;
+        }
+
+        .ut-override-hero .hero-title {
+            max-width: 622px;
+            font-size: 64px;
+            line-height: 1.1;
+            font-weight: 500;
+            letter-spacing: -0.03em;
+            margin: 0;
+            opacity: 0;
+            animation: fadeUp 0.8s ease-out forwards;
+            color: #ffffff;
+        }
+
+        .ut-override-hero .hero-side {
+            max-width: 498px;
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .ut-override-hero .hero-text {
+            font-size: 18px;
+            line-height: 1.5;
+            font-weight: 500;
+            opacity: 0;
+            animation: fadeUp 0.8s ease-out 0.25s forwards;
+            margin: 0;
+            color: #ffffff;
+            margin-top: 16px;
+        }
+
+        .ut-override-hero .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeUp 0.8s ease-out 0.4s forwards;
+        }
+
+        /* =============================
+       BUTTONS
+       ============================= */
+        .ut-override-hero .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            height: 48px;
+            padding: 0 28px;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            white-space: nowrap;
+            text-decoration: none;
+            border: 1px solid transparent;
+            transition: 0.15s ease;
+        }
+
+        .ut-override-hero .btn-primary {
+            background: #00A738;
+            border-color: #16a34a;
+            color: #fff;
+        }
+
+        .ut-override-hero .btn-primary:hover {
+            background: #15803d;
+            border-color: #15803d;
+            transform: translateY(-2px);
+        }
+
+        .ut-override-hero .btn-outline {
+            background: transparent;
+            border-color: #fff;
+            color: #fff;
+        }
+
+        .ut-override-hero .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+
+        /* =============================
+       SWIPER PAGINATION DOTS
+       ============================= */
+        .ut-override-hero .hero-pagination {
+            position: absolute;
+            left: 50%;
+            bottom: 24px;
+            transform: translateX(-50%);
+            z-index: 5;
+        }
+
+        .ut-override-hero .hero-pagination .swiper-pagination-bullet {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            opacity: 1;
+            margin: 0 4px !important;
+        }
+
+        .ut-override-hero .hero-pagination .swiper-pagination-bullet-active {
+            background: #00A738;
+        }
+
+        /* =============================
+       RIGHT-ALIGNED VARIANT (slides 3 & 4)
+       ============================= */
+        .ut-override-hero .hero-content.hero-right {
+            justify-content: flex-end;
+            width: 100%;
+            /* pull text block toward center-right */
+            margin: 0 auto;
+        }
+
+        .ut-override-hero .hero-content.hero-right .hero-side {
+            max-width: 560px;
+            text-align: left;
+        }
+
+        .ut-override-hero .hero-content.hero-right .hero-title {
+            max-width: 560px;
+        }
+
+        /* =============================
+       ANIMATION
+       ============================= */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(14px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* =============================
+       RESPONSIVE
+       ============================= */
+        @media (max-width: 1200px) {
+            .ut-override-hero .hero-content.hero-right {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .ut-override-hero .hero-slide {
+                min-height: 80vh;
+                padding: 40px 32px 40px;
+            }
+
+            .ut-override-hero .hero-content {
+                flex-direction: column;
+                gap: 24px;
+            }
+
+            .ut-override-hero .hero-title {
+                font-size: 40px;
+                max-width: 100%;
+            }
+
+            .ut-override-hero .hero-content.hero-right {
+                justify-content: flex-start;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .ut-override-hero .hero-slide {
+                min-height: 90vh;
+                padding: 32px 16px 36px;
+            }
+
+            .ut-override-hero .hero-title {
+                font-size: 30px;
+            }
+
+            .ut-override-hero .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+                max-width: 320px;
+            }
+
+            .ut-override-hero .btn {
+                width: 100%;
+            }
+        }
+
+        /* =============================
+       SOLUTIONS SECTION
+       ============================= */
+        .ut-override-hero .solutions-section {
+            padding: 107px 0px;
+            background: #ffffff;
+            color: #1E1E1E;
+        }
+
+        .ut-override-hero .solutions-inner {
+            max-width: 1170px;
+            margin: 0 auto;
+            display: flex;
+            gap: 30px;
+        }
+
+        .ut-override-hero .solutions-card {
+            background: #EBF4EE;
+            flex: 0 0 570px;
+            padding: 100px 48px;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+        }
+
+        .ut-override-hero .solutions-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: #fff;
+            padding: 12px 16px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .ut-override-hero .solutions-badge-dot {
+            width: 10px;
+            height: 10px;
+            background: #00A738;
+            border-radius: 5px
+        }
+
+        .ut-override-hero .solutions-title {
+            font-size: 48px;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            font-weight: 500;
+            margin: 0;
+        }
+
+        .ut-override-hero .solutions-text {
+            font-size: 16px;
+            line-height: 1.5;
+            font-weight: 500;
+            margin: 0;
+            color: #4C4C4C;
+            width: 474px;
+        }
+
+        .ut-override-hero .solutions-image-wrap {
+            flex: 1;
+            height: 550px;
+            overflow: hidden;
+        }
+
+        .ut-override-hero .solutions-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @media (max-width: 640px) {
+            .ut-override-hero .solutions-inner {
+                flex-direction: column-reverse;
+            }
+
+            .ut-override-hero .solutions-section {
+                padding: 40px 16px;
+            }
+
+            .ut-override-hero .solutions-card {
+                padding: 56px 20px;
+            }
+
+            .ut-override-hero .solutions-title {
+                font-size: 28px;
+            }
+
+            .ut-override-hero .solutions-text {
+                font-size: 15px;
+                width: 100%;
+            }
+
+            .ut-override-hero .solutions-image-wrap {
+                height: 260px;
+            }
+        }
+
+        /* Solutions animation */
+        .ut-override-hero .solutions-section {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .ut-override-hero .solutions-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .ut-override-hero .solutions-card,
+        .ut-override-hero .solutions-image-wrap {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        }
+
+        .ut-override-hero .solutions-section.is-visible .solutions-card {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.1s;
+        }
+
+        .ut-override-hero .solutions-section.is-visible .solutions-image-wrap {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.25s;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ut-override-hero">
+
+        <!-- HERO SWIPER -->
+        <div class="hero-swiper swiper">
+            <div class="swiper-wrapper">
+
+                <!-- SLIDE 1 – Figma hero (image background) -->
+                <div class="swiper-slide">
+                    <section class="hero-slide">
+                        <div class="hero-bg"
+                            style="background-image:url('https://tawasul.tech/images/TawasulTech/image/hero.jpg');">
+                        </div>
+                        <div class="hero-overlay"></div>
+                        <div class="hero-content">
+                            <h1 class="hero-title">
+                                Smart Mobility Solutions. Built For Saudi Arabia
+                            </h1>
+                            <div class="hero-side">
+                                <p class="hero-text">
+                                    A suite of independent platforms for logistics, fleet management,
+                                    AI telematics, smart waste operations, and 3-D virtual facility tours &mdash;
+                                    all developed under one Saudi smart mobility ecosystem.
+                                </p>
+                                <div class="hero-buttons">
+                                    <a href="/solutions" class="btn btn-primary">Explore Solutions</a>
+                                    <a href="/contact-us" class="btn btn-outline">Request Consultation</a>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- SLIDE 2 – FMS video background -->
+                <div class="swiper-slide">
+                    <section class="hero-slide">
+                        <div class="hero-bg">
+                            <video class="hero-video"
+                                src="https://tawasul.tech/images/ut2_banner_videos/52_23_bannerhome01.mp4" autoplay
+                                muted loop playsinline></video>
+                        </div>
+                        <div class="hero-overlay"></div>
+                        <div class="hero-content">
+                            <h1 class="hero-title">
+                                You Can’t Manage What You Can’t Measure.
+                            </h1>
+                            <div class="hero-side">
+                                <p class="hero-text">
+                                    Optimize your fleet management with greater efficiency using
+                                    the Tawasul Fleet Management System &mdash; TawasulFMS.
+                                </p>
+                                <div class="hero-buttons">
+                                    <a href="/solutions" class="btn btn-primary">Explore Solutions</a>
+                                    <a href="/contact" class="btn btn-outline">Request Consultation</a>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- SLIDE 3 – Global system in smart waste solutions (all text right, centered-right) -->
+                <div class="swiper-slide">
+                    <section class="hero-slide">
+                        <div class="hero-bg">
+                            <video class="hero-video"
+                                src="https://tawasul.tech/images/ut2_banner_videos/53_24_24_ar_212727__1_.mp4" autoplay
+                                muted loop playsinline></video>
+                        </div>
+                        <div class="hero-overlay"></div>
+
+                        <div class="hero-content hero-right">
+                            <div class="hero-side">
+                                <h1 class="hero-title">
+                                    Global System in Smart Waste Solutions
+                                </h1>
+                                <p class="hero-text">
+                                    By developing &amp; deploying resilient hardware and beautiful software
+                                    we empower cities, businesses, and countries to manage waste smarter.
+                                </p>
+                                <div class="hero-buttons">
+                                    <a href="/solutions" class="btn btn-primary">Explore Solutions</a>
+                                    <a href="/contact" class="btn btn-outline">Request Consultation</a>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- SLIDE 4 – Discover more efficient waste collection (all text right, centered-right) -->
+                <div class="swiper-slide">
+                    <section class="hero-slide">
+                        <div class="hero-bg">
+                            <video class="hero-video"
+                                src="https://tawasul.tech/images/ut2_banner_videos/54_25_25_banners1454545ar__1_.mp4"
+                                autoplay muted loop playsinline></video>
+                        </div>
+                        <div class="hero-overlay"></div>
+
+                        <div class="hero-content hero-right">
+                            <div class="hero-side">
+                                <h1 class="hero-title">
+                                    Discover More Efficient Waste Collection
+                                </h1>
+                                <p class="hero-text">
+                                    Discover powerful Route Planning solution for the waste industry
+                                    powered by Sensoneo.
+                                </p>
+                                <div class="hero-buttons">
+                                    <a href="/solutions" class="btn btn-primary">Explore Solutions</a>
+                                    <a href="/contact" class="btn btn-outline">Request Consultation</a>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+            </div>
+
+            <!-- Dots -->
+            <div class="hero-pagination swiper-pagination"></div>
+        </div>
+
+        <!-- SOLUTIONS SECTION -->
+        <section class="solutions-section">
+            <div class="solutions-inner">
+                <div class="solutions-card">
+                    <div class="solutions-badge">
+                        <span class="solutions-badge-dot"></span>
+                        Solutions Portfolio
+                        <span class="solutions-badge-dot"></span>
+                    </div>
+                    <h2 class="solutions-title">Smart Mobility Starts<br>Here</h2>
+                    <p class="solutions-text">
+                        Each TawasulTech solution is available independently, with the flexibility
+                        to adopt multiple systems as your operations evolve. Choose only what your
+                        organization needs today &mdash; with optional interoperability in the future.
+                    </p>
+                </div>
+                <div class="solutions-image-wrap">
+                    <img src="https://tawasul.tech/images/TawasulTech/image/solutions.jpg" class="solutions-image"
+                        loading="lazy">
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Swiper JS (CDN) -->
+    <script src="https://unpkg.com/swiper@9/swiper-bundle.min.js"></script>
+
+    <script>
+        // HERO SWIPER INIT
+        var heroSwiper = new Swiper('.hero-swiper', {
+            loop: true,
+            autoplay: {
+                delay: 7000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.hero-pagination',
+                clickable: true,
+            },
+            effect: 'slide',
+            speed: 800
+        });
+
+        // Solutions section intersection animation
+        (function () {
+            const section = document.querySelector('.ut-override-hero .solutions-section');
+            if (!section) return;
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        section.classList.add('is-visible');
+                        observer.unobserve(section);
+                    }
+                });
+            }, {
+                threshold: 0.25
+            });
+
+            observer.observe(section);
+        })();
+    </script>
+</body>
+
+</html>
