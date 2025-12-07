@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>footer</title>
+    <!-- <style>
+        /* ROOT FOOTER */
+        body {
+            margin: 0px;
+        }
+
+        .tws-footer {
+            background: #FFFFFF;
+            /* padding: 48px 135px 30px; */
+            padding: 135px 30px;
+            font-family: "Satoshi", sans-serif;
+            color: #1E1E1E;
+        }
+
+        /* MAIN WRAPPER */
+        .tws-footer-container {
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+
+        /* TOP AREA */
+        .tws-footer-top {
+            max-width: 1170px;
+            margin: 0 auto;
+            display: flex;
+            gap: 48px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid #EEEEEE;
+        }
+
+        /* LEFT COLUMN */
+        .tws-footer-left {
+            width: 403px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .footer-logo {
+            width: 186px;
+            height: auto;
+        }
+
+        .footer-desc {
+            width: 403px;
+            height: 72px;
+            font-size: 14px;
+            line-height: 150%;
+            opacity: 0.7;
+        }
+
+        /* SOCIAL ICON ROW */
+        .footer-social {
+            display: flex;
+            gap: 8px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 34px;
+            background: #1E1E1E;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .social-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        /* DIVIDER */
+        .footer-divider {
+            width: 1px;
+            height: 242px;
+            background: #EEEEEE;
+        }
+
+        /* RIGHT COLUMNS WRAPPER */
+        .tws-footer-right {
+            display: flex;
+            gap: 48px;
+            width: 670px;
+        }
+
+        /* INDIVIDUAL COLUMN */
+        .footer-col {
+            width: 191px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .footer-title {
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 150%;
+            margin-top: 0px;
+            margin-bottom: 0px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .footer-col li {
+            font-size: 12px;
+            font-weight: 500;
+            line-height: 150%;
+            cursor: pointer;
+        }
+
+        /* BOTTOM COPYRIGHT */
+        .tws-footer-bottom {
+            max-width: 1170px;
+            margin: 20px auto 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .tws-footer-bottom p {
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 150%;
+            opacity: 1;
+        }
+    </style> -->
+
+<style>
+  /* RESET */
+  body {
+    margin: 0;
+  }
+
+  /* ROOT FOOTER */
+  .tws-footer {
+    background: #FFFFFF;
+    padding: 48px 135px 30px;
+    font-family: "Satoshi", sans-serif;
+    color: #1E1E1E;
+  }
+
+  /* MAIN WRAPPER */
+  .tws-footer-container {
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+
+  /* TOP AREA */
+  .tws-footer-top {
+    max-width: 1170px;
+    margin: 0 auto;
+    display: flex;
+    gap: 48px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid #EEEEEE;
+  }
+
+  /* LEFT COLUMN */
+  .tws-footer-left {
+    width: 403px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .footer-logo {
+    width: 186px;
+    height: auto;
+  }
+
+  .footer-desc {
+    width: 403px;
+    height: 72px;
+    font-size: 14px;
+    line-height: 150%;
+    opacity: 0.7;
+  }
+
+  /* SOCIAL ICON ROW */
+  .footer-social {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .social-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 34px;
+    background: #1E1E1E;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .social-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  /* DIVIDER */
+  .footer-divider {
+    width: 1px;
+    height: 242px;
+    background: #EEEEEE;
+  }
+
+  /* RIGHT COLUMNS WRAPPER */
+  .tws-footer-right {
+    display: flex;
+    gap: 48px;
+    width: 670px;
+  }
+
+  /* INDIVIDUAL COLUMN */
+  .footer-col {
+    width: 191px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .footer-title {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 150%;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .footer-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .footer-col li {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 150%;
+    cursor: pointer;
+  }
+
+  /* BOTTOM COPYRIGHT */
+  .tws-footer-bottom {
+    max-width: 1170px;
+    margin: 20px auto 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  .tws-footer-bottom p {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 150%;
+    opacity: 1;
+    text-align: center;
+  }
+
+  /* ===========================
+     TABLET (iPads, ~≤ 1024px)
+     =========================== */
+  @media (max-width: 1200px) {
+    .tws-footer {
+      padding: 48px 40px 30px;
+    }
+
+    .tws-footer-top {
+      gap: 32px;
+    }
+
+    .tws-footer-left {
+      width: 320px;
+    }
+
+    .footer-desc {
+      width: 100%;
+      height: auto;
+    }
+
+    .tws-footer-right {
+      width: auto;
+      flex: 1;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    .footer-divider {
+      height: auto;
+      align-self: stretch;
+    }
+
+    .tws-footer-bottom {
+      justify-content: flex-start;
+    }
+  }
+
+  /* ===========================
+     TABLET / SMALL LAPTOP (≤ 992px)
+     Stack left + right, remove divider
+     =========================== */
+  @media (max-width: 992px) {
+    .tws-footer {
+      padding: 40px 32px 28px;
+    }
+
+    .tws-footer-top {
+      flex-direction: column;
+      align-items: flex-start;
+      max-width: 100%;
+    }
+
+    .tws-footer-left {
+      width: 100%;
+      max-width: 100%;
+      gap: 16px;
+    }
+
+    .footer-desc {
+      width: 100%;
+    }
+
+    .footer-divider {
+      display: none;
+    }
+
+    .tws-footer-right {
+      width: 100%;
+      max-width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .footer-col {
+      width: calc(50% - 12px); /* two columns per row */
+    }
+
+    .tws-footer-bottom {
+      margin-top: 24px;
+      justify-content: flex-start;
+    }
+
+    .tws-footer-bottom p {
+      text-align: left;
+    }
+  }
+
+  /* ===========================
+     MOBILE (≤ 600px)
+     Full width, stacked columns
+     =========================== */
+  @media (max-width: 600px) {
+    .tws-footer {
+      padding: 32px 16px 24px;
+    }
+
+    .tws-footer-top {
+      gap: 24px;
+      padding-bottom: 24px;
+    }
+
+    .footer-social {
+      margin-top: 16px;
+    }
+
+    .tws-footer-right {
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .footer-col {
+      width: 100%;
+    }
+
+    .tws-footer-bottom {
+      margin-top: 16px;
+      justify-content: flex-start;
+    }
+
+    .tws-footer-bottom p {
+      font-size: 12px;
+      line-height: 1.5;
+    }
+  }
+</style>
+
+</head>
+
+<body>
+    <footer class="tws-footer">
+        <div class="tws-footer-container">
+
+            <!-- Top Section -->
+            <div class="tws-footer-top">
+
+                <!-- Left Column -->
+                <div class="tws-footer-left">
+
+                    <div class="footer-brand">
+                        <img src="https://tawasul.tech/images/logos/8/logo01.png" alt="TawasulTech"
+                            class="footer-logo" />
+                        <p class="footer-desc" loading="lazy">
+                            Building the future of smart mobility across Saudi Arabia through integrated IoT, AI, and
+                            cloud technologies.
+                        </p>
+                    </div>
+
+                    <!-- Social Icons -->
+                    <div class="footer-social">
+                        <a href="#">
+                            <div class="social-icon"><img
+                                    src="https://tawasul.tech/images/TawasulTech/image/linkin-icon.png"
+                                    alt="linkedin icon" loading="lazy" /></div>
+                        </a>
+                        <a href="#">
+                            <div class="social-icon"><img
+                                    src="https://tawasul.tech/images/TawasulTech/image/yt-icon.png"
+                                    alt="youtube icon" loading="lazy" /></div>
+                        </a>
+                        <a href="#">
+                            <div class="social-icon"><img
+                                    src="https://tawasul.tech/images/TawasulTech/image/insta-icon.png"
+                                    alt="instagram icon" loading="lazy" /></div>
+                        </a>
+                        <a href="#">
+                            <div class="social-icon"><img
+                                    src="https://tawasul.tech/images/TawasulTech/image/fb-icon.png" alt="facebook icon"
+                                    loading="lazy" /></div>
+                        </a>
+                        <a href="#">
+                            <div class="social-icon"><img src="https://tawasul.tech/images/TawasulTech/image/x-icon.png"
+                                    alt="x icon" loading="lazy" /></div>
+                        </a>
+                    </div>
+
+                </div>
+
+                <!-- Divider -->
+                <div class="footer-divider"></div>
+
+                <!-- Right Columns -->
+                <div class="tws-footer-right">
+
+                    <!-- Business -->
+                    <div class="footer-col">
+                        <h4 class="footer-title">Business</h4>
+                        <ul>
+                            <li>Tawasul Logistics</li>
+                            <li>Fient Management</li>
+                            <li>AI & Video Telematics</li>
+                            <li>Smart Waste Management</li>
+                            <li>Digital Twin</li>
+                            <li>Tawasul Store</li>
+                        </ul>
+                    </div>
+
+                    <!-- Company -->
+                    <div class="footer-col">
+                        <h4 class="footer-title">Company</h4>
+                        <ul>
+                            <li>About Us</li>
+                            <li>Careers</li>
+                            <li>Partners</li>
+                            <li>News & Media</li>
+                            <li>Contact</li>
+                        </ul>
+                    </div>
+
+                    <!-- Resources -->
+                    <div class="footer-col">
+                        <h4 class="footer-title">Resources</h4>
+                        <ul>
+                            <li>Documentation</li>
+                            <li>API Reference</li>
+                            <li>Support Center</li>
+                            <li>System Status</li>
+                            <li>Privacy Policy</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Bottom -->
+            <div class="tws-footer-bottom">
+                <p>2025 TawasulTech. All rights reserved. Made in Saudi Arabia Sa</p>
+            </div>
+
+        </div>
+    </footer>
+
+</body>
+
+</html>
