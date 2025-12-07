@@ -1,0 +1,1997 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>TawasulTech – Smart Mobility Solutions</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Swiper CSS (for hero slider) -->
+  <link rel="stylesheet" href="https://unpkg.com/swiper@9/swiper-bundle.min.css" />
+
+  <style>
+    body {
+      margin: 0;
+      background: #ffffff;
+      font-family: "Satoshi", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: #1E1E1E;
+    }
+
+    /* =============================
+       HERO + SMART MOBILITY SECTION
+       ============================= */
+
+    .ut-override-hero {
+      color: #ffffff;
+    }
+
+    .ut-override-hero * {
+      box-sizing: border-box;
+    }
+
+    .ut-override-hero .hero-swiper {
+      position: relative;
+      width: 100%;
+      min-height: 700px;
+      color: #fff;
+      overflow: hidden;
+    }
+
+    .ut-override-hero .hero-swiper .swiper-wrapper {
+      height: 100%;
+    }
+
+    .ut-override-hero .hero-swiper .swiper-slide {
+      height: 100%;
+    }
+
+    .ut-override-hero .hero-slide {
+      position: relative;
+      width: 100%;
+      min-height: 700px;
+      display: flex;
+      align-items: center;
+      padding: 0 98px;
+    }
+
+    .ut-override-hero .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .ut-override-hero .hero-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .ut-override-hero .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 100%);
+      z-index: 1;
+    }
+
+    .ut-override-hero .hero-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 1740px;
+      height: auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 51px;
+    }
+
+    .ut-override-hero .hero-title {
+      max-width: 622px;
+      font-size: 64px;
+      line-height: 1.1;
+      font-weight: 500;
+      letter-spacing: -0.03em;
+      margin: 0;
+      opacity: 0;
+      animation: fadeUp 0.8s ease-out forwards;
+      color: #ffffff;
+    }
+
+    .ut-override-hero .hero-side {
+      max-width: 498px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .ut-override-hero .hero-text {
+      font-size: 18px;
+      line-height: 1.5;
+      font-weight: 500;
+      opacity: 0;
+      animation: fadeUp 0.8s ease-out 0.25s forwards;
+      margin: 0;
+      color: #ffffff;
+      margin-top: 16px;
+    }
+
+    .ut-override-hero .hero-buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.8s ease-out 0.4s forwards;
+    }
+
+    .ut-override-hero .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 48px;
+      padding: 0 28px;
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      white-space: nowrap;
+      text-decoration: none;
+      border: 1px solid transparent;
+      transition: 0.15s ease;
+    }
+
+    .ut-override-hero .btn-primary {
+      background: #00A738;
+      border-color: #16a34a;
+      color: #fff;
+    }
+
+    .ut-override-hero .btn-primary:hover {
+      background: #15803d;
+      border-color: #15803d;
+      transform: translateY(-2px);
+    }
+
+    .ut-override-hero .btn-outline {
+      background: transparent;
+      border-color: #fff;
+      color: #fff;
+    }
+
+    .ut-override-hero .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.15);
+      transform: translateY(-2px);
+    }
+
+    .ut-override-hero .hero-pagination {
+      position: absolute;
+      left: 50%;
+      bottom: 24px;
+      transform: translateX(-50%);
+      z-index: 5;
+    }
+
+    .ut-override-hero .hero-pagination .swiper-pagination-bullet {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.4);
+      opacity: 1;
+      margin: 0 4px !important;
+    }
+
+    .ut-override-hero .hero-pagination .swiper-pagination-bullet-active {
+      background: #00A738;
+    }
+
+    .ut-override-hero .hero-content.hero-right {
+      justify-content: flex-end;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .ut-override-hero .hero-content.hero-right .hero-side {
+      max-width: 560px;
+      text-align: left;
+    }
+
+    .ut-override-hero .hero-content.hero-right .hero-title {
+      max-width: 560px;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 1200px) {
+      .ut-override-hero .hero-content.hero-right {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 992px) {
+      .ut-override-hero .hero-slide {
+        min-height: 80vh;
+        padding: 40px 32px 40px;
+      }
+
+      .ut-override-hero .hero-content {
+        flex-direction: column;
+        gap: 24px;
+      }
+
+      .ut-override-hero .hero-title {
+        font-size: 40px;
+        max-width: 100%;
+      }
+
+      .ut-override-hero .hero-content.hero-right {
+        justify-content: flex-start;
+      }
+    }
+
+    /* Mobile */
+    @media (max-width: 640px) {
+      .ut-override-hero .hero-slide {
+        min-height: 90vh;
+        padding: 32px 16px 36px;
+      }
+
+      .ut-override-hero .hero-title {
+        font-size: 30px;
+      }
+
+      .ut-override-hero .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+        /* max-width: 320px; */
+      }
+
+      .ut-override-hero .btn {
+        width: 100%;
+      }
+    }
+
+    /* Smart Mobility Starts Here card + image */
+
+    .ut-override-hero .solutions-section {
+      padding: 107px 0px;
+      background: #ffffff;
+      color: #1E1E1E;
+    }
+
+    .ut-override-hero .solutions-inner {
+      max-width: 1170px;
+      margin: 0 auto;
+      display: flex;
+      gap: 30px;
+    }
+
+    .ut-override-hero .solutions-card {
+      background: #EBF4EE;
+      flex: 0 0 570px;
+      padding: 100px 48px;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+    }
+
+    .ut-override-hero .solutions-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: #fff;
+      padding: 12px 16px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .ut-override-hero .solutions-badge-dot {
+      width: 10px;
+      height: 10px;
+      background: #00A738;
+      border-radius: 5px;
+    }
+
+    .ut-override-hero .solutions-title {
+      font-size: 48px;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      font-weight: 500;
+      margin: 0;
+    }
+
+    .ut-override-hero .solutions-text {
+      font-size: 16px;
+      line-height: 1.5;
+      font-weight: 500;
+      margin: 0;
+      color: #4C4C4C;
+      width: 474px;
+    }
+
+    .ut-override-hero .solutions-image-wrap {
+      flex: 1;
+      height: 550px;
+      overflow: hidden;
+    }
+
+    .ut-override-hero .solutions-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    @media (max-width: 640px) {
+      .ut-override-hero .solutions-inner {
+        flex-direction: column-reverse;
+      }
+
+      .ut-override-hero .solutions-section {
+        padding: 40px 16px;
+      }
+
+      .ut-override-hero .solutions-card {
+        padding: 56px 20px;
+      }
+
+      .ut-override-hero .solutions-title {
+        font-size: 28px;
+      }
+
+      .ut-override-hero .solutions-text {
+        font-size: 15px;
+        width: 100%;
+      }
+
+      .ut-override-hero .solutions-image-wrap {
+        height: 260px;
+      }
+    }
+
+    .ut-override-hero .solutions-section {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    .ut-override-hero .solutions-section.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .ut-override-hero .solutions-card,
+    .ut-override-hero .solutions-image-wrap {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+    }
+
+    .ut-override-hero .solutions-section.is-visible .solutions-card {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: 0.1s;
+    }
+
+    .ut-override-hero .solutions-section.is-visible .solutions-image-wrap {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: 0.25s;
+    }
+
+    /* =============================
+       SOLUTIONS PORTFOLIO TIMELINE
+       ============================= */
+
+    .solutions-section {
+      padding: 80px 16px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .solutions-container {
+      width: 100%;
+      max-width: 1170px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .solutions-heading {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      text-align: center;
+      margin-bottom: 60px;
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+    }
+
+    .solutions-heading.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .solutions-heading h2 {
+      margin: 0;
+      font-weight: 500;
+      font-size: 48px;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      text-transform: capitalize;
+      color: #1e1e1e;
+    }
+
+    .solutions-heading p {
+      margin: 0;
+      max-width: 1028px;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 1.5;
+      text-transform: capitalize;
+      color: #4c4c4c;
+    }
+
+    .solutions-timeline {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 60px;
+    }
+
+    .solutions-timeline::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      border-left: 1px dashed #00a738;
+      border-image: repeating-linear-gradient(#00A738 0 10px,
+          transparent 10px 20px) 1;
+    }
+
+    .solutions-item {
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 130px;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    .solutions-item.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .timeline-node {
+      position: absolute;
+      left: 50%;
+      width: 16px;
+      height: 16px;
+      background-color: #00a738;
+      transform: translateX(-50%) rotate(45deg);
+      top: 0;
+      opacity: 0;
+      transition: opacity 0.5s ease-out 0.15s;
+    }
+
+    .solutions-item.visible .timeline-node {
+      opacity: 1;
+    }
+
+    .solutions-item-image,
+    .solutions-item-content {
+      width: 100%;
+      max-width: 520px;
+    }
+
+    .solutions-item-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
+    .solutions-item-content {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .solutions-item-text-group {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .solutions-item-title {
+      margin: 0;
+      font-weight: 500;
+      font-size: 40px;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      text-transform: capitalize;
+      color: #1e1e1e;
+    }
+
+    .solutions-item-subtitle {
+      margin: 0;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 1.5;
+      text-transform: none;
+      color: #4c4c4c;
+    }
+
+    .solutions-item-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .solutions-item-list li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 1.5;
+      text-transform: none;
+      color: #4c4c4c;
+    }
+
+    .solutions-item-list-icon {
+      width: 20px;
+      height: 20px;
+      image-rendering: crisp-edges;
+    }
+
+    .solutions-item-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 32px;
+      border: none;
+      background-color: #00a738;
+      color: #ffffff;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 1.5;
+      text-decoration: none;
+      cursor: pointer;
+      text-transform: capitalize;
+    }
+
+    @media (max-width: 992px) {
+         .ut-override-hero .solutions-inner {
+        flex-direction: column-reverse;
+      }
+      .solutions-heading h2 {
+        font-size: 36px;
+      }
+
+      .solutions-item {
+        flex-direction: column;
+        gap: 32px;
+        align-items: flex-start;
+      }
+
+      .solutions-timeline::before {
+        left: 8px;
+        transform: none;
+        border-left: 1px dashed #00A738;
+        border-image: repeating-linear-gradient(#00A738 0 10px,
+            transparent 10px 20px) 1;
+      }
+
+      .timeline-node {
+        left: 8px;
+        transform: translateX(-50%) rotate(45deg);
+      }
+
+      .solutions-item-image,
+      .solutions-item-content {
+        max-width: 100%;
+        padding-left: 32px;
+      }
+
+      .solutions-item-image {
+        order: 1;
+      }
+
+      .solutions-item-content {
+        order: 2;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .solutions-timeline {
+        padding-right: 32px;
+      }
+      .solutions-section {
+        padding: 48px 16px;
+      }
+
+      .solutions-heading h2 {
+        font-size: 30px;
+      }
+
+      .solutions-heading p {
+        font-size: 14px;
+      }
+
+      .solutions-item-title {
+        font-size: 28px;
+      }
+    }
+
+    /* =============================
+       TOS GRID SECTION
+       ============================= */
+
+    .tws-tos-root * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    .tws-tos-root {
+      font-family: "Satoshi", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background-color: #EBF4EE;
+      color: #1E1E1E;
+    }
+
+    .trusted-operators-section {
+      padding: 72px 16px;
+      display: flex;
+      justify-content: center;
+    }
+
+    /* @media (min-width: 1200px) {
+      .trusted-operators-section {
+        * padding: 72px 135px; 
+      }
+    } */
+
+    .trusted-operators-container {
+      width: 100%;
+      max-width: 1170px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+    }
+
+    .trusted-operators-header {
+      text-align: center;
+      max-width: 1170px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .trusted-operators-title {
+      font-weight: 500;
+      font-size: clamp(28px, 3.4vw, 48px);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      text-transform: capitalize;
+      color: #1E1E1E;
+    }
+
+    .trusted-operators-subtitle {
+      max-width: 1028px;
+      margin: 0 auto;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 1.5;
+      color: #4C4C4C;
+      text-transform: capitalize;
+    }
+
+    .trusted-operators-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 30px;
+    }
+
+    @media (max-width: 1024px) {
+      .trusted-operators-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .trusted-operators-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .trusted-card {
+      background-color: #FFFFFF;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .trusted-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.06);
+    }
+
+    .trusted-card-icon {
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 4px;
+    }
+
+    .trusted-card-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .trusted-card-title {
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 1.3;
+      color: #1E1E1E;
+      margin-bottom: 8px;
+    }
+
+    .trusted-card-text {
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 1.5;
+      color: #4C4C4C;
+    }
+
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+    }
+
+    .animate-on-scroll.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .trusted-card.animate-on-scroll:nth-child(1) {
+      transition-delay: 0.05s;
+    }
+
+    .trusted-card.animate-on-scroll:nth-child(2) {
+      transition-delay: 0.12s;
+    }
+
+    .trusted-card.animate-on-scroll:nth-child(3) {
+      transition-delay: 0.19s;
+    }
+
+    .trusted-card.animate-on-scroll:nth-child(4) {
+      transition-delay: 0.26s;
+    }
+
+    .trusted-card.animate-on-scroll:nth-child(5) {
+      transition-delay: 0.33s;
+    }
+
+    .trusted-card.animate-on-scroll:nth-child(6) {
+      transition-delay: 0.40s;
+    }
+
+    .trusted-card.animate-on-scroll.is-visible:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.06);
+    }
+
+    /* =============================
+       CONTACT CTA SECTION
+       ============================= */
+
+    .tws-tawasul-cta * {
+      box-sizing: border-box !important;
+    }
+
+    .tws-tawasul-cta .tws-contact-cta {
+      background: #71BB82 !important;
+      padding: 100px 135px !important;
+      display: flex !important;
+      justify-content: center !important;
+      width: 100% !important;
+      font-family: "Satoshi", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+    }
+
+    .tws-tawasul-cta .cta-container {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      gap: 48px !important;
+      max-width: 1170px !important;
+      width: 100% !important;
+      text-align: center !important;
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+    }
+
+    .tws-tawasul-cta .cta-container.tws-visible {
+      animation: twsCtaFadeUp 0.7s ease-out forwards !important;
+    }
+
+    .tws-tawasul-cta .cta-text-wrap {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      gap: 20px !important;
+      /* max-width: 642px !important; */
+    }
+
+    .tws-tawasul-cta .cta-title {
+      font-size: 48px !important;
+      font-weight: 500 !important;
+      letter-spacing: -0.03em !important;
+      line-height: 1.1 !important;
+      margin: 0 !important;
+      color: #1E1E1E !important;
+      text-transform: capitalize !important;
+    }
+
+    .tws-tawasul-cta .cta-desc {
+      max-width: 544px !important;
+      font-size: 16px !important;
+      font-weight: 500 !important;
+      line-height: 1.5 !important;
+      color: #1E1E1E !important;
+      margin: 0 !important;
+      text-transform: capitalize !important;
+    }
+
+    .tws-tawasul-cta .cta-button {
+      background: #ffffff !important;
+      padding: 16px 20px !important;
+      display: flex !important;
+      align-items: center !important;
+      gap: 10px !important;
+      text-decoration: none !important;
+      height: 48px !important;
+      width: 216px !important;
+      justify-content: center !important;
+      border: none !important;
+      transition: background-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease !important;
+    }
+
+    .tws-tawasul-cta .cta-button span {
+      font-size: 16px !important;
+      font-weight: 700 !important;
+      line-height: 1.5 !important;
+      color: #00A738 !important;
+      white-space: nowrap !important;
+    }
+
+    .tws-tawasul-cta .cta-button .cta-icon {
+      width: 24px !important;
+      height: 24px !important;
+      flex-shrink: 0 !important;
+    }
+
+    .tws-tawasul-cta .cta-button:hover {
+      background: #f1f1f1 !important;
+      transform: translateY(-2px) !important;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12) !important;
+    }
+
+    @keyframes twsCtaFadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(28px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Tablet */
+    @media (max-width: 992px) {
+      .tws-tawasul-cta .tws-contact-cta {
+        padding: 80px 40px !important;
+      }
+
+      .tws-tawasul-cta .cta-title {
+        font-size: 40px !important;
+      }
+
+      .tws-tawasul-cta .cta-desc {
+        font-size: 15px !important;
+      }
+    }
+
+    /* @media (max-width: 768px) {
+      .tws-tawasul-cta .tws-contact-cta {
+        padding: 60px 24px !important;
+      }
+
+      .tws-tawasul-cta .cta-title {
+        font-size: 32px !important;
+      }
+
+      .tws-tawasul-cta .cta-desc {
+        font-size: 14px !important;
+      }
+
+      .tws-tawasul-cta .cta-button {
+        width: 100% !important;
+        max-width: 260px !important;
+      }
+    } */
+
+    /* @media (max-width: 480px) {
+      .tws-tawasul-cta .tws-contact-cta {
+        padding: 48px 16px !important;
+      }
+
+      .tws-tawasul-cta .cta-title {
+        font-size: 28px !important;
+      }
+
+      .tws-tawasul-cta .cta-button span {
+        font-size: 15px !important;
+      }
+    } */
+
+    /* =============================
+       FOOTER
+       ============================= */
+
+    .tws-footer {
+      background: #FFFFFF;
+      padding: 48px 0px 30px;
+      font-family: "Satoshi", sans-serif;
+      color: #1E1E1E;
+    }
+
+    .tws-footer-container {
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+
+    .tws-footer-top {
+      max-width: 1170px;
+      margin: 0 auto;
+      display: flex;
+      gap: 48px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid #EEEEEE;
+    }
+
+    .tws-footer-left {
+      width: 403px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .footer-logo {
+      width: 186px;
+      height: auto;
+    }
+
+    .footer-desc {
+      width: 403px;
+      height: 72px;
+      font-size: 14px;
+      line-height: 150%;
+      opacity: 0.7;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .social-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 34px;
+      background: #1E1E1E;
+      padding: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .social-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .footer-divider {
+      width: 1px;
+      height: 242px;
+      background: #EEEEEE;
+    }
+
+    .tws-footer-right {
+      display: flex;
+      gap: 48px;
+      width: 670px;
+    }
+
+    .footer-col {
+      width: 191px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .footer-title {
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 150%;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .footer-col li {
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 150%;
+      cursor: pointer;
+    }
+
+    .tws-footer-bottom {
+      max-width: 1170px;
+      margin: 20px auto 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    .tws-footer-bottom p {
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 150%;
+      opacity: 1;
+      text-align: center;
+    }
+
+    @media (max-width: 1200px) {
+      .tws-footer {
+        padding: 48px 40px 30px;
+      }
+
+      .tws-footer-top {
+        gap: 32px;
+      }
+
+      .tws-footer-left {
+        width: 320px;
+      }
+
+      .footer-desc {
+        width: 100%;
+        height: auto;
+      }
+
+      .tws-footer-right {
+        width: auto;
+        flex: 1;
+        gap: 32px;
+        flex-wrap: wrap;
+      }
+
+      .footer-divider {
+        height: auto;
+        align-self: stretch;
+      }
+
+      .tws-footer-bottom {
+        justify-content: flex-start;
+      }
+    }
+
+    @media (max-width: 992px) {
+      .tws-footer {
+        padding: 40px 32px 28px;
+      }
+
+      .tws-footer-top {
+        flex-direction: column;
+        align-items: flex-start;
+        max-width: 100%;
+      }
+
+      .tws-footer-left {
+        width: 100%;
+        max-width: 100%;
+        gap: 16px;
+      }
+
+      .footer-desc {
+        width: 100%;
+      }
+
+      .footer-divider {
+        display: none;
+      }
+
+      .tws-footer-right {
+        width: 100%;
+        max-width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 24px;
+      }
+
+      .footer-col {
+        width: calc(50% - 12px);
+      }
+
+      .tws-footer-bottom {
+        margin-top: 24px;
+        justify-content: flex-start;
+      }
+
+      .tws-footer-bottom p {
+        text-align: left;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .tws-footer {
+        padding: 32px 16px 24px;
+      }
+
+      .tws-footer-top {
+        gap: 24px;
+        padding-bottom: 24px;
+      }
+
+      .footer-social {
+        margin-top: 16px;
+      }
+
+      .tws-footer-right {
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .footer-col {
+        width: 100%;
+      }
+
+      .tws-footer-bottom {
+        margin-top: 16px;
+        justify-content: flex-start;
+      }
+
+      .tws-footer-bottom p {
+        font-size: 12px;
+        line-height: 1.5;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HERO + SMART MOBILITY STARTS HERE -->
+  <div class="ut-override-hero">
+    <div class="hero-swiper swiper">
+      <div class="swiper-wrapper">
+
+        <!-- Slide 1 -->
+        <div class="swiper-slide">
+          <section class="hero-slide">
+            <div class="hero-bg"
+              style="background-image:url('https://tawasul.tech/images/TawasulTech/image/hero.jpg');"></div>
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+              <h1 class="hero-title">
+                Smart Mobility Solutions. Built For Saudi Arabia
+              </h1>
+              <div class="hero-side">
+                <p class="hero-text">
+                  A suite of independent platforms for logistics, fleet management, AI telematics, smart waste
+                  operations, and 3-D virtual facility tours — all developed under one Saudi smart mobility ecosystem.
+                </p>
+                <div class="hero-buttons">
+                  <a href="/solutions" class="btn btn-primary">Explore Solutions</a>
+                  <a href="/contact-us" class="btn btn-outline">Request Consultation</a>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="swiper-slide">
+          <section class="hero-slide">
+            <div class="hero-bg">
+              <video class="hero-video"
+                src="https://tawasul.tech/images/ut2_banner_videos/52_23_bannerhome01.mp4" autoplay muted loop
+                playsinline></video>
+            </div>
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+              <h1 class="hero-title">
+                You Can’t Manage What You Can’t Measure.
+              </h1>
+              <div class="hero-side">
+                <p class="hero-text">
+                  Optimize your fleet management with greater efficiency using the Tawasul Fleet Management System —
+                  TawasulFMS.
+                </p>
+                <div class="hero-buttons">
+                  <a href="/solutions" class="btn btn-primary">Explore Solutions</a>
+                  <a href="/contact" class="btn btn-outline">Request Consultation</a>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="swiper-slide">
+          <section class="hero-slide">
+            <div class="hero-bg">
+              <video class="hero-video"
+                src="https://tawasul.tech/images/ut2_banner_videos/53_24_24_ar_212727__1__.mp4" autoplay muted loop
+                playsinline></video>
+            </div>
+            <div class="hero-overlay"></div>
+
+            <div class="hero-content hero-right">
+              <div class="hero-side">
+                <h1 class="hero-title">
+                  Global System in Smart Waste Solutions
+                </h1>
+                <p class="hero-text">
+                  By developing &amp; deploying resilient hardware and beautiful software we empower cities, businesses,
+                  and countries to manage waste smarter.
+                </p>
+                <div class="hero-buttons">
+                  <a href="/solutions" class="btn btn-primary">Explore Solutions</a>
+                  <a href="/contact" class="btn btn-outline">Request Consultation</a>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- Slide 4 -->
+        <div class="swiper-slide">
+          <section class="hero-slide">
+            <div class="hero-bg">
+              <video class="hero-video"
+                src="https://tawasul.tech/images/ut2_banner_videos/54_25_25_banners1454545ar__1__.mp4" autoplay muted
+                loop playsinline></video>
+            </div>
+            <div class="hero-overlay"></div>
+
+            <div class="hero-content hero-right">
+              <div class="hero-side">
+                <h1 class="hero-title">
+                  Discover More Efficient Waste Collection
+                </h1>
+                <p class="hero-text">
+                  Discover powerful Route Planning solution for the waste industry powered by Sensoneo.
+                </p>
+                <div class="hero-buttons">
+                  <a href="/solutions" class="btn btn-primary">Explore Solutions</a>
+                  <a href="/contact" class="btn btn-outline">Request Consultation</a>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+      </div>
+
+      <div class="hero-pagination swiper-pagination"></div>
+    </div>
+
+    <!-- Smart Mobility Starts Here -->
+    <section class="solutions-section">
+      <div class="solutions-inner">
+        <div class="solutions-card">
+          <div class="solutions-badge">
+            <span class="solutions-badge-dot"></span>
+            Solutions Portfolio
+            <span class="solutions-badge-dot"></span>
+          </div>
+          <h2 class="solutions-title">Smart Mobility Starts<br>Here</h2>
+          <p class="solutions-text">
+            Each TawasulTech solution is available independently, with the flexibility
+            to adopt multiple systems as your operations evolve. Choose only what your
+            organization needs today — with optional interoperability in the future.
+          </p>
+        </div>
+        <div class="solutions-image-wrap">
+          <img src="https://tawasul.tech/images/TawasulTech/image/solutions.jpg" class="solutions-image" loading="lazy">
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- SOLUTIONS PORTFOLIO TIMELINE -->
+  <section class="solutions-section">
+    <div class="solutions-container">
+      <header class="solutions-heading">
+        <h2>Solutions Portfolio</h2>
+        <p>
+          A suite of independent platforms built to support logistics operations, fleet safety, smart waste services,
+          and immersive facility planning — each deployable on its own, with the flexibility to expand as your needs
+          grow.
+        </p>
+      </header>
+
+      <div class="solutions-timeline">
+        <!-- 1. Tawasul Logistics Marketplace -->
+        <article class="solutions-item">
+          <span class="timeline-node" aria-hidden="true"></span>
+
+          <div class="solutions-item-image">
+            <img src="https://tawasul.tech/images/TawasulTech/image/tawasul-logistics-marketplace.webp"
+              alt="Tawasul Logistics Marketplace dashboard" loading="lazy" />
+          </div>
+
+          <div class="solutions-item-content">
+            <div class="solutions-item-text-group">
+              <h3 class="solutions-item-title">Tawasul Logistics Marketplace</h3>
+              <p class="solutions-item-subtitle">
+                A digital freight platform connecting shippers and transporters across Saudi Arabia. Enable fair,
+                transparent deals with end-to-end visibility from request to delivery.
+              </p>
+            </div>
+
+            <ul class="solutions-item-list">
+              <li>
+                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt=""
+                  class="solutions-item-list-icon" loading="lazy" />
+                <span>Post on-demand truck requests in seconds</span>
+              </li>
+              <li>
+                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt=""
+                  class="solutions-item-list-icon" loading="lazy" />
+                <span>Receive competitive bids from verified transporters</span>
+              </li>
+              <li>
+                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt=""
+                  class="solutions-item-list-icon" loading="lazy" />
+                <span>Agree on transparent pricing and service levels</span>
+              </li>
+              <li>
+                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt=""
+                  class="solutions-item-list-icon" loading="lazy" />
+                <span>Track shipment status and ETAs in real time</span>
+              </li>
+              <li>
+                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt=""
+                  class="solutions-item-list-icon" loading="lazy" />
+                <span>Issue digital POD and automate invoicing</span>
+              </li>
+            </ul>
+
+            <a href="#" class="solutions-item-cta">Explore marketplace</a>
+          </div>
+        </article>
+
+        <!-- 2. FMS -->
+        <article class="solutions-item">
+          <span class="timeline-node" aria-hidden="true"></span>
+
+          <div class="solutions-item-content">
+            <div class="solutions-item-text-group">
+              <h3 class="solutions-item-title">Fleet Management System (FMS)</h3>
+              <p class="solutions-item-subtitle">
+                A connected fleet operations layer for AVLs, trailers, and assets. Combine live tracking, CAN-bus data,
+                and service workflows in a single operational view.
+              </p>
+            </div>
+
+            <ul class="solutions-item-list">
+              <li>
+                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt=""
+                  class="solutions-item-list-icon" loading="lazy" />
+                <span>Real-time GPS tracking for vehicles and trailers</span>
+              </li>
+              <li>
+                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt=""
+                  class="solutions-item-list-icon" loading="lazy" />
+                <span>Engine, odometer, and fuel data from CAN-bus / FMS</span>
+              </li>
+              <li>
+                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt=""
+                  class="solutions-item-list-icon" loading="lazy" />
+                <span>Configurable alerts for idling, speeding, and misuse</span>
+              </li>
+              <li>
+                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt=""
+                  class="solutions-item-list-icon" />
+                <span>Maintenance planning by mileage, hours, or dates</span>
+              </li>
+              <li>
+                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt=""
+                  class="solutions-item-list-icon" loading="lazy" />
+                <span>Dashboards for fleet utilization and cost per km</span>
+              </li>
+            </ul>
+
+            <a href="#" class="solutions-item-cta">Explore FMS</a>
+          </div>
+
+          <div class="solutions-item-image">
+            <img src="https://tawasul.tech/images/TawasulTech/image/fms.jpg"
+              alt="Fleet Management System live tracking" loading="lazy" />
+          </div>
+        </article>
+
+        <!-- 3. AI & Driver Safety -->
+        <article class="solutions-item">
+          <span class="timeline-node" aria-hidden="true"></span>
+
+          <div class="solutions-item-image">
+            <img src="https://tawasul.tech/images/TawasulTech/image/telematics.jpg"
+              alt="AI-based driver safety telematics" loading="lazy" />
+          </div>
+
+          <div class="solutions-item-content">
+            <div class="solutions-item-text-group">
+              <h3 class="solutions-item-title">AI &amp; Driver Safety Telematics</h3>
+              <p class="solutions-item-subtitle">
+                Strengthen road safety with driver-centric analytics. Combine trip scoring, harsh-event detection, and
+                coaching workflows to reward safer driving habits.
+              </p>
+            </div>
+
+            <ul class="solutions-item-list">
+              <li>
+                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt=""
+                  class="solutions-item-list-icon" loading="lazy" />
+                <span>Harsh braking, acceleration, and cornering detection</span>
+              </li>
+              <li>
+                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt=""
+                  class="solutions-item-list-icon" loading="lazy" />
+                <span>Driver scorecards by trip, day, and fleet segment</span>
+              </li>
+              <li>
+                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt=""
+                  class="solutions-item-list-icon" loading="lazy" />
+                <span>Exception reports for high-risk drivers and routes</span>
+              </li>
+              <li>
+                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt=""
+                  class="solutions-item-list-icon" loading="lazy" />
+                <span>Optional in-cab alerts and coaching notifications</span>
+              </li>
+              <li>
+                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt=""
+                  class="solutions-item-list-icon" loading="lazy" />
+                <span>Evidence exports for safety and insurance teams</span>
+              </li>
+            </ul>
+
+            <a href="#" class="solutions-item-cta">Explore driver safety</a>
+          </div>
+        </article>
+
+        <!-- 4. SWMS -->
+        <article class="solutions-item">
+          <span class="timeline-node" aria-hidden="true"></span>
+
+          <div class="solutions-item-content">
+            <div class="solutions-item-text-group">
+              <h3 class="solutions-item-title">Smart Waste Operations (SWMS)</h3>
+              <p class="solutions-item-subtitle">
+                An operations system for waste haulers and municipalities. Optimize collection routes, container pickups,
+                and field crews with live status and SLAs.
+              </p>
+            </div>
+
+            <ul class="solutions-item-list">
+              <li>
+                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt=""
+                  class="solutions-item-list-icon" loading="lazy" />
+                <span>Digitized work orders for collection and sweeping</span>
+              </li>
+              <li>
+                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt=""
+                  class="solutions-item-list-icon" loading="lazy" />
+                <span>Configurable routes with live truck progress</span>
+              </li>
+              <li>
+                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt=""
+                  class="solutions-item-list-icon" loading="lazy" />
+                <span>Container inventory with RFID / QR tagging options</span>
+              </li>
+              <li>
+                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt=""
+                  class="solutions-item-list-icon" loading="lazy" />
+                <span>Service-level tracking per zone, customer, or contract</span>
+              </li>
+              <li>
+                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt=""
+                  class="solutions-item-list-icon" loading="lazy" />
+                <span>Operations reports for regulators and municipalities</span>
+              </li>
+            </ul>
+
+            <a href="#" class="solutions-item-cta">Explore SWMS</a>
+          </div>
+
+          <div class="solutions-item-image">
+            <img src="https://tawasul.tech/images/TawasulTech/image/swms.jpg"
+              alt="Smart waste management operations view" loading="lazy" />
+          </div>
+        </article>
+
+        <!-- 5. 3D Tours -->
+        <article class="solutions-item">
+          <span class="timeline-node" aria-hidden="true"></span>
+
+          <div class="solutions-item-image">
+            <img src="https://tawasul.tech/images/TawasulTech/image/tours.jpg"
+              alt="3D virtual tour and digital twin" loading="lazy" />
+          </div>
+
+          <div class="solutions-item-content">
+            <div class="solutions-item-text-group">
+              <h3 class="solutions-item-title">3D Virtual Tours &amp; Space Walkthroughs</h3>
+              <p class="solutions-item-subtitle">
+                Immersive digital twins for facilities, yards, and sites. Plan layouts, inspections, and stakeholder
+                walkthroughs without needing everyone physically on location.
+              </p>
+            </div>
+
+            <ul class="solutions-item-list">
+              <li>
+                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt=""
+                  class="solutions-item-list-icon" loading="lazy" />
+                <span>High-fidelity 3D scans of logistics hubs and depots</span>
+              </li>
+              <li>
+                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt=""
+                  class="solutions-item-list-icon" loading="lazy" />
+                <span>Interactive, browser-based walkthrough experiences</span>
+              </li>
+              <li>
+                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt=""
+                  class="solutions-item-list-icon" loading="lazy" />
+                <span>Hotspots for SOPs, safety notes, and assets in-place</span>
+              </li>
+              <li>
+                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt=""
+                  class="solutions-item-list-icon" loading="lazy" />
+                <span>Support for pre-handover and O&amp;M documentation</span>
+              </li>
+              <li>
+                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt=""
+                  class="solutions-item-list-icon" />
+                <span>Embeds for websites, training portals, and reports</span>
+              </li>
+            </ul>
+
+            <a href="#" class="solutions-item-cta">Explore 3D tours</a>
+          </div>
+        </article>
+
+        <!-- 6. Tawasul Store -->
+        <article class="solutions-item">
+          <span class="timeline-node" aria-hidden="true"></span>
+
+          <div class="solutions-item-content">
+            <div class="solutions-item-text-group">
+              <h3 class="solutions-item-title">Tawasul Store – Hardware &amp; Installation</h3>
+              <p class="solutions-item-subtitle">
+                A curated catalogue of tracking devices, sensors, and accessories tuned for Saudi fleets. From supply to
+                installation and after-sales support under one roof.
+              </p>
+            </div>
+
+            <ul class="solutions-item-list">
+              <li>
+                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt=""
+                  class="solutions-item-list-icon" loading="lazy" />
+                <span>AVL devices from leading global manufacturers</span>
+              </li>
+              <li>
+                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt=""
+                  class="solutions-item-list-icon" loading="lazy" />
+                <span>Fuel, temperature, and door sensors for cold-chain</span>
+              </li>
+              <li>
+                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt=""
+                  class="solutions-item-list-icon" loading="lazy" />
+                <span>Accessories for trailers, tankers, and special fleets</span>
+              </li>
+              <li>
+                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt=""
+                  class="solutions-item-list-icon" loading="lazy" />
+                <span>Certified installation teams across key regions</span>
+              </li>
+              <li>
+                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt=""
+                  class="solutions-item-list-icon" loading="lazy" />
+                <span>Local support for replacements, RMAs, and warranty</span>
+              </li>
+            </ul>
+
+            <a href="#" class="solutions-item-cta">Explore Tawasul Store</a>
+          </div>
+
+          <div class="solutions-item-image">
+            <img src="https://tawasul.tech/images/TawasulTech/image/hardware.jpg"
+              alt="Hardware catalogue and installation teams" loading="lazy" />
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUSTED BY OPERATORS -->
+  <div class="tws-tos-root">
+    <section class="trusted-operators-section">
+      <div class="trusted-operators-container">
+        <header class="trusted-operators-header animate-on-scroll">
+          <h2 class="trusted-operators-title">
+            Trusted By Operators Across Every Sector
+          </h2>
+          <p class="trusted-operators-subtitle">
+            Our solutions are used by fleets, municipalities, industrial facilities, and smart-city operators across
+            Saudi Arabia.
+          </p>
+        </header>
+
+        <div class="trusted-operators-grid">
+          <article class="trusted-card animate-on-scroll">
+            <div class="trusted-card-icon">
+              <img src="https://tawasul.tech/images/TawasulTech/image/vehicle-icon.webp"
+                alt="Transportation &amp; Logistics icon" loading="lazy" />
+            </div>
+            <div>
+              <h3 class="trusted-card-title">Transportation &amp; Logistics</h3>
+              <p class="trusted-card-text">
+                Fleet operators, freight providers, and commercial transport companies.
+              </p>
+            </div>
+          </article>
+
+          <article class="trusted-card animate-on-scroll">
+            <div class="trusted-card-icon">
+              <img src="https://tawasul.tech/images/TawasulTech/image/municipal-icon.webp"
+                alt="Municipal &amp; Public Services icon" loading="lazy" />
+            </div>
+            <div>
+              <h3 class="trusted-card-title">Municipal &amp; Public Services</h3>
+              <p class="trusted-card-text">
+                City fleet operations, waste collection services, and public works departments.
+              </p>
+            </div>
+          </article>
+
+          <article class="trusted-card animate-on-scroll">
+            <div class="trusted-card-icon">
+              <img src="https://tawasul.tech/images/TawasulTech/image/energy-icon.webp"
+                alt="Energy, Oil &amp; Gas icon" loading="lazy" />
+            </div>
+            <div>
+              <h3 class="trusted-card-title">Energy, Oil &amp; Gas</h3>
+              <p class="trusted-card-text">
+                Upstream, midstream, and downstream fleet and site operations.
+              </p>
+            </div>
+          </article>
+
+          <article class="trusted-card animate-on-scroll">
+            <div class="trusted-card-icon">
+              <img src="https://tawasul.tech/images/TawasulTech/image/construction-icon.webp"
+                alt="Construction &amp; Industrial icon" loading="lazy" />
+            </div>
+            <div>
+              <h3 class="trusted-card-title">Construction &amp; Industrial</h3>
+              <p class="trusted-card-text">
+                Heavy equipment transport, materials delivery, and contractor fleets.
+              </p>
+            </div>
+          </article>
+
+          <article class="trusted-card animate-on-scroll">
+            <div class="trusted-card-icon">
+              <img src="https://tawasul.tech/images/TawasulTech/image/retail-icon.webp"
+                alt="Retail &amp; Distribution icon" loading="lazy" />
+            </div>
+            <div>
+              <h3 class="trusted-card-title">Retail &amp; Distribution</h3>
+              <p class="trusted-card-text">
+                Fleet operations serving warehouses, suppliers, and multi-site retail networks.
+              </p>
+            </div>
+          </article>
+
+          <article class="trusted-card animate-on-scroll">
+            <div class="trusted-card-icon">
+              <img src="https://tawasul.tech/images/TawasulTech/image/ports-icon.webp"
+                alt="Ports, Terminals &amp; Free Zones icon" loading="lazy" />
+            </div>
+            <div>
+              <h3 class="trusted-card-title">Ports, Terminals &amp; Free Zones</h3>
+              <p class="trusted-card-text">
+                Fleet logistics, yard movement, container haulage, and scheduled transport operations.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- CONTACT CTA -->
+  <div class="tws-tawasul-cta">
+    <section class="tws-contact-cta">
+      <div class="cta-container">
+        <div class="cta-text-wrap">
+          <h2 class="cta-title">Speak With Our Solutions Team</h2>
+          <p class="cta-desc">
+            Get guidance on which TawasulTech solution fits your operational needs.
+          </p>
+        </div>
+
+        <a href="https://wa.me/966XXXXXXXXX" target="_blank" class="cta-button">
+          <img src="https://tawasul.tech/images/TawasulTech/image/whatsapp-icon.webp" alt="WhatsApp Icon"
+            class="cta-icon" loading="lazy">
+          <span>Chat on WhatsApp</span>
+        </a>
+      </div>
+    </section>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="tws-footer">
+    <div class="tws-footer-container">
+      <div class="tws-footer-top">
+        <div class="tws-footer-left">
+          <div class="footer-brand">
+            <img src="https://tawasul.tech/images/logos/8/logo01.png" alt="TawasulTech" class="footer-logo" />
+            <p class="footer-desc" loading="lazy">
+              Building the future of smart mobility across Saudi Arabia through integrated IoT, AI, and cloud
+              technologies.
+            </p>
+          </div>
+
+          <div class="footer-social">
+            <a href="#">
+              <div class="social-icon"><img src="https://tawasul.tech/images/TawasulTech/image/linkin-icon.png"
+                  alt="linkedin icon" loading="lazy" /></div>
+            </a>
+            <a href="#">
+              <div class="social-icon"><img src="https://tawasul.tech/images/TawasulTech/image/yt-icon.png"
+                  alt="youtube icon" loading="lazy" /></div>
+            </a>
+            <a href="#">
+              <div class="social-icon"><img src="https://tawasul.tech/images/TawasulTech/image/insta-icon.png"
+                  alt="instagram icon" loading="lazy" /></div>
+            </a>
+            <a href="#">
+              <div class="social-icon"><img src="https://tawasul.tech/images/TawasulTech/image/fb-icon.png"
+                  alt="facebook icon" loading="lazy" /></div>
+            </a>
+            <a href="#">
+              <div class="social-icon"><img src="https://tawasul.tech/images/TawasulTech/image/x-icon.png" alt="x icon"
+                  loading="lazy" /></div>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-divider"></div>
+
+        <div class="tws-footer-right">
+          <div class="footer-col">
+            <h4 class="footer-title">Business</h4>
+            <ul>
+              <li>Tawasul Logistics</li>
+              <li>Fient Management</li>
+              <li>AI & Video Telematics</li>
+              <li>Smart Waste Management</li>
+              <li>Digital Twin</li>
+              <li>Tawasul Store</li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4 class="footer-title">Company</h4>
+            <ul>
+              <li>About Us</li>
+              <li>Careers</li>
+              <li>Partners</li>
+              <li>News & Media</li>
+              <li>Contact</li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4 class="footer-title">Resources</h4>
+            <ul>
+              <li>Documentation</li>
+              <li>API Reference</li>
+              <li>Support Center</li>
+              <li>System Status</li>
+              <li>Privacy Policy</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="tws-footer-bottom">
+        <p>2025 TawasulTech. All rights reserved. Made in Saudi Arabia.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script src="https://unpkg.com/swiper@9/swiper-bundle.min.js"></script>
+
+  <script>
+    // Hero Swiper
+    var heroSwiper = new Swiper('.hero-swiper', {
+      loop: true,
+      autoplay: {
+        delay: 7000,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: '.hero-pagination',
+        clickable: true,
+      },
+      effect: 'slide',
+      speed: 800
+    });
+
+    // Smart Mobility card fade-in
+    (function () {
+      const section = document.querySelector('.ut-override-hero .solutions-section');
+      if (!section) return;
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            section.classList.add('is-visible');
+            observer.unobserve(section);
+          }
+        });
+      }, {
+        threshold: 0.25
+      });
+
+      observer.observe(section);
+    })();
+
+    // Solutions timeline alignment + animations
+    (function () {
+      function alignTimelineNodes() {
+        const items = document.querySelectorAll('.solutions-item');
+        items.forEach(function (item) {
+          const title = item.querySelector('.solutions-item-title');
+          const node = item.querySelector('.timeline-node');
+          if (!title || !node) return;
+
+          const itemRect = item.getBoundingClientRect();
+          const titleRect = title.getBoundingClientRect();
+          const offset = (titleRect.top - itemRect.top) + (titleRect.height / 2);
+          node.style.top = offset + 'px';
+        });
+      }
+
+      window.addEventListener('load', function () {
+        alignTimelineNodes();
+
+        const heading = document.querySelector('.solutions-heading');
+        if (heading) heading.classList.add('visible');
+
+        const items = document.querySelectorAll('.solutions-item');
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold: 0.25
+        });
+
+        items.forEach(item => observer.observe(item));
+      });
+
+      window.addEventListener('resize', function () {
+        window.requestAnimationFrame(alignTimelineNodes);
+      });
+    })();
+
+    // TOS scroll animations
+    document.addEventListener("DOMContentLoaded", function () {
+      var animated = document.querySelectorAll(".animate-on-scroll");
+
+      if ("IntersectionObserver" in window) {
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.2 });
+
+        animated.forEach(function (el) {
+          observer.observe(el);
+        });
+      } else {
+        animated.forEach(function (el) {
+          el.classList.add("is-visible");
+        });
+      }
+    });
+
+    // CTA scroll animation
+    document.addEventListener("DOMContentLoaded", function () {
+      var target = document.querySelector(".tws-tawasul-cta .cta-container");
+      if (!target || typeof IntersectionObserver === "undefined") return;
+
+      var observer = new IntersectionObserver(function (entries, obs) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("tws-visible");
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.3 });
+
+      observer.observe(target);
+    });
+  </script>
+</body>
+
+</html>
