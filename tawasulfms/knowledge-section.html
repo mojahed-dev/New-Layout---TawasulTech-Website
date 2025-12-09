@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>TawasulFMS – Knowledge Section</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper@9/swiper-bundle.min.css" />
+
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        /* to override default Swiper styles */
+        .swiper-button-prev:after,
+        .swiper-rtl .swiper-button-next:after,
+        .swiper-button-next:after,
+        .swiper-rtl .swiper-button-prev:after {
+            content: "" !important;
+        }
+
+        /* make the two buttons next to each other */
+
+
+        .tws-fms-knowledge__arrow-btn {
+            margin: 0 !important;
+            /* remove previous margins */
+        }
+
+        body {
+            margin: 0;
+            background: #ffffff;
+            font-family: "Satoshi", system-ui, -apple-system, BlinkMacSystemFont,
+                "Segoe UI", sans-serif;
+            color: #1e1e1e;
+        }
+
+        /* ===============================
+       SECTION WRAPPER (Frame 2147231839)
+    ================================ */
+        .tws-fms-knowledge {
+            width: 100%;
+            background: #ebf4ee;
+            padding-top: 72px;
+            padding-bottom: 72px;
+        }
+
+        /* Heading constrained to 1170 and centered */
+        .tws-fms-knowledge__heading-wrap {
+            max-width: 1170px;
+            margin: 0 auto 48px auto;
+            padding: 0 16px;
+            text-align: center;
+        }
+
+        .tws-fms-knowledge__heading {
+            margin: 0;
+            font-weight: 500;
+            font-size: 48px;
+            line-height: 1.1;
+            /* 110% */
+            letter-spacing: -0.03em;
+            /* -3% */
+            text-transform: capitalize;
+            color: #1e1e1e;
+        }
+
+        .tws-fms-knowledge__heading span {
+            color: #00a738;
+        }
+
+        /* ===============================
+       SWIPER AREA (Frame 2147231933)
+    ================================ */
+
+        .tws-fms-knowledge__slider {
+            width: 100%;
+            padding-left: 72px;
+            /* LEFT padding only (matches Figma) */
+            padding-right: 0;
+            box-sizing: border-box;
+        }
+
+        .tws-fms-knowledge__slider .swiper {
+            width: 100%;
+        }
+
+        /* card width for desktop layout */
+        .tws-fms-knowledge__slider .swiper-slide {
+            width: 370px;
+            height: auto;
+        }
+
+        .tws-fms-knowledge__track {
+            width: 100%;
+        }
+
+        /* Card (Frame 2147231930) */
+        /* .tws-fms-knowledge-card {
+            height: 528px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            padding: 12px;
+            background: #ffffff;
+            box-shadow: 0px 18px 40px 0px #0000001f;
+        } */
+
+        .tws-fms-knowledge-card__media {
+            width: 100%;
+            /* height: 270px; */
+            overflow: hidden;
+        }
+
+        .tws-fms-knowledge-card__media img {
+            width: 100%;
+            /* height: 100%; */
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Frame 2147231852 */
+        .tws-fms-knowledge-card__body {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 12px;
+        }
+
+        /* Frame 2147231934 */
+        .tws-fms-knowledge-card__text-group {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .tws-fms-knowledge-card__title {
+            margin: 0;
+            font-weight: 700;
+            font-size: 24px;
+            line-height: 1.3;
+            color: #1e1e1e;
+        }
+
+        .tws-fms-knowledge-card__desc {
+            margin: 0;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 1.5;
+            color: #4c4c4c;
+        }
+
+        /* Frame 2147231935 (Read more row) */
+        .tws-fms-knowledge-card__footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: 16px;
+        }
+
+        .tws-fms-knowledge-card__link {
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 1.5;
+            color: #00a738;
+            text-decoration: none;
+        }
+
+        .tws-fms-knowledge-card__link:hover {
+            text-decoration: underline;
+        }
+
+        .tws-fms-knowledge-card__arrow {
+            width: 24px;
+            height: 24px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tws-fms-knowledge-card__arrow svg {
+            width: 8px;
+            height: 12px;
+            transform: rotate(90deg);
+        }
+
+        .tws-fms-knowledge-card__arrow path {
+            fill: none;
+            stroke: #00a738;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        /* ===============================
+       BOTTOM ARROWS (Frame 2147231936)
+    ================================ */
+
+        .tws-fms-knowledge__arrows {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 32px;
+        }
+
+        .tws-fms-knowledge__arrow-btn {
+            width: 56px;
+            height: 56px;
+            border-radius: 100px;
+            border: none;
+            cursor: pointer;
+            padding: 16px 24px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #ffffff;
+        }
+
+        .tws-fms-knowledge__arrow-btn--primary {
+            background: #00a738;
+        }
+
+        .tws-fms-knowledge__arrow-btn--prev {
+            margin-right: 16px;
+        }
+
+        .tws-fms-knowledge__arrow-btn svg {
+            width: 8px;
+            height: 12px;
+            transform: rotate(90deg);
+        }
+
+        .tws-fms-knowledge__arrow-btn path {
+            fill: none;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .tws-fms-knowledge__arrow-btn--prev path {
+            stroke: #00a738;
+        }
+
+        .tws-fms-knowledge__arrow-btn--next path {
+            stroke: #ffffff;
+        }
+
+        /* ===============================
+       Scroll reveal (optional, matches your other sections)
+    ================================ */
+
+        [data-reveal] {
+            opacity: 0;
+            transform: translateY(24px);
+            transition:
+                opacity 480ms cubic-bezier(0.16, 1, 0.3, 1),
+                transform 480ms cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        [data-reveal].is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===============================
+       Responsive layout
+    ================================ */
+
+        /* Tablet */
+        @media (max-width: 992px) {
+            .tws-fms-knowledge__slider {
+                padding-left: 32px;
+            }
+
+            .tws-fms-knowledge-card {
+                height: auto;
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 640px) {
+            .tws-fms-knowledge__heading-wrap {
+                padding: 0 16px;
+            }
+
+            .tws-fms-knowledge__heading {
+                font-size: 32px;
+            }
+
+            .tws-fms-knowledge__slider {
+                padding-left: 16px;
+            }
+
+            .tws-fms-knowledge-card,
+            .tws-fms-knowledge__slider .swiper-slide {
+                width: 100% !important;
+            }
+        }
+
+
+        /* Center bottom nav arrows */
+        .tws-fms-knowledge__arrows {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+            width: 100%;
+        }
+
+        /* Cancel Swiper’s absolute positioning for these specific buttons */
+        .tws-fms-knowledge__arrows .swiper-button-prev,
+        .tws-fms-knowledge__arrows .swiper-button-next {
+            position: static !important;
+            left: auto !important;
+            right: auto !important;
+            top: auto !important;
+            margin-top: 0 !important;
+            transform: none !important;
+        }
+
+        /* Make sure there’s no extra margins on buttons */
+        .tws-fms-knowledge__arrow-btn {
+            margin: 0 !important;
+        }
+
+        .tws-fms-knowledge-card:hover {
+    transform: translateY(-4px);
+    box-shadow:
+        /* 0 6px 12px rgba(0, 0, 0, 0.06),
+        0 16px 32px rgba(0, 0, 0, 0.08),
+        0 28px 56px rgba(0, 0, 0, 0.10); */
+} 
+
+.tws-fms-knowledge-card {
+    height: 528px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px;
+    background: #ffffff;
+      box-shadow:
+    0 10px 20px -10px rgba(0, 0, 0, 0.14),
+    0 24px 40px -24px rgba(0, 0, 0, 0.16);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+
+    </style>
+</head>
+
+<body>
+
+    <section class="tws-fms-knowledge" data-reveal>
+        <!-- Heading -->
+        <div class="tws-fms-knowledge__heading-wrap">
+            <h2 class="tws-fms-knowledge__heading">
+                Your Knowledge Of Your Fleet Helps You
+                <span>Improve</span> Its Management
+            </h2>
+        </div>
+
+        <!-- Slider -->
+        <div class="tws-fms-knowledge__slider">
+            <div class="swiper tws-fms-knowledge__track">
+                <div class="swiper-wrapper">
+
+                    <!-- Slide 1 -->
+                    <article class="tws-fms-knowledge-card swiper-slide" data-reveal>
+                        <div class="tws-fms-knowledge-card__media">
+                            <img src="images/vehicle-management.png" alt="Vehicle Management">
+                        </div>
+                        <div class="tws-fms-knowledge-card__body">
+                            <div class="tws-fms-knowledge-card__text-group">
+                                <h3 class="tws-fms-knowledge-card__title">Vehicle Management</h3>
+                                <p class="tws-fms-knowledge-card__desc">
+                                    Tawasul helps you maximize the benefits of your fleet by providing and organizing
+                                    fleet information.
+                                </p>
+                            </div>
+                            <div class="tws-fms-knowledge-card__footer">
+                                <a href="#" class="tws-fms-knowledge-card__link">Read More</a>
+                                <a href="#" class="tws-fms-knowledge-card__arrow">
+                                    <img src="images/read-icon.png" alt="Read more icon">
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Slide 2 -->
+                    <article class="tws-fms-knowledge-card swiper-slide" data-reveal>
+                        <div class="tws-fms-knowledge-card__media">
+                            <img src="images/driver-management.jpg" alt="Driver Management">
+                        </div>
+                        <div class="tws-fms-knowledge-card__body">
+                            <div class="tws-fms-knowledge-card__text-group">
+                                <h3 class="tws-fms-knowledge-card__title">Driver Management</h3>
+                                <p class="tws-fms-knowledge-card__desc">
+                                    Get a live view of driver schedules, operating programs, and upcoming task planning.
+                                </p>
+                            </div>
+                            <div class="tws-fms-knowledge-card__footer">
+                                <a href="#" class="tws-fms-knowledge-card__link">Read More</a>
+                                <a href="#" class="tws-fms-knowledge-card__arrow">
+                                    <img src="images/read-icon.png" alt="Read more icon">
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Slide 3 -->
+                    <article class="tws-fms-knowledge-card swiper-slide" data-reveal>
+                        <div class="tws-fms-knowledge-card__media">
+                            <img src="images/assignment-routing.jpg" alt="Assignment and Routing">
+                        </div>
+                        <div class="tws-fms-knowledge-card__body">
+                            <div class="tws-fms-knowledge-card__text-group">
+                                <h3 class="tws-fms-knowledge-card__title">Assignment and Routing</h3>
+                                <p class="tws-fms-knowledge-card__desc">
+                                    Assists in scheduling tasks, tracking them, and determining the status of
+                                    distribution and routing for drivers.
+                                </p>
+                            </div>
+                            <div class="tws-fms-knowledge-card__footer">
+                                <a href="#" class="tws-fms-knowledge-card__link">Read More</a>
+                                <a href="#" class="tws-fms-knowledge-card__arrow">
+                                    <img src="images/read-icon.png" alt="Read more icon">
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Slide 4 -->
+                    <article class="tws-fms-knowledge-card swiper-slide" data-reveal>
+                        <div class="tws-fms-knowledge-card__media">
+                            <img src="images/driver-management.jpg" alt="Maintenance Orders">
+                        </div>
+                        <div class="tws-fms-knowledge-card__body">
+                            <div class="tws-fms-knowledge-card__text-group">
+                                <h3 class="tws-fms-knowledge-card__title">Maintenance Orders</h3>
+                                <p class="tws-fms-knowledge-card__desc">
+                                    Automates maintenance requests and helps you track the status of all maintenance
+                                    orders.
+                                </p>
+                            </div>
+                            <div class="tws-fms-knowledge-card__footer">
+                                <a href="#" class="tws-fms-knowledge-card__link">Read More</a>
+                                <a href="#" class="tws-fms-knowledge-card__arrow">
+                                    <img src="images/read-icon.png" alt="Read more icon">
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Slide 5 -->
+                    <article class="tws-fms-knowledge-card swiper-slide" data-reveal>
+                        <div class="tws-fms-knowledge-card__media">
+                            <img src="images/assignment-routing.jpg" alt="Maintenance Orders">
+                        </div>
+                        <div class="tws-fms-knowledge-card__body">
+                            <div class="tws-fms-knowledge-card__text-group">
+                                <h3 class="tws-fms-knowledge-card__title">Slide 5</h3>
+                                <p class="tws-fms-knowledge-card__desc">
+                                    Automates maintenance requests and helps you track the status of all maintenance
+                                    orders.
+                                </p>
+                            </div>
+                            <div class="tws-fms-knowledge-card__footer">
+                                <a href="#" class="tws-fms-knowledge-card__link">Read More</a>
+                                <a href="#" class="tws-fms-knowledge-card__arrow">
+                                    <img src="images/read-icon.png" alt="Read more icon">
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom nav arrows -->
+        <div class="tws-fms-knowledge__arrows tws-fms-knowledge__arrows--center" data-reveal>
+
+            <!-- Previous -->
+            <button class="tws-fms-knowledge__arrow-btn tws-fms-knowledge__arrow-btn--prev swiper-button-prev"
+                type="button" aria-label="Previous">
+                <img src="images/previous-icon.png" alt="">
+            </button>
+
+            <!-- Next -->
+            <button
+                class="tws-fms-knowledge__arrow-btn tws-fms-knowledge__arrow-btn--primary tws-fms-knowledge__arrow-btn--next swiper-button-next"
+                type="button" aria-label="Next">
+                <img src="images/next-icon.png" alt="">
+            </button>
+        </div>
+    </section>
+
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper@9/swiper-bundle.min.js"></script>
+
+    <script>
+        // Swiper for this section (looping / rotational)
+        new Swiper(".tws-fms-knowledge__track", {
+            loop: true,
+            loopAdditionalSlides: 4,
+            watchOverflow: false,
+
+            slidesPerView: 1,
+            spaceBetween: 16,
+
+            navigation: {
+                nextEl: ".tws-fms-knowledge__arrow-btn--next",
+                prevEl: ".tws-fms-knowledge__arrow-btn--prev",
+            },
+
+            breakpoints: {
+                0: {
+                    slidesPerView: 1,
+                    spaceBetween: 16,
+                },
+                640: {
+                    slidesPerView: 2,
+                    spaceBetween: 24,
+                },
+                992: {
+                    // slidesPerView: "auto",   // auto + fixed 370px slide width => 3 full + 4th peeking
+                    spaceBetween: 30,
+                    slidesPerView: 3.5,
+                },
+            },
+        });
+
+        // Scroll reveal
+        (function () {
+            var revealItems = document.querySelectorAll("[data-reveal]");
+            if (!revealItems.length) return;
+
+            if (!("IntersectionObserver" in window)) {
+                revealItems.forEach(function (el) {
+                    el.classList.add("is-visible");
+                });
+                return;
+            }
+
+            var observer = new IntersectionObserver(function (entries, obs) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("is-visible");
+                        obs.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.2 });
+
+            revealItems.forEach(function (el) {
+                observer.observe(el);
+            });
+        })();
+    </script>
+
+</body>
+
+</html>

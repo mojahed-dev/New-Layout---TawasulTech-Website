@@ -13,7 +13,7 @@
             max-width: 1440px;
             /* frame width */
             margin: 0 auto;
-            padding: 72px 135px;
+            padding: 72px 0px 72px;
             /* top/right/bottom/left */
             /* border-bottom: 1px solid #E2E2E2; */
             background-color: #FFFFFF;
@@ -109,179 +109,323 @@
                 transform: translateY(0);
             }
         }
-         /* END Optional: soft fade-up on page load */
+        /* END Optional: soft fade-up on page load */
 
 
-         /* ===== Fleet Management Benefits Section ===== */
+        /* ===== Fleet Management Benefits Section ===== */
 
-.tws-fms-benefits {
+        .tws-fms-benefits {
+            width: 100%;
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 80px 0px 96px;
+            /* you can adjust top/bottom to match page rhythm */
+            box-sizing: border-box;
+            background: #ffffff;
+            font-family: "Satoshi", system-ui, -apple-system, BlinkMacSystemFont,
+                "Segoe UI", sans-serif;
+        }
+
+        .tws-fms-benefits__inner {
+            max-width: 1170px;
+            /* Figma width */
+            margin: 0 auto;
+        }
+
+        /* Heading (1170 × 53, 48px, -3% letter-spacing, centered) */
+        .tws-fms-benefits__heading {
+            margin: 0 0 48px;
+            text-align: center;
+            font-weight: 500;
+            font-size: 48px;
+            line-height: 1.1;
+            /* 110% */
+            letter-spacing: -0.03em;
+            /* -3% */
+            color: #1e1e1e;
+        }
+
+        .tws-fms-benefits__heading span {
+            color: #00a738;
+            /* brand green for “Management” */
+        }
+
+        /* Grid: Frame 2147231841 (1170 × 430, gap 30px) */
+        .tws-fms-benefits__grid {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+        }
+
+        /* Card frame: 570 × 430, gap 24px */
+        .tws-fms-benefit {
+            width: 570px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        /* Image area: 570 × 370 with dark overlay */
+        .tws-fms-benefit__media {
+            position: relative;
+            width: 100%;
+            height: 370px;
+            overflow: hidden;
+            /* border-radius: 4px; */
+        }
+
+        .tws-fms-benefit__media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* subtle dark overlay #00000033 */
+        .tws-fms-benefit__media::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.2);
+            /* ~#00000033 */
+            pointer-events: none;
+        }
+
+        /* Glass play button (Ellipse 72 × 72, border, blur) */
+        .tws-fms-benefit__play {
+            position: absolute;
+            inset: 0;
+            margin: auto;
+            width: 72px;
+            height: 72px;
+            padding: 0;
+            border: none;
+            background: none;
+            cursor: pointer;
+        }
+
+        .tws-fms-benefit__play-circle {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            border: 1px solid #ffffff;
+            background: rgba(255, 255, 255, 0.04);
+            /* #FFFFFF0A */
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 220ms ease-out, background 220ms ease-out;
+        }
+
+        /* Polygon 9 – play icon (approx 27.7 × 27.7, rotated -90°) */
+        .tws-fms-benefit__play-icon {
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 14px 0 14px 24px;
+            /* makes a triangle */
+            border-color: transparent transparent transparent #ffffff;
+            border-radius: 2px;
+        }
+
+        /* Title under image (24px, 150% line-height) */
+        .tws-fms-benefit__title {
+            margin: 0;
+            font-weight: 500;
+            font-size: 24px;
+            line-height: 1.5;
+            text-transform: capitalize;
+            color: #000000;
+            text-align: center;
+        }
+
+        /* Hover interaction on Play Button */
+        .tws-fms-benefit__media:hover .tws-fms-benefit__play-circle {
+            transform: scale(1.05);
+            background: rgba(255, 255, 255, 0.09);
+        }
+
+        /* ===== Scroll reveal animation for benefits section ===== */
+
+        .tws-fms-benefits [data-reveal] {
+            opacity: 0;
+            transform: translateY(24px);
+            transition:
+                opacity 480ms cubic-bezier(0.16, 1, 0.3, 1),
+                transform 480ms cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .tws-fms-benefits [data-reveal].is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Slight stagger for cards */
+        .tws-fms-benefit[data-reveal] {
+            transition-delay: 120ms;
+        }
+
+        .tws-fms-benefit[data-reveal]:nth-of-type(2) {
+            transition-delay: 220ms;
+        }
+
+        /* ===== Responsiveness ===== */
+
+        @media (max-width: 1200px) {
+            .tws-fms-benefits {
+                padding: 64px 32px 80px;
+            }
+
+            .tws-fms-benefit {
+                width: 50%;
+            }
+        }
+
+        @media (max-width: 920px) {
+            .tws-fms-benefits__heading {
+                font-size: 40px;
+            }
+
+            .tws-fms-benefits__grid {
+                flex-direction: column;
+            }
+
+            .tws-fms-benefit {
+                width: 100%;
+            }
+
+            .tws-fms-benefit__media {
+                height: auto;
+            }
+
+            .tws-fms-benefit__media img {
+                height: auto;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .tws-fms-benefits {
+                padding: 48px 16px 64px;
+            }
+
+            .tws-fms-benefits__heading {
+                font-size: 32px;
+            }
+
+            .tws-fms-benefit__title {
+                font-size: 20px;
+            }
+        }
+
+        /* ===== Sector-Based Solutions Section (Frame 2147231837) ===== */
+
+.tws-fms-sectors {
   width: 100%;
   max-width: 1440px;
   margin: 0 auto;
-  padding: 80px 135px 96px; /* you can adjust top/bottom to match page rhythm */
+  /* padding: 48px 135px 72px; */
   box-sizing: border-box;
-  background: #ffffff;
+  /* background: #000000; */
+  color: #ffffff;
   font-family: "Satoshi", system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", sans-serif;
 }
 
-.tws-fms-benefits__inner {
-  max-width: 1170px; /* Figma width */
+/* inner frame – two columns + 130px gap */
+.tws-fms-sectors__inner {
+  max-width: 1170px;          /* align with other sections */
   margin: 0 auto;
-}
-
-/* Heading (1170 × 53, 48px, -3% letter-spacing, centered) */
-.tws-fms-benefits__heading {
-  margin: 0 0 48px;
-  text-align: center;
-  font-weight: 500;
-  font-size: 48px;
-  line-height: 1.1; /* 110% */
-  letter-spacing: -0.03em; /* -3% */
-  color: #1e1e1e;
-}
-
-.tws-fms-benefits__heading span {
-  color: #00a738; /* brand green for “Management” */
-}
-
-/* Grid: Frame 2147231841 (1170 × 430, gap 30px) */
-.tws-fms-benefits__grid {
   display: flex;
-  gap: 30px;
-  align-items: flex-start;
+  gap: 130px;                 /* Figma gap */
+  align-items: center;
 }
 
-/* Card frame: 570 × 430, gap 24px */
-.tws-fms-benefit {
-  width: 570px;
+/* left column: 470 × 274, gap 24px */
+.tws-fms-sectors__content {
+  width: 470px;
   display: flex;
   flex-direction: column;
   gap: 24px;
 }
 
-/* Image area: 570 × 370 with dark overlay */
-.tws-fms-benefit__media {
-  position: relative;
-  width: 100%;
-  height: 370px;
-  overflow: hidden;
-  border-radius: 4px;
+/* heading: 48px, -3% tracking, “Solutions” in green */
+.tws-fms-sectors__heading {
+  margin: 0;
+  font-weight: 500;
+  font-size: 48px;
+  line-height: 1.1;           /* 110% */
+  letter-spacing: -0.03em;    /* -3% */
+  text-transform: capitalize;
+  color: #4c4c4c;             /* grey for “Sector-Based” */
 }
 
-.tws-fms-benefit__media img {
+.tws-fms-sectors__heading span {
+  display: block;
+  color: #00a738;             /* brand green for “Solutions” */
+}
+
+/* paragraph: 16px, 150% line-height */
+.tws-fms-sectors__text {
+  margin: 0;
+  width: 470px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;           /* 150% */
+  color: #4C4C4C;            
+}
+
+/* right column image: 570 × 470 */
+.tws-fms-sectors__image-wrap {
+  width: 570px;
+  height: 470px;
+  flex-shrink: 0;
+}
+
+.tws-fms-sectors__image-wrap img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
 
-/* subtle dark overlay #00000033 */
-.tws-fms-benefit__media::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.2); /* ~#00000033 */
-  pointer-events: none;
-}
-
-/* Glass play button (Ellipse 72 × 72, border, blur) */
-.tws-fms-benefit__play {
-  position: absolute;
-  inset: 0;
-  margin: auto;
-  width: 72px;
-  height: 72px;
-  padding: 0;
-  border: none;
-  background: none;
-  cursor: pointer;
-}
-
-.tws-fms-benefit__play-circle {
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
-  border: 1px solid #ffffff;
-  background: rgba(255, 255, 255, 0.04); /* #FFFFFF0A */
-  backdrop-filter: blur(10px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 220ms ease-out, background 220ms ease-out;
-}
-
-/* Polygon 9 – play icon (approx 27.7 × 27.7, rotated -90°) */
-.tws-fms-benefit__play-icon {
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: 14px 0 14px 24px; /* makes a triangle */
-  border-color: transparent transparent transparent #ffffff;
-  border-radius: 2px;
-}
-
-/* Title under image (24px, 150% line-height) */
-.tws-fms-benefit__title {
-  margin: 0;
-  font-weight: 500;
-  font-size: 24px;
-  line-height: 1.5;
-  text-transform: capitalize;
-  color: #000000;
-}
-
-/* Hover interaction (optional but nice) */
-.tws-fms-benefit__media:hover .tws-fms-benefit__play-circle {
-  transform: scale(1.05);
-  background: rgba(255, 255, 255, 0.09);
-}
-
-/* ===== Responsiveness ===== */
+/* ===== Responsive tweaks ===== */
 
 @media (max-width: 1200px) {
-  .tws-fms-benefits {
-    padding: 64px 32px 80px;
+  .tws-fms-sectors {
+    padding: 48px 32px 72px;
   }
 
-  .tws-fms-benefit {
-    width: 50%;
+  .tws-fms-sectors__inner {
+    gap: 64px;
   }
 }
 
-@media (max-width: 900px) {
-  .tws-fms-benefits__heading {
-    font-size: 40px;
-  }
-
-  .tws-fms-benefits__grid {
+@media (max-width: 920px) {
+  .tws-fms-sectors__inner {
     flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
   }
 
-  .tws-fms-benefit {
+  .tws-fms-sectors__content,
+  .tws-fms-sectors__text {
     width: 100%;
   }
 
-  .tws-fms-benefit__media {
-    height: auto;
-  }
-
-  .tws-fms-benefit__media img {
+  .tws-fms-sectors__image-wrap {
+    width: 100%;
     height: auto;
   }
 }
 
-@media (max-width: 600px) {
-  .tws-fms-benefits {
-    padding: 48px 16px 64px;
+@media (max-width: 640px) {
+  .tws-fms-sectors {
+    padding: 40px 16px 56px;
   }
 
-  .tws-fms-benefits__heading {
+  .tws-fms-sectors__heading {
     font-size: 32px;
-  }
-
-  .tws-fms-benefit__title {
-    font-size: 20px;
   }
 }
 
@@ -304,60 +448,102 @@
     </section>
 
     <!-- Fleet Management Benefits -->
-<section class="tws-fms-benefits">
-  <div class="tws-fms-benefits__inner">
-    <h2 class="tws-fms-benefits__heading">
-      Fleet <span>Management</span> Benefits
-    </h2>
+    <section class="tws-fms-benefits">
+        <div class="tws-fms-benefits__inner">
+            <h2 class="tws-fms-benefits__heading" data-reveal>
+                Fleet <span>Management</span> Benefits
+            </h2>
 
-    <div class="tws-fms-benefits__grid">
-      <!-- Card 1 -->
-      <article class="tws-fms-benefit">
-        <div class="tws-fms-benefit__media">
-          <img
-            src="/images/fleet-full-management.png"
-            alt="Full fleet management"
-          />
-          <button
-            class="tws-fms-benefit__play"
-            type="button"
-            aria-label="Play Full Fleet Management video"
-          >
-            <span class="tws-fms-benefit__play-circle">
-              <span class="tws-fms-benefit__play-icon"></span>
-            </span>
-          </button>
-        </div>
-        <h3 class="tws-fms-benefit__title">Full Fleet Management</h3>
-      </article>
+            <div class="tws-fms-benefits__grid">
+                <!-- Card 1 -->
+                <article class="tws-fms-benefit" data-reveal>
+                    <div class="tws-fms-benefit__media">
+                        <img src="images/fleet-full-management.png" alt="Full fleet management" />
+                        <button class="tws-fms-benefit__play" type="button"
+                            aria-label="Play Full Fleet Management video">
+                            <span class="tws-fms-benefit__play-circle">
+                                <span class="tws-fms-benefit__play-icon"></span>
+                            </span>
+                        </button>
+                    </div>
+                    <h3 class="tws-fms-benefit__title">Full Fleet Management</h3>
+                </article>
 
-      <!-- Card 2 -->
-      <article class="tws-fms-benefit">
-        <div class="tws-fms-benefit__media">
-          <img
-            src="PATH/TO/real-time-monitoring.jpg"
-            alt="Real-time monitoring and control"
-          />
-          <button
-            class="tws-fms-benefit__play"
-            type="button"
-            aria-label="Play Real-Time Monitoring and Control video"
-          >
-            <span class="tws-fms-benefit__play-circle">
-              <span class="tws-fms-benefit__play-icon"></span>
-            </span>
-          </button>
+                <!-- Card 2 -->
+                <article class="tws-fms-benefit" data-reveal>
+                    <div class="tws-fms-benefit__media">
+                        <img src="images/real-time-monitoring.png" alt="Real-time monitoring and control" />
+                        <button class="tws-fms-benefit__play" type="button"
+                            aria-label="Play Real-Time Monitoring and Control video">
+                            <span class="tws-fms-benefit__play-circle">
+                                <span class="tws-fms-benefit__play-icon"></span>
+                            </span>
+                        </button>
+                    </div>
+                    <h3 class="tws-fms-benefit__title">
+                        Real-Time Monitoring and Control
+                    </h3>
+                </article>
+            </div>
         </div>
-        <h3 class="tws-fms-benefit__title">
-          Real-Time Monitoring and Control
-        </h3>
-      </article>
+    </section>
+
+    <!-- Sector-Based Solutions -->
+<section class="tws-fms-sectors">
+  <div class="tws-fms-sectors__inner">
+    <div class="tws-fms-sectors__content">
+      <h2 class="tws-fms-sectors__heading">
+        Sector-Based
+        <span>Solutions</span>
+      </h2>
+      <p class="tws-fms-sectors__text">
+        We want to help you care for your business. We know it's not about the type of
+        information your company has, but about making a real difference. We have designed
+        our products and services to provide you with insights into how your business
+        vehicles are used, our solutions will help you reach your destination in safer and
+        more cost-effective ways.
+      </p>
+    </div>
+
+    <div class="tws-fms-sectors__image-wrap">
+      <img src="images/sector-based-solutions.png"
+           alt="Sector-based fleet solutions" />
     </div>
   </div>
 </section>
 
+<script src="https://unpkg.com/swiper@9/swiper-bundle.min.js"></script>
+ <script>
+        // Simple IntersectionObserver to reveal benefits section on scroll
+        document.addEventListener("DOMContentLoaded", function () {
+            const revealItems = document.querySelectorAll(".tws-fms-benefits [data-reveal]");
+
+            if (!("IntersectionObserver" in window) || revealItems.length === 0) {
+                // Fallback: show all if IO not supported
+                revealItems.forEach(el => el.classList.add("is-visible"));
+                return;
+            }
+
+            const observer = new IntersectionObserver(
+                (entries, obs) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("is-visible");
+                            obs.unobserve(entry.target);
+                        }
+                    });
+                },
+                {
+                    threshold: 0.2
+                }
+            );
+
+            revealItems.forEach(el => observer.observe(el));
+        });
+    </script> 
 
 
+ 
 </body>
 
 </html>
