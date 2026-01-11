@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+    // Enable animation styles only when JS is available (prevents "hidden" content with JS disabled)
+    document.documentElement.classList.add('tws-js');
+  </script>
+<title>Fleet Types Section</title>
+  <style>
+    /* =========================================================
+       Tawasul Fleet Types (Figma: Frame 2147231842)
+       Self-contained + namespaced to reduce theme override issues
+       ========================================================= */
+    :root{
+      --tws-bg: #EBF4EE;
+      --tws-card: #FFFFFF;
+      --tws-text: #1E1E1E;
+      --tws-muted: #4C4C4C;
+      --tws-green: #0AA43A;
+      --tws-max: 1170px;
+    }
+
+    /* Demo page reset (safe to remove when embedding in CS-Cart) */
+    html, body { margin:0; padding:0; }
+    body { background:#fff; }
+
+    .tws-fleet-types,
+    .tws-fleet-types *{
+      box-sizing: border-box !important;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .tws-fleet-types{
+      font-family: "Satoshi", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif !important;
+      color: var(--tws-text) !important;
+      background: var(--tws-bg) !important;
+       /* padding: 72px 135px !important;desktop figma */
+    }
+
+    .tws-fleet-types__inner{
+      max-width: var(--tws-max) !important;
+      margin: 0 auto !important;
+      display: grid !important;
+      gap: 48px !important; /* section gap */
+    }
+
+    .tws-fleet-types__title{
+      margin: 0 !important;
+      text-align: center !important;
+      font-weight: 500 !important;
+      font-size: 48px !important;
+      line-height: 1.1 !important; /* 110% */
+      letter-spacing: -0.03em !important; /* -3% */
+      color: var(--tws-text) !important;
+      text-transform: capitalize !important;
+    }
+
+    .tws-fleet-types__grid{
+      display: grid !important;
+      gap: 30px !important; /* figma grid gap */
+      grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    }
+
+    .tws-fleet-card{
+      background: var(--tws-card) !important;
+      padding: 30px !important; /* figma */
+      display: grid !important;
+      gap: 48px !important; /* icon -> content */
+      min-height: 263px !important; /* figma height */
+      align-content: start !important;
+    }
+
+    .tws-fleet-card__icon{
+      width: 60px !important;
+      height: 60px !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+
+    .tws-fleet-card__icon svg{
+      width: 60px !important;
+      height: 60px !important;
+      display: block !important;
+    }
+
+    .tws-fleet-card__content{
+      display: grid !important;
+      gap: 16px !important; /* title -> desc */
+    }
+
+    .tws-fleet-card__title{
+      margin: 0 !important;
+      font-weight: 700 !important;
+      font-size: 24px !important;
+      line-height: 1.3 !important; /* 130% */
+      color: var(--tws-text) !important;
+    }
+
+    .tws-fleet-card__desc{
+      margin: 0 !important;
+      font-weight: 500 !important;
+      font-size: 16px !important;
+      line-height: 1.5 !important; /* 150% */
+      color: var(--tws-muted) !important;
+      max-width: 310px !important;
+    }
+
+    /* ========= Responsive ========= */
+
+    /* Tablet */
+    @media (max-width: 1024px){
+      .tws-fleet-types{
+        padding: 64px 40px !important;
+      }
+      .tws-fleet-types__title{
+        font-size: 40px !important;
+      }
+      .tws-fleet-types__grid{
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      }
+      .tws-fleet-card{
+        min-height: unset !important;
+      }
+    }
+
+    /* Mobile */
+    @media (max-width: 640px){
+      .tws-fleet-types{
+        padding: 56px 16px !important;
+      }
+      .tws-fleet-types__title{
+        font-size: 32px !important;
+        letter-spacing: -0.02em !important;
+      }
+      .tws-fleet-types__grid{
+        grid-template-columns: 1fr !important;
+      }
+      .tws-fleet-card{
+        gap: 28px !important;
+        padding: 22px !important;
+      }
+      .tws-fleet-card__desc{
+        max-width: 100% !important;
+      }
+    }
+  
+    /* ========= Micro-interactions + Scroll Reveal Animations ========= */
+
+    /* Smooth hover (desktop) */
+    .tws-fleet-card{
+      border: 1px solid rgba(30,30,30,0.06) !important;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.08) !important;
+      transition: transform 260ms ease, box-shadow 260ms ease, border-color 260ms ease !important;
+      will-change: transform;
+    }
+    .tws-fleet-card:hover{
+      transform: translateY(-6px) !important;
+      box-shadow: 0 16px 34px rgba(0,0,0,0.12) !important;
+      border-color: rgba(10,164,58,0.28) !important;
+    }
+    .tws-fleet-card:focus-within{
+      transform: translateY(-4px) !important;
+      border-color: rgba(10,164,58,0.35) !important;
+      box-shadow: 0 16px 34px rgba(0,0,0,0.12) !important;
+      outline: none !important;
+    }
+
+    /* Scroll reveal (only when JS adds .tws-js) */
+    .tws-js .tws-fleet-types__title,
+    .tws-js .tws-fleet-card{
+      opacity: 0;
+      transform: translateY(18px);
+      filter: blur(2px);
+      transition: opacity 650ms ease, transform 650ms ease, filter 650ms ease;
+    }
+
+    .tws-js .tws-fleet-types__title.tws-in,
+    .tws-js .tws-fleet-card.tws-in{
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+
+    /* Icon pop-in */
+    .tws-fleet-card__icon img{
+      transform: translateY(4px) scale(0.98);
+      transition: transform 650ms ease;
+      will-change: transform;
+    }
+    .tws-fleet-card.tws-in .tws-fleet-card__icon img{
+      transform: translateY(0) scale(1);
+    }
+
+    /* Slight title accent line (subtle) */
+    .tws-fleet-types__title{
+      position: relative;
+    }
+    /* .tws-fleet-types__title::after{
+      content: "";
+      display: block;
+      width: 72px;
+      height: 4px;
+      margin: 18px auto 0;
+      border-radius: 999px;
+      background: rgba(10,164,58,0.35);
+      transform: scaleX(0.6);
+      transition: transform 650ms ease, opacity 650ms ease;
+      opacity: 0;
+    } */
+    .tws-js .tws-fleet-types__title.tws-in::after{
+      opacity: 1;
+      transform: scaleX(1);
+    }
+
+    /* Respect reduced-motion */
+    @media (prefers-reduced-motion: reduce){
+      .tws-fleet-card,
+      .tws-js .tws-fleet-types__title,
+      .tws-js .tws-fleet-card,
+      .tws-fleet-card__icon img,
+      .tws-fleet-types__title::after{
+        transition: none !important;
+        animation: none !important;
+        transform: none !important;
+        filter: none !important;
+        opacity: 1 !important;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+  <!-- =========================
+       Fleet Types Section
+       ========================= -->
+  <section class="tws-fleet-types" aria-labelledby="tws-fleet-types-title">
+    <div class="tws-fleet-types__inner">
+      <h2 class="tws-fleet-types__title" id="tws-fleet-types-title">Fleet Types</h2>
+
+      <div class="tws-fleet-types__grid">
+        <!-- Passenger Cars -->
+        <article class="tws-fleet-card">
+          <div class="tws-fleet-card__icon" aria-hidden="true">
+           <img src="images/car-icon.png" alt="car-icon png" loading="lazy">
+          </div>
+          <div class="tws-fleet-card__content">
+            <h3 class="tws-fleet-card__title">Passenger Cars</h3>
+            <p class="tws-fleet-card__desc">Fleet operators, freight providers, and commercial transport companies.</p>
+          </div>
+        </article>
+
+        <!-- Construction Equipment -->
+        <article class="tws-fleet-card">
+          <div class="tws-fleet-card__icon" aria-hidden="true">
+            <!-- excavator -->
+             <img src="images/excavator-icon.png" alt="excavator-icon png" loading="lazy">
+          </div>
+          <div class="tws-fleet-card__content">
+            <h3 class="tws-fleet-card__title">Construction Equipment</h3>
+            <p class="tws-fleet-card__desc">Manage heavy equipment to improve efficiency in projects.</p>
+          </div>
+        </article>
+
+        <!-- Trucks -->
+        <article class="tws-fleet-card">
+          <div class="tws-fleet-card__icon" aria-hidden="true">
+            <!-- truck -->
+            <img src="images/truck-icon.png" alt="truck-icon png" loading="lazy">
+          </div>
+          <div class="tws-fleet-card__content">
+            <h3 class="tws-fleet-card__title">Trucks</h3>
+            <p class="tws-fleet-card__desc">Track trucks to ensure timely deliveries and reduce costs.</p>
+          </div>
+        </article>
+
+        <!-- Buses -->
+        <article class="tws-fleet-card">
+          <div class="tws-fleet-card__icon" aria-hidden="true">
+            <!-- bus -->
+            <img src="images/bus-icon.png" alt="bus-icon png" loading="lazy">
+          </div>
+          <div class="tws-fleet-card__content">
+            <h3 class="tws-fleet-card__title">Buses</h3>
+            <p class="tws-fleet-card__desc">Manage routes and enhance passenger experience using data.</p>
+          </div>
+        </article>
+
+        <!-- Vans -->
+        <article class="tws-fleet-card">
+          <div class="tws-fleet-card__icon" aria-hidden="true">
+            <!-- van -->
+            <img src="images/van-icon.png" alt="van-icon png" loading="lazy">
+          </div>
+          <div class="tws-fleet-card__content">
+            <h3 class="tws-fleet-card__title">Vans</h3>
+            <p class="tws-fleet-card__desc">Track vans to ensure daily performance and reduce fuel consumption.</p>
+          </div>
+        </article>
+
+        <!-- Forklifts -->
+        <article class="tws-fleet-card">
+          <div class="tws-fleet-card__icon" aria-hidden="true">
+            <!-- forklift -->
+            <img src="images/forklift-icon.png" alt="forklift-icon png" loading="lazy">
+          </div>
+          <div class="tws-fleet-card__content">
+            <h3 class="tws-fleet-card__title">Forklifts</h3>
+            <p class="tws-fleet-card__desc">Manage warehouses efficiently using forklift tracking.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    (function () {
+      // Reveal on scroll with a small stagger for cards
+      var title = document.getElementById('tws-fleet-types-title');
+      var cards = document.querySelectorAll('.tws-fleet-card');
+
+      // If IntersectionObserver isn't supported, just show everything.
+      if (!('IntersectionObserver' in window)) {
+        if (title) title.classList.add('tws-in');
+        cards.forEach(function (c) { c.classList.add('tws-in'); });
+        return;
+      }
+
+      // Title reveal
+      if (title) {
+        var titleObs = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('tws-in');
+              titleObs.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.35 });
+        titleObs.observe(title);
+      }
+
+      // Cards reveal (staggered)
+      var cardObs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+
+          var idx = Array.prototype.indexOf.call(cards, entry.target);
+          // Stagger: 60ms per card, capped to keep it snappy
+          var delay = Math.min(idx * 60, 360);
+          entry.target.style.transitionDelay = delay + 'ms';
+
+          entry.target.classList.add('tws-in');
+          cardObs.unobserve(entry.target);
+        });
+      }, { threshold: 0.18, rootMargin: "0px 0px -10% 0px" });
+
+      cards.forEach(function (c) { cardObs.observe(c); });
+    })();
+  </script>
+
+</body>
+</html>

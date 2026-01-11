@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Benefits of the Tawasul System</title>
+  <style>
+    /* ========= ROOT & RESET ========= */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Satoshi", system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      color: #000000;
+    }
+
+    /* ========= SECTION WRAPPER ========= */
+    .tws-benefits-section {
+      padding: 72px 16px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .tws-benefits-inner {
+      width: 100%;
+      max-width: 1440px;
+    }
+
+    @media (min-width: 1200px) {
+      .tws-benefits-section {
+        padding-left: 78px;
+        padding-right: 78px;
+      }
+    }
+
+    /* ========= TITLE ========= */
+    .tws-benefits-title {
+      width: 100%;
+      max-width: 1170px;
+      margin: 0 auto 64px auto;
+      text-align: center;
+      font-weight: 500;
+      font-size: 48px;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      text-transform: capitalize;
+      color: #000000;
+    }
+
+    .tws-benefits-title .highlight {
+      color: #00a738;
+    }
+
+    /* ========= GRID LAYOUT ========= */
+    .tws-benefits-grid {
+      width: 100%;
+      max-width: 1170px;
+      margin: 0 auto;
+    }
+
+    .tws-benefits-row {
+      margin-bottom: 64px;
+    }
+
+    .tws-benefits-row:last-of-type {
+      margin-bottom: 0;
+    }
+
+    /* --- Icon line row (desktop / tablet) --- */
+    .tws-benefits-line {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      gap: 30px; /* matches card gap */
+      margin-bottom: 40px;
+      align-items: center;
+    }
+
+    /* Continuous line behind all icons */
+    .tws-benefits-line::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 21%;
+      top: 50%;
+      height: 1px;
+      background-color: #00a738;
+      transform: translateY(-50%);
+    }
+
+    .tws-line-segment {
+      flex: 0 0 calc((100% - 90px) / 4);
+      max-width: calc((100% - 90px) / 4);
+      display: flex;
+      justify-content: flex-start; /* align circle with text column */
+    }
+
+    .tws-benefit-icon {
+      position: relative;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background-color: #00a738;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
+      transform-origin: center;
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                  box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .tws-benefit-icon::before {
+      content: "";
+      display: block;
+      width: 14px;
+      height: 8px;
+      border-left: 2px solid #eeeeee;
+      border-bottom: 2px solid #eeeeee;
+      transform: rotate(-45deg) translateY(-1px);
+    }
+
+    /* --- Cards row --- */
+    .tws-benefits-cards {
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+      flex-wrap: nowrap;
+    }
+
+    .tws-benefit-card {
+      flex: 0 0 calc((100% - 90px) / 4);
+      max-width: calc((100% - 90px) / 4);
+      transition:
+        transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+        box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      border-radius: 8px;
+    }
+
+    .tws-benefit-title {
+      margin: 0 0 16px 0;
+      font-size: 24px;
+      line-height: 1.3;
+      font-weight: 700;
+      color: #1e1e1e;
+    }
+
+    .tws-benefit-text {
+      margin: 0;
+      font-size: 16px;
+      line-height: 1.5;
+      font-weight: 500;
+      color: #4c4c4c;
+    }
+
+    /* Card hover / focus states */
+    /* .tws-benefit-card:hover,
+    .tws-benefit-card:focus-within {
+      transform: translateY(-6px);
+      box-shadow:
+        0 10px 24px -12px rgba(0, 0, 0, 0.18),
+        0 26px 48px -24px rgba(0, 0, 0, 0.18);
+    } */
+
+    .tws-benefit-card:hover .tws-benefit-icon,
+    .tws-benefit-card:focus-within .tws-benefit-icon {
+      transform: scale(1.08);
+      box-shadow: 0 0 0 6px rgba(0, 167, 56, 0.18);
+    }
+
+    /* mobile-only icon inside card */
+    .tws-benefit-mobile-icon {
+      display: none;
+    }
+
+    /* ========= SCROLL REVEAL ========= */
+    [data-reveal] {
+      opacity: 0;
+      transform: translateY(24px);
+      transition:
+        opacity 520ms cubic-bezier(0.16, 1, 0.3, 1),
+        transform 520ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    [data-reveal].is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ========= TABLET ========= */
+    @media (max-width: 1024px) {
+      .tws-benefits-title {
+        font-size: 36px;
+      }
+    }
+
+    /* ========= MOBILE ========= */
+    @media (max-width: 640px) {
+      .tws-benefits-title {
+        font-size: 28px;
+        margin-bottom: 48px;
+      }
+
+      /* treat rows as one continuous column */
+      .tws-benefits-row {
+        margin-bottom: 0;
+      }
+
+      .tws-benefits-line {
+        display: none; /* hide horizontal line on mobile */
+      }
+
+      .tws-benefits-cards {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .tws-benefit-card {
+        position: relative;
+        flex: 0 0 100%;
+        max-width: 100%;
+        padding-left: 48px;
+        padding-bottom: 8px;
+      }
+
+      /* vertical line connecting all cards */
+      .tws-benefit-card::before {
+        content: "";
+        position: absolute;
+        left: 12px;
+        top: 24px;
+        bottom: -24px; /* extends into the gap below */
+        width: 1px;
+        background-color: #00a738;
+      }
+
+      /* green circle with white check per card */
+      .tws-benefit-mobile-icon {
+        display: flex;
+        position: absolute;
+        top: 4px;
+        left: 0;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        background-color: #00a738;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .tws-benefit-mobile-icon::before {
+        content: "";
+        width: 10px;
+        height: 6px;
+        border-left: 2px solid #ffffff;
+        border-bottom: 2px solid #ffffff;
+        transform: rotate(-45deg) translateY(-1px);
+      }
+
+      /* remove line after very last card */
+      .tws-benefits-grid .tws-benefit-card:last-of-type::before {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="tws-benefits-section" data-reveal>
+    <div class="tws-benefits-inner">
+      <h2 class="tws-benefits-title" data-reveal data-reveal-delay="0">
+        Benefits Of The <span class="highlight">Tawasul System</span>
+      </h2>
+
+      <div class="tws-benefits-grid">
+        <!-- ===== TOP ROW ===== -->
+        <div class="tws-benefits-row" data-reveal data-reveal-delay="80">
+          <div class="tws-benefits-line">
+            <div class="tws-line-segment">
+              <span class="tws-benefit-icon"></span>
+            </div>
+            <div class="tws-line-segment">
+              <span class="tws-benefit-icon"></span>
+            </div>
+            <div class="tws-line-segment">
+              <span class="tws-benefit-icon"></span>
+            </div>
+            <div class="tws-line-segment">
+              <span class="tws-benefit-icon"></span>
+            </div>
+          </div>
+
+          <div class="tws-benefits-cards">
+            <article class="tws-benefit-card" data-reveal data-reveal-delay="120">
+              <span class="tws-benefit-mobile-icon"></span>
+              <h3 class="tws-benefit-title">Productivity Increase</h3>
+              <p class="tws-benefit-text">
+                Complete tasks faster and more proactively. Monitor drivers and ensure
+                they perform their tasks to the fullest.
+              </p>
+            </article>
+
+            <article class="tws-benefit-card" data-reveal data-reveal-delay="160">
+              <span class="tws-benefit-mobile-icon"></span>
+              <h3 class="tws-benefit-title">Customer Satisfaction</h3>
+              <p class="tws-benefit-text">
+                The system helps identify the nearest vehicle to a customer location,
+                improving service quality and speed, while also enhancing productivity
+                and leading to faster completion.
+              </p>
+            </article>
+
+            <article class="tws-benefit-card" data-reveal data-reveal-delay="200">
+              <span class="tws-benefit-mobile-icon"></span>
+              <h3 class="tws-benefit-title">Operating Cost Reduction</h3>
+              <p class="tws-benefit-text">
+                We help you keep a close eye on every part of your business to ensure
+                everything runs smoothly with reduced operating costs.
+              </p>
+            </article>
+
+            <article class="tws-benefit-card" data-reveal data-reveal-delay="240">
+              <span class="tws-benefit-mobile-icon"></span>
+              <h3 class="tws-benefit-title">Protection</h3>
+              <p class="tws-benefit-text">
+                The system helps monitor and regulate driver behavior to protect them
+                and others, as well as assets and vehicles, for safe driving.
+              </p>
+            </article>
+          </div>
+        </div>
+
+        <!-- ===== BOTTOM ROW ===== -->
+        <div class="tws-benefits-row" data-reveal data-reveal-delay="160">
+          <div class="tws-benefits-line">
+            <div class="tws-line-segment">
+              <span class="tws-benefit-icon"></span>
+            </div>
+            <div class="tws-line-segment">
+              <span class="tws-benefit-icon"></span>
+            </div>
+            <div class="tws-line-segment">
+              <span class="tws-benefit-icon"></span>
+            </div>
+            <div class="tws-line-segment">
+              <span class="tws-benefit-icon"></span>
+            </div>
+          </div>
+
+          <div class="tws-benefits-cards">
+            <article class="tws-benefit-card" data-reveal data-reveal-delay="200">
+              <span class="tws-benefit-mobile-icon"></span>
+              <h3 class="tws-benefit-title">Fuel Cost Reduction</h3>
+              <p class="tws-benefit-text">
+                Amid rising fuel prices, reducing fuel consumption is a key goal,
+                achieved by monitoring speed, controlling tasks, and eliminating
+                unjustified activities, leading to cost savings.
+              </p>
+            </article>
+
+            <article class="tws-benefit-card" data-reveal data-reveal-delay="240">
+              <span class="tws-benefit-mobile-icon"></span>
+              <h3 class="tws-benefit-title">Routing</h3>
+              <p class="tws-benefit-text">
+                The system guides employees to reach locations and complete assigned
+                tasks using mobile apps that smoothly and proactively direct them to
+                customers.
+              </p>
+            </article>
+
+            <article class="tws-benefit-card" data-reveal data-reveal-delay="280">
+              <span class="tws-benefit-mobile-icon"></span>
+              <h3 class="tws-benefit-title">Work Hours Control</h3>
+              <p class="tws-benefit-text">
+                The system provides tools for controlling work hours, such as trip
+                reports, time logs, and driver records, to track actual work hours and
+                identify wasted time.
+              </p>
+            </article>
+
+            <article class="tws-benefit-card" data-reveal data-reveal-delay="320">
+              <span class="tws-benefit-mobile-icon"></span>
+              <h3 class="tws-benefit-title">Insurance Cost Reduction</h3>
+              <p class="tws-benefit-text">
+                Monitoring driver behavior and vehicle operation reduces accidents and
+                traffic violations, resulting in lower annual insurance premiums for
+                vehicles.
+              </p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Simple scroll reveal for benefits section
+    (function () {
+      var revealItems = document.querySelectorAll("[data-reveal]");
+      if (!revealItems.length) return;
+
+      if (!("IntersectionObserver" in window)) {
+        revealItems.forEach(function (el) {
+          el.classList.add("is-visible");
+        });
+        return;
+      }
+
+      var observer = new IntersectionObserver(function (entries, obs) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.2 });
+
+      revealItems.forEach(function (el, index) {
+        var baseDelay = el.getAttribute("data-reveal-delay");
+        var delay = baseDelay ? parseInt(baseDelay, 10) : index * 80;
+        el.style.transitionDelay = (delay / 1000) + "s";
+        observer.observe(el);
+      });
+    })();
+  </script>
+</body>
+</html>
