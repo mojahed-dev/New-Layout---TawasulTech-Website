@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Advantages of TawasulFMS System</title>
+
+    <style>
+        /* =========================
+       TawasulFMS – Advantages
+       ========================= */
+        :root {
+            --tws-green: #0AA84F;
+            --tws-text: #1E1E1E;
+            --tws-line: #E8E8E8;
+
+            --pad-y: 72px;
+            --pad-x: 135px;
+            --gap: 48px;
+
+            --card-pad: 30px;
+            --card-gap: 24px;
+
+            --title-size: 48px;
+            --title-lh: 1.1;
+            --title-letter: -0.03em;
+
+            --label-size: 16px;
+            --label-lh: 1.1;
+        }
+
+        /* Page demo only (safe to remove in CS-Cart) */
+        body {
+            margin: 0;
+            background: #fff;
+            color: var(--tws-text);
+            font-family: "Satoshi", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+        }
+
+        .tws-advantages {
+            background: #fff;
+            padding: var(--pad-y) 0px;
+        }
+
+        .tws-advantages__inner {
+            max-width: 1170px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .tws-advantages__title {
+            margin: 0;
+            text-align: center;
+            font-weight: 500;
+            font-size: var(--title-size);
+            line-height: var(--title-lh);
+            letter-spacing: var(--title-letter);
+            text-transform: capitalize;
+
+            margin-bottom: var(--gap);
+        }
+
+        .tws-advantages__title .tws-green {
+            color: var(--tws-green);
+        }
+
+        /* ====== Grids ====== */
+        .tws-adv-grid,
+        .tws-adv-grid--last {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
+
+        /* First 15 items (3 rows x 5 cols in desktop) */
+        .tws-adv-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 0;
+        }
+
+        /* Last row (3 items centered) */
+        .tws-adv-last-wrap {
+            border-top: none;
+            padding-top: 0;
+            /* keeps the line tight like Figma */
+            display: flex;
+            justify-content: center;
+        }
+
+        .tws-adv-grid--last {
+            width: 702px;
+            /* 234 * 3 */
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+        }
+
+        /* ====== Card ====== */
+        .tws-adv-item {
+            padding: var(--card-pad);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: var(--card-gap);
+            text-align: center;
+
+            border-right: 1px solid var(--tws-line);
+            border-bottom: 1px solid var(--tws-line);
+        }
+
+        .tws-adv-item__label {
+            margin: 0;
+            font-size: var(--label-size);
+            line-height: var(--label-lh);
+            font-weight: 700;
+            text-transform: capitalize;
+        }
+
+        .tws-adv-item__icon {
+            width: 56px;
+            height: 56px;
+            display: grid;
+            place-items: center;
+        }
+
+        .tws-adv-item__icon svg {
+            width: 56px;
+            height: 56px;
+            display: block;
+        }
+
+        /* Remove right border on last column (desktop 5 cols) */
+        .tws-adv-grid .tws-adv-item:nth-child(5n) {
+            border-right: none;
+        }
+
+        /* Last row: only inner dividers (no outer border) */
+        .tws-adv-grid--last .tws-adv-item {
+            border-bottom: none;
+        }
+
+        .tws-adv-grid--last .tws-adv-item:nth-child(3n) {
+            border-right: none;
+        }
+
+        /* ====== Responsive ====== */
+        @media (max-width: 1200px) {
+            :root {
+                --pad-x: 32px;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            :root {
+                --title-size: 40px;
+                --pad-y: 56px;
+                --gap: 40px;
+            }
+
+            .tws-adv-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .tws-adv-grid .tws-adv-item {
+                border-right: 1px solid var(--tws-line);
+            }
+
+            .tws-adv-grid .tws-adv-item:nth-child(5n) {
+                border-right: 1px solid var(--tws-line);
+            }
+
+            /* reset */
+            .tws-adv-grid .tws-adv-item:nth-child(3n) {
+                border-right: none;
+            }
+
+            .tws-adv-grid--last {
+                width: 100%;
+            }
+
+            .tws-adv-last-wrap {
+                justify-content: stretch;
+            }
+        }
+
+        @media (max-width: 640px) {
+            :root {
+                --title-size: 32px;
+                --pad-y: 48px;
+                --gap: 32px;
+                --card-pad: 22px;
+            }
+
+            .tws-adv-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            /* FIX: remove empty grid cell on mobile */
+            /* .tws-adv-grid .tws-adv-item:last-child {
+                grid-column: 1 / -1;
+            } */
+
+            .tws-adv-grid .tws-adv-item:nth-child(3n) {
+                border-right: 1px solid var(--tws-line);
+            }
+
+            /* reset */
+            .tws-adv-grid .tws-adv-item:nth-child(2n) {
+                border-right: none;
+            }
+
+            /* Last 3 items: 2 columns on mobile, 3rd item centered on next row */
+            .tws-adv-last-wrap {
+                justify-content: stretch;
+                border-top: none;
+            }
+
+            .tws-adv-grid--last {
+                width: 100%;
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .tws-adv-grid--last .tws-adv-item:nth-child(2n) {
+                border-right: none;
+            }
+
+            .tws-adv-grid--last .tws-adv-item:nth-child(3) {
+                grid-column: 1 / -1;
+                justify-self: center;
+            }
+        }
+
+
+        /* Accessibility focus */
+        .tws-adv-item:focus-within {
+            outline: 2px solid rgba(10, 168, 79, .35);
+            outline-offset: -2px;
+        }
+    
+        /* =========================
+           Effects (hover + scroll effect)
+           - Mobile/tablet friendly
+           - Never hides content (failsafe)
+           - Respects prefers-reduced-motion
+           ========================= */
+
+        .tws-adv-item{
+            transition: transform .25s ease, box-shadow .25s ease, background-color .25s ease;
+            will-change: transform;
+        }
+
+        /* Hover devices */
+        @media (hover:hover) and (pointer:fine){
+            .tws-adv-item:hover{
+                transform: translateY(-4px);
+                box-shadow: 0 18px 40px rgba(0,0,0,.12);
+                background: rgba(10,168,79,.03);
+            }
+            .tws-adv-item:hover .tws-adv-item__icon img{
+                transform: scale(1.04);
+                filter: saturate(1.05);
+            }
+        }
+
+        /* Touch devices tap feedback */
+        @media (hover:none) and (pointer:coarse){
+            .tws-adv-item:active{
+                transform: translateY(-2px);
+                box-shadow: 0 14px 32px rgba(0,0,0,.12);
+                background: rgba(10,168,79,.03);
+            }
+            .tws-adv-item:active .tws-adv-item__icon img{
+                transform: scale(1.03);
+                filter: saturate(1.05);
+            }
+        }
+
+        .tws-adv-item__icon img{
+            transition: transform .25s ease, filter .25s ease;
+            transform-origin: center;
+        }
+
+        /* Scroll effect: animate when .is-inview is added, but keep visible by default */
+        .tws-adv-item.is-inview{
+            animation: twsFadeUp .55s ease both;
+        }
+        @keyframes twsFadeUp{
+            from{ opacity:0.001; transform: translateY(10px); }
+            to{ opacity:1; transform: translateY(0); }
+        }
+
+        @media (prefers-reduced-motion: reduce){
+            .tws-adv-item,
+            .tws-adv-item__icon img{
+                transition:none !important;
+            }
+            .tws-adv-item.is-inview{
+                animation:none !important;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <section class="tws-advantages" aria-label="Advantages of TawasulFMS system">
+        <div class="tws-advantages__inner">
+            <h2 class="tws-advantages__title">
+                Advantages Of <span class="tws-green">TawasulFMS</span> System
+            </h2>
+
+            <!-- Grid: first 15 items -->
+            <ul class="tws-adv-grid" role="list">
+                <!-- 1 -->
+                <li class="tws-adv-item">
+                    <span class="tws-adv-item__icon" aria-hidden="true">
+                        <!-- Driver ID -->
+                        <img src="images/driver-id-icon.png" alt="Driver Id Icon" loading="lazy">
+                    </span>
+                    <p class="tws-adv-item__label">Driver ID</p>
+                </li>
+
+                <!-- 2 -->
+                <li class="tws-adv-item">
+                    <span class="tws-adv-item__icon" aria-hidden="true">
+                        <!-- Driver Behavior -->
+                        <img src="images/driver-behavior-icon.png" alt="driver behavior icon" loading="lazy">
+                    </span>
+                    <p class="tws-adv-item__label">Driver Behavior</p>
+                </li>
+
+                <!-- 3 -->
+                <li class="tws-adv-item">
+                    <span class="tws-adv-item__icon" aria-hidden="true">
+                        <!-- Truck Steering -->
+                        <img src="images/truck-steering-icon.png" alt="Truck Steering Icon" loading="lazy">
+                    </span>
+                    <p class="tws-adv-item__label">Truck Steering</p>
+                </li>
+
+                <!-- 4 -->
+                <li class="tws-adv-item">
+                    <span class="tws-adv-item__icon" aria-hidden="true">
+                        <!-- Fuel Card Integration -->
+                        <img src="images/fuel-card-integration-icon.png" alt="Fuel Card Integration Icon"
+                            loading="lazy">
+                    </span>
+                    <p class="tws-adv-item__label">Fuel Card Integration</p>
+                </li>
+
+                <!-- 5 -->
+                <li class="tws-adv-item">
+                    <span class="tws-adv-item__icon" aria-hidden="true">
+                        <!-- Maintenance Reminders -->
+                        <img src="images/maintenance-reminders-icon.png" alt="maintenance reminders icon"
+                            loading="lazy">
+                    </span>
+                    <p class="tws-adv-item__label">Maintenance Reminders</p>
+                </li>
+
+                <!-- 6 -->
+                <li class="tws-adv-item">
+                    <span class="tws-adv-item__icon" aria-hidden="true">
+                        <!-- Equipment Inventory -->
+                        <img src="images/equipment-inventory-icon.png" alt="Equipment Inventory Icon" loading="lazy">
+                    </span>
+                    <p class="tws-adv-item__label">Equipment Inventory</p>
+                </li>
+
+                <!-- 7 -->
+                <li class="tws-adv-item">
+                    <span class="tws-adv-item__icon" aria-hidden="true">
+                        <!-- Send Directions -->
+                        <img src="images/send-directions-icon.png" alt="Send Directions Icon" loading="lazy">
+                    </span>
+                    <p class="tws-adv-item__label">Send Directions</p>
+                </li>
+
+                <!-- 8 -->
+                <li class="tws-adv-item">
+                    <span class="tws-adv-item__icon" aria-hidden="true">
+                        <!-- Alerts via SMS/Email -->
+                        <img src="images/alerts-sms-email-icon.png" alt="Alerts Via SMS/Email Icon" loading="lazy">
+                    </span>
+                    <p class="tws-adv-item__label">Alerts Via SMS/Email</p>
+                </li>
+
+                <!-- 9 -->
+                <li class="tws-adv-item">
+                    <span class="tws-adv-item__icon" aria-hidden="true">
+                        <!-- Vehicle Profile -->
+                        <img src="images/vehicle-profile-icon.png" alt="Vehicle Profile Icon" loading="lazy">
+                    </span>
+                    <p class="tws-adv-item__label">Vehicle Profile</p>
+                </li>
+
+                <!-- 10 -->
+                <li class="tws-adv-item">
+                    <span class="tws-adv-item__icon" aria-hidden="true">
+                        <!-- Scorecard -->
+                        <img src="images/scorecard-icon.png" alt="Scorecard Icon" loading="lazy">
+                    </span>
+                    <p class="tws-adv-item__label">Scorecard</p>
+                </li>
+
+                <!-- 11 -->
+                <li class="tws-adv-item">
+                    <span class="tws-adv-item__icon" aria-hidden="true">
+                        <!-- Real-Time Positioning -->
+                        <img src="images/real-time-positioning-icon.png" alt="Real-Time Positioning Icon"
+                            loading="lazy">
+                    </span>
+                    <p class="tws-adv-item__label">Real-Time Positioning</p>
+                </li>
+
+                <!-- 12 -->
+                <li class="tws-adv-item">
+                    <span class="tws-adv-item__icon" aria-hidden="true">
+                        <!-- Tracks & History -->
+                        <img src="images/tracks-history-icon.png" alt="Tracks & History Icon" loading="lazy">
+                    </span>
+                    <p class="tws-adv-item__label">Tracks &amp; History</p>
+                </li>
+
+                <!-- 13 -->
+                <li class="tws-adv-item">
+                    <span class="tws-adv-item__icon" aria-hidden="true">
+                        <!-- Geofence Alerts -->
+                        <img src="images/geofence-alerts-icon.png" alt="Geofence Alerts Icon" loading="lazy">
+                    </span>
+                    <p class="tws-adv-item__label">Geofence Alerts</p>
+                </li>
+
+                <!-- 14 -->
+                <li class="tws-adv-item">
+                    <span class="tws-adv-item__icon" aria-hidden="true">
+                        <img src="images/pdf-excel-csv-icon.png" alt="PDF Excel CSV Icon" loading="lazy">
+                    </span>
+                    <p class="tws-adv-item__label">PDF / EXC / CSV</p>
+                </li>
+
+                <!-- 15 -->
+                <li class="tws-adv-item">
+                    <span class="tws-adv-item__icon" aria-hidden="true">
+                        <!-- Temperature Monitoring -->
+                        <img src="images/temperature-monitoring.png" alt="Temperature and Monitoring Icon"
+                            loading="lazy">
+                    </span>
+                    <p class="tws-adv-item__label">Temperature Monitoring</p>
+                </li>
+            </ul>
+
+            <!-- Last row: 3 items centered -->
+            <div class="tws-adv-last-wrap" aria-hidden="false">
+                <ul class="tws-adv-grid--last" role="list">
+                    <!-- 16 -->
+                    <li class="tws-adv-item">
+                        <span class="tws-adv-item__icon" aria-hidden="true">
+                            <!-- Take Off Power -->
+                            <img src="images/temperature-monitoring.png" alt="Temperature and Monitoring Icon"
+                                loading="lazy">
+                        </span>
+                        <p class="tws-adv-item__label">Take Off Power</p>
+                    </li>
+
+                    <!-- 17 -->
+                    <li class="tws-adv-item">
+                        <span class="tws-adv-item__icon" aria-hidden="true">
+                            <!-- Unlimited Storage -->
+                            <img src="images/temperature-monitoring.png" alt="Temperature and Monitoring Icon"
+                                loading="lazy">
+                        </span>
+                        <p class="tws-adv-item__label">Unlimited Storage</p>
+                    </li>
+
+                    <!-- 18 -->
+                    <li class="tws-adv-item">
+                        <span class="tws-adv-item__icon" aria-hidden="true">
+                            <!-- Weight Control -->
+                            <img src="images/temperature-monitoring.png" alt="Temperature and Monitoring Icon"
+                                loading="lazy">
+                        </span>
+                        <p class="tws-adv-item__label">Weight Control</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+
+<script>
+/* Advantages section: scroll effect (safe fallback; never hides content) */
+(function () {
+  function init(){
+    var items = document.querySelectorAll('.tws-adv-item');
+    if(!items.length) return;
+
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    // If IntersectionObserver unsupported, animate all once.
+    if (!('IntersectionObserver' in window)) {
+      items.forEach(function(el){ el.classList.add('is-inview'); });
+      return;
+    }
+
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('is-inview');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -12% 0px' });
+
+    items.forEach(function(el){ io.observe(el); });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+
+</body>
+
+</html>
