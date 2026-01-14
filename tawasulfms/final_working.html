@@ -1,0 +1,3543 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>TawasulFMS</title>
+    <script>
+        document.documentElement.classList.add('tws-js');
+    </script>
+    <link href="https://unpkg.com/swiper@9/swiper-bundle.min.css" rel="stylesheet" />
+    <style>
+        /* =========================================================
+   TawasulFMS – Refactored CSS (Custom Properties / Tokens)
+   - Keeps ALL existing classes/IDs intact (no HTML changes)
+   - Consolidates repeated values (colors, spacing, typography, motion)
+   - Dedupes repeated reveal rules
+   ========================================================= */
+
+
+   /* Override default list styles in the Cscart*/
+        .ty-wysiwyg-content ul, .ty-wysiwyg-content ol {
+            margin-left: 0;
+            padding: 0;
+        }
+
+        /* ========= DESIGN TOKENS ========= */
+        :root {
+            /* Typography */
+            --tws-font: "Satoshi", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+
+            /* Colors */
+            --tws-black: #000000;
+            --tws-text: #1E1E1E;
+            --tws-muted: #4C4C4C;
+            --tws-border: #E2E2E2;
+            --tws-white: #FFFFFF;
+            --tws-brand: #00A738;
+            --tws-soft: #EBF4EE;
+
+            /* Layout widths */
+            --tws-page: 1440px;
+            --tws-container: 1170px;
+
+            /* Spacing scale (px) */
+            --tws-space-0: 0px;
+            --tws-space-8: 8px;
+            --tws-space-10: 10px;
+            --tws-space-12: 12px;
+            --tws-space-16: 16px;
+            --tws-space-18: 18px;
+            --tws-space-20: 20px;
+            --tws-space-22: 22px;
+            --tws-space-24: 24px;
+            --tws-space-27: 27px;
+            --tws-space-28: 28px;
+            --tws-space-30: 30px;
+            --tws-space-32: 32px;
+            --tws-space-40: 40px;
+            --tws-space-48: 48px;
+            --tws-space-56: 56px;
+            --tws-space-64: 64px;
+            --tws-space-72: 72px;
+            --tws-space-78: 78px;
+            --tws-space-80: 80px;
+            --tws-space-96: 96px;
+            --tws-space-130: 130px;
+            --tws-space-135: 135px;
+
+            /* Type scale */
+            --tws-h1: 64px;
+            --tws-h2: 48px;
+            --tws-h2-tablet: 36px;
+            --tws-h2-mobile: 28px;
+            --tws-h3: 24px;
+            --tws-body: 16px;
+
+            /* Line heights */
+            --tws-lh-110: 1.1;
+            --tws-lh-120: 1.2;
+            --tws-lh-130: 1.3;
+            --tws-lh-150: 1.5;
+
+            /* Letter spacing */
+            --tws-track-tight: -0.03em;
+            /* -3% */
+
+            /* Radius */
+            --tws-radius-4: 4px;
+            --tws-radius-8: 8px;
+            --tws-radius-pill: 100px;
+
+            /* Motion */
+            --tws-ease: cubic-bezier(0.16, 1, 0.3, 1);
+            --tws-dur-220: 220ms;
+            --tws-dur-260: 260ms;
+            --tws-dur-480: 480ms;
+            --tws-dur-520: 520ms;
+            --tws-dur-650: 650ms;
+
+            /* Elevation */
+            --tws-shadow-soft: 0 10px 20px -10px rgba(0, 0, 0, 0.14), 0 24px 40px -24px rgba(0, 0, 0, 0.16);
+            --tws-shadow-card: 0 10px 24px rgba(0, 0, 0, 0.08);
+            --tws-shadow-card-hover: 0 16px 34px rgba(0, 0, 0, 0.12);
+        }
+
+        /* ========= GLOBAL RESET (minimal) ========= */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: var(--tws-white);
+            font-family: var(--tws-font);
+            color: var(--tws-text);
+        }
+
+        /* ========= Utility: Swiper icon reset ========= */
+        .swiper-button-prev:after,
+        .swiper-rtl .swiper-button-next:after,
+        .swiper-button-next:after,
+        .swiper-rtl .swiper-button-prev:after {
+            content: "" !important;
+        }
+
+        /* ========= Utility: Reveal (shared) ========= */
+        [data-reveal] {
+            opacity: 0;
+            transform: translateY(24px);
+            transition:
+                opacity var(--tws-dur-480) var(--tws-ease),
+                transform var(--tws-dur-480) var(--tws-ease);
+        }
+
+        [data-reveal].is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ========= CS-Cart protection scope ========= */
+        .tws-cscart-scope {
+            font-family: var(--tws-font);
+            color: var(--tws-text);
+        }
+
+        /* Neutralize CS-Cart theme injected margins (typography only) */
+        .tws-cscart-scope h1,
+        .tws-cscart-scope h2,
+        .tws-cscart-scope h3,
+        .tws-cscart-scope p {
+            /* margin-block-start: unset;
+            margin-block-end: unset; */
+            margin: 0 0 27px 0 !important;
+            padding: 0 !important;
+        }
+
+
+        /* H2 Heading sizes */
+         .tws-cscart-scope h2 {
+            font-size: var(--tws-h2) !important;
+         }
+
+        :where(.tws-cscart-scope) :where(h2) {
+            font-weight: 500 !important;
+            padding-bottom: var(--tws-space-27) !important;
+        }
+
+        /* Protect headings & titles ONLY (no spacing edits here) */
+        .tws-fms-benefits__heading,
+        .tws-benefits-title,
+        .tws-fms-knowledge__heading,
+        .tws-fms-sectors__heading,
+        .tws-fms-page h1,
+        .tws-fms-page h2 {
+            font-family: var(--tws-font) !important;
+            font-weight: 500 !important;
+            letter-spacing: inherit !important;
+            line-height: inherit !important;
+            text-transform: none !important;
+        }
+
+        .tws-fms-benefits__heading span,
+        .tws-benefits-title span,
+        .tws-fms-knowledge__heading span,
+        .tws-fms-sectors__heading span {
+            color: var(--tws-brand) !important;
+        }
+
+        /* Responsive heading sizes (kept from your rules) */
+        @media (max-width: 1024px) {
+
+            .tws-cscart-scope .tws-fms-benefits__heading,
+            .tws-cscart-scope .tws-benefits-title,
+            .tws-cscart-scope .tws-fms-sectors__heading,
+            .tws-cscart-scope .tws-fms-knowledge__heading {
+                font-size: var(--tws-h2-tablet) !important;
+                line-height: 1.15 !important;
+            }
+        }
+
+        @media (max-width: 640px) {
+
+            .tws-cscart-scope .tws-fms-benefits__heading,
+            .tws-cscart-scope .tws-benefits-title,
+            .tws-cscart-scope .tws-fms-sectors__heading,
+            .tws-cscart-scope .tws-fms-knowledge__heading {
+                font-size: var(--tws-h2-mobile) !important;
+                line-height: var(--tws-lh-120) !important;
+            }
+        }
+
+        /* =========================================================
+   SECTION 1: TawasulFMS Strip (Frame 2147231709)
+   ========================================================= */
+        .tws-fms-strip {
+            box-sizing: border-box;
+            width: 100%;
+            max-width: var(--tws-page);
+            margin: 0 auto;
+            padding: var(--tws-space-72) var(--tws-space-0);
+            background-color: var(--tws-white);
+            font-family: var(--tws-font);
+        }
+
+        .tws-fms-strip__inner {
+            max-width: var(--tws-container);
+            margin: 0 auto;
+            display: flex;
+            align-items: flex-end;
+            gap: var(--tws-space-130);
+            opacity: 0;
+            transform: translateY(16px);
+            animation: fms-fade-up var(--tws-dur-480) var(--tws-ease) forwards;
+            animation-delay: 120ms;
+        }
+
+        @keyframes fms-fade-up {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .tws-cscart-scope .tws-fms-strip__title {
+            width: 470px;
+            margin: 0;
+            font-weight: 500 !important;
+            font-size: var(--tws-h1) !important;
+            line-height: var(--tws-lh-130);
+            text-transform: capitalize;
+            color: var(--tws-text);
+            white-space: nowrap;
+        }
+
+        .tws-fms-strip__text {
+            width: 570px;
+            margin: 0;
+            font-weight: 500;
+            font-size: var(--tws-body);
+            line-height: var(--tws-lh-150) !important;
+            text-transform: capitalize;
+            color: var(--tws-muted);
+        }
+
+        @media (max-width: 1024px) {
+            .tws-fms-strip {
+                padding: var(--tws-space-56) var(--tws-space-32);
+            }
+
+            .tws-fms-strip__inner {
+                gap: var(--tws-space-48);
+            }
+
+            .tws-cscart-scope .tws-fms-strip__title {
+                width: auto;
+                font-size: 48px !important;
+            }
+
+            .tws-fms-strip__text {
+                width: auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .tws-fms-strip {
+                padding: var(--tws-space-40) var(--tws-space-20);
+            }
+
+            .tws-fms-strip__inner {
+                flex-direction: column;
+                gap: var(--tws-space-24);
+                align-items: center;
+            }
+
+            .tws-cscart-scope .tws-fms-strip__title {
+                font-size: 36px !important;
+                white-space: normal;
+            }
+        }
+
+        /* =========================================================
+   SECTION 2: Fleet Management Benefits
+   ========================================================= */
+        .tws-fms-benefits {
+            width: 100%;
+            max-width: var(--tws-page);
+            margin: 0 auto;
+            padding: var(--tws-space-80) var(--tws-space-0) var(--tws-space-96);
+            background: var(--tws-white);
+            font-family: var(--tws-font);
+        }
+
+        .tws-fms-benefits__inner {
+            max-width: var(--tws-container);
+            margin: 0 auto;
+        }
+
+        .tws-fms-benefits__heading {
+            margin: 0 0 var(--tws-space-48);
+            text-align: center;
+            font-weight: 500;
+            font-size: var(--tws-h2);
+            line-height: var(--tws-lh-110);
+            letter-spacing: var(--tws-track-tight);
+            color: var(--tws-text);
+        }
+
+        .tws-fms-benefits__heading span {
+            color: var(--tws-brand);
+        }
+
+        .tws-fms-benefits__grid {
+            display: flex;
+            gap: var(--tws-space-30);
+            align-items: flex-start;
+        }
+
+        .tws-fms-benefit {
+            width: 570px;
+            display: flex;
+            flex-direction: column;
+            gap: var(--tws-space-24);
+        }
+
+        .tws-fms-benefit__media {
+            position: relative;
+            width: 100%;
+            height: 370px;
+            overflow: hidden;
+        }
+
+        .tws-fms-benefit__media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .tws-fms-benefit__media::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.2);
+            pointer-events: none;
+        }
+
+        .tws-fms-benefit__play {
+            position: absolute;
+            inset: 0;
+            margin: auto;
+            width: 72px;
+            height: 72px;
+            padding: 0;
+            border: none;
+            background: none;
+            cursor: pointer;
+        }
+
+        .tws-fms-benefit__play-circle {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            border: 1px solid var(--tws-white);
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform var(--tws-dur-220) ease-out, background var(--tws-dur-220) ease-out;
+        }
+
+        .tws-fms-benefit__play-icon {
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 14px 0 14px 24px;
+            border-color: transparent transparent transparent var(--tws-white);
+            border-radius: 2px;
+        }
+
+        .tws-fms-benefit__title {
+            margin: 0;
+            font-weight: 500;
+            font-size: var(--tws-h3);
+            line-height: var(--tws-lh-150);
+            text-transform: capitalize;
+            color: var(--tws-black);
+            text-align: center;
+        }
+
+        .tws-fms-benefit__media:hover .tws-fms-benefit__play-circle {
+            transform: scale(1.05);
+            background: rgba(255, 255, 255, 0.09);
+        }
+
+        /* Benefits section reveal (kept scoped, but uses shared tokens) */
+        .tws-fms-benefits [data-reveal] {
+            transition:
+                opacity var(--tws-dur-480) var(--tws-ease),
+                transform var(--tws-dur-480) var(--tws-ease);
+        }
+
+        .tws-fms-benefit[data-reveal] {
+            transition-delay: 120ms;
+        }
+
+        .tws-fms-benefit[data-reveal]:nth-of-type(2) {
+            transition-delay: 220ms;
+        }
+
+        @media (max-width: 1200px) {
+            .tws-fms-benefits {
+                padding: var(--tws-space-64) var(--tws-space-32) var(--tws-space-80);
+            }
+
+            .tws-fms-benefit {
+                width: 50%;
+            }
+        }
+
+        @media (max-width: 920px) {
+            .tws-fms-benefits__heading {
+                font-size: 40px;
+            }
+
+            .tws-fms-benefits__grid {
+                flex-direction: column;
+            }
+
+            .tws-fms-benefit {
+                width: 100%;
+            }
+
+            .tws-fms-benefit__media {
+                height: auto;
+            }
+
+            .tws-fms-benefit__media img {
+                height: auto;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .tws-fms-benefits {
+                padding: var(--tws-space-48) var(--tws-space-16) var(--tws-space-64);
+            }
+
+            .tws-fms-benefits__heading {
+                font-size: 32px;
+            }
+
+            .tws-fms-benefit__title {
+                font-size: 20px;
+            }
+        }
+
+        /* =========================================================
+   SECTION 3: Sector-Based Solutions
+   ========================================================= */
+        .tws-fms-sectors {
+            width: 100%;
+            max-width: var(--tws-page);
+            margin: 0 auto;
+            padding-bottom: var(--tws-space-72);
+            box-sizing: border-box;
+            color: var(--tws-white);
+            font-family: var(--tws-font);
+        }
+
+        .tws-fms-sectors__inner {
+            max-width: var(--tws-container);
+            margin: 0 auto;
+            display: flex;
+            gap: var(--tws-space-130);
+            align-items: center;
+        }
+
+        .tws-fms-sectors__content {
+            width: 470px;
+            display: flex;
+            flex-direction: column;
+            gap: var(--tws-space-24);
+        }
+
+        .tws-fms-sectors__heading {
+            margin: 0;
+            font-weight: 500 !important;
+            font-size: var(--tws-h2);
+            line-height: var(--tws-lh-110);
+            letter-spacing: var(--tws-track-tight);
+            text-transform: capitalize;
+            color: var(--tws-muted);
+        }
+
+        .tws-fms-sectors__heading span {
+            display: block;
+            color: var(--tws-brand);
+        }
+
+        .tws-fms-sectors__text {
+            margin: 0;
+            width: 470px;
+            font-weight: 500;
+            font-size: var(--tws-body);
+            line-height: var(--tws-lh-150);
+            color: var(--tws-muted);
+        }
+
+        .tws-fms-sectors__image-wrap {
+            width: 570px;
+            height: 470px;
+            flex-shrink: 0;
+        }
+
+        .tws-fms-sectors__image-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        @media (max-width: 1200px) {
+            .tws-fms-sectors {
+                padding: var(--tws-space-48) var(--tws-space-32) var(--tws-space-72);
+            }
+
+            .tws-fms-sectors__inner {
+                flex-direction: column;
+                align-items: center;
+                gap: var(--tws-space-64);
+            }
+
+            .tws-fms-sectors__content,
+            .tws-fms-sectors__text {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 920px) {
+            .tws-fms-sectors__inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--tws-space-32);
+            }
+
+            .tws-fms-sectors__content,
+            .tws-fms-sectors__text {
+                width: 100%;
+            }
+
+            .tws-fms-sectors__image-wrap {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .tws-fms-sectors {
+                padding: var(--tws-space-40) var(--tws-space-16) 56px;
+            }
+
+            .tws-fms-sectors__heading {
+                font-size: 32px;
+            }
+        }
+
+        /* =========================================================
+   SECTION 4: Knowledge Slider
+   ========================================================= */
+        .tws-fms-knowledge {
+            width: 100%;
+            background: var(--tws-soft);
+            padding-top: var(--tws-space-72);
+            padding-bottom: var(--tws-space-72);
+        }
+
+        .tws-fms-knowledge__heading-wrap {
+            max-width: var(--tws-container);
+            margin: 0 auto var(--tws-space-48) auto;
+            padding: 0 var(--tws-space-16);
+            text-align: center;
+        }
+
+        .tws-fms-knowledge__heading {
+            margin: 0;
+            font-weight: 500;
+            font-size: var(--tws-h2);
+            line-height: var(--tws-lh-110);
+            letter-spacing: var(--tws-track-tight);
+            text-transform: capitalize;
+            color: var(--tws-text);
+        }
+
+        .tws-fms-knowledge__heading span {
+            color: var(--tws-brand);
+        }
+
+        .tws-fms-knowledge__slider {
+            width: 100%;
+            padding-left: var(--tws-space-48);
+            padding-right: 0;
+            box-sizing: border-box;
+        }
+
+        .tws-fms-knowledge__slider .swiper {
+            width: 100%;
+        }
+
+        .tws-fms-knowledge__slider .swiper-slide {
+            width: 370px;
+            height: auto;
+        }
+
+        .tws-fms-knowledge__track {
+            width: 100%;
+        }
+
+        .tws-fms-knowledge-card {
+            height: 528px;
+            display: flex;
+            flex-direction: column;
+            gap: var(--tws-space-12);
+            padding: var(--tws-space-12);
+            background: var(--tws-white);
+            box-shadow: var(--tws-shadow-soft);
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+        }
+
+        .tws-fms-knowledge-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .tws-fms-knowledge-card__media {
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .tws-fms-knowledge-card__media img {
+            width: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .tws-fms-knowledge-card__body {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: var(--tws-space-12);
+        }
+
+        .tws-fms-knowledge-card__text-group {
+            display: flex;
+            flex-direction: column;
+            gap: var(--tws-space-16);
+        }
+
+        .tws-fms-knowledge-card__title {
+            margin: 0;
+            font-weight: 700;
+            font-size: var(--tws-h3);
+            line-height: var(--tws-lh-130);
+            color: var(--tws-text);
+        }
+
+        .tws-fms-knowledge-card__desc {
+            margin: 0;
+            font-weight: 500;
+            font-size: var(--tws-body);
+            line-height: var(--tws-lh-150);
+            color: var(--tws-muted);
+        }
+
+        .tws-fms-knowledge-card__footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: var(--tws-space-16);
+        }
+
+        .tws-fms-knowledge-card__link {
+            font-weight: 500;
+            font-size: var(--tws-body);
+            line-height: var(--tws-lh-150);
+            color: var(--tws-brand);
+            text-decoration: none;
+        }
+
+        .tws-fms-knowledge-card__link:hover {
+            text-decoration: underline;
+        }
+
+        .tws-fms-knowledge-card__arrow {
+            width: 24px;
+            height: 24px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tws-fms-knowledge-card__arrow svg {
+            width: 8px;
+            height: 12px;
+            transform: rotate(90deg);
+        }
+
+        /* Bottom arrows */
+        .tws-fms-knowledge__arrows {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: var(--tws-space-32);
+            gap: var(--tws-space-16);
+            width: 100%;
+        }
+
+        .tws-fms-knowledge__arrow-btn {
+            width: 56px;
+            height: 56px;
+            border-radius: var(--tws-radius-pill);
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--tws-white);
+            margin: 0 !important;
+        }
+
+        .tws-fms-knowledge__arrow-btn--primary {
+            background: var(--tws-brand);
+        }
+
+        .tws-fms-knowledge__arrow-btn--prev {
+            margin-right: 16px;
+        }
+
+        /* kept */
+        .tws-fms-knowledge__arrows .swiper-button-prev,
+        .tws-fms-knowledge__arrows .swiper-button-next {
+            position: static !important;
+            left: auto !important;
+            right: auto !important;
+            top: auto !important;
+            margin-top: 0 !important;
+            transform: none !important;
+        }
+
+        /* Responsive knowledge */
+        @media (max-width: 992px) {
+            .tws-fms-knowledge__slider {
+                padding-left: var(--tws-space-32);
+            }
+
+            .tws-fms-knowledge-card {
+                height: auto;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .tws-fms-knowledge__heading-wrap {
+                padding: 0 var(--tws-space-16);
+            }
+
+            .tws-fms-knowledge__heading {
+                font-size: 32px;
+            }
+
+            .tws-fms-knowledge__slider {
+                padding-left: var(--tws-space-16);
+            }
+
+            .tws-fms-knowledge-card,
+            .tws-fms-knowledge__slider .swiper-slide {
+                width: 100% !important;
+            }
+        }
+
+        /* =========================================================
+   SECTION 5: Benefits of the Tawasul System (timeline)
+   ========================================================= */
+        .tws-benefits-section {
+            padding: var(--tws-space-72) var(--tws-space-16);
+            display: flex;
+            justify-content: center;
+        }
+
+        .tws-benefits-inner {
+            width: 100%;
+            max-width: var(--tws-page);
+        }
+
+        @media (min-width: 1200px) {
+            .tws-benefits-section {
+                padding-left: var(--tws-space-78);
+                padding-right: var(--tws-space-78);
+            }
+        }
+
+        .tws-benefits-title {
+            width: 100%;
+            max-width: var(--tws-container);
+            margin: 0 auto var(--tws-space-64) auto;
+            text-align: center;
+            font-weight: 500;
+            font-size: var(--tws-h2);
+            line-height: var(--tws-lh-110);
+            letter-spacing: var(--tws-track-tight);
+            text-transform: capitalize;
+            color: var(--tws-black);
+        }
+
+        .tws-benefits-title .highlight {
+            color: var(--tws-brand);
+        }
+
+        .tws-benefits-grid {
+            width: 100%;
+            max-width: var(--tws-container);
+            margin: 0 auto;
+        }
+
+        .tws-benefits-row {
+            margin-bottom: var(--tws-space-64);
+        }
+
+        .tws-benefits-row:last-of-type {
+            margin-bottom: 0;
+        }
+
+        .tws-benefits-line {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            gap: var(--tws-space-30);
+            margin-bottom: var(--tws-space-40);
+            align-items: center;
+        }
+
+        .tws-benefits-line::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 21%;
+            top: 50%;
+            height: 1px;
+            background-color: var(--tws-brand);
+            transform: translateY(-50%);
+        }
+
+        .tws-line-segment {
+            flex: 0 0 calc((100% - 90px) / 4);
+            max-width: calc((100% - 90px) / 4);
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .tws-benefit-icon {
+            position: relative;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-color: var(--tws-brand);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+            transform-origin: center;
+            transition: transform 0.35s var(--tws-ease), box-shadow 0.35s var(--tws-ease);
+        }
+
+        .tws-benefit-icon::before {
+            content: "";
+            display: block;
+            width: 14px;
+            height: 8px;
+            border-left: 2px solid #eeeeee;
+            border-bottom: 2px solid #eeeeee;
+            transform: rotate(-45deg) translateY(-1px);
+        }
+
+        .tws-benefit-icon--img::before {
+            display: none;
+        }
+
+        .tws-benefit-icon__img {
+            width: 32px;
+            height: 32px;
+            display: block;
+            object-fit: contain;
+            pointer-events: none;
+        }
+
+        .tws-benefits-cards {
+            display: flex;
+            justify-content: space-between;
+            gap: var(--tws-space-30);
+            flex-wrap: nowrap;
+        }
+
+        .tws-benefit-card {
+            flex: 0 0 calc((100% - 90px) / 4);
+            max-width: calc((100% - 90px) / 4);
+            transition: transform 0.35s var(--tws-ease), box-shadow 0.35s var(--tws-ease);
+            border-radius: var(--tws-radius-8);
+        }
+
+        .tws-benefit-title {
+            margin: 0 0 var(--tws-space-16) 0;
+            font-size: var(--tws-h3);
+            line-height: var(--tws-lh-130);
+            font-weight: 700;
+            color: var(--tws-text);
+        }
+
+        .tws-benefit-text {
+            margin: 0;
+            font-size: var(--tws-body);
+            line-height: var(--tws-lh-150);
+            font-weight: 500;
+            color: var(--tws-muted);
+        }
+
+        /* hover/focus icon accent */
+        .tws-benefit-card:hover .tws-benefit-icon,
+        .tws-benefit-card:focus-within .tws-benefit-icon {
+            transform: scale(1.08);
+            box-shadow: 0 0 0 6px rgba(0, 167, 56, 0.18);
+        }
+
+        .tws-benefit-mobile-icon {
+            display: none;
+        }
+
+        /* Tablet & Mobile timeline mode (your behavior preserved) */
+        @media (max-width: 1024px) {
+            .tws-benefits-title {
+                font-size: var(--tws-h2-tablet);
+            }
+
+            .tws-benefits-row {
+                margin-bottom: 0;
+            }
+
+            .tws-benefits-line {
+                display: none;
+            }
+
+            .tws-benefits-cards {
+                flex-direction: column;
+                gap: var(--tws-space-24);
+            }
+
+            .tws-benefit-card {
+                position: relative;
+                flex: 0 0 100%;
+                max-width: 100%;
+                padding-left: 56px;
+                padding-bottom: var(--tws-space-10);
+            }
+
+            .tws-benefit-card::before {
+                content: "";
+                position: absolute;
+                left: 14px;
+                top: 26px;
+                bottom: -26px;
+                width: 1px;
+                background-color: var(--tws-brand);
+            }
+
+            .tws-benefit-mobile-icon {
+                display: flex;
+                position: absolute;
+                top: 4px;
+                left: 0;
+                width: 26px;
+                height: 26px;
+                border-radius: 50%;
+                background-color: var(--tws-brand);
+                align-items: center;
+                justify-content: center;
+            }
+
+            .tws-benefit-mobile-icon::before {
+                content: "";
+                width: 11px;
+                height: 7px;
+                border-left: 2px solid var(--tws-white);
+                border-bottom: 2px solid var(--tws-white);
+                transform: rotate(-45deg) translateY(-1px);
+            }
+
+            .tws-benefits-grid .tws-benefit-card:last-of-type::before {
+                display: none;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .tws-benefits-title {
+                font-size: var(--tws-h2-mobile);
+                margin-bottom: var(--tws-space-48);
+            }
+
+            .tws-benefits-row {
+                margin-bottom: 0;
+            }
+
+            .tws-benefits-line {
+                display: none;
+            }
+
+            .tws-benefits-cards {
+                flex-direction: column;
+                gap: var(--tws-space-20);
+            }
+
+            .tws-benefit-card {
+                position: relative;
+                flex: 0 0 100%;
+                max-width: 100%;
+                padding-left: 48px;
+                padding-bottom: var(--tws-space-8);
+            }
+
+            .tws-benefit-card::before {
+                content: "";
+                position: absolute;
+                left: 12px;
+                top: 24px;
+                bottom: -24px;
+                width: 1px;
+                background-color: var(--tws-brand);
+            }
+
+            .tws-benefit-mobile-icon {
+                display: flex;
+                position: absolute;
+                top: 4px;
+                left: 0;
+                width: 24px;
+                height: 24px;
+                border-radius: 50%;
+                background-color: var(--tws-brand);
+                align-items: center;
+                justify-content: center;
+            }
+
+            .tws-benefit-mobile-icon::before {
+                content: "";
+                width: 10px;
+                height: 6px;
+                border-left: 2px solid var(--tws-white);
+                border-bottom: 2px solid var(--tws-white);
+                transform: rotate(-45deg) translateY(-1px);
+            }
+
+            .tws-benefits-grid .tws-benefit-card:last-of-type::before {
+                display: none;
+            }
+        }
+
+        /* PNG-only mode & line masking (kept) */
+        .tws-benefit-icon.tws-benefit-icon--img,
+        .tws-benefit-mobile-icon {
+            background: transparent !important;
+            border-radius: 0 !important;
+        }
+
+        .tws-benefit-icon::before,
+        .tws-benefit-mobile-icon::before {
+            content: none !important;
+            display: none !important;
+        }
+
+        .tws-benefit-icon.tws-benefit-icon--img {
+            position: relative;
+            width: 32px;
+            height: 32px;
+            background: transparent !important;
+            border-radius: 0 !important;
+            z-index: 2;
+        }
+
+        .tws-benefit-icon.tws-benefit-icon--img::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 32px;
+            height: 32px;
+            transform: translate(-50%, -50%);
+            background: var(--tws-white);
+            border-radius: 999px;
+            z-index: -1;
+        }
+
+        .tws-benefit-icon.tws-benefit-icon--img .tws-benefit-icon__img {
+            position: relative;
+            z-index: 1;
+        }
+
+        .tws-benefit-mobile-icon {
+            position: absolute;
+            background: transparent !important;
+            border-radius: 0 !important;
+            z-index: 2;
+        }
+
+        .tws-benefit-mobile-icon::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 40px;
+            height: 40px;
+            transform: translate(-50%, -50%);
+            background: var(--tws-white);
+            border-radius: 999px;
+            z-index: -1;
+        }
+
+        .tws-benefit-mobile-icon img {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* =========================================================
+   SECTION 6: Fleet Types (kept namespaced)
+   ========================================================= */
+        .tws-fleet-types,
+        .tws-fleet-types * {
+            box-sizing: border-box !important;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .tws-fleet-types {
+            /* section-level overrides (still uses global tokens) */
+            --tws-fleet-bg: var(--tws-soft);
+            --tws-fleet-card: var(--tws-white);
+            --tws-fleet-text: var(--tws-text);
+            --tws-fleet-muted: var(--tws-muted);
+            --tws-fleet-max: var(--tws-container);
+
+            font-family: var(--tws-font) !important;
+            color: var(--tws-fleet-text) !important;
+            background: var(--tws-fleet-bg) !important;
+            padding: var(--tws-space-72) 0px !important;
+            min-height: 801px !important;
+            /* figma desktop height */
+        }
+
+        .tws-fleet-types__inner {
+            max-width: var(--tws-fleet-max) !important;
+            margin: 0 auto !important;
+            display: grid !important;
+            gap: var(--tws-space-48) !important;
+        }
+
+        .tws-fleet-types__title {
+            margin: 0 !important;
+            text-align: center !important;
+            font-weight: 500 !important;
+            font-size: var(--tws-h2) !important;
+            line-height: var(--tws-lh-110) !important;
+            letter-spacing: var(--tws-track-tight) !important;
+            color: var(--tws-fleet-text) !important;
+            text-transform: capitalize !important;
+        }
+
+        .tws-fleet-types__grid {
+            display: grid !important;
+            gap: var(--tws-space-30) !important;
+            grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        }
+
+        .tws-fleet-card {
+            background: var(--tws-fleet-card) !important;
+            padding: var(--tws-space-30) !important;
+            display: grid !important;
+            gap: var(--tws-space-48) !important;
+            min-height: 263px !important;
+            align-content: start !important;
+
+            border: 1px solid rgba(30, 30, 30, 0.06) !important;
+            box-shadow: var(--tws-shadow-card) !important;
+            transition: transform var(--tws-dur-260) ease, box-shadow var(--tws-dur-260) ease, border-color var(--tws-dur-260) ease !important;
+            will-change: transform;
+        }
+
+        .tws-fleet-card:hover {
+            transform: translateY(-6px) !important;
+            box-shadow: var(--tws-shadow-card-hover) !important;
+            border-color: rgba(0, 167, 56, 0.28) !important;
+        }
+
+        .tws-fleet-card:focus-within {
+            transform: translateY(-4px) !important;
+            border-color: rgba(0, 167, 56, 0.35) !important;
+            box-shadow: var(--tws-shadow-card-hover) !important;
+            outline: none !important;
+        }
+
+        .tws-fleet-card__icon {
+            width: 60px !important;
+            height: 60px !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+        }
+
+        .tws-fleet-card__content {
+            display: grid !important;
+            gap: var(--tws-space-16) !important;
+        }
+
+        .tws-fleet-card__title {
+            margin: 0 !important;
+            font-weight: 700 !important;
+            font-size: var(--tws-h3) !important;
+            line-height: var(--tws-lh-130) !important;
+            color: var(--tws-fleet-text) !important;
+        }
+
+        .tws-fleet-card__desc {
+            margin: 0 !important;
+            font-weight: 500 !important;
+            font-size: var(--tws-body) !important;
+            line-height: var(--tws-lh-150) !important;
+            color: var(--tws-fleet-muted) !important;
+            max-width: 310px !important;
+        }
+
+        /* Fleet Types responsive */
+        @media (max-width: 1024px) {
+            .tws-fleet-types {
+                padding: 64px 40px !important;
+                min-height: unset !important;
+            }
+
+            .tws-fleet-types__title {
+                font-size: 40px !important;
+            }
+
+            .tws-fleet-types__grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+            }
+
+            .tws-fleet-card {
+                min-height: unset !important;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .tws-fleet-types {
+                padding: 56px 16px !important;
+                min-height: unset !important;
+            }
+
+            .tws-fleet-types__title {
+                font-size: 32px !important;
+                letter-spacing: -0.02em !important;
+            }
+
+            .tws-fleet-types__grid {
+                grid-template-columns: 1fr !important;
+            }
+
+            .tws-fleet-card {
+                gap: 28px !important;
+                padding: 22px !important;
+            }
+
+            .tws-fleet-card__desc {
+                max-width: 100% !important;
+            }
+        }
+
+        /* Fleet Types reveal animations (same behavior, tokenized) */
+        .tws-js .tws-fleet-types__title,
+        .tws-js .tws-fleet-card {
+            opacity: 0;
+            transform: translateY(18px);
+            filter: blur(2px);
+            transition: opacity var(--tws-dur-650) ease, transform var(--tws-dur-650) ease, filter var(--tws-dur-650) ease;
+        }
+
+        .tws-js .tws-fleet-types__title.tws-in,
+        .tws-js .tws-fleet-card.tws-in {
+            opacity: 1;
+            transform: translateY(0);
+            filter: blur(0);
+        }
+
+        .tws-fleet-card__icon img {
+            transform: translateY(4px) scale(0.98);
+            transition: transform var(--tws-dur-650) ease;
+            will-change: transform;
+        }
+
+        .tws-fleet-card.tws-in .tws-fleet-card__icon img {
+            transform: translateY(0) scale(1);
+        }
+
+        /* Respect reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+
+            .tws-fleet-card,
+            .tws-js .tws-fleet-types__title,
+            .tws-js .tws-fleet-card,
+            .tws-fleet-card__icon img {
+                transition: none !important;
+                animation: none !important;
+                transform: none !important;
+                filter: none !important;
+                opacity: 1 !important;
+            }
+        }
+
+        /* =========================================================
+   SECTION 7: School Bus Tracking (Accordion) — tokenized
+   - Keeps original classes intact (.tws-fms1844 ...)
+   - Uses global design tokens from :root for maintainability
+   ========================================================= */
+
+        .tws-fms1844,
+        .tws-fms1844 * {
+            box-sizing: border-box;
+        }
+
+        .tws-fms1844 {
+            font-family: var(--tws-font);
+            color: var(--tws-text);
+            background: var(--tws-white);
+        }
+
+        /* Outer section (Frame 2147231844) */
+        .tws-fms1844 {
+            padding: var(--tws-space-72) 0 var(--tws-space-48);
+        }
+
+        /* Wrap */
+        .tws-fms1844 .tws-wrap {
+            max-width: var(--tws-container);
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: var(--tws-space-72);
+        }
+
+        /* Reset typography spacing inside this section (CS-Cart safe) */
+        .tws-fms1844 h1,
+        .tws-fms1844 h2,
+        .tws-fms1844 h3,
+        .tws-fms1844 p {
+            margin: 0;
+        }
+
+        /* Header block */
+        .tws-fms1844 .tws-header {
+            display: flex;
+            gap: var(--tws-space-130);
+            align-items: flex-start;
+        }
+
+        .tws-fms1844 .tws-title {
+            width: 470px;
+            font-size: var(--tws-h2);
+            font-weight: 500;
+            line-height: var(--tws-lh-130);
+            color: var(--tws-text);
+        }
+
+        .tws-fms1844 .tws-header-text {
+            width: 570px;
+            display: flex;
+            flex-direction: column;
+            gap: var(--tws-space-24);
+        }
+
+        .tws-fms1844 .tws-header-text .tws-lead {
+            font-size: var(--tws-body);
+            font-weight: 500;
+            line-height: var(--tws-lh-150);
+            color: var(--tws-text);
+        }
+
+        .tws-fms1844 .tws-header-text .tws-sub {
+            font-size: var(--tws-body);
+            font-weight: 500;
+            line-height: var(--tws-lh-150);
+            color: var(--tws-muted);
+        }
+
+        /* Divider */
+        .tws-fms1844 .tws-divider {
+            height: 2px;
+            background: #EEEEEE;
+            width: 100%;
+        }
+
+        /* Content layout */
+        .tws-fms1844 .tws-content {
+            display: flex;
+            gap: var(--tws-space-130);
+        }
+
+        /* Left column */
+        .tws-fms1844 .tws-left {
+            width: 470px;
+            display: flex;
+            flex-direction: column;
+            gap: var(--tws-space-30);
+        }
+
+        .tws-fms1844 .tws-left h2 {
+            font-size: var(--tws-h2);
+            font-weight: 500;
+            line-height: var(--tws-lh-110);
+            letter-spacing: var(--tws-track-tight);
+            color: var(--tws-text);
+        }
+
+        .tws-fms1844 .tws-highlight {
+            font-size: 20px;
+            font-weight: 700;
+            line-height: var(--tws-lh-130);
+            color: var(--tws-brand);
+            text-transform: capitalize;
+        }
+
+        .tws-fms1844 .tws-desc {
+            font-size: 14px;
+            font-weight: 500;
+            line-height: var(--tws-lh-150);
+            color: var(--tws-muted);
+            text-transform: capitalize;
+        }
+
+        .tws-fms1844 .tws-image {
+            width: 100%;
+            height: 298px;
+            background: #F3F3F3;
+            overflow: hidden;
+        }
+
+        .tws-fms1844 .tws-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Right column (Accordion) */
+        .tws-fms1844 .tws-right {
+            width: 570px;
+            display: flex;
+            flex-direction: column;
+            gap: var(--tws-space-24);
+        }
+
+        .tws-fms1844 .tws-acc-item {
+            border-bottom: 1px solid #E8E8E8;
+            padding-bottom: var(--tws-space-24);
+        }
+
+        .tws-fms1844 .tws-acc-btn {
+            width: 100%;
+            background: transparent;
+            border: 0;
+            padding: 0;
+            cursor: pointer;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: center;
+            gap: var(--tws-space-16);
+            text-align: left;
+        }
+
+        .tws-fms1844 .tws-acc-title {
+            font-size: var(--tws-h3);
+            font-weight: 700;
+            line-height: var(--tws-lh-130);
+            color: var(--tws-text);
+        }
+
+        .tws-fms1844 .tws-chevron {
+            width: 30px;
+            height: 30px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 999px;
+            color: var(--tws-brand);
+            transition: transform var(--tws-dur-260) ease;
+        }
+
+        .tws-fms1844 .tws-chevron svg {
+            width: 22px;
+            height: 22px;
+            display: block;
+        }
+
+        /* Collapsible panel */
+        .tws-fms1844 .tws-acc-panel {
+            overflow: hidden;
+            max-height: 0;
+            opacity: 0;
+            transform: translateY(-4px);
+            transition: max-height .35s ease, opacity .25s ease, transform .25s ease;
+        }
+
+        .tws-fms1844 .tws-acc-body {
+            padding-top: 12px;
+            font-size: var(--tws-body);
+            font-weight: 500;
+            line-height: var(--tws-lh-150);
+            color: var(--tws-muted);
+        }
+
+        .tws-fms1844 .tws-acc-item.is-open .tws-acc-panel {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .tws-fms1844 .tws-acc-item.is-open .tws-chevron {
+            transform: rotate(180deg);
+        }
+
+        /* Focus polish */
+        .tws-fms1844 .tws-acc-btn:focus-visible {
+            outline: 2px solid rgba(0, 167, 56, .35);
+            outline-offset: 6px;
+            border-radius: var(--tws-radius-8);
+        }
+
+        /* Subtle scroll reveal (scoped) */
+        .tws-fms1844 .tws-reveal {
+            opacity: 0;
+            transform: translateY(16px);
+            transition: opacity .55s ease, transform .55s ease;
+        }
+
+        .tws-fms1844 .tws-reveal.is-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .tws-fms1844 {
+                padding: 64px 40px 48px;
+            }
+
+            .tws-fms1844 .tws-header,
+            .tws-fms1844 .tws-content {
+                flex-direction: column;
+                gap: var(--tws-space-48);
+            }
+
+            .tws-fms1844 .tws-title,
+            .tws-fms1844 .tws-header-text,
+            .tws-fms1844 .tws-left,
+            .tws-fms1844 .tws-right {
+                width: 100%;
+            }
+
+            .tws-fms1844 .tws-image {
+                height: auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .tws-fms1844 {
+                padding: 56px 20px 40px;
+            }
+
+            .tws-fms1844 .tws-wrap {
+                gap: 56px;
+            }
+
+            .tws-fms1844 .tws-title,
+            .tws-fms1844 .tws-left h2 {
+                font-size: 32px;
+            }
+
+            .tws-fms1844 .tws-acc-title {
+                font-size: 20px;
+            }
+
+            .tws-fms1844 .tws-acc-body {
+                font-size: 15px;
+            }
+        }
+
+        /* Respect reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            .tws-fms1844 .tws-reveal {
+                transition: none !important;
+                transform: none !important;
+                opacity: 1 !important;
+            }
+
+            .tws-fms1844 .tws-acc-panel {
+                transition: none !important;
+            }
+
+            .tws-fms1844 .tws-chevron {
+                transition: none !important;
+            }
+        }
+
+
+        /* =========================================================
+   SECTION X: The Benefits (Green Timeline)
+   - Merged from benifits.html
+   - Uses global tokens for maintainability
+   ========================================================= */
+        .tws-benefits {
+            --tws-benefits-bg: var(--tws-brand);
+            --tws-benefits-white: var(--tws-white);
+            --tws-benefits-dot: 24px;
+            --tws-benefits-dot-inner: 13.0909px;
+            --tws-benefits-stem-h: 41px;
+            --tws-benefits-stem-w: 2px;
+            --tws-benefits-line-h: 2px;
+
+            background: var(--tws-benefits-bg);
+            padding: var(--tws-space-72) 0px;
+            box-sizing: border-box;
+        }
+
+        .tws-benefits__inner {
+            max-width: var(--tws-container);
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: var(--tws-space-48);
+        }
+
+        .tws-benefits__title {
+            margin: 0;
+            color: var(--tws-benefits-white);
+            font-family: var(--tws-font);
+            font-weight: 500 !important;
+            font-size: var(--tws-h2) !important;
+            line-height: var(--tws-lh-110);
+            letter-spacing: var(--tws-track-tight);
+            text-align: center;
+        }
+
+        .tws-benefits__timeline {
+            position: relative;
+        }
+
+        .tws-benefits__line {
+            height: var(--tws-benefits-line-h);
+            background: var(--tws-benefits-white);
+            width: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .tws-benefits__items {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            width: 100%;
+        }
+
+        .tws-benefits__item {
+            flex: 1 1 0;
+            min-width: 0;
+            padding: var(--tws-space-32) var(--tws-space-24);
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: var(--tws-space-10);
+            position: relative;
+        }
+
+        .tws-benefits__marker {
+            position: absolute;
+            top: calc((var(--tws-benefits-dot) / -2) + (var(--tws-benefits-line-h) / 2));
+            left: 50%;
+            transform: translateX(-50%);
+            width: var(--tws-benefits-dot);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            pointer-events: none;
+        }
+
+        .tws-benefits__dot {
+            width: var(--tws-benefits-dot);
+            height: var(--tws-benefits-dot);
+            background: var(--tws-benefits-white);
+            position: relative;
+            z-index: 1;
+            border-radius: 999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+        }
+
+        .tws-benefits__dot-inner {
+            width: var(--tws-benefits-dot-inner);
+            height: var(--tws-benefits-dot-inner);
+            background: var(--tws-benefits-bg);
+            border-radius: 999px;
+            flex: 0 0 auto;
+        }
+
+        .tws-benefits__stem {
+            width: var(--tws-benefits-stem-w);
+            height: var(--tws-benefits-stem-h);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+            border-radius: 2px;
+        }
+
+        .tws-benefits__text {
+            margin: 0;
+            color: var(--tws-benefits-white);
+            font-family: var(--tws-font);
+            font-weight: 500;
+            font-size: 20px;
+            line-height: var(--tws-lh-130);
+            padding-top: 60px;
+        }
+
+        @media (max-width: 1200px) {
+            .tws-benefits {
+                padding: var(--tws-space-72) var(--tws-space-48);
+            }
+        }
+
+        /* Tablet/Mobile: bullet list with check icon (space saving) */
+        @media (max-width: 900px) {
+            .tws-benefits {
+                padding: var(--tws-space-56) var(--tws-space-24);
+            }
+
+            .tws-benefits__title {
+                font-size: var(--tws-h2-tablet);
+                line-height: 1.15;
+            }
+
+            .tws-benefits__line {
+                display: none;
+            }
+
+            .tws-benefits__timeline {
+                position: static;
+            }
+
+            .tws-benefits__items {
+                flex-direction: column;
+                gap: var(--tws-space-20);
+                position: static;
+            }
+
+            .tws-benefits__item {
+                width: 100%;
+                padding: 0;
+                display: flex;
+                flex-direction: row;
+                align-items: flex-start;
+                text-align: left;
+                gap: var(--tws-space-16);
+            }
+
+            .tws-benefits__marker {
+                position: static;
+                transform: none;
+                width: auto;
+                pointer-events: none;
+                z-index: 1;
+            }
+
+            .tws-benefits__dot {
+                width: 24px !important;
+                height: 24px !important;
+                border-radius: 999px;
+                background: #FFFFFF !important;
+                display: flex !important;
+                align-items: center;
+                justify-content: center;
+                box-sizing: border-box;
+                position: relative;
+            }
+
+            /* Draw the check using CSS (avoids data-URI/CSP issues) */
+            .tws-benefits__dot::after {
+                content: "";
+                width: 10px;
+                height: 6px;
+                border-left: 2.6px solid var(--tws-benefits-bg);
+                border-bottom: 2.6px solid var(--tws-benefits-bg);
+                transform: rotate(-45deg) translateY(-1px);
+                display: block;
+            }
+
+            .tws-benefits__dot-inner {
+                display: none !important;
+            }
+
+            .tws-benefits__stem {
+                display: none !important;
+            }
+
+            .tws-benefits__text {
+                padding-top: 0;
+                margin: 0;
+                font-size: 18px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .tws-benefits__title {
+                font-size: var(--tws-h2-mobile);
+            }
+        }
+
+        /* Scroll reveal (scoped) */
+        .tws-benefits.tws-reveal {
+            overflow: hidden;
+        }
+
+        .tws-benefits.tws-reveal .tws-benefits__title,
+        .tws-benefits.tws-reveal .tws-benefits__item {
+            opacity: 0;
+            transform: translateY(18px);
+            transition: opacity 700ms var(--tws-ease), transform 700ms var(--tws-ease);
+            will-change: opacity, transform;
+        }
+
+        .tws-benefits.tws-reveal .tws-benefits__line {
+            transform-origin: left center;
+            transform: scaleX(0);
+            transition: transform 900ms var(--tws-ease);
+            will-change: transform;
+        }
+
+        .tws-benefits.tws-reveal .tws-benefits__dot {
+            transform: scale(0.85);
+            transition: transform 700ms var(--tws-ease);
+            will-change: transform;
+        }
+
+        .tws-benefits.tws-inview .tws-benefits__title,
+        .tws-benefits.tws-inview .tws-benefits__item {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .tws-benefits.tws-inview .tws-benefits__line {
+            transform: scaleX(1);
+        }
+
+        .tws-benefits.tws-inview .tws-benefits__dot {
+            transform: scale(1);
+        }
+
+        .tws-benefits.tws-reveal .tws-benefits__item {
+            transition-delay: var(--tws-delay, 0ms);
+        }
+
+        .tws-benefits.tws-reveal .tws-benefits__dot {
+            transition-delay: calc(var(--tws-delay, 0ms) + 120ms);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            .tws-benefits.tws-reveal .tws-benefits__title,
+            .tws-benefits.tws-reveal .tws-benefits__item,
+            .tws-benefits.tws-reveal .tws-benefits__line,
+            .tws-benefits.tws-reveal .tws-benefits__dot {
+                transition: none !important;
+                transform: none !important;
+                opacity: 1 !important;
+            }
+        }
+
+
+        /* =========================================================
+   TawasulCom – Personal Tracking (Last Section)
+   - Scoped styles (won't clash with other sections)
+   - Uses global tokens from :root
+   ========================================================= */
+
+        .twscom-section {
+            background: var(--tws-soft);
+            padding: var(--tws-space-72) 0;
+        }
+
+        .twscom-container {
+            max-width: var(--tws-container);
+            margin: 0 auto;
+            /* padding: 0 var(--tws-space-135); */
+            display: flex;
+            flex-direction: column;
+            gap: var(--tws-space-48);
+        }
+
+        .twscom-row {
+            display: grid;
+            grid-template-columns: 570px 470px;
+            gap: var(--tws-space-130);
+            align-items: center;
+            grid-template-areas: "copy image";
+        }
+
+        .twscom-row--reverse {
+            grid-template-columns: 470px 570px;
+            grid-template-areas: "image copy";
+        }
+
+        .twscom-copy {
+            grid-area: copy;
+            display: flex;
+            flex-direction: column;
+            gap: var(--tws-space-24);
+            max-width: 570px;
+        }
+
+        .twscom-image {
+            grid-area: image;
+            width: 470px;
+            height: 470px;
+            overflow: hidden;
+            justify-self: end;
+            /* border-radius: var(--tws-radius-8); */
+        }
+
+        .twscom-row--reverse .twscom-image {
+            justify-self: start;
+        }
+
+        .twscom-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .twscom-title {
+            margin: 0;
+            font-weight: 500 !important;
+            font-size: var(--tws-h2) !important;
+            line-height: var(--tws-lh-110);
+            letter-spacing: var(--tws-track-tight);
+            color: var(--tws-text);
+            text-transform: capitalize;
+        }
+
+        .twscom-title .twscom-green {
+            color: var(--tws-brand);
+        }
+
+        .twscom-body {
+            margin: 0;
+            font-weight: 500;
+            font-size: var(--tws-body);
+            line-height: var(--tws-lh-150);
+            color: var(--tws-muted);
+        }
+
+        .twscom-features {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: var(--tws-space-12);
+        }
+
+        .twscom-feature {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--tws-space-16);
+        }
+
+        .twscom-iconImg {
+            width: 24px;
+            height: 24px;
+            flex: 0 0 24px;
+            margin-top: 2px;
+            display: block;
+            object-fit: contain;
+        }
+
+        .twscom-feature p {
+            margin: 0;
+            font-weight: 500;
+            font-size: 18px;
+            line-height: var(--tws-lh-150);
+            color: var(--tws-muted);
+        }
+
+        /* Tablet: keep same 2-column layout as desktop, just reduce side padding + gap */
+        @media (max-width: 1024px) {
+            .twscom-container {
+                padding: 0 var(--tws-space-40);
+            }
+
+            .twscom-row {
+                grid-template-columns: 1fr 1fr;
+                gap: var(--tws-space-64);
+                grid-template-areas: "copy image";
+            }
+
+            .twscom-row--reverse {
+                grid-template-columns: 1fr 1fr;
+                gap: var(--tws-space-64);
+                grid-template-areas: "image copy";
+            }
+
+            .twscom-image {
+                width: 100%;
+                max-width: 470px;
+                height: auto;
+                aspect-ratio: 1 / 1;
+            }
+
+            .twscom-title {
+                font-size: var(--tws-h2-tablet);
+            }
+        }
+
+        /* Mobile: image always on top, single column */
+        @media (max-width: 767px) {
+            .twscom-section {
+                padding: var(--tws-space-56) 0;
+            }
+
+            .twscom-container {
+                padding: 0 var(--tws-space-20);
+                gap: var(--tws-space-40);
+            }
+
+            .twscom-row,
+            .twscom-row--reverse {
+                grid-template-columns: 1fr;
+                gap: var(--tws-space-18);
+                grid-template-areas:
+                    "image"
+                    "copy";
+            }
+
+            .twscom-image {
+                width: 100%;
+                max-width: none;
+                border-radius: var(--tws-radius-8);
+                aspect-ratio: 1 / 1;
+            }
+
+            .twscom-title {
+                font-size: 32px;
+            }
+
+            .twscom-feature p {
+                font-size: 16px;
+            }
+        }
+    </style>
+    <style>
+        /* =========================
+       TawasulFMS – Advantages
+       ========================= */
+        :root {
+            --tws-green: #0AA84F;
+            --tws-text: #1E1E1E;
+            --tws-line: #E8E8E8;
+
+            --pad-y: 72px;
+            --pad-x: 135px;
+            --gap: 48px;
+
+            --card-pad: 30px;
+            --card-gap: 24px;
+
+            --title-size: 48px;
+            --title-lh: 1.1;
+            --title-letter: -0.03em;
+
+            --label-size: 16px;
+            --label-lh: 1.1;
+        }
+
+        /* Page demo only (safe to remove in CS-Cart) */
+        body {
+            margin: 0;
+            background: #fff;
+            color: var(--tws-text);
+            font-family: "Satoshi", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+        }
+
+        .tws-advantages {
+            background: #fff;
+            padding: var(--pad-y) 0px;
+        }
+
+        .tws-advantages__inner {
+            max-width: 1170px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .tws-advantages__title {
+            margin: 0;
+            text-align: center;
+            font-weight: 500 !important;
+            font-size: var(--title-size) !important;
+            line-height: var(--title-lh);
+            letter-spacing: var(--title-letter);
+            text-transform: capitalize;
+
+            margin-bottom: var(--gap) !important;
+        }
+
+        .tws-advantages__title .tws-green {
+            color: var(--tws-green);
+        }
+
+        /* ====== Grids ====== */
+        .tws-adv-grid,
+        .tws-adv-grid--last {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
+
+        /* First 15 items (3 rows x 5 cols in desktop) */
+        .tws-adv-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 0;
+        }
+
+        /* Last row (3 items centered) */
+        .tws-adv-last-wrap {
+            border-top: none;
+            padding-top: 0;
+            /* keeps the line tight like Figma */
+            display: flex;
+            justify-content: center;
+        }
+
+        .tws-adv-grid--last {
+            width: 702px;
+            /* 234 * 3 */
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+        }
+
+        /* ====== Card ====== */
+        .tws-adv-item {
+            padding: var(--card-pad);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: var(--card-gap);
+            text-align: center;
+
+            border-right: 1px solid var(--tws-line);
+            border-bottom: 1px solid var(--tws-line);
+        }
+
+        .tws-adv-item__label {
+            margin: 0;
+            font-size: var(--label-size);
+            line-height: var(--label-lh);
+            font-weight: 700;
+            text-transform: capitalize;
+        }
+
+        .tws-adv-item__icon {
+            width: 56px;
+            height: 56px;
+            display: grid;
+            place-items: center;
+        }
+
+        .tws-adv-item__icon svg {
+            width: 56px;
+            height: 56px;
+            display: block;
+        }
+
+        /* Remove right border on last column (desktop 5 cols) */
+        .tws-adv-grid .tws-adv-item:nth-child(5n) {
+            border-right: none;
+        }
+
+        /* Last row: only inner dividers (no outer border) */
+        .tws-adv-grid--last .tws-adv-item {
+            border-bottom: none;
+        }
+
+        .tws-adv-grid--last .tws-adv-item:nth-child(3n) {
+            border-right: none;
+        }
+
+        /* ====== Responsive ====== */
+        @media (max-width: 1200px) {
+            :root {
+                --pad-x: 32px;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            :root {
+                --title-size: 40px;
+                --pad-y: 56px;
+                --gap: 40px;
+            }
+
+            .tws-adv-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .tws-adv-grid .tws-adv-item {
+                border-right: 1px solid var(--tws-line);
+            }
+
+            .tws-adv-grid .tws-adv-item:nth-child(5n) {
+                border-right: 1px solid var(--tws-line);
+            }
+
+            /* reset */
+            .tws-adv-grid .tws-adv-item:nth-child(3n) {
+                border-right: none;
+            }
+
+            .tws-adv-grid--last {
+                width: 100%;
+            }
+
+            .tws-adv-last-wrap {
+                justify-content: stretch;
+            }
+        }
+
+        @media (max-width: 640px) {
+            :root {
+                --title-size: 32px;
+                --pad-y: 48px;
+                --gap: 32px;
+                --card-pad: 22px;
+            }
+
+            .tws-adv-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            /* FIX: remove empty grid cell on mobile */
+            /* .tws-adv-grid .tws-adv-item:last-child {
+                grid-column: 1 / -1;
+            } */
+
+            .tws-adv-grid .tws-adv-item:nth-child(3n) {
+                border-right: 1px solid var(--tws-line);
+            }
+
+            /* reset */
+            .tws-adv-grid .tws-adv-item:nth-child(2n) {
+                border-right: none;
+            }
+
+            /* Last 3 items: 2 columns on mobile, 3rd item centered on next row */
+            .tws-adv-last-wrap {
+                justify-content: stretch;
+                border-top: none;
+            }
+
+            .tws-adv-grid--last {
+                width: 100%;
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .tws-adv-grid--last .tws-adv-item:nth-child(2n) {
+                border-right: none;
+            }
+
+            .tws-adv-grid--last .tws-adv-item:nth-child(3) {
+                grid-column: 1 / -1;
+                justify-self: center;
+            }
+        }
+
+
+        /* Accessibility focus */
+        .tws-adv-item:focus-within {
+            outline: 2px solid rgba(10, 168, 79, .35);
+            outline-offset: -2px;
+        }
+
+        /* =========================
+           Effects (hover + scroll effect)
+           - Mobile/tablet friendly
+           - Never hides content (failsafe)
+           - Respects prefers-reduced-motion
+           ========================= */
+
+        .tws-adv-item {
+            transition: transform .25s ease, box-shadow .25s ease, background-color .25s ease;
+            will-change: transform;
+        }
+
+        /* Hover devices */
+        @media (hover:hover) and (pointer:fine) {
+            .tws-adv-item:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 18px 40px rgba(0, 0, 0, .12);
+                background: rgba(10, 168, 79, .03);
+            }
+
+            .tws-adv-item:hover .tws-adv-item__icon img {
+                transform: scale(1.04);
+                filter: saturate(1.05);
+            }
+        }
+
+        /* Touch devices tap feedback */
+        @media (hover:none) and (pointer:coarse) {
+            .tws-adv-item:active {
+                transform: translateY(-2px);
+                box-shadow: 0 14px 32px rgba(0, 0, 0, .12);
+                background: rgba(10, 168, 79, .03);
+            }
+
+            .tws-adv-item:active .tws-adv-item__icon img {
+                transform: scale(1.03);
+                filter: saturate(1.05);
+            }
+        }
+
+        .tws-adv-item__icon img {
+            transition: transform .25s ease, filter .25s ease;
+            transform-origin: center;
+        }
+
+        /* Scroll effect: animate when .is-inview is added, but keep visible by default */
+        .tws-adv-item.is-inview {
+            animation: twsFadeUp .55s ease both;
+        }
+
+        @keyframes twsFadeUp {
+            from {
+                opacity: 0.001;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            .tws-adv-item,
+            .tws-adv-item__icon img {
+                transition: none !important;
+            }
+
+            .tws-adv-item.is-inview {
+                animation: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="tws-cscart-scope">
+        <!-- TawasulFMS – Top Strip -->
+        <section class="tws-fms-strip">
+            <div class="tws-fms-strip__inner">
+                <h1 class="tws-fms-strip__title">
+                    TawasulFMS
+                </h1>
+                <p class="tws-fms-strip__text">
+                    Track your fleet's activity with the Tawasul Fleet Management System.
+                    Save time, reduce fuel costs, and increase productivity.
+                </p>
+            </div>
+        </section>
+        <!-- Fleet Management Benefits -->
+        <section class="tws-fms-benefits">
+            <div class="tws-fms-benefits__inner">
+                <h2 class="tws-fms-benefits__heading" data-reveal="">
+                    Fleet <span>Management</span> Benefits
+                </h2>
+                <div class="tws-fms-benefits__grid">
+                    <!-- Card 1 -->
+                    <article class="tws-fms-benefit" data-reveal="">
+                        <div class="tws-fms-benefit__media">
+                            <img alt="Full fleet management" loading="lazy"
+                                src="https://tawasul.tech/images/TawasulTech/image/fleet-full-management.jpg" />
+                            <button aria-label="Play Full Fleet Management video" class="tws-fms-benefit__play"
+                                type="button">
+                                <span class="tws-fms-benefit__play-circle">
+                                    <span class="tws-fms-benefit__play-icon"></span>
+                                </span>
+                            </button>
+                        </div>
+                        <h3 class="tws-fms-benefit__title">Full Fleet Management</h3>
+                    </article>
+                    <!-- Card 2 -->
+                    <article class="tws-fms-benefit" data-reveal="">
+                        <div class="tws-fms-benefit__media">
+                            <img alt="Real-time monitoring and control" loading="lazy"
+                                src="https://tawasul.tech/images/TawasulTech/image/real-time-monitoring.jpg" />
+                            <button aria-label="Play Real-Time Monitoring and Control video"
+                                class="tws-fms-benefit__play" type="button">
+                                <span class="tws-fms-benefit__play-circle">
+                                    <span class="tws-fms-benefit__play-icon"></span>
+                                </span>
+                            </button>
+                        </div>
+                        <h3 class="tws-fms-benefit__title">
+                            Real-Time Monitoring and Control
+                        </h3>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <!-- Sector-Based Solutions -->
+        <section class="tws-fms-sectors">
+            <div class="tws-fms-sectors__inner">
+                <div class="tws-fms-sectors__content">
+                    <h2 class="tws-fms-sectors__heading">
+                        Sector-Based
+                        <span>Solutions</span>
+                    </h2>
+                    <p class="tws-fms-sectors__text">
+                        We want to help you care for your business. We know it's not about the type of
+                        information your company has, but about making a real difference. We have designed
+                        our products and services to provide you with insights into how your business
+                        vehicles are used, our solutions will help you reach your destination in safer and
+                        more cost-effective ways.
+                    </p>
+                </div>
+                <div class="tws-fms-sectors__image-wrap">
+                    <img alt="Sector-based fleet solutions" loading="lazy"
+                        src="https://tawasul.tech/images/TawasulTech/image/sector-based-solutions.jpg" />
+                </div>
+            </div>
+        </section>
+        <script src="https://unpkg.com/swiper@9/swiper-bundle.min.js"></script>
+        <script>
+            // Simple IntersectionObserver to reveal benefits section on scroll
+            document.addEventListener("DOMContentLoaded", function () {
+                const revealItems = document.querySelectorAll(".tws-fms-benefits [data-reveal]");
+
+                if (!("IntersectionObserver" in window) || revealItems.length === 0) {
+                    // Fallback: show all if IO not supported
+                    revealItems.forEach(el => el.classList.add("is-visible"));
+                    return;
+                }
+
+                const observer = new IntersectionObserver(
+                    (entries, obs) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                entry.target.classList.add("is-visible");
+                                obs.unobserve(entry.target);
+                            }
+                        });
+                    },
+                    {
+                        threshold: 0.2
+                    }
+                );
+
+                revealItems.forEach(el => observer.observe(el));
+            });
+        </script>
+        <!-- Knowledge Section (merged) -->
+        <section class="tws-fms-knowledge" data-reveal="">
+            <!-- Heading -->
+            <div class="tws-fms-knowledge__heading-wrap">
+                <h2 class="tws-fms-knowledge__heading">
+                    Your Knowledge Of Your Fleet Helps You<br />
+                    <span>Improve</span> Its Management
+                </h2>
+            </div>
+            <!-- Slider -->
+            <div class="tws-fms-knowledge__slider">
+                <div class="swiper tws-fms-knowledge__track">
+                    <div class="swiper-wrapper">
+                        <!-- Slide 1 -->
+                        <article class="tws-fms-knowledge-card swiper-slide" data-reveal="">
+                            <div class="tws-fms-knowledge-card__media">
+                                <img alt="Vehicle Management" loading="lazy"
+                                    src="https://tawasul.tech/images/TawasulTech/image/vehicle-management.jpg" />
+                            </div>
+                            <div class="tws-fms-knowledge-card__body">
+                                <div class="tws-fms-knowledge-card__text-group">
+                                    <h3 class="tws-fms-knowledge-card__title">Vehicle Management</h3>
+                                    <p class="tws-fms-knowledge-card__desc">
+                                        Tawasul helps you maximize the benefits of your fleet by providing and
+                                        organizing
+                                        fleet information.
+                                    </p>
+                                </div>
+                                <div class="tws-fms-knowledge-card__footer">
+                                    <a class="tws-fms-knowledge-card__link" href="#">Read More</a>
+                                    <a class="tws-fms-knowledge-card__arrow" href="#">
+                                        <img alt="Read more icon" loading="lazy"
+                                            src="https://tawasul.tech/images/TawasulTech/image/read-icon.png" />
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+                        <!-- Slide 2 -->
+                        <article class="tws-fms-knowledge-card swiper-slide" data-reveal="">
+                            <div class="tws-fms-knowledge-card__media">
+                                <img alt="Driver Management" loading="lazy"
+                                    src="https://tawasul.tech/images/TawasulTech/image/driver-management.jpg" />
+                            </div>
+                            <div class="tws-fms-knowledge-card__body">
+                                <div class="tws-fms-knowledge-card__text-group">
+                                    <h3 class="tws-fms-knowledge-card__title">Driver Management</h3>
+                                    <p class="tws-fms-knowledge-card__desc">
+                                        Get a live view of driver schedules, operating programs, and upcoming task
+                                        planning.
+                                    </p>
+                                </div>
+                                <div class="tws-fms-knowledge-card__footer">
+                                    <a class="tws-fms-knowledge-card__link" href="#">Read More</a>
+                                    <a class="tws-fms-knowledge-card__arrow" href="#">
+                                        <img alt="Read more icon" loading="lazy"
+                                            src="https://tawasul.tech/images/TawasulTech/image/read-icon.png" />
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+                        <!-- Slide 3 -->
+                        <article class="tws-fms-knowledge-card swiper-slide" data-reveal="">
+                            <div class="tws-fms-knowledge-card__media">
+                                <img alt="Assignment and Routing" loading="lazy"
+                                    src="https://tawasul.tech/images/TawasulTech/image/assignment-routing.jpg" />
+                            </div>
+                            <div class="tws-fms-knowledge-card__body">
+                                <div class="tws-fms-knowledge-card__text-group">
+                                    <h3 class="tws-fms-knowledge-card__title">Assignment and Routing</h3>
+                                    <p class="tws-fms-knowledge-card__desc">
+                                        Assists in scheduling tasks, tracking them, and determining the status of
+                                        distribution and routing for drivers.
+                                    </p>
+                                </div>
+                                <div class="tws-fms-knowledge-card__footer">
+                                    <a class="tws-fms-knowledge-card__link" href="#">Read More</a>
+                                    <a class="tws-fms-knowledge-card__arrow" href="#">
+                                        <img alt="Read more icon" loading="lazy"
+                                            src="https://tawasul.tech/images/TawasulTech/image/read-icon.png" />
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+                        <!-- Slide 4 -->
+                        <article class="tws-fms-knowledge-card swiper-slide" data-reveal="">
+                            <div class="tws-fms-knowledge-card__media">
+                                <img alt="Maintenance Orders" loading="lazy"
+                                    src="https://tawasul.tech/images/TawasulTech/image/driver-management.jpg" />
+                            </div>
+                            <div class="tws-fms-knowledge-card__body">
+                                <div class="tws-fms-knowledge-card__text-group">
+                                    <h3 class="tws-fms-knowledge-card__title">Maintenance Orders</h3>
+                                    <p class="tws-fms-knowledge-card__desc">
+                                        Automates maintenance requests and helps you track the status of all maintenance
+                                        orders.
+                                    </p>
+                                </div>
+                                <div class="tws-fms-knowledge-card__footer">
+                                    <a class="tws-fms-knowledge-card__link" href="#">Read More</a>
+                                    <a class="tws-fms-knowledge-card__arrow" href="#">
+                                        <img alt="Read more icon" loading="lazy"
+                                            src="https://tawasul.tech/images/TawasulTech/image/read-icon.png" />
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+            <!-- Bottom nav arrows -->
+            <div class="tws-fms-knowledge__arrows tws-fms-knowledge__arrows--center" data-reveal="">
+                <!-- Previous -->
+                <button aria-label="Previous"
+                    class="tws-fms-knowledge__arrow-btn tws-fms-knowledge__arrow-btn--prev swiper-button-prev"
+                    type="button">
+                    <img alt="prev icon" loading="lazy"
+                        src="https://tawasul.tech/images/TawasulTech/image/previous-icon.png" />
+                </button>
+                <!-- Next -->
+                <button aria-label="Next"
+                    class="tws-fms-knowledge__arrow-btn tws-fms-knowledge__arrow-btn--primary tws-fms-knowledge__arrow-btn--next swiper-button-next"
+                    type="button">
+                    <img alt="next icon" loading="lazy"
+                        src="https://tawasul.tech/images/TawasulTech/image/next-icon.png" />
+                </button>
+            </div>
+        </section>
+        <script>
+            // Swiper for this section (looping / rotational)
+            new Swiper(".tws-fms-knowledge__track", {
+                loop: true,
+                loopAdditionalSlides: 4,
+                watchOverflow: false,
+
+                slidesPerView: 1,
+                spaceBetween: 16,
+
+                navigation: {
+                    nextEl: ".tws-fms-knowledge__arrow-btn--next",
+                    prevEl: ".tws-fms-knowledge__arrow-btn--prev",
+                },
+
+                breakpoints: {
+                    0: {
+                        slidesPerView: 1,
+                        spaceBetween: 16,
+                    },
+                    640: {
+                        slidesPerView: 2,
+                        spaceBetween: 24,
+                    },
+                    992: {
+                        // slidesPerView: "auto",   // auto + fixed 370px slide width => 3 full + 4th peeking
+                        spaceBetween: 30,
+                        slidesPerView: 3.5,
+                    },
+                },
+            });
+
+            // Scroll reveal
+            (function () {
+                var revealItems = document.querySelectorAll("[data-reveal]");
+                if (!revealItems.length) return;
+
+                if (!("IntersectionObserver" in window)) {
+                    revealItems.forEach(function (el) {
+                        el.classList.add("is-visible");
+                    });
+                    return;
+                }
+
+                var observer = new IntersectionObserver(function (entries, obs) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("is-visible");
+                            obs.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.2 });
+
+                revealItems.forEach(function (el) {
+                    observer.observe(el);
+                });
+            })();
+        </script>
+        <!-- Benefits of the Tawasul System (appended) -->
+        <section class="tws-benefits-section" data-reveal="">
+            <div class="tws-benefits-inner">
+                <h2 class="tws-benefits-title" data-reveal="" data-reveal-delay="0">
+                    Benefits Of The <span class="highlight">Tawasul System</span>
+                </h2>
+                <div class="tws-benefits-grid">
+                    <!-- ===== TOP ROW ===== -->
+                    <div class="tws-benefits-row" data-reveal="" data-reveal-delay="80">
+                        <div class="tws-benefits-line">
+                            <div class="tws-line-segment">
+                                <span aria-hidden="true" class="tws-benefit-icon tws-benefit-icon--img">
+                                    <img alt="check icon" class="tws-benefit-icon__img" loading="lazy"
+                                        src="https://tawasul.tech/images/TawasulTech/image/check-icon.png" />
+                                </span>
+                            </div>
+                            <div class="tws-line-segment">
+                                <span aria-hidden="true" class="tws-benefit-icon tws-benefit-icon--img"><img alt=""
+                                        class="tws-benefit-icon__img" loading="lazy"
+                                        src="https://tawasul.tech/images/TawasulTech/image/check-icon.png" /></span>
+                            </div>
+                            <div class="tws-line-segment">
+                                <span aria-hidden="true" class="tws-benefit-icon tws-benefit-icon--img"><img alt=""
+                                        class="tws-benefit-icon__img" loading="lazy"
+                                        src="https://tawasul.tech/images/TawasulTech/image/check-icon.png" /></span>
+                            </div>
+                            <div class="tws-line-segment">
+                                <span aria-hidden="true" class="tws-benefit-icon tws-benefit-icon--img"><img alt=""
+                                        class="tws-benefit-icon__img" loading="lazy"
+                                        src="https://tawasul.tech/images/TawasulTech/image/check-icon.png" /></span>
+                            </div>
+                        </div>
+                        <div class="tws-benefits-cards">
+                            <article class="tws-benefit-card" data-reveal="" data-reveal-delay="120">
+                                <span aria-hidden="true" class="tws-benefit-mobile-icon"><img alt="" loading="lazy"
+                                        src="https://tawasul.tech/images/TawasulTech/image/check-icon.png" /></span>
+                                <h3 class="tws-benefit-title">Productivity Increase</h3>
+                                <p class="tws-benefit-text">
+                                    Complete tasks faster and more proactively. Monitor drivers and ensure
+                                    they perform their tasks to the fullest.
+                                </p>
+                            </article>
+                            <article class="tws-benefit-card" data-reveal="" data-reveal-delay="160">
+                                <span aria-hidden="true" class="tws-benefit-mobile-icon"><img alt="" loading="lazy"
+                                        src="https://tawasul.tech/images/TawasulTech/image/check-icon.png" /></span>
+                                <h3 class="tws-benefit-title">Customer Satisfaction</h3>
+                                <p class="tws-benefit-text">
+                                    The system helps identify the nearest vehicle to a customer location,
+                                    improving service quality and speed, while also enhancing productivity
+                                    and leading to faster completion.
+                                </p>
+                            </article>
+                            <article class="tws-benefit-card" data-reveal="" data-reveal-delay="200">
+                                <span aria-hidden="true" class="tws-benefit-mobile-icon"><img alt="" loading="lazy"
+                                        src="https://tawasul.tech/images/TawasulTech/image/check-icon.png" /></span>
+                                <h3 class="tws-benefit-title">Operating Cost Reduction</h3>
+                                <p class="tws-benefit-text">
+                                    We help you keep a close eye on every part of your business to ensure
+                                    everything runs smoothly with reduced operating costs.
+                                </p>
+                            </article>
+                            <article class="tws-benefit-card" data-reveal="" data-reveal-delay="240">
+                                <span aria-hidden="true" class="tws-benefit-mobile-icon"><img alt="" loading="lazy"
+                                        src="https://tawasul.tech/images/TawasulTech/image/check-icon.png" /></span>
+                                <h3 class="tws-benefit-title">Protection</h3>
+                                <p class="tws-benefit-text">
+                                    The system helps monitor and regulate driver behavior to protect them
+                                    and others, as well as assets and vehicles, for safe driving.
+                                </p>
+                            </article>
+                        </div>
+                    </div>
+                    <!-- ===== BOTTOM ROW ===== -->
+                    <div class="tws-benefits-row" data-reveal="" data-reveal-delay="160">
+                        <div class="tws-benefits-line">
+                            <div class="tws-line-segment">
+                                <span aria-hidden="true" class="tws-benefit-icon tws-benefit-icon--img"><img alt=""
+                                        class="tws-benefit-icon__img" loading="lazy"
+                                        src="https://tawasul.tech/images/TawasulTech/image/check-icon.png" /></span>
+                            </div>
+                            <div class="tws-line-segment">
+                                <span aria-hidden="true" class="tws-benefit-icon tws-benefit-icon--img"><img alt=""
+                                        class="tws-benefit-icon__img" loading="lazy"
+                                        src="https://tawasul.tech/images/TawasulTech/image/check-icon.png" /></span>
+                            </div>
+                            <div class="tws-line-segment">
+                                <span aria-hidden="true" class="tws-benefit-icon tws-benefit-icon--img"><img alt=""
+                                        class="tws-benefit-icon__img" loading="lazy"
+                                        src="https://tawasul.tech/images/TawasulTech/image/check-icon.png" /></span>
+                            </div>
+                            <div class="tws-line-segment">
+                                <span aria-hidden="true" class="tws-benefit-icon tws-benefit-icon--img"><img alt=""
+                                        class="tws-benefit-icon__img" loading="lazy"
+                                        src="https://tawasul.tech/images/TawasulTech/image/check-icon.png" /></span>
+                            </div>
+                        </div>
+                        <div class="tws-benefits-cards">
+                            <article class="tws-benefit-card" data-reveal="" data-reveal-delay="200">
+                                <span aria-hidden="true" class="tws-benefit-mobile-icon"><img alt="" loading="lazy"
+                                        src="https://tawasul.tech/images/TawasulTech/image/check-icon.png" /></span>
+                                <h3 class="tws-benefit-title">Fuel Cost Reduction</h3>
+                                <p class="tws-benefit-text">
+                                    Amid rising fuel prices, reducing fuel consumption is a key goal,
+                                    achieved by monitoring speed, controlling tasks, and eliminating
+                                    unjustified activities, leading to cost savings.
+                                </p>
+                            </article>
+                            <article class="tws-benefit-card" data-reveal="" data-reveal-delay="240">
+                                <span aria-hidden="true" class="tws-benefit-mobile-icon"><img alt="" loading="lazy"
+                                        src="https://tawasul.tech/images/TawasulTech/image/check-icon.png" /></span>
+                                <h3 class="tws-benefit-title">Routing</h3>
+                                <p class="tws-benefit-text">
+                                    The system guides employees to reach locations and complete assigned
+                                    tasks using mobile apps that smoothly and proactively direct them to
+                                    customers.
+                                </p>
+                            </article>
+                            <article class="tws-benefit-card" data-reveal="" data-reveal-delay="280">
+                                <span aria-hidden="true" class="tws-benefit-mobile-icon"><img alt="" loading="lazy"
+                                        src="https://tawasul.tech/images/TawasulTech/image/check-icon.png" /></span>
+                                <h3 class="tws-benefit-title">Work Hours Control</h3>
+                                <p class="tws-benefit-text">
+                                    The system provides tools for controlling work hours, such as trip
+                                    reports, time logs, and driver records, to track actual work hours and
+                                    identify wasted time.
+                                </p>
+                            </article>
+                            <article class="tws-benefit-card" data-reveal="" data-reveal-delay="320">
+                                <span aria-hidden="true" class="tws-benefit-mobile-icon"><img alt="" loading="lazy"
+                                        src="https://tawasul.tech/images/TawasulTech/image/check-icon.png" /></span>
+                                <h3 class="tws-benefit-title">Insurance Cost Reduction</h3>
+                                <p class="tws-benefit-text">
+                                    Monitoring driver behavior and vehicle operation reduces accidents and
+                                    traffic violations, resulting in lower annual insurance premiums for
+                                    vehicles.
+                                </p>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <script>
+            // Simple scroll reveal for benefits section
+            (function () {
+                var revealItems = document.querySelectorAll("[data-reveal]");
+                if (!revealItems.length) return;
+
+                if (!("IntersectionObserver" in window)) {
+                    revealItems.forEach(function (el) {
+                        el.classList.add("is-visible");
+                    });
+                    return;
+                }
+
+                var observer = new IntersectionObserver(function (entries, obs) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("is-visible");
+                            obs.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.2 });
+
+                revealItems.forEach(function (el, index) {
+                    var baseDelay = el.getAttribute("data-reveal-delay");
+                    var delay = baseDelay ? parseInt(baseDelay, 10) : index * 80;
+                    el.style.transitionDelay = (delay / 1000) + "s";
+                    observer.observe(el);
+                });
+            })();
+        </script>
+    </div>
+    <section aria-labelledby="tws-fleet-types-title" class="tws-fleet-types">
+        <div class="tws-fleet-types__inner">
+            <h2 class="tws-fleet-types__title" id="tws-fleet-types-title">Fleet Types</h2>
+            <div class="tws-fleet-types__grid">
+                <!-- Passenger Cars -->
+                <article class="tws-fleet-card">
+                    <div aria-hidden="true" class="tws-fleet-card__icon">
+                        <img alt="car-icon png" loading="lazy"
+                            src="https://tawasul.tech/images/TawasulTech/image/car-icon.png" />
+                    </div>
+                    <div class="tws-fleet-card__content">
+                        <h3 class="tws-fleet-card__title">Passenger Cars</h3>
+                        <p class="tws-fleet-card__desc">Fleet operators, freight providers, and commercial transport
+                            companies.</p>
+                    </div>
+                </article>
+                <!-- Construction Equipment -->
+                <article class="tws-fleet-card">
+                    <div aria-hidden="true" class="tws-fleet-card__icon">
+                        <!-- excavator -->
+                        <img alt="excavator-icon png" loading="lazy"
+                            src="https://tawasul.tech/images/TawasulTech/image/excavator-icon.png" />
+                    </div>
+                    <div class="tws-fleet-card__content">
+                        <h3 class="tws-fleet-card__title">Construction Equipment</h3>
+                        <p class="tws-fleet-card__desc">Manage heavy equipment to improve efficiency in projects.</p>
+                    </div>
+                </article>
+                <!-- Trucks -->
+                <article class="tws-fleet-card">
+                    <div aria-hidden="true" class="tws-fleet-card__icon">
+                        <!-- truck -->
+                        <img alt="truck-icon png" loading="lazy"
+                            src="https://tawasul.tech/images/TawasulTech/image/truck-icon.png" />
+                    </div>
+                    <div class="tws-fleet-card__content">
+                        <h3 class="tws-fleet-card__title">Trucks</h3>
+                        <p class="tws-fleet-card__desc">Track trucks to ensure timely deliveries and reduce costs.</p>
+                    </div>
+                </article>
+                <!-- Buses -->
+                <article class="tws-fleet-card">
+                    <div aria-hidden="true" class="tws-fleet-card__icon">
+                        <!-- bus -->
+                        <img alt="bus-icon png" loading="lazy"
+                            src="https://tawasul.tech/images/TawasulTech/image/bus-icon.png" />
+                    </div>
+                    <div class="tws-fleet-card__content">
+                        <h3 class="tws-fleet-card__title">Buses</h3>
+                        <p class="tws-fleet-card__desc">Manage routes and enhance passenger experience using data.</p>
+                    </div>
+                </article>
+                <!-- Vans -->
+                <article class="tws-fleet-card">
+                    <div aria-hidden="true" class="tws-fleet-card__icon">
+                        <!-- van -->
+                        <img alt="van-icon png" loading="lazy"
+                            src="https://tawasul.tech/images/TawasulTech/image/van-icon.png" />
+                    </div>
+                    <div class="tws-fleet-card__content">
+                        <h3 class="tws-fleet-card__title">Vans</h3>
+                        <p class="tws-fleet-card__desc">Track vans to ensure daily performance and reduce fuel
+                            consumption.</p>
+                    </div>
+                </article>
+                <!-- Forklifts -->
+                <article class="tws-fleet-card">
+                    <div aria-hidden="true" class="tws-fleet-card__icon">
+                        <!-- forklift -->
+                        <img alt="forklift-icon png" loading="lazy"
+                            src="https://tawasul.tech/images/TawasulTech/image/forklift-icon.png" />
+                    </div>
+                    <div class="tws-fleet-card__content">
+                        <h3 class="tws-fleet-card__title">Forklifts</h3>
+                        <p class="tws-fleet-card__desc">Manage warehouses efficiently using forklift tracking.</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+    <script>
+        (function () {
+            // Reveal on scroll with a small stagger for cards
+            var title = document.getElementById('tws-fleet-types-title');
+            var cards = document.querySelectorAll('.tws-fleet-card');
+
+            // If IntersectionObserver isn't supported, just show everything.
+            if (!('IntersectionObserver' in window)) {
+                if (title) title.classList.add('tws-in');
+                cards.forEach(function (c) { c.classList.add('tws-in'); });
+                return;
+            }
+
+            // Title reveal
+            if (title) {
+                var titleObs = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('tws-in');
+                            titleObs.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.35 });
+                titleObs.observe(title);
+            }
+
+            // Cards reveal (staggered)
+            var cardObs = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (!entry.isIntersecting) return;
+
+                    var idx = Array.prototype.indexOf.call(cards, entry.target);
+                    // Stagger: 60ms per card, capped to keep it snappy
+                    var delay = Math.min(idx * 60, 360);
+                    entry.target.style.transitionDelay = delay + 'ms';
+
+                    entry.target.classList.add('tws-in');
+                    cardObs.unobserve(entry.target);
+                });
+            }, { threshold: 0.18, rootMargin: "0px 0px -10% 0px" });
+
+            cards.forEach(function (c) { cardObs.observe(c); });
+        })();
+    </script>
+    <section class="tws-fms1844">
+        <div class="tws-wrap">
+            <!-- HEADER -->
+            <div class="tws-header tws-reveal">
+                <h2 class="tws-title">TawasulFMS</h2>
+                <div class="tws-header-text">
+                    <p class="tws-lead">
+                        Track your fleet activity using the Tawasul fleet management system that reduces time, cuts fuel
+                        costs and increases productivity
+                    </p>
+                    <p class="tws-sub">
+                        Fleet management control is no longer limited to the vehicle’s location and path only but has
+                        now included many other services that are provided with additional sensors such as load
+                        temperature sensor, driver recognition device, weight measurement sensor, emergency button …
+                        etc.
+                    </p>
+                </div>
+            </div>
+            <img alt="truck image" loading="lazy" src="https://tawasul.tech/images/TawasulTech/image/truck.webp" />
+            <!-- DIVIDER -->
+            <div class="tws-divider"></div>
+            <!-- CONTENT -->
+            <div class="tws-content">
+                <!-- LEFT -->
+                <div class="tws-left tws-reveal">
+                    <h2>School Bus Tracking</h2>
+                    <div class="tws-highlight">
+                        Tawasul – In School Bus Ensures Student Safety
+                    </div>
+                    <p class="tws-desc">
+                        There is nothing more troublesome for the parent when they know that their children have not
+                        arrived home from school. It’s essential to get a school bus tracking system installation this
+                        will ensure that students are safe, parents will have peace of mind and schools can add value to
+                        educational services. The ability to track your school buses at any moment means that you can
+                        locate the driver and students more quickly.
+                    </p>
+                    <div aria-label="School Bus image" class="tws-image">
+                        <!-- Replace this src with your real asset later -->
+                        <img alt="School Bus" loading="lazy"
+                            src="https://tawasul.tech/images/TawasulTech/image/school-bus.webp">
+                        </img>
+                    </div>
+                </div>
+                <!-- RIGHT (Accordion) -->
+                <div class="tws-right tws-reveal" id="twsAcc">
+                    <!-- 1 -->
+                    <div class="tws-acc-item is-open">
+                        <button aria-expanded="true" class="tws-acc-btn" type="button">
+                            <div class="tws-acc-title">1. Save Time, Fuel, Money, and Optimal Paths</div>
+                            <span aria-hidden="true" class="tws-chevron">
+                                <svg fill="none" viewbox="0 0 24 24">
+                                    <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-linecap="round"
+                                        stroke-linejoin="round" stroke-width="2.2"></path>
+                                </svg>
+                            </span>
+                        </button>
+                        <div class="tws-acc-panel">
+                            <div class="tws-acc-body">
+                                Organize and schedule school bus routes with all stop points in a single line will help
+                                you save fuel. You can avoid wrong turns and traffic jams when setting up the schedule.
+                                Buses are never late to reach school. It also helps parents and children, since they can
+                                avoid long waiting hours for school buses to get to their bus stop. Imagine the value
+                                you can add to your services if parents can track the progress of the flight in real
+                                time?
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 2 -->
+                    <div class="tws-acc-item">
+                        <button aria-expanded="false" class="tws-acc-btn" type="button">
+                            <div class="tws-acc-title">2. Ensure the Safety of Students during and after the Ride</div>
+                            <span aria-hidden="true" class="tws-chevron">
+                                <svg fill="none" viewbox="0 0 24 24">
+                                    <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-linecap="round"
+                                        stroke-linejoin="round" stroke-width="2.2"></path>
+                                </svg>
+                            </span>
+                        </button>
+                        <div class="tws-acc-panel">
+                            <div class="tws-acc-body">
+                                Monitor routes, stops, and key events with real‑time visibility so schools can quickly
+                                respond to incidents and keep students safe.
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 3 -->
+                    <div class="tws-acc-item">
+                        <button aria-expanded="false" class="tws-acc-btn" type="button">
+                            <div class="tws-acc-title">3. Peace of Mind for Parents</div>
+                            <span aria-hidden="true" class="tws-chevron">
+                                <svg fill="none" viewbox="0 0 24 24">
+                                    <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-linecap="round"
+                                        stroke-linejoin="round" stroke-width="2.2"></path>
+                                </svg>
+                            </span>
+                        </button>
+                        <div class="tws-acc-panel">
+                            <div class="tws-acc-body">
+                                Parents can follow bus progress and receive updates, reducing uncertainty and long
+                                waiting times at pickup points.
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 4 -->
+                    <div class="tws-acc-item">
+                        <button aria-expanded="false" class="tws-acc-btn" type="button">
+                            <div class="tws-acc-title">4. Prevention of Abductions of Children</div>
+                            <span aria-hidden="true" class="tws-chevron">
+                                <svg fill="none" viewbox="0 0 24 24">
+                                    <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-linecap="round"
+                                        stroke-linejoin="round" stroke-width="2.2"></path>
+                                </svg>
+                            </span>
+                        </button>
+                        <div class="tws-acc-panel">
+                            <div class="tws-acc-body">
+                                Alerts for unusual stops, route deviations, and unauthorized events help schools act
+                                faster and improve student security.
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 5 -->
+                    <div class="tws-acc-item">
+                        <button aria-expanded="false" class="tws-acc-btn" type="button">
+                            <div class="tws-acc-title">5. Assess Behavior in Leadership and Reduce Risk</div>
+                            <span aria-hidden="true" class="tws-chevron">
+                                <svg fill="none" viewbox="0 0 24 24">
+                                    <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-linecap="round"
+                                        stroke-linejoin="round" stroke-width="2.2"></path>
+                                </svg>
+                            </span>
+                        </button>
+                        <div class="tws-acc-panel">
+                            <div class="tws-acc-body">
+                                Driving behavior insights and reporting improve accountability, reduce risk, and help
+                                maintain consistent service quality.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- The Benefits (green) – merged from benifits.html -->
+    <section aria-label="Benefits" class="tws-benefits">
+        <div class="tws-benefits__inner">
+            <h2 class="tws-benefits__title">The Benefits</h2>
+            <div class="tws-benefits__timeline">
+                <div aria-hidden="true" class="tws-benefits__line"></div>
+                <ul class="tws-benefits__items">
+                    <li class="tws-benefits__item">
+                        <div aria-hidden="true" class="tws-benefits__marker">
+                            <div class="tws-benefits__dot"><span class="tws-benefits__dot-inner"></span></div>
+                            <div class="tws-benefits__stem"></div>
+                        </div>
+                        <p class="tws-benefits__text">Regular weight and load control</p>
+                    </li>
+                    <li class="tws-benefits__item">
+                        <div aria-hidden="true" class="tws-benefits__marker">
+                            <div class="tws-benefits__dot"><span class="tws-benefits__dot-inner"></span></div>
+                            <div class="tws-benefits__stem"></div>
+                        </div>
+                        <p class="tws-benefits__text">Monitor driver's working hours</p>
+                    </li>
+                    <li class="tws-benefits__item">
+                        <div aria-hidden="true" class="tws-benefits__marker">
+                            <div class="tws-benefits__dot"><span class="tws-benefits__dot-inner"></span></div>
+                            <div class="tws-benefits__stem"></div>
+                        </div>
+                        <p class="tws-benefits__text">Locate the truck and control the speed</p>
+                    </li>
+                    <li class="tws-benefits__item">
+                        <div aria-hidden="true" class="tws-benefits__marker">
+                            <div class="tws-benefits__dot"><span class="tws-benefits__dot-inner"></span></div>
+                            <div class="tws-benefits__stem"></div>
+                        </div>
+                        <p class="tws-benefits__text">Reducing the effects of overloads</p>
+                    </li>
+                    <li class="tws-benefits__item">
+                        <div aria-hidden="true" class="tws-benefits__marker">
+                            <div class="tws-benefits__dot"><span class="tws-benefits__dot-inner"></span></div>
+                            <div class="tws-benefits__stem"></div>
+                        </div>
+                        <p class="tws-benefits__text">Raising the level of service quality</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <script>
+        /* ===============================
+           Accordion (single-open)
+        ================================ */
+        (function () {
+            const root = document.getElementById("twsAcc");
+            if (!root) return;
+
+            const items = Array.from(root.querySelectorAll(".tws-acc-item"));
+
+            function setPanelHeight(item, open) {
+                const panel = item.querySelector(".tws-acc-panel");
+                if (!panel) return;
+
+                if (open) {
+                    // set to content height for smooth open
+                    panel.style.maxHeight = panel.scrollHeight + "px";
+                    item.classList.add("is-open");
+                    item.querySelector(".tws-acc-btn")?.setAttribute("aria-expanded", "true");
+                } else {
+                    panel.style.maxHeight = "0px";
+                    item.classList.remove("is-open");
+                    item.querySelector(".tws-acc-btn")?.setAttribute("aria-expanded", "false");
+                }
+            }
+
+            // Initialize first open item height
+            const initialOpen = root.querySelector(".tws-acc-item.is-open");
+            if (initialOpen) setPanelHeight(initialOpen, true);
+
+            // Toggle
+            items.forEach((item) => {
+                const btn = item.querySelector(".tws-acc-btn");
+                btn?.addEventListener("click", () => {
+                    const isOpen = item.classList.contains("is-open");
+
+                    // close all
+                    items.forEach((it) => setPanelHeight(it, false));
+
+                    // open clicked if it was closed
+                    if (!isOpen) setPanelHeight(item, true);
+                });
+            });
+
+            // Recalculate open panel height on resize
+            window.addEventListener("resize", () => {
+                const openItem = root.querySelector(".tws-acc-item.is-open");
+                if (openItem) setPanelHeight(openItem, true);
+            });
+        })();
+
+        /* ===============================
+           Scroll reveal (subtle)
+        ================================ */
+        (function () {
+            const els = document.querySelectorAll(".tws-fms1844 .tws-reveal");
+            if (!("IntersectionObserver" in window) || !els.length) {
+                els.forEach(el => el.classList.add("is-in"));
+                return;
+            }
+
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach((e) => {
+                    if (e.isIntersecting) {
+                        e.target.classList.add("is-in");
+                        io.unobserve(e.target);
+                    }
+                });
+            }, { threshold: 0.15 });
+
+            els.forEach((el) => io.observe(el));
+        })();
+    </script>
+    <script>
+        (function () {
+            const section = document.querySelector('.tws-benefits');
+            if (!section) return;
+
+            section.classList.add('tws-reveal');
+
+            const items = Array.from(section.querySelectorAll('.tws-benefits__item'));
+            // apply stagger delays (desktop + mobile)
+            items.forEach((el, i) => {
+                el.style.setProperty('--tws-delay', (120 + i * 120) + 'ms');
+            });
+
+            // Reveal when section is near the viewport (smooth but not late)
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        section.classList.add('tws-inview');
+                        io.disconnect();
+                    }
+                });
+            }, { threshold: 0.25, rootMargin: '0px 0px -10% 0px' });
+
+            io.observe(section);
+        })();
+    </script>
+    <section aria-label="Advantages of TawasulFMS system" class="tws-advantages">
+        <div class="tws-advantages__inner">
+            <h2 class="tws-advantages__title">
+                Advantages Of <span class="tws-green">TawasulFMS</span> System
+            </h2>
+            <!-- Grid: first 15 items -->
+            <ul class="tws-adv-grid" role="list">
+                <!-- 1 -->
+                <li class="tws-adv-item">
+                    <span aria-hidden="true" class="tws-adv-item__icon">
+                        <!-- Driver ID -->
+                        <img alt="Driver Id Icon" loading="lazy"
+                            src="https://tawasul.tech/images/TawasulTech/image/driver-id-icon.webp" />
+                    </span>
+                    <p class="tws-adv-item__label">Driver ID</p>
+                </li>
+                <!-- 2 -->
+                <li class="tws-adv-item">
+                    <span aria-hidden="true" class="tws-adv-item__icon">
+                        <!-- Driver Behavior -->
+                        <img alt="driver behavior icon" loading="lazy"
+                            src="https://tawasul.tech/images/TawasulTech/image/driver-behavior-icon.webp" />
+                    </span>
+                    <p class="tws-adv-item__label">Driver Behavior</p>
+                </li>
+                <!-- 3 -->
+                <li class="tws-adv-item">
+                    <span aria-hidden="true" class="tws-adv-item__icon">
+                        <!-- Truck Steering -->
+                        <img alt="Truck Steering Icon" loading="lazy"
+                            src="https://tawasul.tech/images/TawasulTech/image/truck-steering-icon.webp" />
+                    </span>
+                    <p class="tws-adv-item__label">Truck Steering</p>
+                </li>
+                <!-- 4 -->
+                <li class="tws-adv-item">
+                    <span aria-hidden="true" class="tws-adv-item__icon">
+                        <!-- Fuel Card Integration -->
+                        <img alt="Fuel Card Integration Icon" loading="lazy"
+                            src="https://tawasul.tech/images/TawasulTech/image/fuel-card-integration-icon.webp" />
+                    </span>
+                    <p class="tws-adv-item__label">Fuel Card Integration</p>
+                </li>
+                <!-- 5 -->
+                <li class="tws-adv-item">
+                    <span aria-hidden="true" class="tws-adv-item__icon">
+                        <!-- Maintenance Reminders -->
+                        <img alt="maintenance reminders icon" loading="lazy"
+                            src="https://tawasul.tech/images/TawasulTech/image/maintenance-reminders-icon.webp" />
+                    </span>
+                    <p class="tws-adv-item__label">Maintenance Reminders</p>
+                </li>
+                <!-- 6 -->
+                <li class="tws-adv-item">
+                    <span aria-hidden="true" class="tws-adv-item__icon">
+                        <!-- Equipment Inventory -->
+                        <img alt="Equipment Inventory Icon" loading="lazy"
+                            src="https://tawasul.tech/images/TawasulTech/image/equipment-inventory-icon.webp" />
+                    </span>
+                    <p class="tws-adv-item__label">Equipment Inventory</p>
+                </li>
+                <!-- 7 -->
+                <li class="tws-adv-item">
+                    <span aria-hidden="true" class="tws-adv-item__icon">
+                        <!-- Send Directions -->
+                        <img alt="Send Directions Icon" loading="lazy"
+                            src="https://tawasul.tech/images/TawasulTech/image/send-directions-icon.webp" />
+                    </span>
+                    <p class="tws-adv-item__label">Send Directions</p>
+                </li>
+                <!-- 8 -->
+                <li class="tws-adv-item">
+                    <span aria-hidden="true" class="tws-adv-item__icon">
+                        <!-- Alerts via SMS/Email -->
+                        <img alt="Alerts Via SMS/Email Icon" loading="lazy"
+                            src="https://tawasul.tech/images/TawasulTech/image/alerts-sms-email-icon.webp" />
+                    </span>
+                    <p class="tws-adv-item__label">Alerts Via SMS/Email</p>
+                </li>
+                <!-- 9 -->
+                <li class="tws-adv-item">
+                    <span aria-hidden="true" class="tws-adv-item__icon">
+                        <!-- Vehicle Profile -->
+                        <img alt="Vehicle Profile Icon" loading="lazy"
+                            src="https://tawasul.tech/images/TawasulTech/image/vehicle-profile-icon.webp" />
+                    </span>
+                    <p class="tws-adv-item__label">Vehicle Profile</p>
+                </li>
+                <!-- 10 -->
+                <li class="tws-adv-item">
+                    <span aria-hidden="true" class="tws-adv-item__icon">
+                        <!-- Scorecard -->
+                        <img alt="Scorecard Icon" loading="lazy"
+                            src="https://tawasul.tech/images/TawasulTech/image/scorecard-icon.webp" />
+                    </span>
+                    <p class="tws-adv-item__label">Scorecard</p>
+                </li>
+                <!-- 11 -->
+                <li class="tws-adv-item">
+                    <span aria-hidden="true" class="tws-adv-item__icon">
+                        <!-- Real-Time Positioning -->
+                        <img alt="Real-Time Positioning Icon" loading="lazy"
+                            src="https://tawasul.tech/images/TawasulTech/image/real-time-positioning-icon.webp" />
+                    </span>
+                    <p class="tws-adv-item__label">Real-Time Positioning</p>
+                </li>
+                <!-- 12 -->
+                <li class="tws-adv-item">
+                    <span aria-hidden="true" class="tws-adv-item__icon">
+                        <!-- Tracks & History -->
+                        <img alt="Tracks &amp; History Icon" loading="lazy"
+                            src="https://tawasul.tech/images/TawasulTech/image/tracks-history-icon.webp" />
+                    </span>
+                    <p class="tws-adv-item__label">Tracks &amp; History</p>
+                </li>
+                <!-- 13 -->
+                <li class="tws-adv-item">
+                    <span aria-hidden="true" class="tws-adv-item__icon">
+                        <!-- Geofence Alerts -->
+                        <img alt="Geofence Alerts Icon" loading="lazy"
+                            src="https://tawasul.tech/images/TawasulTech/image/geofence-alerts-icon.webp" />
+                    </span>
+                    <p class="tws-adv-item__label">Geofence Alerts</p>
+                </li>
+                <!-- 14 -->
+                <li class="tws-adv-item">
+                    <span aria-hidden="true" class="tws-adv-item__icon">
+                        <img alt="PDF Excel CSV Icon" loading="lazy"
+                            src="https://tawasul.tech/images/TawasulTech/image/pdf-excel-csv-icon.webp" />
+                    </span>
+                    <p class="tws-adv-item__label">PDF / EXC / CSV</p>
+                </li>
+                <!-- 15 -->
+                <li class="tws-adv-item">
+                    <span aria-hidden="true" class="tws-adv-item__icon">
+                        <!-- Temperature Monitoring -->
+                        <img alt="Temperature and Monitoring Icon" loading="lazy"
+                            src="https://tawasul.tech/images/TawasulTech/image/temperature-monitoring.webp" />
+                    </span>
+                    <p class="tws-adv-item__label">Temperature Monitoring</p>
+                </li>
+            </ul>
+            <!-- Last row: 3 items centered -->
+            <div aria-hidden="false" class="tws-adv-last-wrap">
+                <ul class="tws-adv-grid--last" role="list">
+                    <!-- 16 -->
+                    <li class="tws-adv-item">
+                        <span aria-hidden="true" class="tws-adv-item__icon">
+                            <!-- Take Off Power -->
+                            <img alt="Take Off Power Icon" loading="lazy"
+                                src="https://tawasul.tech/images/TawasulTech/image/take_off_power_icon.webp" />
+                        </span>
+                        <p class="tws-adv-item__label">Take Off Power</p>
+                    </li>
+                    <!-- 17 -->
+                    <li class="tws-adv-item">
+                        <span aria-hidden="true" class="tws-adv-item__icon">
+                            <!-- Unlimited Storage -->
+                            <img alt="Unlimited Storage Icon" loading="lazy"
+                                src="https://tawasul.tech/images/TawasulTech/image/storage-icon.webp" />
+                        </span>
+                        <p class="tws-adv-item__label">Unlimited Storage</p>
+                    </li>
+                    <!-- 18 -->
+                    <li class="tws-adv-item">
+                        <span aria-hidden="true" class="tws-adv-item__icon">
+                            <!-- Weight Control -->
+                            <img alt="Weight Control Icon" loading="lazy"
+                                src="https://tawasul.tech/images/TawasulTech/image/weight-control-icon.webp" />
+                        </span>
+                        <p class="tws-adv-item__label">Weight Control</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!-- ====== TawasulCom – Personal Tracking + Features (Last Section) ====== -->
+    <section aria-label="TawasulCom Personal Tracking and Features" class="twscom-section">
+        <div class="twscom-container">
+            <div class="twscom-row">
+                <div class="twscom-copy">
+                    <h2 class="twscom-title">
+                        <span class="twscom-green">TawasulCom</span><br />
+                        — Personal Tracking
+                    </h2>
+                    <p class="twscom-body">
+                        Organize and schedule school bus routes with all stop points in a single line will help you save
+                        fuel.
+                        You can avoid wrong turns and traffic jams when setting up the schedule. Buses are never late to
+                        reach school.
+                        It also helps parents and children, since they can avoid long waiting hours for school buses to
+                        get to their bus stop.
+                        Imagine the value you can add to your services if parents can track the progress of the flight
+                        in real time?
+                    </p>
+                </div>
+                <div class="twscom-image">
+                    <img alt="School Bus Tracking" loading="lazy"
+                        src="https://tawasul.tech/images/TawasulTech/image/image_114.webp" />
+                </div>
+            </div>
+            <div class="twscom-row twscom-row--reverse">
+                <div class="twscom-image">
+                    <img alt="TawasulCom Features" loading="lazy"
+                        src="https://tawasul.tech/images/TawasulTech/image/image_115.webp" />
+                </div>
+                <div class="twscom-copy">
+                    <h2 class="twscom-title">
+                        <span class="twscom-green">TawasulCom</span> Features
+                    </h2>
+                    <ul class="twscom-features">
+                        <li class="twscom-feature">
+                            <img alt="" aria-hidden="true" class="twscom-iconImg" loading="lazy"
+                                src="https://tawasul.tech/images/TawasulTech/image/check-icon.png" />
+                            <p>Phone GPS tracker for personal use or business</p>
+                        </li>
+                        <li class="twscom-feature">
+                            <img alt="" aria-hidden="true" class="twscom-iconImg" loading="lazy"
+                                src="https://tawasul.tech/images/TawasulTech/image/check-icon.png" />
+                            <p>Locate phone's location on PC or another phone</p>
+                        </li>
+                        <li class="twscom-feature">
+                            <img alt="" aria-hidden="true" class="twscom-iconImg" loading="lazy"
+                                src="https://tawasul.tech/images/TawasulTech/image/check-icon.png" />
+                            <p>Real-time tracking, alerts, and preview history</p>
+                        </li>
+                        <li class="twscom-feature">
+                            <img alt="" aria-hidden="true" class="twscom-iconImg" loading="lazy"
+                                src="https://tawasul.tech/images/TawasulTech/image/check-icon.png" />
+                            <p>Receive and manage tasks easily</p>
+                        </li>
+                        <li class="twscom-feature">
+                            <img alt="" aria-hidden="true" class="twscom-iconImg" loading="lazy"
+                                src="https://tawasul.tech/images/TawasulTech/image/check-icon.png" />
+                            <p>Communicate between users through chatting</p>
+                        </li>
+                        <li class="twscom-feature">
+                            <img alt="" aria-hidden="true" class="twscom-iconImg" loading="lazy"
+                                src="https://tawasul.tech/images/TawasulTech/image/check-icon.png" />
+                            <p>Find lost or stolen mobile phone</p>
+                        </li>
+                        <li class="twscom-feature">
+                            <img alt="" aria-hidden="true" class="twscom-iconImg" loading="lazy"
+                                src="https://tawasul.tech/images/TawasulTech/image/check-icon.png" />
+                            <p>Perfect for family or employees tracking</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
