@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TawasulCom – Personal Tracking (Section)</title>
+
+    <style>
+        :root {
+            --tws-bg: #EBF4EE;
+            --tws-text: #4C4C4C;
+            --tws-dark: #111111;
+            --tws-green: #0AA64B;
+
+            --tws-container: 1170px;
+            --tws-pad-y: 72px;
+            --tws-pad-x: 135px;
+
+            --tws-gap-section: 48px;
+            --tws-gap-row: 130px;
+
+            --tws-title-size: 48px;
+            --tws-title-lh: 1.1;
+            --tws-title-ls: -0.03em;
+
+            --tws-body-size: 16px;
+            --tws-body-lh: 1.5;
+
+            --tws-feature-size: 18px;
+            --tws-feature-gap: 12px;
+            --tws-feature-row-gap: 16px;
+            --tws-icon: 24px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Satoshi, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+            color: var(--tws-text);
+            background: #fff;
+        }
+
+        /* Background full width, content padded like Figma */
+        .twscom-section {
+            background: var(--tws-bg);
+            padding: var(--tws-pad-y) 0px !important;
+        }
+
+        .twscom-container {
+            max-width: var(--tws-container);
+            margin: 0 auto;
+            /* padding: 0 var(--tws-pad-x); */
+            display: flex;
+            flex-direction: column;
+            gap: var(--tws-gap-section);
+        }
+
+        .twscom-row {
+            display: grid;
+            grid-template-columns: 570px 470px;
+            gap: var(--tws-gap-row);
+            align-items: center;
+            grid-template-areas: "copy image";
+        }
+
+        .twscom-row--reverse {
+            grid-template-columns: 470px 570px;
+            grid-template-areas: "image copy";
+        }
+
+        .twscom-copy {
+            grid-area: copy;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            max-width: 570px;
+        }
+
+        .twscom-image {
+            grid-area: image;
+            width: 470px;
+            height: 470px;
+            overflow: hidden;
+            justify-self: end;
+        }
+
+        .twscom-row--reverse .twscom-image {
+            justify-self: start;
+        }
+
+        .twscom-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .twscom-title {
+            margin: 0;
+            font-weight: 500;
+            font-size: var(--tws-title-size);
+            line-height: var(--tws-title-lh);
+            letter-spacing: var(--tws-title-ls);
+            color: var(--tws-dark);
+            text-transform: capitalize;
+        }
+
+        .twscom-title .twscom-green {
+            color: var(--tws-green);
+        }
+
+        .twscom-body {
+            margin: 0;
+            font-weight: 500;
+            font-size: var(--tws-body-size);
+            line-height: var(--tws-body-lh);
+            color: var(--tws-text);
+        }
+
+        .twscom-features {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: var(--tws-feature-gap);
+        }
+
+        .twscom-feature {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--tws-feature-row-gap);
+        }
+
+        /* WEBP icon placeholder */
+        .twscom-iconImg {
+            width: var(--tws-icon);
+            height: var(--tws-icon);
+            flex: 0 0 var(--tws-icon);
+            margin-top: 2px;
+            display: block;
+            object-fit: contain;
+        }
+
+        .twscom-feature p {
+            margin: 0;
+            font-weight: 500;
+            font-size: var(--tws-feature-size);
+            line-height: 1.5;
+            color: var(--tws-text);
+        }
+
+        /* Tablet (same layout as desktop) */
+        @media (max-width: 1024px) {
+            :root {
+                --tws-pad-x: 40px;
+                --tws-pad-y: 64px;
+                --tws-gap-row: 64px;
+                --tws-title-size: 40px;
+            }
+
+            .twscom-container {
+                padding: 0 var(--tws-pad-x);
+            }
+
+            .twscom-row {
+                grid-template-columns: 1fr 1fr;
+                grid-template-areas: "copy image";
+            }
+
+            .twscom-row--reverse {
+                grid-template-columns: 1fr 1fr;
+                grid-template-areas: "image copy";
+            }
+
+            .twscom-image {
+                width: 100%;
+                max-width: 470px;
+                height: auto;
+                aspect-ratio: 1 / 1;
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 640px) {
+            :root {
+                --tws-pad-x: 20px;
+                --tws-pad-y: 52px;
+                --tws-title-size: 32px;
+                --tws-body-size: 15px;
+                --tws-feature-size: 16px;
+            }
+
+            .twscom-container {
+                padding: 0 var(--tws-pad-x);
+            }
+
+            .twscom-row,
+            .twscom-row--reverse {
+                gap: 18px;
+            }
+
+            .twscom-row,
+            .twscom-row--reverse {
+                grid-template-columns: 1fr;
+                grid-template-areas:
+                    "image"
+                    "copy";
+            }
+
+             
+        }
+    </style>
+</head>
+
+<body>
+    <section class="twscom-section" aria-label="TawasulCom Personal Tracking and Features">
+        <div class="twscom-container">
+
+            <div class="twscom-row">
+                <div class="twscom-copy">
+                    <h2 class="twscom-title">
+                        <span class="twscom-green">TawasulCom</span><br>
+                        — Personal Tracking
+                    </h2>
+
+                    <p class="twscom-body">
+                        Organize and schedule school bus routes with all stop points in a single line will help you save
+                        fuel.
+                        You can avoid wrong turns and traffic jams when setting up the schedule. Buses are never late to
+                        reach school.
+                        It also helps parents and children, since they can avoid long waiting hours for school buses to
+                        get to their bus stop.
+                        Imagine the value you can add to your services if parents can track the progress of the flight
+                        in real time?
+                    </p>
+                </div>
+
+                <div class="twscom-image">
+                    <img src="https://tawasul.tech/images/TawasulTech/image/image_114.webp" alt="School Bus Tracking"
+                        loading="lazy">
+                </div>
+            </div>
+
+            <div class="twscom-row twscom-row--reverse">
+                <div class="twscom-image">
+                    <img src="https://tawasul.tech/images/TawasulTech/image/image_115.webp" alt="TawasulCom Features"
+                        loading="lazy">
+                </div>
+
+                <div class="twscom-copy">
+                    <h2 class="twscom-title">
+                        <span class="twscom-green">TawasulCom</span> Features
+                    </h2>
+
+                    <ul class="twscom-features">
+                        <li class="twscom-feature">
+                            <img class="twscom-iconImg" src="https://tawasul.tech/images/TawasulTech/image/check-icon.png" alt="" aria-hidden="true"
+                                loading="lazy">
+                            <p>Phone GPS tracker for personal use or business</p>
+                        </li>
+                        <li class="twscom-feature">
+                            <img class="twscom-iconImg" src="https://tawasul.tech/images/TawasulTech/image/check-icon.png" alt="" aria-hidden="true"
+                                loading="lazy">
+                            <p>Locate phone's location on PC or another phone</p>
+                        </li>
+                        <li class="twscom-feature">
+                            <img class="twscom-iconImg" src="https://tawasul.tech/images/TawasulTech/image/check-icon.png" alt="" aria-hidden="true"
+                                loading="lazy">
+                            <p>Real-time tracking, alerts, and preview history</p>
+                        </li>
+                        <li class="twscom-feature">
+                            <img class="twscom-iconImg" src="https://tawasul.tech/images/TawasulTech/image/check-icon.png" alt="" aria-hidden="true"
+                                loading="lazy">
+                            <p>Receive and manage tasks easily</p>
+                        </li>
+                        <li class="twscom-feature">
+                            <img class="twscom-iconImg" src="https://tawasul.tech/images/TawasulTech/image/check-icon.png" alt="" aria-hidden="true"
+                                loading="lazy">
+                            <p>Communicate between users through chatting</p>
+                        </li>
+                        <li class="twscom-feature">
+                            <img class="twscom-iconImg" src="https://tawasul.tech/images/TawasulTech/image/check-icon.png" alt="" aria-hidden="true"
+                                loading="lazy">
+                            <p>Find lost or stolen mobile phone</p>
+                        </li>
+                        <li class="twscom-feature">
+                            <img class="twscom-iconImg" src="https://tawasul.tech/images/TawasulTech/image/check-icon.png" alt="" aria-hidden="true"
+                                loading="lazy">
+                            <p>Perfect for family or employees tracking</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+</body>
+
+</html>
