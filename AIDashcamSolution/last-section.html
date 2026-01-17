@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI Dashcam – Overall Impact Section</title>
+
+  <style>
+    /* ==========================================================================
+      AI Dashcam Solution – Section: Overall Impact for Fleets & Businesses
+      - Standalone section file
+      - Desktop/tablet: text left, image right
+      - Mobile: image first, then text
+      - Maintainable, scoped CSS (.tws-ai-dashcam__impact*)
+    ========================================================================== */
+
+    .tws-ai-dashcam {
+      --tws-container: 1170px;
+      --tws-pad-x: 0px;
+      --tws-pad-y: 72px;
+
+      --tws-gap-col: 130px;
+      --tws-gap-block: 24px;
+      --tws-gap-list: 16px;
+      --tws-gap-item: 12px;
+
+      --tws-bg: #EBF4EE;
+      --tws-text: #1E1E1E;
+      --tws-muted: #4C4C4C;
+      --tws-accent: #00A738;
+
+      --tws-font: "Satoshi", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+                  Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+
+      font-family: var(--tws-font);
+      color: var(--tws-text);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .tws-ai-dashcam__impact {
+      background: var(--tws-bg);
+    }
+
+    .tws-ai-dashcam__impact-inner {
+      max-width: var(--tws-container);
+      margin: 0 auto;
+      padding: var(--tws-pad-y) var(--tws-pad-x);
+    }
+
+    /* Frame 2147231840 (1170 x 470, gap 130) */
+    .tws-ai-dashcam__impact-grid {
+      display: grid;
+      grid-template-columns: 570px 470px;
+      gap: var(--tws-gap-col);
+      align-items: center;
+    }
+
+    /* Frame 2147231723 (570 x 314, gap 24) */
+    .tws-ai-dashcam__impact-content {
+      width: 570px;
+      display: flex;
+      flex-direction: column;
+      gap: var(--tws-gap-block);
+    }
+
+    .tws-ai-dashcam__impact-title {
+      margin: 0;
+      font-weight: 500;
+      font-size: 48px;
+      line-height: 1.1;         /* 110% */
+      letter-spacing: -0.03em;  /* -3% */
+      text-transform: capitalize;
+      color: var(--tws-text);
+    }
+
+    /* Frame 2147231714 (570 x 184, gap 16) */
+    .tws-ai-dashcam__impact-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: var(--tws-gap-list);
+    }
+
+    /* Frame 2147231712 (570 x 24, gap 12) */
+    .tws-ai-dashcam__impact-item {
+      display: grid;
+      grid-template-columns: 24px 1fr;
+      gap: var(--tws-gap-item);
+      align-items: start;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 1.5; /* 150% */
+      letter-spacing: 0;
+      text-transform: capitalize;
+      color: var(--tws-muted);
+    }
+
+    .tws-ai-dashcam__impact-icon {
+      width: 24px;
+      height: 24px;
+      display: inline-block;
+      object-fit: contain;
+    }
+
+    /* image 116 placeholder (470 x 470) */
+    .tws-ai-dashcam__impact-media {
+      width: 470px;
+      height: 470px;
+      background: rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+    }
+
+    .tws-ai-dashcam__impact-media img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    /* Tablet */
+    @media (max-width: 1024px) {
+      .tws-ai-dashcam {
+        --tws-pad-x: 40px;
+        --tws-gap-col: 40px;
+      }
+
+      .tws-ai-dashcam__impact-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .tws-ai-dashcam__impact-content,
+      .tws-ai-dashcam__impact-media {
+        width: 100%;
+      }
+
+      .tws-ai-dashcam__impact-media {
+        height: 360px;
+      }
+
+      .tws-ai-dashcam__impact-title {
+        font-size: 40px;
+      }
+    }
+
+    /* Mobile: image first */
+    @media (max-width: 768px) {
+      .tws-ai-dashcam {
+        --tws-pad-x: 20px;
+        --tws-pad-y: 48px;
+        --tws-gap-col: 24px;
+      }
+
+      .tws-ai-dashcam__impact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .tws-ai-dashcam__impact-media {
+        order: 1;
+        height: 240px;
+      }
+
+      .tws-ai-dashcam__impact-content {
+        order: 2;
+        width: 100%;
+      }
+
+      .tws-ai-dashcam__impact-title {
+        font-size: 30px;
+      }
+
+      .tws-ai-dashcam__impact-item {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body style="margin:0">
+  <div class="tws-ai-dashcam">
+    <section class="tws-ai-dashcam__impact" aria-label="Overall Impact for Fleets and Businesses">
+      <div class="tws-ai-dashcam__impact-inner">
+        <div class="tws-ai-dashcam__impact-grid">
+
+          <!-- Left: Text -->
+          <div class="tws-ai-dashcam__impact-content">
+            <h2 class="tws-ai-dashcam__impact-title">Overall Impact For Fleets &amp; Businesses</h2>
+
+            <ul class="tws-ai-dashcam__impact-list">
+              <li class="tws-ai-dashcam__impact-item">
+                <img class="tws-ai-dashcam__impact-icon" src="https://tawasul.tech/images/TawasulTech/image/check-icon.webp" alt=""
+                     onerror="this.onerror=null; this.src='https://placehold.co/24x24/00A738/00A738?text=+';" />
+                Fewer accidents and lower liability.
+              </li>
+              <li class="tws-ai-dashcam__impact-item">
+                <img class="tws-ai-dashcam__impact-icon" src="https://tawasul.tech/images/TawasulTech/image/check-icon.webp" alt=""
+                     onerror="this.onerror=null; this.src='https://placehold.co/24x24/00A738/00A738?text=+';" />
+                Enhanced driver safety and well-being.
+              </li>
+              <li class="tws-ai-dashcam__impact-item">
+                <img class="tws-ai-dashcam__impact-icon" src="https://tawasul.tech/images/TawasulTech/image/check-icon.webp" alt=""
+                     onerror="this.onerror=null; this.src='https://placehold.co/24x24/00A738/00A738?text=+';" />
+                Improved regulatory compliance and insurance positioning.
+              </li>
+              <li class="tws-ai-dashcam__impact-item">
+                <img class="tws-ai-dashcam__impact-icon" src="https://tawasul.tech/images/TawasulTech/image/check-icon.webp" alt=""
+                     onerror="this.onerror=null; this.src='https://placehold.co/24x24/00A738/00A738?text=+';" />
+                Reduced operational and maintenance costs.
+              </li>
+              <li class="tws-ai-dashcam__impact-item">
+                <img class="tws-ai-dashcam__impact-icon" src="https://tawasul.tech/images/TawasulTech/image/check-icon.webp" alt=""
+                     onerror="this.onerror=null; this.src='https://placehold.co/24x24/00A738/00A738?text=+';" />
+                Stronger customer trust with a safer, smarter fleet.
+              </li>
+            </ul>
+          </div>
+
+          <!-- Right: Image -->
+          <div class="tws-ai-dashcam__impact-media" aria-label="Impact image">
+            <img src="https://tawasul.tech/images/TawasulTech/image/impact-fleet.webp" alt="Fleet impact"
+                 onerror="this.onerror=null; this.src='https://placehold.co/470x470?text=Image+116';" />
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
