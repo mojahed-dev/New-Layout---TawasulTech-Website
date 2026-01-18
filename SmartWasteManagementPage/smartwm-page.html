@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Smart Waste Management – Header Section</title>
+  <style>
+    /* Scoped styles to reduce theme overrides */
+    .tws-swm,
+    .tws-swm * { box-sizing: border-box; }
+
+    .tws-swm {
+      --tws-pad-x: 0px;
+      --tws-pad-y: 72px;
+      --swm-text-strong: #1E1E1E;
+      --swm-text: #4C4C4C;
+      --swm-green: #00A738;
+      --swm-text-white: #FFFFFF;
+      --swm-border: rgba(30, 30, 30, 0.12);
+
+      font-family: "Satoshi", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--swm-text);
+      background: #FFFFFF;
+    }
+
+    .tws-swm a { color: inherit; text-decoration: none; }
+    .tws-swm img { max-width: 100%; height: auto; display: block; }
+
+    .tws-swm-header {
+      padding: var(--tws-pad-y) var(--tws-pad-x);
+      border-bottom: 1px solid var(--swm-border);
+    }
+
+    .tws-swm-header__container {
+      max-width: 1170px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      align-items: start;
+    }
+
+    .tws-swm-header__title {
+      margin: 0;
+      font-weight: 500;
+      font-size: 64px;
+      line-height: 1.3;
+      letter-spacing: 0;
+      text-transform: capitalize;
+      color: var(--swm-text-strong);
+    }
+
+    .tws-swm-header__right {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .tws-swm-header__lead {
+      margin: 0;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 1.5;
+      color: var(--swm-text);
+    }
+
+    .tws-swm-features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px 24px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .tws-swm-feature {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      min-height: 27px;
+    }
+
+    .tws-swm-feature__icon {
+      width: 24px;
+      height: 24px;
+      flex: 0 0 24px;
+    }
+
+    .tws-swm-feature__text {
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 1.5;
+      color: var(--swm-text);
+      margin: 0;
+    }
+
+    .tws-swm-actions {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .tws-swm-btn {
+      height: 48px;
+      padding: 0 24px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 0;
+      border: 1px solid transparent;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 1.5;
+      white-space: nowrap;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .tws-swm-btn--primary {
+      background: var(--swm-green);
+      color: var(--swm-text-white) !important;
+    }
+
+    .tws-swm-btn--outline {
+      background: transparent;
+      color: var(--swm-text-strong) !important;
+      border-color: var(--swm-text-strong) !important;
+    }
+
+    .tws-swm-btn:focus-visible {
+      outline: 3px solid rgba(0, 167, 56, 0.35);
+      outline-offset: 2px;
+    }
+
+    /* Tablet */
+    @media (max-width: 1024px) {
+      .tws-swm-header { padding: 56px 48px; }
+      .tws-swm-header__container { max-width: 100%; gap: 28px; }
+      .tws-swm-header__title { font-size: 48px; }
+
+      .tws-swm-features { grid-template-columns: 1fr; }
+      .tws-swm-btn--outline, .tws-swm-btn--primary { flex: 1; }
+
+    }
+
+    /* Mobile */
+    @media (max-width: 640px) {
+      .tws-swm-header { padding: 40px 20px; }
+      .tws-swm-header__container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .tws-swm-header__title { font-size: 36px; }
+      .tws-swm-features { grid-template-columns: 1fr; }
+      .tws-swm-actions { gap: 12px; }
+      .tws-swm-btn { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <section class="tws-swm tws-swm-header" aria-label="Smart waste management header">
+    <div class="tws-swm-header__container">
+      <h1 class="tws-swm-header__title">Smart waste management</h1>
+
+      <div class="tws-swm-header__right">
+        <p class="tws-swm-header__lead">Smart IoT sensors and software apps ready to manage your waste smarter.</p>
+
+        <ul class="tws-swm-features">
+          <li class="tws-swm-feature">
+            <img class="tws-swm-feature__icon" src="https://tawasul.tech/images/TawasulTech/image/check-icon.webp" alt="Check Icon" loading="lazy"/>
+            <p class="tws-swm-feature__text">Smart Analytics</p>
+          </li>
+          <li class="tws-swm-feature">
+            <img class="tws-swm-feature__icon" src="https://tawasul.tech/images/TawasulTech/image/check-icon.webp" alt="Check Icon" loading="lazy"/>
+            <p class="tws-swm-feature__text">Smart Sensors</p>
+          </li>
+          <li class="tws-swm-feature">
+            <img class="tws-swm-feature__icon" src="https://tawasul.tech/images/TawasulTech/image/check-icon.webp" alt="Check Icon" loading="lazy"/>
+            <p class="tws-swm-feature__text">Smart Route Planning</p>
+          </li>
+          <li class="tws-swm-feature">
+            <img class="tws-swm-feature__icon" src="https://tawasul.tech/images/TawasulTech/image/check-icon.webp" alt="Check Icon" loading="lazy"/>
+            <p class="tws-swm-feature__text">Citizen App</p>
+          </li>
+        </ul>
+
+        <div class="tws-swm-actions">
+          <a class="tws-swm-btn tws-swm-btn--primary" href="#demo">Request a Demo</a>
+          <a class="tws-swm-btn tws-swm-btn--outline" href="#experts">Talk to Our Smart City Experts</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
