@@ -13,6 +13,10 @@
       - Uses CSS custom properties for maintainability.
     ========================================================================== */
 
+    /* Overrides cs-cart theme defaults */
+    .ty-mainbox-title, .ty-mainbox-simple-title, .ut2-secondbox__title, .ut2-secondbox__title-wrapper, .ut2-secondbox-important__title-wrapper {display: none !important;}
+    .ty-wysiwyg-content ul, .ty-wysiwyg-content ol {margin: 0px !important;}
+
     .tws-ai-dashcam {
       /* Design tokens */
       --tws-container: 1170px;
@@ -58,7 +62,7 @@
       display: grid;
       grid-template-columns: 570px 470px;
       gap: var(--tws-gap);
-      align-items: start;
+      align-items: center;
     }
 
     /* Title */
@@ -131,6 +135,8 @@
       .tws-ai-dashcam__desc {
         font-size: 14px;
       }
+
+      .tws-ai-dashcam__features-media img {height: 100% !important; object-fit: cover !important;}
     }
 
     /* ==========================================================================
