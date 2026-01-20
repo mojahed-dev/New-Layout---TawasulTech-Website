@@ -1,17 +1,43 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Smart Waste Management – Header Section</title>
+  <title>Smart Waste Management</title>
+
   <style>
-    /* Scoped styles to reduce theme overrides */
+    /* =========================================================
+       Smart Waste Management Page (Sections 1–2)
+       Scoped styles to reduce theme overrides
+       ========================================================= */
+
+    /* Overrides cs-cart theme defaults */
+    .ty-mainbox-title,
+    .ty-mainbox-simple-title,
+    .ut2-secondbox__title,
+    .ut2-secondbox__title-wrapper,
+    .ut2-secondbox-important__title-wrapper {
+      display: none !important;
+    }
+
+    .ty-wysiwyg-content ul,
+    .ty-wysiwyg-content ol {
+      margin: 0px !important;
+    }
+
+    /* Global scope for this page/blocks */
     .tws-swm,
-    .tws-swm * { box-sizing: border-box; }
+    .tws-swm * {
+      box-sizing: border-box;
+    }
+
 
     .tws-swm {
+      /* Tokens */
       --tws-pad-x: 0px;
       --tws-pad-y: 72px;
+      --swm-bg: #EBF4EE;
       --swm-text-strong: #1E1E1E;
       --swm-text: #4C4C4C;
       --swm-green: #00A738;
@@ -20,13 +46,27 @@
 
       font-family: "Satoshi", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       color: var(--swm-text);
-      background: #FFFFFF;
+      --swm-surface: #FFFFFF;
+      --swm-panel: #F7F7F7;
+      --swm-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
     }
 
-    .tws-swm a { color: inherit; text-decoration: none; }
-    .tws-swm img { max-width: 100%; height: auto; display: block; }
+    .tws-swm a {
+      color: inherit;
+      text-decoration: none;
+    }
 
+    .tws-swm img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* =========================================================
+       Section 1: Page Header
+       ========================================================= */
     .tws-swm-header {
+      background: #FFFFFF;
       padding: var(--tws-pad-y) var(--tws-pad-x);
       border-bottom: 1px solid var(--swm-border);
     }
@@ -42,8 +82,8 @@
 
     .tws-swm-header__title {
       margin: 0;
-      font-weight: 500;
-      font-size: 64px;
+      font-weight: 500 !important;
+      font-size: 64px !important;
       line-height: 1.3;
       letter-spacing: 0;
       text-transform: capitalize;
@@ -87,11 +127,11 @@
     }
 
     .tws-swm-feature__text {
+      margin: 0;
       font-weight: 500;
       font-size: 18px;
       line-height: 1.5;
       color: var(--swm-text);
-      margin: 0;
     }
 
     .tws-swm-actions {
@@ -132,32 +172,641 @@
       outline-offset: 2px;
     }
 
+    /* =========================================================
+       Section 2: Waste Fill-Level Monitoring
+       ========================================================= */
+    .tws-swm-waste-monitor {
+      background: var(--swm-bg);
+      padding: var(--tws-pad-y) var(--tws-pad-x);
+    }
+
+    .tws-swm-waste-monitor__container {
+      max-width: 1170px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 561px) minmax(0, 561px);
+      gap: 48px;
+      align-items: center;
+    }
+
+    .tws-swm-waste-monitor__media {
+      max-width: 100%;
+    }
+
+    .tws-swm-waste-monitor__media img {
+      width: 100%;
+      aspect-ratio: 561 / 564;
+      height: auto;
+      max-height: 564px;
+      object-fit: cover;
+    }
+
+    .tws-swm-waste-monitor__content {
+      max-width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .tws-swm-waste-monitor__title {
+      margin: 0;
+      font-weight: 500 !important;
+      font-size: 40px !important;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      text-transform: capitalize;
+      color: var(--swm-text-strong);
+    }
+
+    .tws-swm-waste-monitor__text {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .tws-swm-waste-monitor__p {
+      margin: 0;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 1.5;
+      color: var(--swm-text);
+    }
+
+    /* =========================================================
+       Responsive
+       ========================================================= */
+
     /* Tablet */
     @media (max-width: 1024px) {
-      .tws-swm-header { padding: 56px 48px; }
-      .tws-swm-header__container { max-width: 100%; gap: 28px; }
-      .tws-swm-header__title { font-size: 48px; }
+      p {
+        text-align: justify;
+      }
 
-      .tws-swm-features { grid-template-columns: 1fr; }
-      .tws-swm-btn--outline, .tws-swm-btn--primary { flex: 1; }
+      /* Section 1 */
+      .tws-swm-header {
+        padding: 56px 48px;
+      }
 
+      .tws-swm-header__container {
+        max-width: 100%;
+        gap: 28px;
+      }
+
+      .tws-swm-header__title {
+        font-size: 48px !important;
+      }
+
+      .tws-swm-features {
+        grid-template-columns: 1fr;
+      }
+
+      .tws-swm-btn--outline,
+      .tws-swm-btn--primary {
+        flex: 1;
+      }
+
+      /* Section 2 */
+      .tws-swm-waste-monitor {
+        padding: 56px 48px;
+      }
+
+      .tws-swm-waste-monitor__container {
+        max-width: 100%;
+        grid-template-columns: 1fr 1fr;
+        gap: 36px;
+      }
+
+      .tws-swm-waste-monitor__title {
+        font-size: 34px;
+      }
+    }
+
+    /* Small Tablet / Large Mobile */
+    @media (max-width: 900px) {
+      p {
+        text-align: justify;
+      }
+
+      .tws-swm-waste-monitor__container {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .tws-swm-waste-monitor__title {
+        font-size: 32px;
+      }
     }
 
     /* Mobile */
     @media (max-width: 640px) {
-      .tws-swm-header { padding: 40px 20px; }
+
+
+      /* Section 1 */
+      .tws-swm-header {
+        padding: 40px 20px;
+      }
+
       .tws-swm-header__container {
         grid-template-columns: 1fr;
         gap: 20px;
       }
-      .tws-swm-header__title { font-size: 36px; }
-      .tws-swm-features { grid-template-columns: 1fr; }
-      .tws-swm-actions { gap: 12px; }
-      .tws-swm-btn { width: 100%; }
+
+      .tws-swm-header__title {
+        font-size: 36px;
+      }
+
+      .tws-swm-actions {
+        gap: 12px;
+      }
+
+      .tws-swm-btn {
+        width: 100%;
+      }
+
+      /* Section 2 */
+      .tws-swm-waste-monitor {
+        padding: 40px 20px;
+      }
+
+      .tws-swm-waste-monitor__container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .tws-swm-waste-monitor__title {
+        font-size: 28px;
+      }
+    }
+
+
+    /* =========================================================
+       Section 3: Feature Cards
+       ========================================================= */
+    /* ==============================
+       Smart Waste Management (Section 3)
+       - Two feature cards
+       - Responsive (desktop/tablet/mobile)
+       ============================== */
+    .tws-swm__section {
+      padding: var(--tws-pad-y) var(--tws-pad-x);
+    }
+
+    .tws-swm__container {
+      max-width: 1170px;
+      margin: 0 auto;
+    }
+
+    .tws-swm__grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 30px;
+      align-items: stretch;
+    }
+
+    .tws-swm__card {
+      background: var(--swm-surface);
+      box-shadow: var(--swm-shadow);
+      padding: 10px;
+      /* Figma card padding */
+      border-radius: 0;
+      /* Figma looks square */
+      min-width: 0;
+    }
+
+    .tws-swm__media {
+      background: var(--swm-panel);
+      width: 100%;
+      aspect-ratio: 550 / 370;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .tws-swm__media img {
+      width: min(470px, 100%);
+      height: auto;
+      object-fit: contain;
+    }
+
+    .tws-swm__media-2 {
+      background: var(--swm-panel);
+      width: 100%;
+      aspect-ratio: 550 / 370;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .tws-swm__media-2 img {
+      /* width: min(470px, 100%); */
+      width: 370px;
+      height: 370px;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .tws-swm__content {
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .tws-swm__body {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      min-width: 0;
+    }
+
+    .tws-swm__title {
+      margin: 0;
+      font-weight: 500 !important;
+      font-size: 40px !important;
+      line-height: 1.1;
+      /* 110% */
+      letter-spacing: -0.03em;
+      /* -3% */
+      text-transform: capitalize;
+      color: var(--swm-text-strong);
+    }
+
+    .tws-swm__desc {
+      margin: 0;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 1.5;
+      color: var(--swm-muted);
+    }
+
+    .tws-swm__foot {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .tws-swm__footTitle {
+      margin: 0;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 1.5 !important;
+      text-transform: capitalize;
+      color: var(--swm-text-strong);
+    }
+
+    .tws-swm__footText {
+      margin: 0;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 1.5;
+      color: var(--swm-muted);
+    }
+
+    /* Tablet */
+    @media (max-width: 1024px) {
+      .tws-swm__title {
+        font-size: 34px;
+      }
+
+      .tws-swm__section {
+        padding: 56px 48px;
+      }
+
+      .tws-swm__media-2 img {
+        width: 297px;
+      }
+    }
+
+    /* Small tablets / large phones */
+    @media (max-width: 900px) {
+      .tws-swm__grid {
+        grid-template-columns: 1fr;
+      }
+
+      .tws-swm__title {
+        font-size: 32px;
+      }
+
+      .tws-swm__media-2 img {
+        width: 466px;
+      }
+
+    }
+
+    /* Mobile */
+    @media (max-width: 480px) {
+      .tws-swm__card {
+        padding: 8px;
+      }
+
+      .tws-swm__content {
+        padding: 12px;
+        gap: 18px;
+      }
+
+      .tws-swm__body {
+        gap: 12px;
+      }
+
+      .tws-swm__title {
+        font-size: 28px;
+      }
+
+      .tws-swm__section {
+        padding: 40px 20px;
+      }
+
+      .tws-swm__media-2 img {
+        width: 270px;
+      }
+
+
+    }
+
+    /* =========================================================
+       Section 4: Intelligent Analytics (Image + Copy)
+       Notes:
+       - Uses existing .tws-swm tokens from the main page
+       - Unique class namespace to avoid collisions
+       ========================================================= */
+
+    .tws-swm-ia {
+      background: var(--swm-bg);
+      padding: var(--tws-pad-y) var(--tws-pad-x);
+    }
+
+    .tws-swm-ia__container {
+      max-width: 1170px;
+      margin: 0 auto;
+    }
+
+    .tws-swm-ia__card {
+      background: var(--swm-surface);
+      padding: 10px 40px 10px 10px;
+      /* Figma */
+      display: grid;
+      grid-template-columns: minmax(0, 540px) minmax(0, 540px);
+      gap: 40px;
+      align-items: center;
+    }
+
+    .tws-swm-ia__media {
+      width: 100%;
+      background: var(--swm-panel);
+      aspect-ratio: 540 / 470;
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+    }
+
+    .tws-swm-ia__media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      opacity: 0.95;
+    }
+
+    .tws-swm-ia__content {
+      width: 100%;
+      display: grid;
+      gap: 24px;
+      min-width: 0;
+    }
+
+    .tws-swm-ia__title {
+      margin: 0;
+      font-weight: 500 !important;
+      font-size: 40px !important;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      text-transform: capitalize;
+      color: var(--swm-text-strong);
+    }
+
+    .tws-swm-ia__desc {
+      margin: 0;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 1.5;
+      color: var(--swm-text);
+    }
+
+    .tws-swm-ia__highlight {
+      display: grid;
+      gap: 12px;
+    }
+
+    .tws-swm-ia__highlightTitle {
+      margin: 0;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 1.5;
+      text-transform: capitalize;
+      color: var(--swm-text-strong);
+    }
+
+    .tws-swm-ia__highlightText {
+      margin: 0;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 1.5;
+      color: var(--swm-text);
+    }
+
+    /* Tablet */
+    @media (max-width: 1024px) {
+      .tws-swm-ia {
+        padding: 56px 48px;
+      }
+
+      .tws-swm-ia__container {
+        max-width: 100%;
+      }
+
+      .tws-swm-ia__card {
+        padding: 12px;
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+
+      .tws-swm-ia__title {
+        font-size: 34px;
+      }
+    }
+
+    /* Mobile */
+    @media (max-width: 640px) {
+      .tws-swm-ia {
+        padding: 40px 20px;
+      }
+
+      .tws-swm-ia__title {
+        font-size: 30px;
+      }
+
+      .tws-swm-ia__card {
+        gap: 22px;
+      }
+    }
+
+
+    /* =========================================================
+       Section 5: CTA — Speak With Our Solutions Team
+       ========================================================= */
+    /* =========================================================
+       TWS Smart Waste Management (scoped)
+       Last Section: Speak With Our Solutions Team (CTA)
+       ========================================================= */
+
+    .tws-swm-cta {
+      /* Tokens */
+      --cta-font: "Satoshi", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      --cta-bg: #71BB82;
+      --cta-ink: #1E1E1E;
+      --cta-accent: #00A738;
+      --cta-btn-bg: #FFFFFF;
+
+      --cta-pad-y: 100px;
+      --cta-pad-x: 0px;
+
+      --cta-max: 642px;
+      --cta-gap: 48px;
+
+      font-family: var(--cta-font);
+      color: var(--cta-ink);
+      background: var(--cta-bg);
+      padding: var(--cta-pad-y) var(--cta-pad-x);
+    }
+
+    .tws-swm-cta,
+    .tws-swm-cta * {
+      box-sizing: border-box;
+    }
+
+    .tws-swm-cta__wrap {
+      /* max-width: var(--cta-max); */
+      margin: 0 auto;
+      display: grid;
+      justify-items: center;
+      text-align: center;
+      gap: var(--cta-gap);
+    }
+
+    .tws-swm-cta__head {
+      display: grid;
+      gap: 20px;
+      justify-items: center;
+    }
+
+    .tws-swm-cta__title {
+      margin: 0;
+      font-weight: 500 !important;
+      font-size: 48px !important;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      text-transform: capitalize;
+      color: var(--cta-ink);
+      text-align: center;
+    }
+
+    .tws-swm-cta__sub {
+      margin: 0;
+      max-width: 523px;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 1.5;
+      color: var(--cta-ink);
+      text-align: center;
+    }
+
+    .tws-swm-cta__btn {
+      height: 48px;
+      min-width: 216px;
+      padding: 0 20px;
+      background: var(--cta-btn-bg);
+      border: 1px solid transparent;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      text-decoration: none;
+      user-select: none;
+      cursor: pointer;
+    }
+
+    .tws-swm-cta__icon {
+      width: 24px;
+      height: 24px;
+      display: inline-block;
+      flex: 0 0 24px;
+    }
+
+    .tws-swm-cta__btnText {
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 1.5;
+      color: var(--cta-accent);
+      white-space: nowrap;
+    }
+
+    /* Accessibility */
+    .tws-swm-cta__btn:focus-visible {
+      outline: 3px solid rgba(0, 167, 56, 0.35);
+      outline-offset: 3px;
+    }
+
+    /* -----------------------------
+       Responsive
+       ----------------------------- */
+
+    @media (max-width: 1024px) {
+      .tws-swm-cta {
+        padding: 80px 48px;
+      }
+
+      .tws-swm-cta__title {
+        font-size: 40px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .tws-swm-cta {
+        padding: 64px 20px;
+      }
+
+      .tws-swm-cta__title {
+        font-size: 32px;
+      }
+
+      .tws-swm-cta__sub {
+        max-width: 100%;
+      }
+
+      .tws-swm-cta__btn {
+        width: 100%;
+        max-width: 320px;
+      }
+    }
+
+    /* Optional: prevent external theme typography overrides */
+    .tws-swm-cta h1,
+    .tws-swm-cta h2,
+    .tws-swm-cta h3,
+    .tws-swm-cta p {
+      margin-block: 0;
+      font-family: var(--cta-font);
     }
   </style>
 </head>
-<body>
+
+<body style="margin:0;">
+
+  <!-- =========================
+       Section 1: Header
+       ========================= -->
   <section class="tws-swm tws-swm-header" aria-label="Smart waste management header">
     <div class="tws-swm-header__container">
       <h1 class="tws-swm-header__title">Smart waste management</h1>
@@ -167,19 +816,23 @@
 
         <ul class="tws-swm-features">
           <li class="tws-swm-feature">
-            <img class="tws-swm-feature__icon" src="https://tawasul.tech/images/TawasulTech/image/check-icon.webp" alt="Check Icon" loading="lazy"/>
+            <img class="tws-swm-feature__icon" src="https://tawasul.tech/images/TawasulTech/image/check-icon.webp"
+              alt="Check Icon" loading="lazy" />
             <p class="tws-swm-feature__text">Smart Analytics</p>
           </li>
           <li class="tws-swm-feature">
-            <img class="tws-swm-feature__icon" src="https://tawasul.tech/images/TawasulTech/image/check-icon.webp" alt="Check Icon" loading="lazy"/>
+            <img class="tws-swm-feature__icon" src="https://tawasul.tech/images/TawasulTech/image/check-icon.webp"
+              alt="Check Icon" loading="lazy" />
             <p class="tws-swm-feature__text">Smart Sensors</p>
           </li>
           <li class="tws-swm-feature">
-            <img class="tws-swm-feature__icon" src="https://tawasul.tech/images/TawasulTech/image/check-icon.webp" alt="Check Icon" loading="lazy"/>
+            <img class="tws-swm-feature__icon" src="https://tawasul.tech/images/TawasulTech/image/check-icon.webp"
+              alt="Check Icon" loading="lazy" />
             <p class="tws-swm-feature__text">Smart Route Planning</p>
           </li>
           <li class="tws-swm-feature">
-            <img class="tws-swm-feature__icon" src="https://tawasul.tech/images/TawasulTech/image/check-icon.webp" alt="Check Icon" loading="lazy"/>
+            <img class="tws-swm-feature__icon" src="https://tawasul.tech/images/TawasulTech/image/check-icon.webp"
+              alt="Check Icon" loading="lazy" />
             <p class="tws-swm-feature__text">Citizen App</p>
           </li>
         </ul>
@@ -191,5 +844,221 @@
       </div>
     </div>
   </section>
-</body>
+
+  <!-- =========================
+       Section 2: Waste Monitoring
+       ========================= -->
+  <section class="tws-swm tws-swm-waste-monitor" aria-label="Waste fill-level monitoring">
+    <div class="tws-swm-waste-monitor__container">
+      <div class="tws-swm-waste-monitor__media">
+        <!-- image 130 placeholder -->
+        <img src="https://tawasul.tech/images/TawasulTech/image/waste-fill-level.webp"
+          alt="Waste monitoring illustration" loading="lazy" />
+      </div>
+
+      <div class="tws-swm-waste-monitor__content">
+        <h2 class="tws-swm-waste-monitor__title">Waste fill-level monitoring</h2>
+
+        <div class="tws-swm-waste-monitor__text">
+          <p class="tws-swm-waste-monitor__p">Sensoneo Waste Monitoring solution allows cities and businesses to uncover
+            and understand the complex dynamics of their waste production. The solution provides real-time online access
+            to data related to monitored bins, boxes, or containers. Waste Monitoring solution combines Smart Sensors,
+            Smart Waste Management Software System, and Citizen App.</p>
+
+          <p class="tws-swm-waste-monitor__p">The Smart Sensors and Monitors use ultrasound technology to measure the
+            fill levels (along with other data) in bins several times a day. Using a variety of IoT networks (Sigfox,
+            NB-IoT, LoRaWAN, GPRS), the sensors send the data to Sensoneo’s Smart Waste Management Software System, a
+            powerful cloud-based platform for data-driven daily operations, available also as a waste management app.
+          </p>
+
+          <p class="tws-swm-waste-monitor__p">Customers are provided data-driven decision making, and optimization of
+            waste collection routes, frequencies, and vehicle loads. We focus on tailored solutions—share your specific
+            challenges with us so we can assess the benefits our solution can bring to your waste management processes.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================
+       Section 3: Feature Cards
+       ========================= -->
+  <section class="tws-swm tws-swm__section" aria-label="Smart waste management feature cards">
+    <div class="tws-swm__container">
+      <div class="tws-swm__grid">
+
+        <!-- Card 1 -->
+        <article class="tws-swm__card">
+          <div class="tws-swm__media">
+            <!-- Placeholder image -->
+            <img src="https://tawasul.tech/images/TawasulTech/image/intelligence-analytics.webp"
+              alt="Intelligent Analytics" loading="lazy" />
+          </div>
+
+          <div class="tws-swm__content">
+            <div class="tws-swm__body">
+              <h3 class="tws-swm__title">Intelligent Analytics</h3>
+              <p class="tws-swm__desc">
+                Our analytics tool captures ‘big data’ to help make informed decisions. It generates statistics,
+                reports, and measurements about containers, contents, and collection paths. By consolidating data from
+                sensors, vehicles, and operational systems, the platform provides real-time visibility into waste
+                operations across the city. Municipal teams can monitor performance trends, identify inefficiencies, and
+                optimize collection strategies with confidence. Clear dashboards and actionable insights support
+                proactive planning, improve service reliability, and enable cost-effective, scalable waste management
+                for smart city environments.
+              </p>
+            </div>
+
+            <div class="tws-swm__foot">
+              <p class="tws-swm__footTitle">Make Data-Driven Decisions</p>
+              <p class="tws-swm__footText">Get valuable insights and truly understand the waste you manage.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="tws-swm__card">
+          <div class="tws-swm__media">
+            <!-- Placeholder image -->
+            <img src="https://tawasul.tech/images/TawasulTech/image/smart-waste-software.webp"
+              alt="Smart Waste Management Software System" loading="lazy" />
+          </div>
+
+          <div class="tws-swm__content">
+            <div class="tws-swm__body">
+              <h3 class="tws-swm__title">Smart Waste Management Software System</h3>
+              <p class="tws-swm__desc">
+                The powerful cloud-based waste management software system enables the customer to configure, monitor and
+                manage daily operations of a waste management company. In addition, to live data from Waste monitoring,
+                the tool can also hold complex bin database, plan the optimal collection routes, predict filling cycles,
+                and manage reports from employees and citizens. The solution is hosted in the Microsoft Azure cloud,
+                belongs to one of the most modern waste management software on the market.
+              </p>
+            </div>
+
+            <div class="tws-swm__foot">
+              <p class="tws-swm__footTitle">Manage Waste Smarter</p>
+              <p class="tws-swm__footText">Powerful and exceptional digital tools to manage waste smarter.</p>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================
+       Section 4: Intelligent Analytics (Image + Copy)
+       ========================= -->
+  <section class="tws-swm tws-swm-ia" aria-label="Intelligent Analytics">
+    <div class="tws-swm-ia__container">
+      <div class="tws-swm-ia__card">
+        <div class="tws-swm-ia__media">
+          <img src="https://tawasul.tech/images/TawasulTech/image/intelligent-analytics-preview.webp"
+            alt="Intelligent analytics preview" loading="lazy" />
+        </div>
+
+        <div class="tws-swm-ia__content">
+          <div class="tws-swm-ia__head">
+            <h2 class="tws-swm-ia__title">Intelligent Analytics</h2>
+            <p class="tws-swm-ia__desc">Automatically organizes waste collection using predefined data on fleets,
+              warehouses, and landfills. It maximizes vehicle efficiency and minimizes time and costs.</p>
+          </div>
+
+          <div class="tws-swm-ia__highlight">
+            <p class="tws-swm-ia__highlightTitle">Fleet Management</p>
+            <p class="tws-swm-ia__highlightText">Resources are used where and when needed — in real time.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================
+       Section 3: Feature Cards
+       ========================= -->
+  <section class="tws-swm tws-swm__section" aria-label="Smart waste management feature cards">
+    <div class="tws-swm__container">
+      <div class="tws-swm__grid">
+
+        <!-- Card 1 -->
+        <article class="tws-swm__card">
+          <div class="tws-swm__media-2">
+            <img src="https://tawasul.tech/images/TawasulTech/image/smart-sensors.webp" alt="Smart Sensors and Monitor"
+              loading="lazy" />
+          </div>
+
+          <div class="tws-swm__content">
+            <div class="tws-swm__body">
+              <h3 class="tws-swm__title">Smart Sensors and Monitors</h3>
+              <p class="tws-swm__desc">
+                Smart Sensors and Monitors are designed for monitoring fill level in smart trash bins and containers
+                using ultrasonic technology. Sensors and Monitors transfer data very simple via all currently available
+                IoT networks and/or GPRS. Sensors monitor all types of waste in bins and containers of different sizes.
+                They are robust, water and shock-resistant. Fire alarm, tilt recognition and other features are
+                included.
+              </p>
+            </div>
+
+            <div class="tws-swm__foot">
+              <p class="tws-swm__footTitle">Remote bin monitoring</p>
+              <p class="tws-swm__footText">Remote control over fill level in bins and containers.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="tws-swm__card">
+          <div class="tws-swm__media-2">
+            <!-- Placeholder image -->
+            <img src="https://tawasul.tech/images/TawasulTech/image/citizen-application.webp" alt="Citizen Application"
+              loading="lazy" />
+          </div>
+
+          <div class="tws-swm__content">
+            <div class="tws-swm__body">
+              <h3 class="tws-swm__title">Citizen Application</h3>
+              <p class="tws-swm__desc">
+                Citizens app provides access to data from Smart Sensors and Monitors to citizens. The mobile app informs
+                about the location and fill level of monitored bins and enables you to find the nearest available bin
+                for disposal of garbage or report an issue. Logged users can access even more information about the
+                bins, request a pickup or maintenance. Available for free on Android and iOS.
+              </p>
+            </div>
+
+            <div class="tws-swm__foot">
+              <p class="tws-swm__footTitle">Engage citizens in Smart Waste</p>
+              <p class="tws-swm__footText">Get valuable insights and truly understand the waste you manage.</p>
+            </div>
+          </div>
+        </article>
+
+
+
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- =========================
+       Section 5: CTA — Speak With Our Solutions Team
+       ========================= -->
+  <section class="tws-swm-cta" aria-label="Speak with our solutions team">
+    <div class="tws-swm-cta__wrap">
+
+      <div class="tws-swm-cta__head">
+        <h2 class="tws-swm-cta__title">Speak With Our Solutions Team</h2>
+        <p class="tws-swm-cta__sub">Get guidance on which TawasulTech solution fits your operational needs.</p>
+      </div>
+
+      <a class="tws-swm-cta__btn" href="#" aria-label="Chat on WhatsApp">
+        <img class="tws-swm-cta__icon" src="https://tawasul.tech/images/TawasulTech/image/whatsapp-icon.webp"
+          alt="WhatsApp" loading="lazy" />
+        <span class="tws-swm-cta__btnText">Chat on WhatsApp</span>
+      </a>
+
+    </div>
+  </section>
+
 </html>

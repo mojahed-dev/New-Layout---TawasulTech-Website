@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Smart Waste Management — Section 4</title>
+  <style>
+    /* =========================================================
+       TWS Smart Waste Management (scoped)
+       Section 4: Intelligent Analytics (image + copy)
+       ========================================================= */
+
+    .tws-swm{
+      /* Typography */
+      --swm-font: "Satoshi", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+
+      /* Colors */
+      --swm-ink: #1E1E1E;
+      --swm-muted: #4C4C4C;
+      --swm-bg: #EBF4EE;
+      --swm-surface: #FFFFFF;
+      --swm-panel: #F7F7F7;
+
+      /* Layout */
+      --swm-container: 1170px;
+      --swm-pad-y: 72px;
+      --swm-pad-x: 0px;
+
+      /* Card */
+      --swm-card-pad-top: 10px;
+      --swm-card-pad-right: 40px;
+      --swm-card-pad-bottom: 10px;
+      --swm-card-pad-left: 10px;
+      --swm-gap: 40px;
+
+      /* Type scale */
+      --swm-h2: 40px;
+      --swm-h2-lh: 1.1;
+      --swm-h2-ls: -0.03em;
+
+      --swm-body: 16px;
+      --swm-body-lh: 1.5;
+
+      --swm-kicker: 20px;
+      --swm-kicker-lh: 1.5;
+
+      font-family: var(--swm-font);
+      color: var(--swm-ink);
+    }
+
+    .tws-swm *{ box-sizing: border-box; }
+
+    .tws-swm-section{
+      background: var(--swm-bg);
+      padding: var(--swm-pad-y) var(--swm-pad-x);
+    }
+
+    .tws-swm-container{
+      max-width: var(--swm-container);
+      margin: 0 auto;
+    }
+
+    .tws-swm-card{
+      background: var(--swm-surface);
+      padding: var(--swm-card-pad-top) var(--swm-card-pad-right) var(--swm-card-pad-bottom) var(--swm-card-pad-left);
+      display: grid;
+      grid-template-columns: minmax(0, 540px) minmax(0, 540px);
+      gap: var(--swm-gap);
+      align-items: center;
+    }
+
+    .tws-swm-media{
+      background: var(--swm-panel);
+      width: 100%;
+      aspect-ratio: 540 / 470;
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+    }
+
+    .tws-swm-media img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      opacity: 0.9;
+    }
+
+    .tws-swm-content{
+      width: 100%;
+      display: grid;
+      gap: 24px;
+    }
+
+    .tws-swm-title{
+      margin: 0;
+      font-weight: 500;
+      font-size: var(--swm-h2);
+      line-height: var(--swm-h2-lh);
+      letter-spacing: var(--swm-h2-ls);
+      text-transform: capitalize;
+      color: var(--swm-ink);
+    }
+
+    .tws-swm-paragraph{
+      margin: 0;
+      font-weight: 500;
+      font-size: var(--swm-body);
+      line-height: var(--swm-body-lh);
+      color: var(--swm-muted);
+    }
+
+    .tws-swm-highlight{
+      display: grid;
+      gap: 12px;
+    }
+
+    .tws-swm-highlight-title{
+      margin: 0;
+      font-weight: 700;
+      font-size: var(--swm-kicker);
+      line-height: var(--swm-kicker-lh);
+      text-transform: capitalize;
+      color: var(--swm-ink);
+    }
+
+    .tws-swm-highlight-sub{
+      margin: 0;
+      font-weight: 500;
+      font-size: var(--swm-body);
+      line-height: var(--swm-body-lh);
+      color: var(--swm-muted);
+    }
+
+    /* -----------------------------
+       Responsive
+       ----------------------------- */
+
+    @media (max-width: 1200px){
+      .tws-swm-section{ padding: 64px 48px; }
+    }
+
+    /* Tablet: stack sooner to match design comfort */
+    @media (max-width: 980px){
+      .tws-swm-section{ padding: 56px 32px; }
+      .tws-swm-card{
+        grid-template-columns: 1fr;
+        padding: 12px;
+        gap: 28px;
+      }
+      .tws-swm-title{ font-size: 34px; }
+    }
+
+    @media (max-width: 560px){
+      .tws-swm-section{ padding: 48px 16px; }
+      .tws-swm-title{ font-size: 30px; }
+      .tws-swm-card{ gap: 22px; }
+    }
+
+    /* Optional: prevent external theme styles from affecting headings/paragraphs */
+    .tws-swm-section h1,
+    .tws-swm-section h2,
+    .tws-swm-section h3,
+    .tws-swm-section p{
+      margin-block: 0;
+      font-family: var(--swm-font);
+    }
+  </style>
+</head>
+<body style="margin: 0px;">
+
+  <section class="tws-swm tws-swm-section" aria-label="Intelligent Analytics">
+    <div class="tws-swm-container">
+      <div class="tws-swm-card">
+
+        <div class="tws-swm-media">
+          <img src="https://tawasul.tech/images/TawasulTech/image/intelligent-analytics-preview.webp" alt="Intelligent analytics preview" loading="lazy"/>
+        </div>
+
+        <div class="tws-swm-content">
+          <div>
+            <h2 class="tws-swm-title">Intelligent Analytics</h2>
+            <p class="tws-swm-paragraph">
+              Automatically organizes waste collection using predefined data on fleets, warehouses, and landfills. It maximizes vehicle efficiency and minimizes time and costs.
+            </p>
+          </div>
+
+          <div class="tws-swm-highlight">
+            <p class="tws-swm-highlight-title">Fleet Management</p>
+            <p class="tws-swm-highlight-sub">Resources are used where and when needed — in real time.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
