@@ -3,203 +3,276 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>3D Virtual Tour – Boost Your Visibility</title>
+  <title>Tawasul Logistics – Hero (progress)</title>
 
   <style>
     /* =========================================================
-       3D Virtual Tour – Section (Boost Your Visibility)
-       - Scoped styles (tws-vt4) to avoid theme overrides
-       - Maintainable via CSS custom properties
-       ========================================================= */
+       Tawasul Logistics – Hero (Section 1)
+       - Hero padding vars are HERO-ONLY (safe to set to 0)
+       - Tablet is explicitly handled (769px–1024px)
+    ========================================================= */
 
-    .tws-vt4 {
-      /* Section sizing */
-      --max-width: 1170px;
-      --pad-y: 72px;
-      --pad-x: 0px;
+    .tws-logistics {
+      --font: "Satoshi", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 
-      /* Colors */
-      --section-bg: #EBF4EE;
-      --card-bg: #FFFFFF;
+      --white: #ffffff;
+      --text-muted: #4C4C4C;
+      --icon: #1E1E1E;
+      --primary: #00A738;
 
-      /* Card layout (Figma-like) */
-      --card-pad-top: 10px;
-      --card-pad-right: 40px;
-      --card-pad-bottom: 10px;
-      --card-pad-left: 10px;
-      --card-gap: 40px;
+      /* HERO-ONLY padding (safe to set 0) */
+      --px-hero: 135px;
+      --py-hero: 72px;
 
-      /* Media block */
-      --media-w: 540px;
-      --media-h: 470px;
+      --container: 1170px;
+      --hero-h: 628px;
 
-      /* Typography */
-      --ff: "Satoshi", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-      --title-size: 40px;
-      --title-line: 1.1;
-      --title-weight: 500;
-      --title-letter: -0.03em;
+      --h1: 74px;
+      --body: 18px;
 
-      --text-size: 16px;
-      --text-line: 1.5;
-      --text-weight: 500;
+      --field-h: 56px;
+      --field-font: 16px;
+      --icon-size: 24px;
 
-      --title-color: #1E1E1E;
-      --text-color: #4C4C4C;
+      --btn-h: 48px;
+      --btn-font: 16px;
 
-      /* Responsive */
-      --pad-x-tablet: 48px;
-      --pad-x-mobile: 20px;
-      --title-size-tablet: 34px;
-      --title-size-mobile: 28px;
+      --gap-hero: 48px;
+      --gap-stack: 24px;
     }
 
-    .tws-vt4,
-    .tws-vt4 *,
-    .tws-vt4 *::before,
-    .tws-vt4 *::after {
-      box-sizing: border-box;
+    .tws-logistics, .tws-logistics * { box-sizing: border-box; }
+    .tws-logistics { font-family: var(--font); }
+
+    /* HERO */
+    .tws-hero {
+      min-height: var(--hero-h);
+      padding: var(--py-hero) var(--px-hero);
+      background:
+        linear-gradient(270deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.8) 100%),
+        url("https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1600&q=80");
+      background-size: cover;
+      background-position: right center;
+      color: var(--white);
+
+      display: flex;
+      align-items: flex-start; /* top aligned */
     }
 
-    .tws-vt4 {
-      background: var(--section-bg);
-      padding: var(--pad-y) var(--pad-x);
-    }
-
-    .tws-vt4__container {
-      max-width: var(--max-width);
+    .tws-container {
+      flex: 1 1 auto;
+      min-width: 0;
+      max-width: var(--container);
       margin: 0 auto;
     }
 
-    .tws-vt4__card {
-      background: var(--card-bg);
-      padding: var(--card-pad-top) var(--card-pad-right) var(--card-pad-bottom) var(--card-pad-left);
-      display: grid;
-      grid-template-columns: minmax(0, var(--media-w)) minmax(0, 1fr);
-      gap: var(--card-gap);
-      align-items: center;
-    }
+    .tws-stack { display: flex; flex-direction: column; gap: var(--gap-stack); }
 
-    /* Reverse layout (desktop only) */
-    .tws-vt4__card--reverse {
-      grid-template-columns: minmax(0, 1fr) minmax(0, var(--media-w));
-      grid-template-areas: "content media";
-    }
-    .tws-vt4__card--reverse .tws-vt4__media { grid-area: media; }
-    .tws-vt4__card--reverse .tws-vt4__content { grid-area: content; }
-
-    .tws-vt4__media {
-      width: 100%;
-      max-width: var(--media-w);
-      height: var(--media-h);
-      overflow: hidden;
-      background: #D9D9D9;
-    }
-
-    .tws-vt4__media img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .tws-vt4__content {
-      max-width: 540px;
-    }
-
-    .tws-vt4__title {
-      margin: 0 0 16px 0;
-      font-family: var(--ff);
-      font-weight: var(--title-weight);
-      font-size: var(--title-size);
-      line-height: var(--title-line);
-      letter-spacing: var(--title-letter);
+    h1 {
+      margin: 0;
+      font-size: var(--h1);
+      font-weight: 500;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
       text-transform: capitalize;
-      color: var(--title-color);
+      max-width: 731px;
     }
 
-    .tws-vt4__text {
-      margin: 0 0 14px 0;
-      font-family: var(--ff);
-      font-weight: var(--text-weight);
-      font-size: var(--text-size);
-      line-height: var(--text-line);
-      letter-spacing: 0;
-      color: var(--text-color);
-    }
-    .tws-vt4__text:last-child { margin-bottom: 0; }
-
-    /* Tablet */
-    @media (max-width: 1024px) {
-      .tws-vt4 {
-        padding-left: var(--pad-x-tablet);
-        padding-right: var(--pad-x-tablet);
-      }
-
-      .tws-vt4__card,
-      .tws-vt4__card--reverse {
-        grid-template-columns: 1fr;
-        grid-template-areas: none;
-        padding: 16px;
-        gap: 20px;
-      }
-
-      .tws-vt4__media {
-        max-width: 100%;
-        height: 360px;
-      }
-
-      .tws-vt4__content {
-        max-width: 100%;
-      }
-
-      .tws-vt4__title {
-        font-size: var(--title-size-tablet);
-      }
+    .tws-sub {
+      margin: 0;
+      font-size: var(--body);
+      font-weight: 500;
+      line-height: 1.5;
     }
 
-    /* Mobile */
-    @media (max-width: 640px) {
-      .tws-vt4 {
-        padding-left: var(--pad-x-mobile);
-        padding-right: var(--pad-x-mobile);
-        padding-top: 48px;
-        padding-bottom: 48px;
+    /* FORM */
+    .tws-form {
+      flex: 1 1 auto;
+      min-width: 0;
+      max-width: 570px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .tws-field {
+      height: var(--field-h);
+      background: var(--white);
+      padding: 0 16px 0 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .tws-control {
+      border: 0;
+      outline: none;
+      flex: 1 1 auto;
+      min-width: 0;
+      font-size: var(--field-font);
+      font-weight: 500;
+      color: var(--text-muted);
+      background: transparent;
+      line-height: 1.5;
+    }
+
+    .tws-control::placeholder { color: var(--text-muted); opacity: 1; }
+
+    select.tws-control {
+      appearance: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+    }
+
+    .tws-icon {
+      pointer-events: none;
+      width: var(--icon-size);
+      height: var(--icon-size);
+      color: var(--icon);
+      flex: 0 0 auto;
+      transition: opacity .2s ease;
+    }
+
+    /* Hide icon once user types */
+    .tws-control:not(:placeholder-shown) + .tws-icon { opacity: 0; }
+
+    /* CTA */
+    .tws-cta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 4px;
+    }
+
+    .tws-btn {
+      height: var(--btn-h);
+      padding: 0 24px;
+      background: var(--primary);
+      color: var(--white);
+      border: 0;
+      font-size: var(--btn-font);
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .tws-note {
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.5;
+      white-space: nowrap;
+    }
+
+    
+    /* Ensure chevron is visible for <select> (placeholder-shown doesn't apply to selects) */
+    .tws-field select.tws-control + .tws-icon--chev { opacity: 1 !important; }
+
+
+    /* =====================
+       TABLET (Fix)
+       ===================== */
+    @media (max-width: 1024px) and (min-width: 769px) {
+      .tws-logistics {
+        --px-hero: 48px;
+        --py-hero: 64px;
+        --hero-h: 560px;
+
+        --h1: 56px;
+        --body: 17px;
+
+        --field-h: 52px;
+        --field-font: 15px;
+
+        --btn-h: 46px;
+        --btn-font: 15px;
+
+        --gap-stack: 20px;
       }
 
-      .tws-vt4__media {
-        height: 260px;
+      .tws-container { max-width: 960px; }
+      h1 { max-width: 620px; }
+      .tws-form { max-width: 520px; }
+    }
+
+    /* =====================
+       MOBILE
+       ===================== */
+    @media (max-width: 768px) {
+      .tws-logistics {
+        --px-hero: 24px;
+        --py-hero: 48px;
+        --hero-h: 479px;
+
+        --h1: 38px;
+        --body: 16px;
+
+        --field-h: 45px;
+        --field-font: 14px;
+        --icon-size: 20px;
+
+        --btn-h: 40px;
+        --btn-font: 14px;
+
+        --gap-stack: 20px;
+        --gap-hero: 24px;
       }
 
-      .tws-vt4__title {
-        font-size: var(--title-size-mobile);
-        letter-spacing: -0.02em;
+      .tws-hero {
+        background:
+          linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.8) 100%),
+          url("https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=900&q=80");
+        background-position: right center;
       }
+
+      .tws-note { font-size: 12px; }
     }
   </style>
 </head>
 
-<body style="margin:0;">
-  <!-- Start: 3D Virtual Tour – Section -->
-  <section class="tws-vt4" aria-label="Boost Your Visibility">
-    <div class="tws-vt4__container">
-      <div class="tws-vt4__card">
-        <div class="tws-vt4__media" aria-label="Section image">
-          <!-- Replace src with your real image -->
-          <img src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?auto=format&fit=crop&w=1600&q=80" alt="Map visibility illustration" loading="lazy" />
+<body style="margin:0">
+  <section class="tws-logistics">
+    <div class="tws-hero">
+      <div class="tws-container tws-stack" style="gap: var(--gap-hero);">
+        <div class="tws-stack">
+          <h1>Ship Anything, Anytime</h1>
+          <p class="tws-sub">27 customers on hand to quote you</p>
         </div>
 
-        <div class="tws-vt4__content">
-          <h2 class="tws-vt4__title">Boost Your Visibility</h2>
-          <p class="tws-vt4__text">The 3D Communication Tours program helps improve your ranking on all Google products, from the Google search engine to Google Maps and YouTube.</p>
-          <p class="tws-vt4__text">You can maximize your ROI with free hosting on your tour and one-time payment for a virtual tour, with a one-time license.</p>
-          <p class="tws-vt4__text">The program allows you to own the image rights to any product or advertisement designed using 3D communication tours, and can be used for advertisements and other promotions as you see fit perfectly.</p>
-          <p class="tws-vt4__text">With the help of Tawasol, you can put your virtual tour on any available website including social media platforms.</p>
-          <p class="tws-vt4__text">3D communication tours offer you an opportunity to provide your customers with access to your products around the clock without the need to pay any additional cost. All for free.</p>
-        </div>
+        <form class="tws-form" method="post" action="#">
+          <div class="tws-field">
+            <select class="tws-control" name="route" aria-label="View Active Routes" required>
+              <option value="" disabled selected hidden>View Active Routes</option>
+              <option value="local">Local</option>
+              <option value="regional">Regional</option>
+              <option value="international">International</option>
+            </select>
+            <svg class="tws-icon tws-icon--chev" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+
+          <div class="tws-field">
+            <input class="tws-control" type="text" name="from" placeholder="Ship From" aria-label="Ship From" />
+            <svg class="tws-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 22s7-4.5 7-11a7 7 0 1 0-14 0c0 6.5 7 11 7 11Z" stroke="currentColor" stroke-width="1.5"/>
+              <circle cx="12" cy="11" r="2.5" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+          </div>
+
+          <div class="tws-field">
+            <input class="tws-control" type="text" name="to" placeholder="To" aria-label="To" />
+            <svg class="tws-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 22s7-4.5 7-11a7 7 0 1 0-14 0c0 6.5 7 11 7 11Z" stroke="currentColor" stroke-width="1.5"/>
+              <circle cx="12" cy="11" r="2.5" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+          </div>
+
+          <div class="tws-cta">
+            <button class="tws-btn" type="submit">Get a Free Quote</button>
+            <span class="tws-note">Take 1 minutes</span>
+          </div>
+        </form>
       </div>
     </div>
   </section>
-  <!-- End: 3D Virtual Tour – Section -->
 </body>
 </html>

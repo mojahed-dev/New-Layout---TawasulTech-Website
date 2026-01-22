@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tawasul Logistics – Hero (progress)</title>
+
+    <style>
+        /* =========================================================
+       Tawasul Logistics – Hero (Section 1)
+       - Hero padding vars are HERO-ONLY (safe to set to 0)
+       - Tablet is explicitly handled (769px–1024px)
+    ========================================================= */
+
+        .tws-logistics {
+            --font: "Satoshi", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+
+            --white: #ffffff;
+            --text-muted: #4C4C4C;
+            --icon: #1E1E1E;
+            --primary: #00A738;
+
+            /* HERO-ONLY padding (safe to set 0) */
+            --px-hero: 0px;
+            --py-hero: 72px;
+
+            --container: 1170px;
+            --hero-h: 628px;
+
+            --h1: 74px;
+            --body: 18px;
+
+            --field-h: 56px;
+            --field-font: 16px;
+            --icon-size: 24px;
+
+            --btn-h: 48px;
+            --btn-font: 16px;
+
+            --gap-hero: 48px;
+            --gap-stack: 24px;
+        }
+
+        .tws-logistics,
+        .tws-logistics * {
+            box-sizing: border-box;
+        }
+
+        .tws-logistics {
+            font-family: var(--font);
+        }
+
+        /* HERO */
+        .tws-hero {
+            min-height: var(--hero-h);
+            padding: var(--py-hero) var(--px-hero);
+            background:
+                linear-gradient(270deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, .8) 100%),
+                url("https://tawasul.tech/images/TawasulTech/image/tws-hero.webp");
+            background-size: cover;
+            background-position: left center;
+            background-size: 147%;
+            color: var(--white);
+
+            display: flex;
+            align-items: flex-start;
+            /* top aligned */
+        }
+
+        .tws-container {
+            width: 100%;
+            max-width: var(--container);
+            margin: 0 auto;
+        }
+
+        .tws-stack {
+            display: flex;
+            flex-direction: column;
+            gap: var(--gap-stack);
+        }
+
+        h1 {
+            margin: 0;
+            font-size: var(--h1);
+            font-weight: 500;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            text-transform: capitalize;
+            /* max-width: 731px; */
+        }
+
+        .tws-sub {
+            margin: 0;
+            font-size: var(--body);
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        /* FORM */
+        .tws-form {
+            width: 100%;
+            max-width: 570px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .tws-field {
+            height: var(--field-h);
+            background: var(--white);
+            padding: 0 16px 0 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .tws-control {
+            border: 0;
+            outline: none;
+            width: 100%;
+            font-size: var(--field-font);
+            font-weight: 500 !important;
+            color: var(--text-muted);
+            background: transparent;
+            line-height: 1.5;
+        }
+
+        .tws-control::placeholder {
+            color: var(--text-muted);
+            opacity: 1;
+        }
+
+        select.tws-control {
+            appearance: none;
+            -webkit-appearance: none;
+            cursor: pointer;
+        }
+
+        .tws-icon {
+            width: var(--icon-size);
+            height: var(--icon-size);
+            color: var(--icon);
+            flex: 0 0 auto;
+            transition: opacity .2s ease;
+        }
+
+        /* Hide icon once user types */
+        .tws-control:not(:placeholder-shown)+.tws-icon {
+            opacity: 0;
+        }
+
+        /* CTA */
+        .tws-cta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-top: 4px;
+        }
+
+        .tws-btn {
+            height: var(--btn-h);
+            padding: 0 24px;
+            background: var(--primary);
+            color: var(--white);
+            border: 0;
+            font-size: var(--btn-font);
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .tws-note {
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 1.5;
+            white-space: nowrap;
+        }
+
+        /* =====================
+       TABLET (Fix)
+       ===================== */
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .tws-logistics {
+                --px-hero: 48px;
+                --py-hero: 64px;
+                --hero-h: 560px;
+
+                --h1: 56px;
+                --body: 17px;
+
+                --field-h: 52px;
+                --field-font: 15px;
+
+                --btn-h: 46px;
+                --btn-font: 15px;
+
+                --gap-stack: 20px;
+            }
+
+            .tws-container {
+                max-width: 960px;
+            }
+
+            h1 {
+                max-width: 620px;
+            }
+
+            .tws-form {
+                max-width: 520px;
+            }
+        }
+
+        /* =====================
+       MOBILE
+       ===================== */
+        @media (max-width: 768px) {
+            .tws-logistics {
+                --px-hero: 24px;
+                --py-hero: 48px;
+                --hero-h: 479px;
+
+                --h1: 38px;
+                --body: 16px;
+
+                --field-h: 45px;
+                --field-font: 14px;
+                --icon-size: 20px;
+
+                --btn-h: 40px;
+                --btn-font: 14px;
+
+                --gap-stack: 20px;
+                --gap-hero: 24px;
+            }
+
+            .tws-hero {
+                background:
+                    linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, .8) 100%),
+                    url("https://tawasul.tech/images/TawasulTech/image/tws-hero.webp");
+                background-position: center center;
+            }
+
+            .tws-note {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body style="margin:0">
+    <section class="tws-logistics">
+        <div class="tws-hero">
+            <div class="tws-container tws-stack" style="gap: var(--gap-hero);">
+                <div class="tws-stack">
+                    <h1>Ship Anything, Anytime</h1>
+                    <p class="tws-sub">27 customers on hand to quote you</p>
+                </div>
+
+                <form class="tws-form" method="post" action="#">
+                    <div class="tws-field">
+                        <select class="tws-control" name="route" aria-label="View Active Routes">
+                            <option value="" disabled selected hidden>View Active Routes</option>
+                            <option value="local">Local</option>
+                            <option value="regional">Regional</option>
+                            <option value="international">International</option>
+                        </select>
+                        <svg class="tws-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+
+                    </div>
+
+                    <div class="tws-field">
+                        <input class="tws-control" type="text" name="from" placeholder="Ship From"
+                            aria-label="Ship From" />
+                        <svg class="tws-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <path d="M12 22s7-4.5 7-11a7 7 0 1 0-14 0c0 6.5 7 11 7 11Z" stroke="currentColor"
+                                stroke-width="1.5" />
+                            <circle cx="12" cy="11" r="2.5" stroke="currentColor" stroke-width="1.5" />
+                        </svg>
+                    </div>
+
+                    <div class="tws-field">
+                        <input class="tws-control" type="text" name="to" placeholder="To" aria-label="To" />
+                        <svg class="tws-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <path d="M12 22s7-4.5 7-11a7 7 0 1 0-14 0c0 6.5 7 11 7 11Z" stroke="currentColor"
+                                stroke-width="1.5" />
+                            <circle cx="12" cy="11" r="2.5" stroke="currentColor" stroke-width="1.5" />
+                        </svg>
+                    </div>
+
+                    <div class="tws-cta">
+                        <button class="tws-btn" type="submit">Get a Free Quote</button>
+                        <span class="tws-note">Take 1 minutes</span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
