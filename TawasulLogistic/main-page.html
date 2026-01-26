@@ -1,0 +1,1488 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Tawasul Logistics – Hero (progress)</title>
+    <style>
+        /* =========================================================
+       Tawasul Logistics – Hero (Section 1)
+       - Hero padding vars are HERO-ONLY (safe to set to 0)
+       - Tablet is explicitly handled (769px–1024px)
+    ========================================================= */
+
+
+        /* Overrides cs-cart theme defaults */
+        .ty-mainbox-title,
+        .ty-mainbox-simple-title,
+        .ut2-secondbox__title,
+        .ut2-secondbox__title-wrapper,
+        .ut2-secondbox-important__title-wrapper {
+            display: none !important;
+        }
+
+        .ty-wysiwyg-content ul,
+        .ty-wysiwyg-content ol {
+            margin: 0px !important;
+        }
+
+        body[class*=screen] select {
+            background-image: none !important;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="tel"],
+        input[type="number"],
+        textarea,
+        select {
+            padding: 0px !important;
+            border: none !important;
+        }
+
+
+        .tws-logistics {
+            --font: "Satoshi", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+
+            --white: #ffffff;
+            --text-muted: #4C4C4C;
+            --icon: #1E1E1E;
+            --primary: #00A738;
+
+            /* HERO-ONLY padding (safe to set 0) */
+            --px-hero: 0px;
+            --py-hero: 72px;
+
+            --container: 1170px;
+            --hero-h: 628px;
+
+            --h1: 74px;
+            --body: 18px;
+
+            --field-h: 56px;
+            --field-font: 16px;
+            --icon-size: 24px;
+
+            --btn-h: 48px;
+            --btn-font: 16px;
+
+            --gap-hero: 48px;
+            --gap-stack: 24px;
+        }
+
+        .tws-logistics,
+        .tws-logistics * {
+            box-sizing: border-box;
+        }
+
+        .tws-logistics {
+            font-family: var(--font);
+        }
+
+        /* HERO */
+        .tws-hero {
+            min-height: var(--hero-h);
+            padding: var(--py-hero) var(--px-hero);
+            background:
+                linear-gradient(270deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, .8) 100%),
+                url("https://tawasul.tech/images/TawasulTech/image/tws-hero.webp");
+            /* background-size: cover; */
+            background-position: left center;
+            background-size: 147%;
+            color: var(--white);
+
+            display: flex;
+            align-items: flex-start;
+            /* top aligned */
+        }
+
+        .tws-container {
+            flex: 1 1 auto;
+            min-width: 0;
+            max-width: var(--container);
+            margin: 0 auto;
+        }
+
+        .tws-stack {
+            display: flex;
+            flex-direction: column;
+            gap: var(--gap-stack);
+        }
+
+        h1 {
+            margin: 0;
+            font-size: var(--h1) !important;
+            font-weight: 500 !important;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            text-transform: capitalize;
+            color: #FFFFFF !important;
+            /* max-width: 731px; */
+        }
+
+        .tws-sub {
+            margin: 0;
+            font-size: var(--body);
+            font-weight: 500;
+            line-height: 1.5 !important;
+            color: #FFFFFF !important;
+        }
+
+        /* FORM */
+        .tws-form {
+            flex: 1 1 auto;
+            min-width: 0;
+            max-width: 570px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .tws-field {
+            height: var(--field-h);
+            background: var(--white);
+            padding: 0 16px 0 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .tws-control {
+            border: 0;
+            outline: none;
+            flex: 1 1 auto;
+            min-width: 0;
+            font-size: var(--field-font);
+            font-weight: 500;
+            color: var(--text-muted);
+            background: transparent;
+            line-height: 1.5;
+        }
+
+        .tws-control::placeholder {
+            color: var(--text-muted);
+            opacity: 1;
+        }
+
+        select.tws-control {
+            appearance: none;
+            -webkit-appearance: none;
+            cursor: pointer;
+        }
+
+        .tws-icon {
+            pointer-events: none;
+            width: var(--icon-size);
+            height: var(--icon-size);
+            color: var(--icon);
+            flex: 0 0 auto;
+            transition: opacity .2s ease;
+        }
+
+        /* Hide icon once user types */
+        .tws-control:not(:placeholder-shown)+.tws-icon {
+            opacity: 0;
+        }
+
+        /* CTA */
+        .tws-cta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-top: 4px;
+        }
+
+        .tws-btn {
+            height: var(--btn-h);
+            padding: 0 24px;
+            background: var(--primary);
+            color: var(--white);
+            border: 0;
+            font-size: var(--btn-font);
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .tws-note {
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 1.5;
+            white-space: nowrap;
+            color: var(--white);
+        }
+
+
+        /* Ensure chevron is visible for <select> (placeholder-shown doesn't apply to selects) */
+        .tws-field select.tws-control+.tws-icon--chev {
+            opacity: 1 !important;
+        }
+
+
+        /* =====================
+       TABLET (Fix)
+       ===================== */
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .tws-logistics {
+                --px-hero: 48px;
+                --py-hero: 64px;
+                --hero-h: 560px;
+
+                --h1: 56px;
+                --body: 17px;
+
+                --field-h: 52px;
+                --field-font: 15px;
+
+                --btn-h: 46px;
+                --btn-font: 15px;
+
+                --gap-stack: 20px;
+            }
+
+            .tws-container {
+                max-width: 960px;
+            }
+
+            h1 {
+                max-width: 620px;
+            }
+
+            .tws-form {
+                max-width: 520px;
+            }
+        }
+
+        /* =====================
+       MOBILE
+       ===================== */
+        @media (max-width: 768px) {
+            .tws-logistics {
+                --px-hero: 24px;
+                --py-hero: 48px;
+                --hero-h: 479px;
+
+                --h1: 38px;
+                --body: 16px;
+
+                --field-h: 45px;
+                --field-font: 14px;
+                --icon-size: 20px;
+
+                --btn-h: 40px;
+                --btn-font: 14px;
+
+                --gap-stack: 20px;
+                --gap-hero: 24px;
+            }
+
+            .tws-hero {
+                background:
+                    linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, .8) 100%),
+                    url("https://tawasul.tech/images/TawasulTech/image/tws-hero.webp");
+                background-position: center center;
+                background-size: cover;
+            }
+
+            .tws-note {
+                font-size: 12px;
+            }
+        }
+
+
+
+        /* =========================================================
+   Tawasul Logistics – Shared Base (Sections 1+)
+   - Scoped under .tws-logistics to reduce theme overrides
+   - Section-specific tokens are set on each section wrapper
+========================================================= */
+        .tws-logistics {
+            --ff: "Satoshi", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+
+            --white: #fff;
+            --text: #1E1E1E;
+            --muted: #4C4C4C;
+            --icon: #1E1E1E;
+            --brand: #00A738;
+
+            --container: 1170px;
+            --shadow-card: 0px 18px 40px 0px rgba(0, 0, 0, 0.12);
+        }
+
+        .tws-logistics,
+        .tws-logistics * {
+            box-sizing: border-box;
+        }
+
+        .tws-logistics {
+            font-family: var(--ff);
+        }
+
+        /* Utilities */
+        .tws-container {
+            width: 100%;
+            max-width: var(--container);
+            margin: 0 auto;
+        }
+
+        .tws-stack {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* --- Section 1 tokens --- */
+        .tws-logistics.tws-hero-section {
+            --ff: "Satoshi", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+
+            --bg-soft: #EBF4EE;
+            --white: #FFFFFF;
+            --text: #1E1E1E;
+            --muted: #4C4C4C;
+            --brand: #00A738;
+
+            --container: 1170px;
+
+            --px-desktop: 0px;
+            --py-desktop: 72px;
+
+            --shadow-card: 0px 18px 40px 0px rgba(0, 0, 0, 0.12);
+            /* #0000001F */
+
+            --gap-section: 48px;
+            --gap-section-mobile: 24px;
+            --gap-grid: 30px;
+
+            --title-size: 48px;
+            --title-lh: 1.1;
+            --title-weight: 500;
+
+            --card-pad: 12px;
+            --card-gap: 12px;
+
+            --card-title-size: 24px;
+            --card-title-weight: 700;
+
+            --card-text-size: 16px;
+            --card-text-weight: 500;
+        }
+
+        /* =========================================================
+       Tawasul Logistics – Section 2 (Features)
+       - Scoped under .tws-logistics
+       - Uses reusable tokens + simple utilities
+    ========================================================= */
+        .tws-logistics,
+        .tws-logistics * {
+            box-sizing: border-box;
+        }
+
+        .tws-logistics {
+            font-family: var(--ff);
+        }
+
+        .tws-section {
+            background: var(--bg-soft);
+            padding: var(--py-desktop) var(--px-desktop);
+        }
+
+        .tws-container {
+            max-width: var(--container);
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .tws-stack {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tws-gap-48 {
+            gap: var(--gap-section);
+        }
+
+        /* Title */
+        .tws-title {
+            margin: 0;
+            font-size: var(--title-size) !important;
+            font-weight: var(--title-weight) !important;
+            line-height: var(--title-lh);
+            text-align: center;
+            color: var(--text);
+        }
+
+        .tws-title__accent {
+            color: var(--brand);
+        }
+
+        /* Grid */
+        .tws-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: var(--gap-grid);
+        }
+
+        /* Card */
+        .tws-card {
+            background: var(--white);
+            padding: var(--card-pad);
+            box-shadow: var(--shadow-card);
+            display: flex;
+            flex-direction: column;
+            gap: var(--card-gap);
+            min-width: 0;
+        }
+
+        .tws-card__media {
+            width: 100%;
+            aspect-ratio: 346 / 270.6877;
+            background: #D9D9D9;
+            overflow: hidden;
+        }
+
+        .tws-card__media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .tws-card__content {
+            padding: 12px;
+            /* Frame 2147231852 padding */
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .tws-card__title {
+            margin: 0 !important;
+            font-size: var(--card-title-size) !important;
+            font-weight: var(--card-title-weight) !important;
+            line-height: 1.5 !important;
+            color: var(--text) !important;
+        }
+
+        .tws-card__text p {
+            margin: 0;
+            font-size: var(--card-text-size);
+            font-weight: var(--card-text-weight);
+            line-height: 1.5;
+            color: var(--muted);
+        }
+
+        /* Tablet */
+        @media (max-width: 1024px) {
+            .tws-section {
+                padding-left: 48px;
+                padding-right: 48px;
+            }
+
+            .tws-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .tws-title {
+                font-size: 40px;
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 640px) {
+            .tws-section {
+                padding: 24px;
+            }
+
+            .tws-logistics {
+                --gap-section: 24px;
+                --gap-grid: 20px;
+
+                --title-size: 32px;
+
+                --card-pad: 8px;
+                --card-gap: 8px;
+
+                --card-title-size: 20px;
+                --card-text-size: 14px;
+            }
+
+            .tws-container {
+                gap: var(--gap-section-mobile) !important;
+            }
+
+            .tws-title {
+                margin-inline: auto;
+                font-weight: 500 !important;
+                font-size: 32px !important;
+                max-width: 327px !important;
+            }
+
+            .tws-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tws-card__media {
+                aspect-ratio: 311 / 242;
+            }
+
+            .tws-card__content {
+                padding: 8px;
+                gap: 8px;
+            }
+        }
+
+        /* --- Section 2 tokens --- */
+        .tws-logistics.tws-features-section {
+            --ff: "Satoshi", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+
+            --bg-soft: #EBF4EE;
+            --white: #FFFFFF;
+            --text: #1E1E1E;
+            --muted: #4C4C4C;
+            --brand: #00A738;
+
+            --container: 1170px;
+
+            --px-desktop: 0px;
+            --py-desktop: 72px;
+
+            --shadow-card: 0px 18px 40px 0px rgba(0, 0, 0, 0.12);
+            /* #0000001F */
+
+            --gap-section: 48px;
+            --gap-grid: 30px;
+
+            --title-size: 48px;
+            --title-lh: 1.1;
+            --title-weight: 500;
+
+            --card-pad: 12px;
+            --card-gap: 12px;
+
+            --card-title-size: 24px;
+            --card-title-weight: 700;
+
+            --card-text-size: 16px;
+            --card-text-weight: 500;
+        }
+
+        /* =========================================================
+       Tawasul Logistics – Section 2 (Features)
+       - Scoped under .tws-logistics
+       - Uses reusable tokens + simple utilities
+    ========================================================= */
+        .tws-logistics,
+        .tws-logistics * {
+            box-sizing: border-box;
+        }
+
+        .tws-logistics {
+            font-family: var(--ff);
+        }
+
+        .tws-section {
+            background: var(--bg-soft);
+            padding: var(--py-desktop) var(--px-desktop);
+        }
+
+        .tws-gap-48 {
+            gap: var(--gap-section);
+        }
+
+        /* Title */
+        /* .tws-title {
+            margin: 0;
+            font-size: var(--title-size) !important;
+            font-weight: var(--title-weight) !important;
+            line-height: var(--title-lh);
+            text-align: center;
+            color: var(--text);
+        } */
+
+        .tws-title__accent {
+            color: var(--brand);
+        }
+
+        /* Grid */
+        .tws-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: var(--gap-grid);
+        }
+
+        /* Card */
+        .tws-card {
+            background: var(--white);
+            padding: var(--card-pad);
+            box-shadow: var(--shadow-card);
+            display: flex;
+            flex-direction: column;
+            gap: var(--card-gap);
+            min-width: 0;
+        }
+
+        .tws-card__media {
+            width: 100%;
+            aspect-ratio: 346 / 270.6877;
+            background: #D9D9D9;
+            overflow: hidden;
+        }
+
+        .tws-card__media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .tws-card__content {
+            padding: 12px;
+            /* Frame 2147231852 padding */
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        /* .tws-card__title {
+            margin: 0;
+            font-size: var(--card-title-size);
+            font-weight: var(--card-title-weight);
+            line-height: 1.5;
+            color: var(--text);
+        } */
+
+        .tws-card__text {
+            margin: 0;
+            font-size: var(--card-text-size);
+            font-weight: var(--card-text-weight);
+            line-height: 1.5;
+            color: var(--muted);
+        }
+
+        /* Tablet */
+        @media (max-width: 1024px) {
+            .tws-section {
+                padding-left: 48px;
+                padding-right: 48px;
+            }
+
+            .tws-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .tws-title {
+                font-size: 40px;
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 640px) {
+            .tws-section {
+                padding: 24px;
+            }
+
+            .tws-logistics {
+                --gap-section: 24px;
+                --gap-grid: 20px;
+
+                --title-size: 32px;
+
+                --card-pad: 8px;
+                --card-gap: 8px;
+
+                --card-title-size: 20px;
+                --card-text-size: 14px;
+            }
+
+            .tws-title {
+                margin-inline: auto;
+                font-weight: 500 !important;
+                font-size: 32px !important;
+                max-width: 327px !important;
+            }
+
+            .tws-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tws-card__media {
+                aspect-ratio: 311 / 242;
+            }
+
+            .tws-card__content {
+                padding: 8px;
+                gap: 8px;
+            }
+        }
+
+        /* =========================================================
+   Tawasul Logistics – Section 3 (Why choose)
+   - Background: white (per Figma)
+   - Uses existing shared utilities (.tws-container, .tws-title, etc.)
+========================================================= */
+
+        .tws-why-section {
+            background: var(--white);
+            padding: 72px 0;
+            /* Reuse the existing .tws-title token system */
+            --title-size: 48px;
+            --title-lh: 1.1;
+            --title-weight: 500;
+
+            /* Item sizing */
+            --why-gap: 30px;
+            --why-item-gap: 16px;
+            --why-item-pad-y: 16px;
+            --why-item-pad-x: 24px;
+            --why-item-min-h: 74px;
+            --why-icon: 42px;
+
+            --why-shadow: 0px 20px 35px rgba(0, 0, 0, 0.05);
+            /* #0000000D */
+        }
+
+        .tws-why__grid {
+            margin-top: 30px;
+            display: grid;
+            grid-template-columns: 570px 570px;
+            gap: var(--why-gap);
+            justify-content: space-between;
+            align-items: start;
+        }
+
+        .tws-why__list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .tws-why__item {
+            background: var(--white);
+            min-height: var(--why-item-min-h);
+            padding: var(--why-item-pad-y) var(--why-item-pad-x);
+            display: flex;
+            align-items: center;
+            gap: var(--why-item-gap);
+            box-shadow: var(--why-shadow);
+        }
+
+        .tws-why__icon {
+            width: var(--why-icon);
+            height: var(--why-icon);
+            display: grid;
+            place-items: center;
+            flex: 0 0 auto;
+        }
+
+        .tws-why__icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        .tws-why__text p {
+            margin: 0;
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 1.5;
+            color: var(--text);
+        }
+
+        .tws-why__media {
+            width: 100%;
+            height: 452px;
+            /* background: linear-gradient(180deg, #EAF3FD 0%, #E4EEF9 100%); */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tws-why__img {
+            width: 100%;
+            height: auto;
+            max-height: 444px;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* Tablet */
+        @media (max-width: 1024px) {
+            .tws-why-section {
+                padding-left: 48px;
+                padding-right: 48px;
+            }
+
+            .tws-why__grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 640px) {
+            .tws-why-section {
+                padding: 24px;
+                --title-size: 32px;
+
+                --why-gap: 24px;
+                --why-item-gap: 12px;
+                --why-item-pad-y: 12px;
+                --why-item-pad-x: 20px;
+                --why-item-min-h: 72px;
+                --why-icon: 34px;
+            }
+
+            .tws-why__grid {
+                margin-top: 24px;
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .tws-why__list {
+                gap: 12px;
+            }
+
+            .tws-why__text {
+                font-size: 16px;
+            }
+
+            .tws-why__media {
+                height: auto;
+            }
+
+            .tws-why__img {
+                max-height: none;
+            }
+        }
+
+        /* =========================================================
+   Section 4 – How It Works (scoped to .tws-logistics-section)
+   NOTE: main HTML uses .tws-hiw__* classes
+========================================================= */
+        .tws-logistics-section {
+            background: var(--tws-bg-soft);
+            padding: 72px 0px;
+        }
+
+        .tws-logistics-section .tws-hiw {
+            display: flex;
+            flex-direction: column;
+            gap: 48px;
+            align-items: center;
+        }
+
+        .tws-logistics-section .tws-title {
+            margin: 0;
+            text-align: center;
+            font-weight: 500 !important;
+            line-height: 1.1;
+            text-transform: capitalize;
+            color: var(--tws-text);
+            font-size: 48px !important;
+        }
+
+        .tws-logistics-section .tws-title__accent {
+            color: var(--tws-green);
+        }
+
+        .tws-logistics-section .tws-hiw__steps {
+            width: 100%;
+            position: relative;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 370px));
+            gap: 30px;
+            justify-content: space-between;
+        }
+
+        .tws-logistics-section .tws-hiw__rail {
+            position: absolute;
+            top: 29px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: min(800px, 100%);
+            height: 1px;
+            background: var(--tws-green);
+            z-index: 0;
+        }
+
+        .tws-logistics-section .tws-hiw__step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 1;
+        }
+
+        .tws-logistics-section .tws-hiw__node {
+            width: 58px;
+            height: 58px;
+            border-radius: 60px;
+            background: #F9FAFB;
+            border: 1px solid var(--tws-green);
+            display: grid;
+            place-items: center;
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 1.5;
+            color: var(--tws-text);
+        }
+
+        .tws-logistics-section .tws-hiw__vline {
+            width: 1px;
+            height: 46px;
+            background: var(--tws-green);
+        }
+
+        .tws-logistics-section .tws-hiw__card {
+            width: 370px;
+            min-height: 254px;
+            padding: 40px 30px 30px;
+            border: 1.5px solid var(--tws-green);
+            border-radius: var(--tws-radius-lg);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .tws-logistics-section .tws-hiw__icon {
+            width: 48px;
+            height: 48px;
+            display: grid;
+            place-items: center;
+        }
+
+        .tws-logistics-section .tws-hiw__icon img,
+        .tws-logistics-section .tws-hiw__icon svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: contain;
+        }
+
+        .tws-logistics-section .tws-hiw__content {
+            width: 310px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            text-align: center;
+        }
+
+        .tws-logistics-section .tws-hiw__h3 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 1.5;
+            color: var(--tws-text);
+        }
+
+        .tws-logistics-section .tws-hiw__p {
+            margin: 0;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 1.5;
+            color: var(--tws-muted);
+        }
+
+        .tws-logistics-section .tws-btn--start {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            height: 48px;
+            padding: 16px 24px;
+            font-size: 16px;
+            line-height: 1.5;
+            font-weight: 700;
+            color: #fff;
+            background: var(--tws-green);
+            text-decoration: none;
+            border: 0;
+        }
+
+        /* Tablet */
+        @media (max-width:1024px) {
+            .tws-logistics-section {
+                padding: 72px 48px;
+            }
+
+            .tws-logistics-section .tws-hiw__steps {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .tws-logistics-section .tws-hiw__card {
+                width: 100%;
+            }
+
+            .tws-logistics-section .tws-hiw__content {
+                width: min(310px, 100%);
+            }
+
+            .tws-logistics-section .tws-hiw__rail {
+                width: min(800px, 92%);
+            }
+        }
+
+        /* Mobile */
+        .tws-logistics-section .tws-hiw__hline {
+            display: none;
+        }
+
+        @media (max-width:768px) {
+            .tws-logistics-section {
+                padding: 24px;
+            }
+
+            .tws-logistics-section .tws-title {
+                font-size: 32px !important;
+            }
+
+            .tws-logistics-section .tws-hiw {
+                gap: 24px !important;
+            }
+
+            .tws-logistics-section .tws-hiw__steps {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                position: relative;
+            }
+
+            .tws-logistics-section .tws-hiw__steps::before {
+                content: "";
+                position: absolute;
+                left: 22px;
+                top: 54px;
+                width: 1px;
+                height: 470px;
+                background: var(--tws-green);
+            }
+
+            .tws-logistics-section .tws-hiw__rail {
+                display: none;
+            }
+
+            .tws-logistics-section .tws-hiw__step {
+                flex-direction: row;
+                align-items: flex-start;
+            }
+
+            .tws-logistics-section .tws-hiw__node {
+                width: 44px;
+                height: 44px;
+                border-radius: 100px;
+                font-size: 12px;
+                flex: 0 0 auto;
+                margin-top: 18px;
+            }
+
+            .tws-logistics-section .tws-hiw__vline {
+                display: none;
+            }
+
+            .tws-logistics-section .tws-hiw__hline {
+                display: block;
+                width: 16px;
+                height: 1px;
+                background: var(--tws-green);
+                margin-top: 40px;
+                flex: 0 0 auto;
+            }
+
+            .tws-logistics-section .tws-hiw__card {
+                width: 327px;
+                padding: 30px 20px 20px;
+                border: 1px solid var(--tws-green);
+                border-radius: var(--tws-radius-md);
+                gap: 30px;
+            }
+
+            .tws-logistics-section .tws-hiw__icon {
+                width: 38px;
+                height: 38px;
+            }
+
+            .tws-logistics-section .tws-hiw__content {
+                width: 227px;
+            }
+
+            .tws-logistics-section .tws-hiw__h3 {
+                font-size: 20px;
+            }
+
+            .tws-logistics-section .tws-hiw__p {
+                font-size: 14px;
+            }
+
+            .tws-logistics-section .tws-btn--start {
+                height: 40px;
+                padding: 10px 16px;
+                font-size: 14px;
+            }
+        }
+    </style>
+
+    <style>
+        /* ================================
+   HOW IT WORKS – SHARED STYLES
+   ================================ */
+        :root {
+            --tws-green: #00A738;
+            --tws-bg-soft: #EBF4EE;
+            --tws-text: #1E1E1E;
+            --tws-muted: #4C4C4C;
+            --tws-radius-lg: 20px;
+            --tws-radius-md: 16px;
+        }
+
+        /* Section */
+        .tws-how-it-works {
+            background: var(--tws-bg-soft);
+            padding: 72px 135px;
+        }
+
+        .tws-how-it-works h2 {
+            text-align: center;
+            font-size: 48px;
+            font-weight: 500;
+            margin-bottom: 48px;
+        }
+
+        /* Grid */
+        .tws-hiw-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            position: relative;
+        }
+
+        .tws-hiw-line {
+            position: absolute;
+            top: 29px;
+            left: 10%;
+            right: 10%;
+            height: 1px;
+            background: var(--tws-green);
+        }
+
+        /* Step */
+        .tws-hiw-step {
+            text-align: center;
+        }
+
+        .tws-hiw-badge {
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            border: 1px solid var(--tws-green);
+            background: #F9FAFB;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin: 0 auto 16px;
+        }
+
+        .tws-hiw-card {
+            border: 1.5px solid var(--tws-green);
+            border-radius: var(--tws-radius-lg);
+            padding: 40px 30px 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .tws-hiw-card h3 {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .tws-hiw-card p {
+            font-size: 16px;
+            color: var(--tws-muted);
+            line-height: 1.5;
+        }
+
+        /* CTA */
+        .tws-hiw-cta {
+            margin-top: 48px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .tws-hiw-cta a {
+            background: var(--tws-green);
+            color: #fff;
+            padding: 16px 24px;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        /* Tablet */
+        @media(max-width:1024px) {
+            .tws-how-it-works {
+                padding: 64px 48px;
+            }
+
+            .tws-hiw-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .tws-hiw-line {
+                display: none;
+            }
+        }
+
+        /* Mobile */
+        @media(max-width:640px) {
+            .tws-how-it-works {
+                padding: 24px;
+            }
+
+            .tws-how-it-works h2 {
+                font-size: 32px;
+            }
+
+            .tws-hiw-card {
+                border-radius: var(--tws-radius-md);
+                padding: 30px 20px 20px;
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+
+
+<body style="margin:0">
+    <section class="tws-logistics">
+        <div class="tws-hero">
+            <div class="tws-container tws-stack" style="gap: var(--gap-hero);">
+                <div class="tws-stack">
+                    <h1>Ship Anything, Anytime</h1>
+                    <p class="tws-sub">27 customers on hand to quote you</p>
+                </div>
+                <form action="#" class="tws-form" method="post">
+                    <div class="tws-field">
+                        <select aria-label="View Active Routes" class="tws-control" name="route" required="">
+                            <option disabled="" hidden="" selected="" value="">View Active Routes</option>
+                            <option value="local">Local</option>
+                            <option value="regional">Regional</option>
+                            <option value="international">International</option>
+                        </select>
+                        <svg aria-hidden="true" class="tws-icon tws-icon--chev" fill="none" viewbox="0 0 24 24">
+                            <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="1.5"></path>
+                        </svg>
+                    </div>
+                    <div class="tws-field">
+                        <input aria-label="Ship From" class="tws-control" name="from" placeholder="Ship From"
+                            type="text" />
+                        <svg aria-hidden="true" class="tws-icon" fill="none" viewbox="0 0 24 24">
+                            <path d="M12 22s7-4.5 7-11a7 7 0 1 0-14 0c0 6.5 7 11 7 11Z" stroke="currentColor"
+                                stroke-width="1.5">
+                            </path>
+                            <circle cx="12" cy="11" r="2.5" stroke="currentColor" stroke-width="1.5"></circle>
+                        </svg>
+                    </div>
+                    <div class="tws-field">
+                        <input aria-label="To" class="tws-control" name="to" placeholder="To" type="text" />
+                        <svg aria-hidden="true" class="tws-icon" fill="none" viewbox="0 0 24 24">
+                            <path d="M12 22s7-4.5 7-11a7 7 0 1 0-14 0c0 6.5 7 11 7 11Z" stroke="currentColor"
+                                stroke-width="1.5">
+                            </path>
+                            <circle cx="12" cy="11" r="2.5" stroke="currentColor" stroke-width="1.5"></circle>
+                        </svg>
+                    </div>
+                    <div class="tws-cta">
+                        <button class="tws-btn" type="submit">Get a Free Quote</button>
+                        <span class="tws-note">Take 1 minutes</span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    <section aria-label="Seamless Shipping features" class="tws-logistics tws-section tws-features-section">
+        <div class="tws-container tws-stack tws-gap-48">
+            <h2 class="tws-title">
+                <span class="tws-title__accent">Seamless</span> Shipping.
+                <span class="tws-title__accent">Smart</span> Logistics.
+                <span class="tws-title__accent">Trusted</span> Carriers.
+            </h2>
+            <div class="tws-grid" role="list">
+                <article class="tws-card" role="listitem">
+                    <div aria-label="Smart feature image" class="tws-card__media">
+                        <img alt="Smart logistics dashboard" loading="lazy"
+                            src="https://tawasul.tech/images/TawasulTech/image/smart-logistic-dashboard.webp" />
+                    </div>
+                    <div class="tws-card__content">
+                        <h3 class="tws-card__title">Smart</h3>
+                        <p class="tws-card__text">
+                            Intelligent matching between shipments and verified transporters. Competitive bidding
+                            ensures fair pricing.
+                            Optimized routes and shipment allocation.
+                        </p>
+                    </div>
+                </article>
+                <article class="tws-card" role="listitem">
+                    <div aria-label="Seamless feature image" class="tws-card__media">
+                        <img alt="Seamless shipping interface" loading="lazy"
+                            src="https://tawasul.tech/images/TawasulTech/image/shipping-interface.webp" />
+                    </div>
+                    <div class="tws-card__content">
+                        <h3 class="tws-card__title">Seamless</h3>
+                        <p class="tws-card__text">
+                            Post requests in seconds. Real-time tracking and ETA updates. Digital Proof of Delivery
+                            (POD).
+                            Automated invoicing and documentation.
+                        </p>
+                    </div>
+                </article>
+                <article class="tws-card" role="listitem">
+                    <div aria-label="Trusted feature image" class="tws-card__media">
+                        <img alt="Trusted carriers and secure transactions" loading="lazy"
+                            src="https://tawasul.tech/images/TawasulTech/image/trusted-and-secure.webp" />
+                    </div>
+                    <div class="tws-card__content">
+                        <h3 class="tws-card__title">Trusted</h3>
+                        <p class="tws-card__text">
+                            Verified transporters only. Transparent pricing and service-level agreements.
+                            Secure communication and transaction flow.
+                        </p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+    <section class="tws-logistics tws-why-section" aria-label="Why choose Tawasul Logistics">
+        <div class="tws-container">
+            <h2 class="tws-title">
+                Why choose <span class="tws-title__accent">Tawasul Logistics</span>?
+            </h2>
+
+            <div class="tws-why__grid">
+                <div class="tws-why__list" role="list">
+                    <div class="tws-why__item" role="listitem">
+                        <span class="tws-why__icon" aria-hidden="true">
+                            <!-- placeholder icon -->
+                            <img src="https://tawasul.tech/images/TawasulTech/image/truck-icon2.webp" alt="Truck Icon"
+                                loading="lazy">
+                        </span>
+                        <p class="tws-why__text">Post on-demand truck requests in seconds</p>
+                    </div>
+
+                    <div class="tws-why__item" role="listitem">
+                        <span class="tws-why__icon" aria-hidden="true">
+                            <img src="https://tawasul.tech/images/TawasulTech/image/truck-transporter-icon.webp"
+                                alt="Truck Transporter Icon" loading="lazy">
+                        </span>
+                        <p class="tws-why__text">Receive competitive bids from verified transporters</p>
+                    </div>
+
+                    <div class="tws-why__item" role="listitem">
+                        <span class="tws-why__icon" aria-hidden="true">
+                            <img src="https://tawasul.tech/images/TawasulTech/image/tansparent-pricing-icon.webp"
+                                alt="Transparent Pricing Icon" loading="lazy">
+                        </span>
+                        <p class="tws-why__text">Agree on transparent pricing and service levels</p>
+                    </div>
+
+                    <div class="tws-why__item" role="listitem">
+                        <span class="tws-why__icon" aria-hidden="true">
+                            <img src="https://tawasul.tech/images/TawasulTech/image/track-shipment-icon.webp"
+                                alt="Track Shipment Icon" loading="lazy">
+                        </span>
+                        <p class="tws-why__text">Track shipment status and ETAs in real time</p>
+                    </div>
+
+                    <div class="tws-why__item" role="listitem">
+                        <span class="tws-why__icon" aria-hidden="true">
+                            <img src="https://tawasul.tech/images/TawasulTech/image/invoice-automation-icon.webp"
+                                alt="Invoice Automation Icon" loading="lazy">
+                        </span>
+                        <p class="tws-why__text">Issue digital POD and automate invoicing</p>
+                    </div>
+                </div>
+
+                <div class="tws-why__media" aria-label="image 125 placeholder">
+                    <img class="tws-why__img" src="https://tawasul.tech/images/TawasulTech/image/tws-why__img.webp"
+                        alt="image placeholder" loading="lazy" />
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="tws-logistics tws-logistics-section" aria-label="How it works">
+        <div class="tws-container tws-hiw">
+            <h2 class="tws-title">How It <span class="tws-title__accent">Works</span></h2>
+
+            <div class="tws-hiw__steps" role="list">
+                <div class="tws-hiw__rail" aria-hidden="true"></div>
+
+                <!-- Step 01 -->
+                <div class="tws-hiw__step" role="listitem">
+                    <div class="tws-hiw__node" aria-label="Step 1">01</div>
+                    <div class="tws-hiw__vline" aria-hidden="true"></div>
+                    <div class="tws-hiw__hline" aria-hidden="true"></div>
+
+                    <div class="tws-hiw__card">
+                        <div class="tws-hiw__icon" aria-hidden="true">
+                            <!-- placeholder icon -->
+                            <img src="https://tawasul.tech/images/TawasulTech/image/fi_18387014-icon.webp"
+                                alt="List Item Icon" loading="lazy">
+                        </div>
+
+                        <div class="tws-hiw__content">
+                            <h3 class="tws-hiw__h3">List your item for delivery</h3>
+                            <p class="tws-hiw__p">Enter pickup, drop-off, and item details to post your shipment
+                                instantly.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 02 -->
+                <div class="tws-hiw__step" role="listitem">
+                    <div class="tws-hiw__node" aria-label="Step 2">02</div>
+                    <div class="tws-hiw__vline" aria-hidden="true"></div>
+                    <div class="tws-hiw__hline" aria-hidden="true"></div>
+
+                    <div class="tws-hiw__card">
+                        <div class="tws-hiw__icon" aria-hidden="true">
+                            <!-- placeholder icon -->
+                            <img src="https://tawasul.tech/images/TawasulTech/image/competitive-bids.webp"
+                                alt="Competitive Bids Icon" loading="lazy">
+                        </div>
+
+                        <div class="tws-hiw__content">
+                            <h3 class="tws-hiw__h3">Get delivery quotes</h3>
+                            <p class="tws-hiw__p">Compare competitive bids from verified transporters with clear
+                                pricing.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 03 -->
+                <div class="tws-hiw__step" role="listitem">
+                    <div class="tws-hiw__node" aria-label="Step 3">03</div>
+                    <div class="tws-hiw__vline" aria-hidden="true"></div>
+                    <div class="tws-hiw__hline" aria-hidden="true"></div>
+
+                    <div class="tws-hiw__card">
+                        <div class="tws-hiw__icon" aria-hidden="true">
+                            <!-- placeholder icon -->
+                            <img src="https://tawasul.tech/images/TawasulTech/image/transporter-icon.webp"
+                                alt="Transporter Icon" loading="lazy">
+                        </div>
+
+                        <div class="tws-hiw__content">
+                            <h3 class="tws-hiw__h3">Choose the transporter</h3>
+                            <p class="tws-hiw__p">Select the best option and track your shipment in real time.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <a class="tws-btn tws-btn--start" href="#" role="button" aria-label="Start now">Start Now</a>
+        </div>
+    </section>
+
+</body>
+
+</html>
