@@ -366,12 +366,27 @@
             display: block;
         }
 
+        /* =========================
+           Play button hover/focus affordance (no JS)
+           - Dark overlay fades in
+           - Play button scales up
+           - Soft shadow + subtle outer ring
+           - Pointer cursor
+           - Keyboard focus outline supported
+           ========================= */
+
+        .tws-fms-benefit__media {
+            cursor: pointer; /* affordance */
+        }
+
         .tws-fms-benefit__media::after {
             content: "";
             position: absolute;
             inset: 0;
-            background: rgba(0, 0, 0, 0.2);
+            background: rgba(0, 0, 0, 0.45);
+            opacity: 0;
             pointer-events: none;
+            transition: opacity var(--tws-dur-260) var(--tws-ease);
         }
 
         .tws-fms-benefit__play {
@@ -384,19 +399,49 @@
             border: none;
             background: none;
             cursor: pointer;
+            border-radius: 999px; /* for focus outline */
+        }
+
+        /* focus outline (accessibility) */
+        .tws-fms-benefit__play:focus-visible {
+            outline: 3px solid rgba(255, 255, 255, 0.85);
+            outline-offset: 6px;
         }
 
         .tws-fms-benefit__play-circle {
+            position: relative;
             width: 72px;
             height: 72px;
             border-radius: 50%;
-            border: 1px solid var(--tws-white);
-            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.06);
             backdrop-filter: blur(10px);
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: transform var(--tws-dur-220) ease-out, background var(--tws-dur-220) ease-out;
+
+            /* baseline shadow (very subtle) */
+            box-shadow: 0 10px 26px rgba(0, 0, 0, 0.18);
+
+            transition:
+                transform var(--tws-dur-260) var(--tws-ease),
+                background var(--tws-dur-260) var(--tws-ease),
+                box-shadow var(--tws-dur-260) var(--tws-ease);
+        }
+
+        /* Outer ring (appears on hover/focus-within) */
+        .tws-fms-benefit__play-circle::after {
+            content: "";
+            position: absolute;
+            inset: -10px;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            opacity: 0;
+            transform: scale(0.96);
+            transition:
+                opacity var(--tws-dur-260) var(--tws-ease),
+                transform var(--tws-dur-260) var(--tws-ease);
+            pointer-events: none;
         }
 
         .tws-fms-benefit__play-icon {
@@ -418,12 +463,33 @@
             text-align: center;
         }
 
-        .tws-fms-benefit__media:hover .tws-fms-benefit__play-circle {
-            transform: scale(1.05);
-            background: rgba(255, 255, 255, 0.09);
+        
+        .tws-fms-benefit__media:hover::after,
+        .tws-fms-benefit__media:focus-within::after {
+            opacity: 1;
         }
 
-        /* Benefits section reveal (kept scoped, but uses shared tokens) */
+        .tws-fms-benefit__media:hover .tws-fms-benefit__play-circle,
+        .tws-fms-benefit__media:focus-within .tws-fms-benefit__play-circle {
+            transform: scale(1.08);
+            background: rgba(255, 255, 255, 0.10);
+            box-shadow: 0 14px 34px rgba(0, 0, 0, 0.24);
+        }
+
+        .tws-fms-benefit__media:hover .tws-fms-benefit__play-circle::after,
+        .tws-fms-benefit__media:focus-within .tws-fms-benefit__play-circle::after {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .tws-fms-benefit__media::after,
+            .tws-fms-benefit__play-circle,
+            .tws-fms-benefit__play-circle::after {
+                transition: none !important;
+            }
+        }
+/* Benefits section reveal (kept scoped, but uses shared tokens) */
         .tws-fms-benefits [data-reveal] {
             transition:
                 opacity var(--tws-dur-480) var(--tws-ease),
@@ -2087,16 +2153,16 @@
             .twscom-image {
                 width: 100%;
                 max-width: none;
-                border-radius: var(--tws-radius-8);
+                /* border-radius: var(--tws-radius-8); */
                 aspect-ratio: 1 / 1;
             }
 
             .twscom-title {
-                font-size: 32px;
+                font-size: 32px !important;
             }
 
             .twscom-feature p {
-                font-size: 16px;
+                font-size: 16px !important;
             }
         }
     </style>
@@ -2411,6 +2477,64 @@
             }
         }
     </style>
+
+<style>
+/* =========================
+   Vimeo modal (added)
+   - Keeps existing thumbnails/layout untouched
+   ========================= */
+.tws-video-modal{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.72);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  z-index: 99999;
+}
+.tws-video-modal.is-open{ display:flex; }
+.tws-video-modal__dialog{
+  width: min(1000px, 100%);
+  aspect-ratio: 16 / 9;
+  background: #000;
+  position: relative;
+  box-shadow: 0 18px 40px rgba(0,0,0,.35);
+}
+.tws-video-modal__iframe{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  border:0;
+}
+.tws-video-modal__close{
+  position:absolute;
+  top:-44px;
+  right:0;
+  width:40px;
+  height:40px;
+  border:0;
+  border-radius:999px;
+  background: rgba(255,255,255,.12);
+  color:#fff;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  backdrop-filter: blur(10px);
+}
+.tws-video-modal__close:focus-visible{
+  outline: 3px solid rgba(255,255,255,.85);
+  outline-offset: 4px;
+}
+.tws-video-modal__close svg{ width:18px; height:18px; display:block; }
+@media (max-width: 640px){
+  .tws-video-modal{ padding: 16px; }
+  .tws-video-modal__close{ top:-46px; }
+}
+</style>
+
 </head>
 
 <body>
@@ -2436,7 +2560,7 @@
                 <div class="tws-fms-benefits__grid">
                     <!-- Card 1 -->
                     <article class="tws-fms-benefit" data-reveal="">
-                        <div class="tws-fms-benefit__media">
+                        <div class="tws-fms-benefit__media" data-video-url="https://vimeo.com/303893551?fl=pl&fe=cm">
                             <img alt="Full fleet management" loading="lazy"
                                 src="https://tawasul.tech/images/TawasulTech/image/fleet-full-management.jpg" />
                             <button aria-label="Play Full Fleet Management video" class="tws-fms-benefit__play"
@@ -3539,6 +3663,142 @@
             </div>
         </div>
     </section>
+
+<!-- =========================
+     Vimeo modal (added)
+     ========================= -->
+<div class="tws-video-modal" id="twsVideoModal" role="dialog" aria-modal="true" aria-label="Video">
+  <div class="tws-video-modal__dialog" role="document">
+    <button class="tws-video-modal__close" type="button" aria-label="Close video">
+      <svg viewBox="0 0 24 24" fill="none">
+        <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <iframe class="tws-video-modal__iframe" id="twsVideoIframe"
+      allow="autoplay; fullscreen; picture-in-picture"
+      allowfullscreen
+      title="Vimeo video player"></iframe>
+  </div>
+</div>
+
+
+<script>
+/* =========================
+   Vimeo playback (added)
+   - Click thumbnail or play button to open
+   - Uses data-video-url when present, otherwise falls back by card order
+   ========================= */
+(function () {
+  const modal = document.getElementById('twsVideoModal');
+  const iframe = document.getElementById('twsVideoIframe');
+  if (!modal || !iframe) return;
+
+  const closeBtn = modal.querySelector('.tws-video-modal__close');
+  const focusableSel = 'button,[href],input,select,textarea,[tabindex]:not([tabindex="-1"])';
+  let lastFocus = null;
+
+  // Fallback order (Card 1, Card 2)
+  const fallbackUrls = [
+    "https://vimeo.com/303893551?fl=pl&fe=cm",
+    "https://vimeo.com/340734291?fl=pl&fe=cm"
+  ];
+
+  function getVimeoId(url) {
+    if (!url) return null;
+    // Matches vimeo.com/123456789, player.vimeo.com/video/123456789, etc.
+    const m = String(url).match(/vimeo\.com\/(?:video\/)?(\d+)/i);
+    return m ? m[1] : null;
+  }
+
+  function buildEmbedUrl(vimeoUrl) {
+    const id = getVimeoId(vimeoUrl);
+    if (!id) return null;
+    // Autoplay on open; turn off most chrome
+    return "https://player.vimeo.com/video/" + id + "?autoplay=1&title=0&byline=0&portrait=0";
+  }
+
+  function openModal(vimeoUrl) {
+    const embed = buildEmbedUrl(vimeoUrl);
+    if (!embed) return;
+
+    lastFocus = document.activeElement;
+    iframe.setAttribute('src', embed);
+    modal.classList.add('is-open');
+    document.documentElement.style.overflow = 'hidden';
+
+    // Focus close for accessibility
+    closeBtn && closeBtn.focus({ preventScroll: true });
+  }
+
+  function closeModal() {
+    modal.classList.remove('is-open');
+    document.documentElement.style.overflow = '';
+    // stop playback
+    iframe.setAttribute('src', '');
+    // restore focus
+    if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
+  }
+
+  // Close handlers
+  closeBtn && closeBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', function (e) {
+    if (e.target === modal) closeModal();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (!modal.classList.contains('is-open')) return;
+    if (e.key === 'Escape') closeModal();
+
+    // basic focus trap (Tab)
+    if (e.key === 'Tab') {
+      const focusables = Array.from(modal.querySelectorAll(focusableSel)).filter(el => !el.hasAttribute('disabled'));
+      if (!focusables.length) return;
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault(); last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault(); first.focus();
+      }
+    }
+  });
+
+  // Open handler (delegate)
+  const medias = Array.from(document.querySelectorAll('.tws-fms-benefit__media'));
+  medias.forEach(function (media, idx) {
+    // Make the whole media focusable for keyboard users (without changing layout)
+    if (!media.hasAttribute('tabindex')) media.setAttribute('tabindex', '0');
+    if (!media.hasAttribute('role')) media.setAttribute('role', 'button');
+    if (!media.hasAttribute('aria-label')) media.setAttribute('aria-label', 'Play video');
+
+    function resolveUrl() {
+      return media.getAttribute('data-video-url') || fallbackUrls[idx] || '';
+    }
+
+    media.addEventListener('click', function (e) {
+      // If user clicked links inside (none here), allow default
+      openModal(resolveUrl());
+    });
+
+    media.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openModal(resolveUrl());
+      }
+    });
+
+    // If play button exists, keep it working too
+    const playBtn = media.querySelector('.tws-fms-benefit__play');
+    if (playBtn) {
+      playBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        openModal(resolveUrl());
+      });
+    }
+  });
+})();
+</script>
+
 </body>
 
 </html>
