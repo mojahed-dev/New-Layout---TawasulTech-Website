@@ -23,6 +23,7 @@
             display: none !important;
         }
 
+
         .ty-wysiwyg-content ul,
         .ty-wysiwyg-content ol {
             margin: 0px !important;
@@ -42,8 +43,15 @@
             border: none !important;
         }
 
-        .ty-wysiwyg-content table td, .ty-wysiwyg-content table th {border: none;}
+        .ty-wysiwyg-content table td,
+        .ty-wysiwyg-content table th {
+            border: none;
+        }
 
+        .tws-logistics,
+        .tws-logistics * {
+            font-family: "Satoshi", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+        }
 
         .tws-logistics {
             --font: "Satoshi", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
@@ -73,7 +81,7 @@
             --gap-hero: 48px;
             --gap-stack: 24px;
 
-             /* Typography */
+            /* Typography */
             --tws-h2: 48px;
             --tws-h2-lh: 1.1;
             --tws-h2-sm: 32px;
@@ -84,7 +92,7 @@
             --tws-td: 16px;
             --tws-td-sm: 12px;
 
-               /* Heights */
+            /* Heights */
             --tws-row-h: 80px;
             --tws-row-h-sm: 62px;
 
@@ -92,6 +100,11 @@
             --tws-scrollbar-h: 6px;
             --tws-scrollbar-radius: 48px;
             --tws-scrollbar-thumb: 48px;
+
+            /* Tawasul City */
+            --tws-gap-48: 48px;
+            --tws-gap-24: 24px;
+            --tws-gap-16: 16px;
         }
 
         .tws-logistics,
@@ -101,6 +114,10 @@
 
         .tws-logistics {
             font-family: var(--font);
+        }
+
+        .tws-title .tws-accent {
+            color: var(--tws-green);
         }
 
         /* HERO */
@@ -354,7 +371,8 @@
         }
 
         /* --- Section 1 tokens --- */
-        .tws-logistics.tws-hero-section, .tws-section{
+        .tws-logistics.tws-hero-section,
+        .tws-section {
             --ff: "Satoshi", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 
             --bg-soft: #EBF4EE;
@@ -532,7 +550,7 @@
                 gap: 24px !important;
             }
 
-           .tws-section .tws-title {
+            .tws-section .tws-title {
                 margin-inline: auto;
                 font-weight: 500 !important;
                 font-size: 32px !important;
@@ -1155,7 +1173,7 @@
             --tws-radius-lg: 20px;
             --tws-radius-md: 16px;
 
-            
+
         }
 
         /* Section */
@@ -1308,7 +1326,9 @@
             align-items: start;
         }
 
-        .tws-live-routes {background-color: white;}
+        .tws-live-routes {
+            background-color: white;
+        }
 
         .tws-live-routes .tws-routes__table {
             border-radius: var(--tws-radius-sm);
@@ -1474,7 +1494,7 @@
                 transition: transform 120ms linear;
             }
 
-            
+
         }
 
         @media (max-width: 640px) {
@@ -1512,7 +1532,8 @@
                 height: 38px;
             }
 
-            .tws-item-icon img, .tws-live-routes .tws-item-icon img {
+            .tws-item-icon img,
+            .tws-live-routes .tws-item-icon img {
                 width: 38px;
 
             }
@@ -1545,6 +1566,345 @@
                 transition: transform 120ms linear;
             }
         }
+
+
+        /* #######################  ####################### */
+        /* ############################ BROWSE CATEGORIES ############################ */
+        :root {
+            --tws-bg: #EBF4EE;
+            --tws-white: #FFFFFF;
+            --tws-text: #1E1E1E;
+            --tws-green: #00A738;
+
+            --tws-font-sans: Satoshi, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+
+            --tws-container: 1170px;
+
+            --tws-py-desktop: 72px;
+            --tws-px-desktop: 0px;
+
+            --tws-py-mobile: 24px;
+            --tws-px-mobile: 24px;
+
+            --tws-gap-desktop: 48px;
+            --tws-gap-mobile: 24px;
+
+            --tws-title-size-desktop: 48px;
+            --tws-title-size-mobile: 32px;
+            --tws-title-lh: 1.1;
+            --tws-title-weight: 500;
+
+            --tws-grid-gap-desktop: 30px;
+            --tws-grid-gap-mobile: 20px;
+
+            --tws-card-radius: 0px;
+            --tws-card-py-desktop: 30px;
+            --tws-card-px-desktop: 16px;
+            --tws-card-gap-desktop: 24px;
+
+            --tws-card-py-mobile: 20px;
+            --tws-card-px-mobile: 12px;
+            --tws-card-gap-mobile: 16px;
+
+            --tws-icon-size-desktop: 60px;
+            --tws-icon-size-mobile: 40px;
+
+            --tws-label-size-desktop: 16px;
+            --tws-label-size-mobile: 12px;
+        }
+
+        .tws-browse-categories .tws-container {
+            display: flex;
+            flex-direction: column;
+            gap: 48px;
+            align-items: center;
+        }
+
+        .tws-cats {
+            width: 100%;
+            display: grid;
+            gap: var(--tws-grid-gap-desktop);
+            grid-template-columns: repeat(5, 1fr);
+            align-items: stretch;
+        }
+
+        .tws-cat {
+            background: var(--tws-white);
+            border-radius: var(--tws-card-radius);
+            padding: var(--tws-card-py-desktop) var(--tws-card-px-desktop);
+            display: grid;
+            gap: var(--tws-card-gap-desktop);
+            place-items: center;
+            text-decoration: none;
+            color: inherit;
+            min-height: 168px;
+        }
+
+        .tws-cat__icon {
+            width: var(--tws-icon-size-desktop);
+            height: var(--tws-icon-size-desktop);
+            display: grid;
+            place-items: center;
+        }
+
+        .tws-cat__icon img,
+        .tws-cat__icon svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: contain;
+        }
+
+        .tws-cat__label {
+            margin: 0;
+            font-weight: 700;
+            font-size: var(--tws-label-size-desktop);
+            line-height: 1.5 !important;
+            text-align: center;
+            padding: 0px !important;
+        }
+
+        @media (max-width: 1024px) {
+            .tws-section {
+                padding: 56px 40px;
+            }
+
+            .tws-cats {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .tws-section {
+                padding: var(--tws-py-mobile) var(--tws-px-mobile);
+            }
+
+            .tws-container {
+                gap: var(--tws-gap-mobile);
+            }
+
+            .tws-title {
+                font-size: var(--tws-title-size-mobile);
+            }
+
+            .tws-cats {
+                gap: var(--tws-grid-gap-mobile);
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .tws-cat {
+                min-height: 114px;
+                padding: var(--tws-card-py-mobile) var(--tws-card-px-mobile);
+                gap: var(--tws-card-gap-mobile);
+            }
+
+            .tws-cat__icon {
+                width: var(--tws-icon-size-mobile);
+                height: var(--tws-icon-size-mobile);
+            }
+
+            .tws-cat__label {
+                font-size: var(--tws-label-size-mobile);
+            }
+        }
+
+        @media (hover:hover) {
+            .tws-cat:hover {
+                outline: 1px solid rgba(0, 167, 56, 0.25);
+                outline-offset: -1px;
+            }
+        }
+    </style>
+
+    <style>
+        .tws-city .tws-container,
+        .tws-cta .tws-container {
+            max-width: var(--container);
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: var(--tws-gap-48);
+            align-items: center;
+        }
+
+        .tws-city {
+            background: var(--white);
+            padding: var(--py-desktop) var(--px-desktop);
+        }
+
+        .tws-city-grid {
+            width: 100%;
+            display: grid;
+            gap: var(--tws-gap-24);
+        }
+
+        .tws-city-row {
+            display: grid;
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            gap: var(--tws-gap-16);
+            width: 100%;
+        }
+
+        .tws-pill {
+            height: 48px;
+            display: grid;
+            place-items: center;
+            background: #EEEEEE;
+            border-radius: 2px;
+            padding: 12px 8px;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 1.5;
+            color: #1E1E1E;
+            text-decoration: none;
+            user-select: none;
+            text-align: center;
+        }
+
+        .tws-city-cta {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            height: var(--tws-btn-h);
+            padding: 16px 24px;
+            background: var(--tws-green);
+            color: #fff;
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 1.5;
+            text-decoration: none;
+            border: 0;
+        }
+
+        @media (max-width: 1024px) {
+            .tws-city {
+                padding: 48px 48px;
+            }
+
+            .tws-pill {
+                height: 82px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .tws-city-grid {
+                gap: 20px;
+            }
+
+            .tws-city-row {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 20px;
+            }
+
+            .tws-pill {
+                height: 37px;
+                padding: 8px 4px;
+                font-size: 14px;
+            }
+
+            .tws-city-cta {
+                height: 40px;
+                padding: 10px 16px;
+                font-size: 14px;
+            }
+        }
+
+
+        /* CTA */
+        .tws-cta-section {
+            background: #71BB82;
+        }
+
+        .tws-cta-section .tws-container {
+            display: flex;
+            flex-direction: column;
+            gap: 48px
+        }
+
+        .tws-cta-desc {
+            margin: 0;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 1.5;
+            text-align: center;
+            color: var(--tws-text);
+            max-width: 642px;
+        }
+
+        .tws-cta-actions {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .tws-btn {
+            height: 48px;
+            padding: 16px 24px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 1.5;
+            text-decoration: none;
+            border: 1px solid transparent;
+            white-space: nowrap;
+        }
+
+        .tws-btn--primary {
+            background: #fff;
+            color: var(--tws-green);
+        }
+
+        .tws-btn--outline {
+            background: transparent;
+            color: #fff;
+            border-color: #fff;
+        }
+
+        @media (max-width: 640px) {
+            .tws-section {
+                padding: 24px !important;
+            }
+
+            .tws-cta {
+                padding: 48px 0px;
+            }
+
+            .tws-cta .tws-container {
+                gap: 24px;
+            }
+
+            .tws-cta-title {
+                font-size: 32px;
+            }
+
+            .tws-cta-desc {
+                font-size: 14px;
+                max-width: 327px;
+            }
+
+            .tws-btn {
+                height: 40px;
+                padding: 10px 16px;
+                font-size: 14px;
+            }
+
+            .tws-section {
+                padding: 48px 24px !important;
+            }
+        }
+
+        .tws-pill:focus-visible,
+        .tws-city-cta:focus-visible,
+        .tws-btn:focus-visible {
+            /* outline: 2px solid #00A738; */
+            outline-offset: 3px;
+        }
+
+        
     </style>
 </head>
 
@@ -1649,7 +2009,7 @@
             </div>
         </div>
     </section>
-    <section class="tws-logistics tws-why-section" aria-label="Why choose Tawasul Logistics">
+    <section class="tws-logistics tws-section tws-why-section" aria-label="Why choose Tawasul Logistics">
         <div class="tws-container">
             <h2 class="tws-title">
                 Why choose <span class="tws-title__accent">Tawasul Logistics</span>?
@@ -1706,7 +2066,7 @@
             </div>
         </div>
     </section>
-    <section class="tws-logistics tws-logistics-section" aria-label="How it works">
+    <section class="tws-logistics tws-logistics-section tws-section" aria-label="How it works">
         <div class="tws-container tws-hiw">
             <h2 class="tws-title">How It <span class="tws-title__accent">Works</span></h2>
 
@@ -1779,9 +2139,6 @@
             <a class="tws-btn tws-btn--start" href="#" role="button" aria-label="Start now">Start Now</a>
         </div>
     </section>
-
-
-
     <!-- =============================
      Live Routes Section (from progress.html)
      ============================= -->
@@ -1947,6 +2304,120 @@
             update();
         })();
     </script>
+
+    <section class="tws-section tws-logistics tws-browse-categories" aria-label="Browse Categories">
+        <div class="tws-container">
+            <h2 class="tws-title">
+                Browse <span class="tws-accent">Categories</span>
+            </h2>
+
+            <div class="tws-cats" role="list">
+                <a class="tws-cat" href="#" role="listitem">
+                    <div class="tws-cat__icon" aria-hidden="true"><img
+                            src="https://tawasul.tech/images/TawasulTech/image/perishable-goods-icon.webp"
+                            alt="Perishable Goods Icon" loading="lazy" /></div>
+                    <p class="tws-cat__label">Perishable Goods</p>
+                </a>
+                <a class="tws-cat" href="#" role="listitem">
+                    <div class="tws-cat__icon" aria-hidden="true"><img
+                            src="https://tawasul.tech/images/TawasulTech/image/truck-shopping-icon.webp"
+                            alt="Truck Shopping Icon" loading="lazy" /></div>
+                    <p class="tws-cat__label">Household Goods</p>
+                </a>
+                <a class="tws-cat" href="#" role="listitem">
+                    <div class="tws-cat__icon" aria-hidden="true"><img
+                            src="https://tawasul.tech/images/TawasulTech/image/live-stock-icon.webp"
+                            alt="Live Stock Icon" loading="lazy" /></div>
+                    <p class="tws-cat__label">Livestock</p>
+                </a>
+                <a class="tws-cat" href="#" role="listitem">
+                    <div class="tws-cat__icon" aria-hidden="true"><img
+                            src="https://tawasul.tech/images/TawasulTech/image/refrigirated-transport-icon.webp"
+                            alt="Refrigerated Transport Icon" loading="lazy" /></div>
+                    <p class="tws-cat__label">Refrigerated Transport</p>
+                </a>
+                <a class="tws-cat" href="#" role="listitem">
+                    <div class="tws-cat__icon" aria-hidden="true"><img
+                            src="https://tawasul.tech/images/TawasulTech/image/heavy-transport-icon.webp"
+                            alt="Heavy Transport Icon" loading="lazy" /></div>
+                    <p class="tws-cat__label">Heavy Transport</p>
+                </a>
+                <a class="tws-cat" href="#" role="listitem">
+                    <div class="tws-cat__icon" aria-hidden="true"><img
+                            src="https://tawasul.tech/images/TawasulTech/image/dry-goods-icon.webp" alt="Dry Goods Icon"
+                            loading="lazy" /></div>
+                    <p class="tws-cat__label">Dry Goods</p>
+                </a>
+                <a class="tws-cat" href="#" role="listitem">
+                    <div class="tws-cat__icon" aria-hidden="true"><img
+                            src="https://tawasul.tech/images/TawasulTech/image/express-transport-icon.webp"
+                            alt="Express Transport Icon" loading="lazy" /></div>
+                    <p class="tws-cat__label">Express Transport</p>
+                </a>
+                <a class="tws-cat" href="#" role="listitem">
+                    <div class="tws-cat__icon" aria-hidden="true"><img
+                            src="https://tawasul.tech/images/TawasulTech/image/car-towing-icon.webp"
+                            alt="Car Towing Icon" loading="lazy" /></div>
+                    <p class="tws-cat__label">Car Towing</p>
+                </a>
+                <a class="tws-cat" href="#" role="listitem">
+                    <div class="tws-cat__icon" aria-hidden="true"><img
+                            src="https://tawasul.tech/images/TawasulTech/image/water-transport-icon.webp"
+                            alt="Water Transport Icon" loading="lazy" /></div>
+                    <p class="tws-cat__label">Water Transport</p>
+                </a>
+                <a class="tws-cat" href="#" role="listitem">
+                    <div class="tws-cat__icon" aria-hidden="true"><img
+                            src="https://tawasul.tech/images/TawasulTech/image/packers-movers-icon.webp"
+                            alt="Packers & Movers Icon" loading="lazy" /></div>
+                    <p class="tws-cat__label">Packers &amp; Movers</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="tws-section tws-logistics tws-city" aria-labelledby="tws-city-title">
+        <div class="tws-container">
+            <h2 class="tws-title" id="tws-city-title">
+                <span>Transporters</span> <span class="tws-accent">By City</span>
+            </h2>
+
+            <div class="tws-city-grid" role="list" aria-label="Cities">
+                <div class="tws-city-row" role="listitem">
+                    <a class="tws-pill" href="#" aria-label="Abha">Abha</a>
+                    <a class="tws-pill" href="#" aria-label="Riyadh">Riyadh</a>
+                    <a class="tws-pill" href="#" aria-label="Al Hasid">Al Hasid</a>
+                    <a class="tws-pill" href="#" aria-label="Tameer">Tameer</a>
+                    <a class="tws-pill" href="#" aria-label="Temeriyah">Temeriyah</a>
+                    <a class="tws-pill" href="#" aria-label="Hotat Sudair">Hotat Sudair</a>
+                    <a class="tws-pill" href="#" aria-label="Asheerah Sudayer">Asheerah Sudayer</a>
+                    <a class="tws-pill" href="#" aria-label="Awdah Sudayer">Awdah Sudayer</a>
+                    <a class="tws-pill" href="#" aria-label="Roudhah Sudayer">Roudhah Sudayer</a>
+                    <a class="tws-pill" href="#" aria-label="Sudayer">Sudayer</a>
+                </div>
+            </div>
+
+            <a class="tws-city-cta" href="#" aria-label="Find Transporters Near You">Find Transporters Near You</a>
+        </div>
+    </section>
+
+    <section class="tws-logistics tws-section tws-cta-section" aria-labelledby="tws-cta-title">
+        <div class="tws-container">
+            <div style="display:flex; flex-direction:column; gap:20px; align-items:center;">
+                <h2 class="tws-title" id="tws-cta-title">
+                    Transporter / Courier / Delivery Companies
+                </h2>
+                <p class="tws-cta-desc">
+                    Find loads across Tawasul. Book your first load free. No subscription fees.
+                </p>
+            </div>
+
+            <div class="tws-cta-actions" aria-label="CTA actions">
+                <a class="tws-btn tws-btn--primary" href="#" aria-label="Signup Now">Signup Now</a>
+                <a class="tws-btn tws-btn--outline" href="#" aria-label="Start Quoting Today">Start Quoting Today</a>
+            </div>
+        </div>
+    </section>
 
 </body>
 

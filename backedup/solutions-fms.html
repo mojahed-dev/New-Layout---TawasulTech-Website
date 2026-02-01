@@ -1,0 +1,518 @@
+<p><!-- Tailwind CSS CDN --></p>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+    /* Custom styles for additional refinements */
+    .highlight {
+        color: #7ab80e;
+    }
+    .section-title::after {
+        content: '';
+        display: block;
+        width: 100px;
+        height: 3px;
+        background-color: #7ab80e;
+        margin: 0.5rem auto 1rem;
+    }
+    .card-hover {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card-hover:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    }
+    .video-iframe {
+        border-radius: 10px;
+        border: none;
+        width: 100%;
+        max-width: 480px;
+        height: 270px;
+    }
+    .vehicle-card {
+        background-color: #e6f3e6;
+        border-radius: 10px;
+        padding: 1rem;
+        text-align: center;
+        min-height: 150px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .vehicle-icon {
+        font-size: 2rem;
+        color: #ffffff;
+        background-color: #7ab80e;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1rem;
+    }
+    @media (min-width: 1024px) {
+        .lg\:grid-cols-6 {
+            grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        }
+    }
+/* Start Second Section */
+        /* .twsl-container {
+  width: 100%;
+  max-width: 16<span id="selection-marker-1" class="redactor-selection-marker"></span>00px;
+  margin: auto;
+} */
+        .twsl-banner {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .twsl-banner img {
+            max-width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        .twsl-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(208px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+        .twsl-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;   /* centers the image + text horizontally */
+            justify-content: center; /* centers the image + text vertically */
+            background: #fff;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            
+        }
+        .twsl-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        .twsl-card img {
+          
+            max-width: 100px;
+            margin-bottom: 15px;
+        }
+        .twsl-card p {
+            font-size: 14px;
+            font-weight: bold;
+            margin: 0;
+        }
+        /* End Second Section */
+</style>
+<p><!-- Main Wrapper --></p>
+<div class="twsl-wrapper min-h-screen py-8" dir="ltr">
+    <!-- Introduction Section -->
+    <section class="max-w-6xl mx-auto px-4 mb-12">
+        <div class="bg-white rounded-xl p-8 text-center shadow-lg card-hover">
+            <h1 class="text-3xl font-bold text-[#2c3e50] mb-4">Tawasul</h1>
+            <p class="text-gray-600 leading-relaxed">
+                Track your fleet's activity with the Tawasul fleet management system, which saves time, reduces fuel costs, and increases productivity.
+            </p>
+        </div>
+    </section>
+    <!-- Fleet Management Benefits -->
+    <section class="max-w-6xl mx-auto px-4 mb-12">
+        <h2 class="text-2xl font-bold text-center text-[#2c3e50] section-title">Fleet Management Benefits</h2>
+    </section>
+    <!-- Videos Section -->
+    <section class="max-w-6xl mx-auto px-4 mb-12">
+        <div class="flex flex-wrap gap-6 justify-center">
+            <div class="flex-1 min-w-[300px] max-w-[480px] text-center">
+                <h3 class="text-xl font-semibold text-[#2c3e50] mb-4">Full Fleet Management</h3>
+                <iframe class="video-iframe" src="https://player.vimeo.com/video/303893551?h=7a3cbcec4b" allowfullscreen=""></iframe>
+            </div>
+            <div class="flex-1 min-w-[300px] max-w-[480px] text-center">
+                <h3 class="text-xl font-semibold text-[#2c3e50] mb-4">Real-Time Monitoring and Control</h3>
+                <iframe class="video-iframe" src="https://player.vimeo.com/video/340734291" allowfullscreen=""></iframe>
+            </div>
+        </div>
+    </section>
+    <!-- Sector-Based Solutions -->
+    <section class="max-w-4xl mx-auto px-4 mb-12 text-center">
+        <h2 class="text-2xl font-bold text-[#2c3e50] section-title">Sector-Based Solutions</h2>
+        <p class="text-gray-600 leading-relaxed">
+            We want to help you care for your business. We know it's not about the type of information your company has, but about making a real difference. We have designed our products and services to provide you with insights into how your business vehicles are used; our solutions will help you reach your destination in safer and more cost-effective ways.
+        </p>
+    </section>
+    <!-- Features Section -->
+    <section class="max-w-6xl mx-auto px-4 mb-12">
+        <div class="text-center mb-8">
+            <h1 class="text-3xl font-bold text-[#2c3e50]">
+                Your Knowledge of Your Fleet<br>Helps You <span class="highlight">Improve</span> Its Management
+            </h1>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Vehicle Management -->
+            <div class="bg-white rounded-xl p-6 shadow-lg card-hover text-center">
+                <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fi fi-rr-car text-2xl text-[#7ab80e]"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-[#2c3e50] mb-2">Vehicle Management</h3>
+                <p class="text-gray-600">
+                    Tawasul helps you maximize the benefits of your fleet by providing and organizing fleet information.
+                </p>
+            </div>
+            <!-- Driver Management -->
+            <div class="bg-white rounded-xl p-6 shadow-lg card-hover text-center">
+                <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fi fi-rr-user text-2xl text-[#7ab80e]"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-[#2c3e50] mb-2">Driver Management</h3>
+                <p class="text-gray-600">
+                    Get a live view of driver schedules, operating programs, and upcoming task planning.
+                </p>
+            </div>
+            <!-- Assignment and Routing -->
+            <div class="bg-white rounded-xl p-6 shadow-lg card-hover text-center">
+                <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fi fi-rr-link text-2xl text-[#7ab80e]"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-[#2c3e50] mb-2">Assignment and Routing</h3>
+                <p class="text-gray-600">
+                    Assists in scheduling tasks, tracking them, and determining the status of distribution and routing for drivers according to tasks.
+                </p>
+            </div>
+            <!-- Maintenance -->
+            <div class="bg-white rounded-xl p-6 shadow-lg card-hover text-center">
+                <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fi fi-rr-tools text-2xl text-[#7ab80e]"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-[#2c3e50] mb-2">Maintenance and Work Orders</h3>
+                <p class="text-gray-600">
+                    Automates the planning of your fleet's maintenance and management of work orders.
+                </p>
+            </div>
+            <!-- Weight Monitoring -->
+            <div class="bg-white rounded-xl p-6 shadow-lg card-hover text-center">
+                <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fi fi-rr-scale text-2xl text-[#7ab80e]"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-[#2c3e50] mb-2">Truck Weight Monitoring</h3>
+                <p class="text-gray-600">
+                    The system allows you to monitor truck weights to avoid fines, improve operational efficiency, and comply with safety regulations.
+                </p>
+            </div>
+            <!-- Instant Chat -->
+            <div class="bg-white rounded-xl p-6 shadow-lg card-hover text-center">
+                <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fi fi-rr-comments text-2xl text-[#7ab80e]"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-[#2c3e50] mb-2">Instant Chat</h3>
+                <p class="text-gray-600">
+                    The system features instant chat capabilities with employees or fleet members.
+                </p>
+            </div>
+            <!-- Add-ons Management -->
+            <div class="bg-white rounded-xl p-6 shadow-lg card-hover text-center">
+                <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fi fi-rr-settings text-2xl text-[#7ab80e]"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-[#2c3e50] mb-2">Add-ons and Accounts Management</h3>
+                <p class="text-gray-600">
+                    The system allows the addition of various accounts to enhance performance and operational efficiency, including temperature, fuel, motion, and door accounts, among others.
+                </p>
+            </div>
+            <!-- Fuel Management -->
+            <div class="bg-white rounded-xl p-6 shadow-lg card-hover text-center">
+                <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fi fi-rr-gas-pump text-2xl text-[#7ab80e]"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-[#2c3e50] mb-2">Fuel Management</h3>
+                <p class="text-gray-600">
+                    A complete view of fuel management and expenses for your fleet.
+                </p>
+            </div>
+            <!-- Notifications -->
+            <div class="bg-white rounded-xl p-6 shadow-lg card-hover text-center">
+                <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fi fi-rr-bell text-2xl text-[#7ab80e]"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-[#2c3e50] mb-2">Reminder and Alert Messages</h3>
+                <p class="text-gray-600">
+                    A full set of alerts and reminders to always help you keep track of your fleet.
+                </p>
+            </div>
+            <!-- Reports Analysis -->
+            <div class="bg-white rounded-xl p-6 shadow-lg card-hover text-center">
+                <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fi fi-rr-chart-line-up text-2xl text-[#7ab80e]"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-[#2c3e50] mb-2">Reports Analysis</h3>
+                <p class="text-gray-600">
+                    Summarizes all key performance indicators and analyses you need for decision-making in a dynamic dashboard.
+                </p>
+            </div>
+        </div>
+    </section>
+    <!-- Benefits Section -->
+    <section class="max-w-6xl mx-auto px-4 mb-12">
+        <h2 class="text-2xl font-bold text-center text-[#2c3e50] section-title">
+            Benefits of the <span class="highlight">Tawasul System</span>
+        </h2>
+         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Productivity Increase -->
+                <div class="flex gap-x-4 bg-white rounded-xl p-6 shadow-lg card-hover">
+                    <div class="w-12 h-12 bg-[#7ab80e] rounded-lg flex items-center justify-center ml-4">
+                        <i class="fi fi-rr-stats text-xl text-white"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-xl font-semibold text-[#2c3e50] mb-2">Productivity Increase</h3>
+                        <p class="text-gray-600">
+                            Complete tasks faster and more proactively. Monitor drivers and ensure they perform their
+                            tasks to the fullest.
+                        </p>
+                    </div>
+                </div>
+                <!-- Customer Satisfaction -->
+                <div class="flex gap-x-4 bg-white rounded-xl p-6 shadow-lg card-hover">
+                    <div class="w-12 h-12 bg-[#7ab80e] rounded-lg flex items-center justify-center ml-4">
+                        <i class="fi fi-rr-users text-xl text-white"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-xl font-semibold text-[#2c3e50] mb-2">Customer Satisfaction</h3>
+                        <p class="text-gray-600">
+                            The system helps identify the nearest vehicle to a customer location, improving service
+                            quality and speed, while also enhancing productivity and leading to faster completion.
+                        </p>
+                    </div>
+                </div>
+                <!-- Operating Cost Reduction -->
+                <div class="flex gap-x-4 bg-white rounded-xl p-6 shadow-lg card-hover">
+                    <div class="w-12 h-12 bg-[#7ab80e] rounded-lg flex items-center justify-center ml-4">
+                        <i class="fi fi-rr-sack-dollar text-xl text-white"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-xl font-semibold text-[#2c3e50] mb-2">Operating Cost Reduction</h3>
+                        <p class="text-gray-600">
+                            We help you keep a close eye on every part of your business to ensure everything runs
+                            smoothly with reduced operating costs.
+                        </p>
+                    </div>
+                </div>
+                <!-- Protection -->
+                <div class="flex gap-x-4 bg-white rounded-xl p-6 shadow-lg card-hover">
+                    <div class="w-12 h-12 bg-[#7ab80e] rounded-lg flex items-center justify-center ml-4">
+                        <i class="fi fi-rr-shield-check text-xl text-white"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-xl font-semibold text-[#2c3e50] mb-2">Protection</h3>
+                        <p class="text-gray-600">
+                            The system helps monitor and regulate driver behavior to protect them and others, as well as
+                            assets and vehicles, for safe driving.
+                        </p>
+                    </div>
+                </div>
+                <!-- Fuel Cost Reduction -->
+                <div class="flex gap-x-4 bg-white rounded-xl p-6 shadow-lg card-hover">
+                    <div class="w-12 h-12 bg-[#7ab80e] rounded-lg flex items-center justify-center ml-4">
+                        <i class="fi fi-rr-gas-pump text-xl text-white"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-xl font-semibold text-[#2c3e50] mb-2">Fuel Cost Reduction</h3>
+                        <p class="text-gray-600">
+                            Amid rising fuel prices, reducing fuel consumption is a key goal, achieved by monitoring
+                            speed, controlling tasks, and eliminating unjustified activities, leading to cost savings.
+                        </p>
+                    </div>
+                </div>
+                <!-- Routing -->
+                <div class="flex gap-x-4 bg-white rounded-xl p-6 shadow-lg card-hover">
+                    <div class="w-12 h-12 bg-[#7ab80e] rounded-lg flex items-center justify-center ml-4">
+                        <i class="fi fi-rr-route text-xl text-white"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-xl font-semibold text-[#2c3e50] mb-2">Routing</h3>
+                        <p class="text-gray-600">
+                            The system guides employees to reach locations and complete assigned tasks using mobile apps
+                            that smoothly and proactively direct them to customers.
+                        </p>
+                    </div>
+                </div>
+                <!-- Work Hours Control -->
+                <div class="flex gap-x-4 bg-white rounded-xl p-6 shadow-lg card-hover">
+                    <div class="w-12 h-12 bg-[#7ab80e] rounded-lg flex items-center justify-center ml-4">
+                        <i class="fi fi-rr-time-check text-xl text-white"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-xl font-semibold text-[#2c3e50] mb-2">Work Hours Control</h3>
+                        <p class="text-gray-600">
+                            The system provides tools for controlling work hours, such as trip reports, time logs, and
+                            driver records, to track actual work hours and identify wasted time.
+                        </p>
+                    </div>
+                </div>
+                <!-- Insurance Cost Reduction -->
+                <div class="flex gap-x-4 bg-white rounded-xl p-6 shadow-lg card-hover">
+                    <div class="w-12 h-12 bg-[#7ab80e] rounded-lg flex items-center justify-center ml-4">
+                        <i class="fi fi-rr-shield-plus text-xl text-white"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-xl font-semibold text-[#2c3e50] mb-2">Insurance Cost Reduction</h3>
+                        <p class="text-gray-600">
+                            Monitoring driver behavior and vehicle operation reduces accidents and traffic violations,
+                            resulting in lower annual insurance premiums for vehicles.
+                        </p>
+                    </div>
+                </div>
+            </div>
+    </section>
+    <!-- Vehicle Types Section -->
+    <section class="max-w-6xl mx-auto px-4 mb-12">
+        <h2 class="text-2xl font-bold text-center text-[#2c3e50] section-title">Fleet Types</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 mt-6">
+            <!-- Passenger Cars -->
+            <div class="vehicle-card">
+                <div class="vehicle-icon">
+                    <i class="fi fi-rr-car"></i>
+                </div>
+                <h3 class="text-lg font-semibold text-[#2c3e50] mb-2">Passenger Cars</h3>
+                <p class="text-gray-600 text-sm">Track passenger cars to ensure optimal performance and reduce maintenance costs.</p>
+            </div>
+            <!-- Construction Equipment -->
+            <div class="vehicle-card">
+                <div class="vehicle-icon">
+                    <i class="fi fi-rr-building"></i>
+                </div>
+                <h3 class="text-lg font-semibold text-[#2c3e50] mb-2">Construction Equipment</h3>
+                <p class="text-gray-600 text-sm">Manage heavy equipment to improve efficiency in projects.</p>
+            </div>
+            <!-- Trucks -->
+            <div class="vehicle-card">
+                <div class="vehicle-icon">
+                    <i class="fi fi-rr-truck-loading"></i>
+                </div>
+                <h3 class="text-lg font-semibold text-[#2c3e50] mb-2">Trucks</h3>
+                <p class="text-gray-600 text-sm">Track trucks to ensure timely deliveries and reduce costs.</p>
+            </div>
+            <!-- Buses -->
+            <div class="vehicle-card">
+                <div class="vehicle-icon">
+                    <i class="fi fi-rr-bus"></i>
+                </div>
+                <h3 class="text-lg font-semibold text-[#2c3e50] mb-2">Buses</h3>
+                <p class="text-gray-600 text-sm">Manage routes and enhance passenger experience using data.</p>
+            </div>
+            <!-- Vans -->
+            <div class="vehicle-card">
+                <div class="vehicle-icon">
+                    <i class="fi fi-rr-van"></i>
+                </div>
+                <h3 class="text-lg font-semibold text-[#2c3e50] mb-2">Vans</h3>
+                <p class="text-gray-600 text-sm">Track vans to ensure daily performance and reduce fuel consumption.</p>
+            </div>
+            <!-- Forklifts -->
+            <div class="vehicle-card">
+                <div class="vehicle-icon">
+                    <i class="fi fi-rr-box"></i>
+                </div>
+                <h3 class="text-lg font-semibold text-[#2c3e50] mb-2">Forklifts</h3>
+                <p class="text-gray-600 text-sm">Manage warehouses efficiently using forklift tracking.</p>
+            </div>
+        </div>
+    </section>
+<!-- TawasulFMS -->
+        <section class="max-w-6xl mx-auto px-4 mb-12">
+            <div class="max-w-4xl mx-auto px-4 mb-12 text-center">
+                 <h2 class="text-2xl font-bold text-center text-[#2c3e50] section-title">TawasulFMS</h2>
+            <p class="text-gray-600 leading-relaxed">
+                Track your fleet activity using the Tawasul fleet management system that reduces time, cuts fuel costs
+                and increases productivity
+            </p>
+            <p style="text-align:center">
+                Fleet management control is no longer limited to the vehicle’s location and path only but has now
+                included many other services that are provided with additional sensors such as load temperature sensor,
+                driver recognition device, weight measurement sensor, emergency button &hellip; etc.
+            </p>
+            <div class="twsl-banner">
+                <img src="https://tawasul.tech/images/banner%20v1-English.jpg?1668794082724" alt="TawasulFMS Banner">
+            </div>
+            </div>
+           
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-[#2c3e50]">
+                    Advantages of<br><span class="highlight">TawasulFMS</span> System
+                </h2>
+            </div>
+            <div class="twsl-grid">
+                <div class="twsl-card" data-aos="fade-up"><img src="https://www.tawasul.tech/images/TawasulTech/tawasulfms/blurb-1.png">
+                    <p>Driver ID</p>
+                </div>
+                <div class="twsl-card" data-aos="fade-up"><img src="https://www.tawasul.tech/images/TawasulTech/tawasulfms/blurb-2.png">
+                    <p>Driver behavior</p>
+                </div>
+                <div class="twsl-card" data-aos="fade-up"><img src="https://www.tawasul.tech/images/TawasulTech/tawasulfms/blurb-3.png">
+                    <p>Route comparison</p>
+                </div>
+                <div class="twsl-card" data-aos="fade-up"><img src="https://www.tawasul.tech/images/TawasulTech/tawasulfms/blurb-4-1.png">
+                    <p>Truck steering</p>
+                </div>
+                <div class="twsl-card" data-aos="fade-up"><img src="https://www.tawasul.tech/images/TawasulTech/tawasulfms/blurb-5.png">
+                    <p>Earth Sensitivity</p>
+                </div>
+                <div class="twsl-card"><img src="https://www.tawasul.tech/images/TawasulTech/tawasulfms/blurb-6-1.png">
+                    <p>Fuel card integration</p>
+                </div>
+                <div class="twsl-card"><img src="https://www.tawasul.tech/images/TawasulTech/tawasulfms/blurb-7-1.png">
+                    <p>Maintenance reminders</p>
+                </div>
+                <div class="twsl-card"><img src="https://www.tawasul.tech/images/TawasulTech/tawasulfms/blurb-8-1.png">
+                    <p>Route comparison</p>
+                </div>
+                <div class="twsl-card"><img src="https://www.tawasul.tech/images/TawasulTech/tawasulfms/blurb-9-1.png">
+                    <p>Truck steering</p>
+                </div>
+                <div class="twsl-card"><img src="https://www.tawasul.tech/images/TawasulTech/tawasulfms/blurb-10.png">
+                    <p>Equipment inventory</p>
+                </div>
+                <div class="twsl-card"><img src="https://www.tawasul.tech/images/TawasulTech/tawasulfms/blurb-11.png">
+                    <p>Send directions</p>
+                </div>
+                <div class="twsl-card"><img src="https://www.tawasul.tech/images/TawasulTech/tawasulfms/blurb-12.png">
+                    <p>Alerts via SMS/Email</p>
+                </div>
+                <div class="twsl-card"><img src="https://www.tawasul.tech/images/TawasulTech/tawasulfms/blurb-13.png">
+                    <p>Vehicle profile</p>
+                </div>
+                <div class="twsl-card"><img src="https://www.tawasul.tech/images/TawasulTech/tawasulfms/blurb-14.png">
+                    <p>Scorecard</p>
+                </div>
+                <div class="twsl-card"><img src="https://www.tawasul.tech/images/TawasulTech/tawasulfms/blurb-15.png">
+                    <p>Real-time positioning</p>
+                </div>
+                <div class="twsl-card"><img src="https://www.tawasul.tech/images/TawasulTech/tawasulfms/blurb-16.png">
+                    <p>Roadside assistance</p>
+                </div>
+                <div class="twsl-card"><img src="https://www.tawasul.tech/images/TawasulTech/tawasulfms/blurb-17.png">
+                    <p>Tracks & history</p>
+                </div>
+                <div class="twsl-card"><img src="https://www.tawasul.tech/images/TawasulTech/tawasulfms/blurb-18.png">
+                    <p>Geofence alerts</p>
+                </div>
+                <div class="twsl-card"><img src="https://www.tawasul.tech/images/TawasulTech/tawasulfms/blurb-19.png">
+                    <p>Dynamic street view</p>
+                </div>
+                <div class="twsl-card"><img src="https://www.tawasul.tech/images/TawasulTech/tawasulfms/blurb-20.png">
+                    <p>Electronic residence</p>
+                </div>
+                <div class="twsl-card"><img src="https://www.tawasul.tech/images/TawasulTech/tawasulfms/blurb-21.png">
+                    <p>PDF / EXC / CSV</p>
+                </div>
+                <div class="twsl-card"><img src="https://www.tawasul.tech/images/TawasulTech/tawasulfms/blurb-22.png">
+                    <p>Temperature monitoring</p>
+                </div>
+                <div class="twsl-card"><img src="https://www.tawasul.tech/images/TawasulTech/tawasulfms/blurb-23.png">
+                    <p>Take off power</p>
+                </div>
+                <div class="twsl-card"><img src="https://www.tawasul.tech/images/TawasulTech/tawasulfms/blurb-24.png">
+                    <p>Unlimited storage</p>
+                </div>
+                <div class="twsl-card"><img src="https://www.tawasul.tech/images/TawasulTech/tawasulfms/blurb-25.png">
+                    <p>Weight control</p>
+                </div>
+            </div>
+        </section></div>
