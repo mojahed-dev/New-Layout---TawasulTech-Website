@@ -1,0 +1,1060 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI Dashcam Solution – Hero Section</title>
+  <style>
+    /* ==========================================================================
+      AI Dashcam Solution – Hero Section
+      Notes:
+      - Wrapped in .tws-ai-dashcam scope to avoid CS-Cart/global theme overrides.
+      - Uses CSS custom properties for maintainability.
+    ========================================================================== */
+
+    /* Overrides cs-cart theme defaults */
+    .ty-mainbox-title, .ty-mainbox-simple-title, .ut2-secondbox__title, .ut2-secondbox__title-wrapper, .ut2-secondbox-important__title-wrapper {display: none !important;}
+    .ty-wysiwyg-content ul, .ty-wysiwyg-content ol {margin: 0px !important;}
+
+    .tws-ai-dashcam {
+      /* Design tokens */
+      --tws-container: 1170px;
+      --tws-pad-x: 0px;
+      --tws-pad-y: 72px;
+
+      --tws-gap: 130px;
+      --tws-col-gap: 130px;
+      --tws-row-gap: 60px;
+      --tws-border: #E6E6E6;
+
+      --tws-text: #1E1E1E;
+      --tws-muted: #4C4C4C;
+      --tws-accent: #00A738;
+
+
+      --tws-font: "Satoshi", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+        Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      --heading1__title: 64px;
+      --heading2__title: 48px;
+      --heading3__title: 40px;
+
+      /* --heading1_tablet__title: 36px;
+      --heading2_tablet__title: 28px;
+      --heading3_tablet__title: 26px; */
+
+      color: var(--tws-text);
+      font-family: var(--tws-font);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Section */
+    .tws-ai-dashcam__hero {
+      border-bottom: 1px solid var(--tws-border);
+      background: #fff;
+    }
+
+    .tws-ai-dashcam__hero-inner {
+      max-width: var(--tws-container);
+      margin: 0 auto;
+      padding: var(--tws-pad-y) var(--tws-pad-x);
+      display: grid;
+      grid-template-columns: 570px 470px;
+      gap: var(--tws-gap);
+      align-items: center;
+    }
+
+    /* Title */
+    .tws-ai-dashcam .tws-ai-dashcam__title h1 {
+      margin: 0;
+      font: var(--heading1__title) !important;
+      font-weight: 500 !important;
+      /* Medium */
+      line-height: 1.3 !important;
+      /* 130% */
+      letter-spacing: 0 !important;
+      text-transform: capitalize;
+
+      /* Figma: 64px on desktop; scale down on smaller screens */
+      font-size: clamp(2.25rem, 3.4vw, 4rem);
+      /* 36px → 64px */
+    }
+
+    /* Description */
+    .tws-ai-dashcam__desc {
+      margin: 0;
+      max-width: 470px;
+      font-weight: 500;
+      /* Medium */
+      font-size: 16px;
+      line-height: 1.5;
+      /* 150% */
+      color: var(--tws-muted);
+      text-transform: capitalize;
+    }
+
+    /* Tablet */
+    @media (max-width: 1024px) {
+      .tws-ai-dashcam {
+        --tws-pad-x: 40px;
+        --tws-gap: 56px;
+      }
+
+      .tws-ai-dashcam__hero-inner {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      }
+
+      .tws-ai-dashcam__desc {
+        max-width: 100%;
+        font-size: 15px;
+      }
+
+      .ty-wysiwyg-content .tws-ai-dashcam h1.tws-ai-dashcam__title {
+        font-size: var(--heading1_mobile__title) !important;
+      }
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      .tws-ai-dashcam {
+        --tws-pad-x: 20px;
+        --tws-pad-y: 48px;
+        --tws-gap: 20px;
+      }
+
+      .tws-ai-dashcam__hero-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .tws-ai-dashcam__title {
+        text-transform: none;
+        /* better readability on small screens */
+      }
+
+      .tws-ai-dashcam__desc {
+        font-size: 14px;
+      }
+
+      .tws-ai-dashcam__features-media img {height: 100% !important; object-fit: cover !important;}
+    }
+
+    /* ==========================================================================
+      Section 2: ADAS / DMS / BSD FEATURES
+    ========================================================================== */
+
+    .tws-ai-dashcam__features {
+      background: #EBF4EE;
+    }
+
+    .tws-ai-dashcam__features-inner {
+      max-width: var(--tws-container);
+      margin: 0 auto;
+      padding: var(--tws-pad-y) var(--tws-pad-x);
+      /* desktop pad-x is 0 per page tokens */
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+      /* Figma */
+    }
+
+    .tws-ai-dashcam .tws-ai-dashcam__features-title h2 {
+      margin: 0;
+      text-align: center;
+      font-weight: 500 !important;
+      /* Medium */
+      font-size: var(--heading2__title) !important;
+      /* Figma */
+      line-height: 1.1 !important;
+      /* 110% */
+      letter-spacing: -0.03em !important;
+      /* -3% */
+      text-transform: capitalize;
+      color: var(--tws-text);
+    }
+
+    .tws-ai-dashcam__features-media {
+      width: 100%;
+      height: 470px;
+      /* Figma */
+      overflow: hidden;
+      background: rgba(0, 0, 0, 0.03);
+    }
+
+    .tws-ai-dashcam__features-media img {
+      width: 100%;
+      /* height: 100%; */
+      display: block;
+      /* object-fit: cover; */
+    }
+
+    /* Tablet */
+    @media (max-width: 1024px) {
+      .tws-ai-dashcam__features-inner {
+        gap: 40px;
+      }
+
+      .tws-ai-dashcam__features-title {
+        font-size: 40px;
+      }
+
+      .tws-ai-dashcam__features-media {
+        height: 380px;
+      }
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      .tws-ai-dashcam__features-inner {
+        gap: 28px;
+      }
+
+      .tws-ai-dashcam__features-title {
+        font-size: 28px;
+        letter-spacing: -0.02em;
+      }
+
+      .tws-ai-dashcam__features-media {
+        height: 240px;
+      }
+    }
+
+
+
+    /* ======================================================================
+       SECTION 3: DSM / BSD / ADAS FEATURE BLOCKS
+       ====================================================================== */
+    /* 
+      .tws-ai-dashcam__s3 {
+            background: var(--tws-bg);
+        } */
+
+    .tws-ai-dashcam__s3-inner {
+      max-width: var(--tws-container);
+      margin: 0 auto;
+      padding: var(--tws-pad-y) var(--tws-pad-x);
+      position: relative;
+    }
+
+    /* Timeline (center dashed line) */
+    .tws-ai-dashcam__s3-line {
+      position: absolute;
+      height: 1110px;
+      left: 50%;
+      top: var(--tws-pad-y);
+      bottom: var(--tws-pad-y);
+      width: 0;
+      border-left: 1px solid var(--tws-accent);
+      border-image: repeating-linear-gradient(to bottom,
+          var(--tws-accent) 0 10px,
+          transparent 10px 20px) 1;
+      transform: translateX(-0.5px);
+      pointer-events: none;
+    }
+
+    .tws-ai-dashcam__s3-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--tws-row-gap);
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Each row: 520 media + 520 content with 130 gap = 1170 */
+    .tws-ai-dashcam__s3-row {
+      display: grid;
+      grid-template-columns: 520px 520px;
+      gap: var(--tws-col-gap);
+      align-items: start;
+      min-height: 472px;
+      position: relative;
+    }
+
+    /* Alternate: swap order on desktop */
+    .tws-ai-dashcam__s3-row.is-reverse .tws-ai-dashcam__s3-media {
+      order: 2;
+    }
+
+    .tws-ai-dashcam__s3-row.is-reverse .tws-ai-dashcam__s3-content {
+      order: 1;
+    }
+
+    /* Diamond markers at center */
+    .tws-ai-dashcam__s3-diamond {
+      position: absolute;
+      left: 50%;
+      /* Align vertically with title center (desktop) */
+      top: 22px;
+      /* 40px * 1.1 / 2 */
+      width: 30px;
+      height: 30px;
+      background: var(--tws-accent);
+      transform: translateX(-50%) rotate(45deg);
+      z-index: 2;
+    }
+
+    /* Media (placeholder image with play overlay) */
+    .tws-ai-dashcam__s3-media {
+      width: 520px;
+      height: 472px;
+      position: relative;
+      overflow: hidden;
+      background: rgba(0, 0, 0, 0.20);
+      /* #00000033 */
+    }
+
+    .tws-ai-dashcam__s3-media img {
+      height: 100%;
+      /* display: block;
+            object-fit: cover; */
+    }
+
+    .tws-ai-dashcam__s3-play {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 72px;
+      height: 72px;
+      transform: translate(-50%, -50%);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.04);
+      /* ~#FFFFFF0A */
+      border: 1px solid #FFFFFF;
+      backdrop-filter: blur(10px);
+      display: grid;
+      place-items: center;
+    }
+
+    .tws-ai-dashcam__s3-play::before {
+      content: "";
+      width: 0;
+      height: 0;
+      border-top: 14px solid transparent;
+      border-bottom: 14px solid transparent;
+      border-left: 22px solid #FFFFFF;
+      margin-left: 4px;
+      border-radius: 2px;
+    }
+
+    /* Content frame (520 x 372) */
+    .tws-ai-dashcam__s3-content {
+      width: 520px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding-top: 0;
+    }
+
+    /* Play hover affordance */
+    .tws-ai-dashcam__s3-media {
+      cursor: pointer;
+    }
+
+    .tws-ai-dashcam__s3-media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.35);
+      opacity: 0;
+      transition: opacity .3s ease;
+    }
+
+    .tws-ai-dashcam__s3-media:hover::after,
+    .tws-ai-dashcam__s3-media:focus-within::after {
+      opacity: 1;
+    }
+
+    .tws-ai-dashcam__s3-play {
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+
+    .tws-ai-dashcam__s3-media:hover .tws-ai-dashcam__s3-play,
+    .tws-ai-dashcam__s3-media:focus-within .tws-ai-dashcam__s3-play {
+      transform: translate(-50%, -50%) scale(1.15);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+    }
+
+    .tws-ai-dashcam__s3-media:hover .tws-ai-dashcam__s3-play::after,
+    .tws-ai-dashcam__s3-media:focus-within .tws-ai-dashcam__s3-play::after {
+      content: "";
+      position: absolute;
+      inset: -6px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.6);
+    }
+
+    .tws-ai-dashcam__s3-media:focus-within {
+      outline: 2px solid var(--tws-accent);
+      outline-offset: 4px;
+    }
+
+
+    .tws-ai-dashcam__s3-title {
+      margin: 0;
+      font-weight: 500;
+      font-size: 40px;
+      line-height: 1.1;
+      /* 110% */
+      letter-spacing: -0.03em;
+      /* -3% */
+      text-transform: capitalize;
+      color: var(--tws-title);
+    }
+
+    .tws-ai-dashcam__s3-purpose {
+      margin: 0;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 1.5;
+      /* 150% */
+      letter-spacing: 0;
+      text-transform: capitalize;
+      color: var(--tws-text);
+    }
+
+    .tws-ai-dashcam__s3-bullets {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .tws-ai-dashcam__s3-bullets li {
+      display: grid;
+      grid-template-columns: 24px 1fr;
+      gap: 12px;
+      align-items: start;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 1.5;
+      letter-spacing: 0;
+      text-transform: capitalize;
+      color: var(--tws-text);
+    }
+
+    .tws-ai-dashcam__s3-icon {
+      width: 24px;
+      height: 24px;
+      color: var(--tws-accent);
+      margin-top: 2px;
+      flex: 0 0 auto;
+    }
+
+    /* Tablet */
+    @media (max-width: 1024px) {
+      .tws-ai-dashcam {
+        --tws-pad-x: 40px;
+      }
+
+      .tws-ai-dashcam__s3-diamond {
+        top: 19px;
+        /* 34px * 1.1 / 2 */
+        width: 16px;
+        height: 16px;
+      }
+
+
+
+      .tws-ai-dashcam__s3-row {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        min-height: auto;
+      }
+
+      .tws-ai-dashcam__s3-media,
+      .tws-ai-dashcam__s3-content {
+        width: 100%;
+      }
+
+      .tws-ai-dashcam__s3-media {
+        height: 360px;
+      }
+
+      .tws-ai-dashcam__s3-title {
+        font-size: 34px;
+      }
+    }
+
+    /* Mobile: stack, image always first */
+    @media (max-width: 768px) {
+      .tws-ai-dashcam {
+        --tws-pad-x: 20px;
+        --tws-pad-y: 48px;
+      }
+
+      .tws-ai-dashcam__s3-line,
+      .tws-ai-dashcam__s3-diamond {
+        display: none;
+      }
+
+      .tws-ai-dashcam__s3-row {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      .tws-ai-dashcam__s3-row.is-reverse .tws-ai-dashcam__s3-media {
+        order: 1;
+      }
+
+      .tws-ai-dashcam__s3-row.is-reverse .tws-ai-dashcam__s3-content {
+        order: 2;
+      }
+
+      .tws-ai-dashcam__s3-media {
+        width: 100%;
+        height: 240px;
+      }
+
+      .tws-ai-dashcam__s3-content {
+        width: 100%;
+      }
+
+      .tws-ai-dashcam__s3-title {
+        font-size: 26px;
+      }
+
+      .tws-ai-dashcam__s3-purpose,
+      .tws-ai-dashcam__s3-bullets li {
+        font-size: 14px;
+      }
+    }
+
+
+
+    /* ================= LAST SECTION: OVERALL IMPACT ================= 
+.tws-ai-dashcam__impact*
+     ========================================================================== */
+
+    .tws-ai-dashcam {
+      --tws-container: 1170px;
+      --tws-pad-x: 0px;
+      --tws-pad-y: 72px;
+
+      --tws-gap-col: 130px;
+      --tws-gap-block: 24px;
+      --tws-gap-list: 16px;
+      --tws-gap-item: 12px;
+
+      --tws-bg: #EBF4EE;
+      --tws-text: #1E1E1E;
+      --tws-muted: #4C4C4C;
+      --tws-accent: #00A738;
+
+      --tws-font: "Satoshi", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+        Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+
+      font-family: var(--tws-font);
+      color: var(--tws-text);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .tws-ai-dashcam__impact {
+      background: var(--tws-bg);
+    }
+
+    .tws-ai-dashcam__impact-inner {
+      max-width: var(--tws-container);
+      margin: 0 auto;
+      padding: var(--tws-pad-y) var(--tws-pad-x);
+    }
+
+    /* Frame 2147231840 (1170 x 470, gap 130) */
+    .tws-ai-dashcam__impact-grid {
+      display: grid;
+      grid-template-columns: 570px 470px;
+      gap: var(--tws-gap-col);
+      align-items: center;
+    }
+
+    /* Frame 2147231723 (570 x 314, gap 24) */
+    .tws-ai-dashcam__impact-content {
+      width: 570px;
+      display: flex;
+      flex-direction: column;
+      gap: var(--tws-gap-block);
+    }
+
+    .tws-ai-dashcam__impact-title {
+      margin: 0;
+      font-weight: 500;
+      font-size: 48px;
+      line-height: 1.1;
+      /* 110% */
+      letter-spacing: -0.03em;
+      /* -3% */
+      text-transform: capitalize;
+      color: var(--tws-text);
+    }
+
+    /* Frame 2147231714 (570 x 184, gap 16) */
+    .tws-ai-dashcam__impact-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: var(--tws-gap-list);
+    }
+
+    /* Frame 2147231712 (570 x 24, gap 12) */
+    .tws-ai-dashcam__impact-item {
+      display: grid;
+      grid-template-columns: 24px 1fr;
+      gap: var(--tws-gap-item);
+      align-items: start;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 1.5;
+      /* 150% */
+      letter-spacing: 0;
+      text-transform: capitalize;
+      color: var(--tws-muted);
+    }
+
+    .tws-ai-dashcam__impact-icon {
+      width: 24px;
+      height: 24px;
+      display: inline-block;
+      object-fit: contain;
+    }
+
+    /* image 116 placeholder (470 x 470) */
+    .tws-ai-dashcam__impact-media {
+      width: 470px;
+      height: 470px;
+      background: rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+    }
+
+    .tws-ai-dashcam__impact-media img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    /* Tablet */
+    @media (max-width: 1024px) {
+      .tws-ai-dashcam {
+        --tws-pad-x: 40px;
+        --tws-gap-col: 40px;
+      }
+
+      .tws-ai-dashcam__impact-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .tws-ai-dashcam__impact-content,
+      .tws-ai-dashcam__impact-media {
+        width: 100%;
+      }
+
+      .tws-ai-dashcam__impact-media {
+        height: 360px;
+      }
+
+      .tws-ai-dashcam__impact-title {
+        font-size: 40px;
+      }
+    }
+
+    /* Mobile: image first */
+    @media (max-width: 768px) {
+      .tws-ai-dashcam {
+        --tws-pad-x: 20px;
+        --tws-pad-y: 48px;
+        --tws-gap-col: 24px;
+      }
+
+      .tws-ai-dashcam__impact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .tws-ai-dashcam__impact-media {
+        order: 1;
+        height: 240px;
+      }
+
+      .tws-ai-dashcam__impact-content {
+        order: 2;
+        width: 100%;
+      }
+
+      .tws-ai-dashcam__impact-title {
+        font-size: 30px;
+      }
+
+      .tws-ai-dashcam__impact-item {
+        font-size: 14px;
+      }
+    }
+
+
+
+    /* =========================================================
+   CS-Cart WYSIWYG protection (prevents .ty-wysiwyg-content overrides)
+   Put this near the END of your CSS
+========================================================= */
+
+    /* Hero h1 (your actual markup is: <h1 class="tws-ai-dashcam__title">...) */
+    .ty-wysiwyg-content .tws-ai-dashcam h1.tws-ai-dashcam__title {
+      margin: 0 !important;
+      font-weight: 500 !important;
+      line-height: 1.3 !important;
+      letter-spacing: 0 !important;
+      text-transform: capitalize;
+      font-size: var(--heading1__title) !important;
+      /* 36px -> 64px */
+      color: var(--tws-text) !important;
+    }
+
+    /* Section 2 title (your markup is <h2 class="tws-ai-dashcam__features-title">...) */
+    .ty-wysiwyg-content .tws-ai-dashcam h2.tws-ai-dashcam__features-title {
+      margin: 0 !important;
+      font-size: var(--heading2__title) !important;
+      text-align: center !important;
+      font-weight: 500 !important;
+      line-height: 1.1 !important;
+      /* 110% */
+      letter-spacing: -0.03em !important;
+      /* -3% */
+      text-transform: capitalize;
+      font-size: var(--heading2__title) !important;
+      color: var(--tws-text) !important;
+    }
+
+    /* Section 3 titles (your markup is <h3 class="tws-ai-dashcam__s3-title">...) */
+    .ty-wysiwyg-content .tws-ai-dashcam h3.tws-ai-dashcam__s3-title {
+      margin: 0 !important;
+      font-weight: 500 !important;
+      line-height: 1.1 !important;
+      letter-spacing: -0.03em !important;
+      text-transform: capitalize;
+      font-size: var(--heading3__title) !important;
+      /* 40px */
+      color: var(--tws-text) !important;
+    }
+
+    /* Last section title */
+    .ty-wysiwyg-content .tws-ai-dashcam h2.tws-ai-dashcam__impact-title {
+      margin: 0 !important;
+      font-weight: 500 !important;
+      line-height: 1.1 !important;
+      letter-spacing: -0.03em !important;
+      text-transform: capitalize;
+      font-size: var(--heading2__title) !important;
+      /* 48px */
+      color: var(--tws-text) !important;
+    }
+
+    /* Optional: stop CS-Cart from forcing top/bottom margins on headings inside your block */
+    .ty-wysiwyg-content .tws-ai-dashcam h1,
+    .ty-wysiwyg-content .tws-ai-dashcam h2,
+    .ty-wysiwyg-content .tws-ai-dashcam h3 {
+      margin-top: 0 !important;
+      margin-bottom: 0 !important;
+    }
+  </style>
+</head>
+
+<body style="margin:0">
+  <!-- Wrap everything in this scope to protect from CS-Cart overrides -->
+  <div class="tws-ai-dashcam">
+    <section class="tws-ai-dashcam__hero" aria-label="AI Dashcam Solution">
+      <div class="tws-ai-dashcam__hero-inner">
+        <h1 class="tws-ai-dashcam__title">AI Dashcam Solution</h1>
+
+        <p class="tws-ai-dashcam__desc">
+          An AI Dashcam Solution combines advanced driver assistance, driver behavior monitoring, and blind spot safety
+          systems into one intelligent platform. Together, these features improve road safety, reduce accidents, lower
+          operational costs, and enhance fleet management efficiency.
+        </p>
+      </div>
+    </section>
+
+
+    <!-- SECTION 2: ADAS / DMS / BSD FEATURES -->
+    <section class="tws-ai-dashcam__features" aria-label="ADAS / DMS / BSD Features">
+      <div class="tws-ai-dashcam__features-inner">
+        <h2 class="tws-ai-dashcam__features-title">ADAS / DMS / BSD FEATURES</h2>
+
+        <!-- Replace src with your real image (image 34). -->
+        <div class="tws-ai-dashcam__features-media">
+          <img src="https://tawasul.tech/images/TawasulTech/image/ai-dashcam-features.webp"
+            alt="ADAS / DMS / BSD Features" loading="lazy" decoding="async"
+            onerror="this.onerror=null; this.src='https://placehold.co/1170x470?text=ADAS%20%2F%20DMS%20%2F%20BSD%20FEATURES';" />
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: DSM / BSD / ADAS FEATURE BLOCKS -->
+    <section class="tws-ai-dashcam__s3" aria-label="DSM BSD ADAS Features">
+      <div class="tws-ai-dashcam__s3-inner">
+        <span class="tws-ai-dashcam__s3-line" aria-hidden="true"></span>
+
+        <div class="tws-ai-dashcam__s3-list">
+
+          <!-- Row 1: Image left -->
+          <article class="tws-ai-dashcam__s3-row">
+            <span class="tws-ai-dashcam__s3-diamond" aria-hidden="true"></span>
+
+            <div class="tws-ai-dashcam__s3-media">
+              <img src="https://tawasul.tech/images/TawasulTech/image/dsm-thumbnail.webp" alt="DSM video thumbnail"
+                loading="lazy" decoding="async"
+                onerror="this.onerror=null; this.src='https://placehold.co/520x472?text=DSM+Video';" />
+              <span class="tws-ai-dashcam__s3-play" aria-hidden="true"></span>
+            </div>
+
+            <div class="tws-ai-dashcam__s3-content">
+              <h3 class="tws-ai-dashcam__s3-title">DSM – Driver Status Monitoring</h3>
+              <p class="tws-ai-dashcam__s3-purpose">Purpose: Detects driver fatigue, distraction, and
+                risky behaviors in real time.</p>
+
+              <ul class="tws-ai-dashcam__s3-bullets">
+                <li>
+                  <img src="https://tawasul.tech/images/TawasulTech/image/check-icon.webp" alt="check icon"
+                    loading="lazy" style="margin-top: 4px;">
+                  Accident Prevention: Alerts when the driver shows signs of drowsiness or
+                  distraction.
+                </li>
+                <li>
+                  <img src="https://tawasul.tech/images/TawasulTech/image/check-icon.webp" alt="check icon"
+                    loading="lazy" style="margin-top: 4px;">
+
+                  Improved Safety: Reduces collisions caused by human error.
+                </li>
+                <li>
+                  <img src="https://tawasul.tech/images/TawasulTech/image/check-icon.webp" alt="check icon"
+                    loading="lazy" style="margin-top: 4px;">
+
+                  Accountability & Training: Provides data for coaching and performance improvement.
+                </li>
+                <li>
+                  <img src="https://tawasul.tech/images/TawasulTech/image/check-icon.webp" alt="check icon"
+                    loading="lazy" style="margin-top: 4px;">
+
+                  Insurance & Compliance: Helps reduce premiums and align with safety regulations.
+                </li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Row 2: Image right -->
+          <article class="tws-ai-dashcam__s3-row is-reverse">
+            <span class="tws-ai-dashcam__s3-diamond" aria-hidden="true"></span>
+
+            <div class="tws-ai-dashcam__s3-media">
+              <img src="https://tawasul.tech/images/TawasulTech/image/bsd-thumbnail.webp" alt="BSD video thumbnail"
+                loading="lazy" decoding="async"
+                onerror="this.onerror=null; this.src='https://placehold.co/520x472?text=BSD+Video';" />
+              <span class="tws-ai-dashcam__s3-play" aria-hidden="true"></span>
+            </div>
+
+            <div class="tws-ai-dashcam__s3-content">
+              <h3 class="tws-ai-dashcam__s3-title">BSD – Blind Spot Detection</h3>
+              <p class="tws-ai-dashcam__s3-purpose">Purpose: Monitors areas around the vehicle that
+                drivers can’t easily see.</p>
+
+              <ul class="tws-ai-dashcam__s3-bullets">
+                <li>
+                  <img src="https://tawasul.tech/images/TawasulTech/image/check-icon.webp" alt="check icon"
+                    loading="lazy" style="margin-top: 4px;">
+                  Collision Avoidance: Detects vehicles, pedestrians, or obstacles in blind spots.
+                </li>
+                <li>
+                  <img src="https://tawasul.tech/images/TawasulTech/image/check-icon.webp" alt="check icon"
+                    loading="lazy" style="margin-top: 4px;">
+                  </svg>
+                  Driver Confidence: Supports safe lane changes, overtaking, and reversing.
+                </li>
+                <li>
+                  <img src="https://tawasul.tech/images/TawasulTech/image/check-icon.webp" alt="check icon"
+                    loading="lazy" style="margin-top: 4px;">
+                  Driver Confidence: Supports safe lane changes, overtaking, and reversing.
+                </li>
+                <li>
+                  <img src="https://tawasul.tech/images/TawasulTech/image/check-icon.webp" alt="check icon"
+                    loading="lazy" style="margin-top: 4px;">
+                  Reduced Repair Costs: Minimizes side-swipe accidents and low-speed collisions.
+                </li>
+                <li>
+                  <img src="https://tawasul.tech/images/TawasulTech/image/check-icon.webp" alt="check icon"
+                    loading="lazy" style="margin-top: 4px;">
+
+                  Fleet Protection: Essential for trucks, buses, and heavy equipment.
+                </li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Row 3: Image left -->
+          <article class="tws-ai-dashcam__s3-row">
+            <span class="tws-ai-dashcam__s3-diamond" aria-hidden="true"></span>
+
+            <div class="tws-ai-dashcam__s3-media">
+              <img src="https://tawasul.tech/images/TawasulTech/image/adas-thumbnail.webp" alt="ADAS video thumbnail"
+                loading="lazy" decoding="async"
+                onerror="this.onerror=null; this.src='https://placehold.co/520x472?text=ADAS+Video';" />
+              <span class="tws-ai-dashcam__s3-play" aria-hidden="true"></span>
+            </div>
+
+            <div class="tws-ai-dashcam__s3-content">
+              <h3 class="tws-ai-dashcam__s3-title">ADAS – Advanced Driver Assistance Systems</h3>
+              <p class="tws-ai-dashcam__s3-purpose">Purpose: Uses AI and sensors to assist with safe
+                driving and risk detection.</p>
+
+              <ul class="tws-ai-dashcam__s3-bullets">
+                <li>
+                  <img src="https://tawasul.tech/images/TawasulTech/image/check-icon.webp" alt="check icon"
+                    loading="lazy" style="margin-top: 4px;">
+
+                  Forward Collision Warning & Braking: Reduces rear-end accidents.
+                </li>
+                <li>
+                  <img src="https://tawasul.tech/images/TawasulTech/image/check-icon.webp" alt="check icon"
+                    loading="lazy" style="margin-top: 4px;">
+
+                  Lane Departure Warning: Alerts when drifting unintentionally.
+                </li>
+                <li>
+                  <img src="https://tawasul.tech/images/TawasulTech/image/check-icon.webp" alt="check icon"
+                    loading="lazy" style="margin-top: 4px;">
+
+                  Speed & Distance Monitoring: Ensures safe following distance and speed compliance.
+                </li>
+                <li>
+                  <img src="https://tawasul.tech/images/TawasulTech/image/check-icon.webp" alt="check icon"
+                    loading="lazy" style="margin-top: 4px;">
+
+                  Data Insights: Provides analytics for fleet optimization and risk management.
+                </li>
+              </ul>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- LAST SECTION: OVERALL IMPACT -->
+    <section class="tws-ai-dashcam__impact" aria-label="Overall Impact for Fleets and Businesses">
+      <div class="tws-ai-dashcam__impact-inner">
+        <div class="tws-ai-dashcam__impact-grid">
+
+          <!-- Left: Text -->
+          <div class="tws-ai-dashcam__impact-content">
+            <h2 class="tws-ai-dashcam__impact-title">Overall Impact For Fleets &amp; Businesses</h2>
+
+            <ul class="tws-ai-dashcam__impact-list">
+              <li class="tws-ai-dashcam__impact-item">
+                <img class="tws-ai-dashcam__impact-icon"
+                  src="https://tawasul.tech/images/TawasulTech/image/check-icon.webp" alt=""
+                  onerror="this.onerror=null; this.src='https://placehold.co/24x24/00A738/00A738?text=+';" />
+                Fewer accidents and lower liability.
+              </li>
+              <li class="tws-ai-dashcam__impact-item">
+                <img class="tws-ai-dashcam__impact-icon"
+                  src="https://tawasul.tech/images/TawasulTech/image/check-icon.webp" alt=""
+                  onerror="this.onerror=null; this.src='https://placehold.co/24x24/00A738/00A738?text=+';" />
+                Enhanced driver safety and well-being.
+              </li>
+              <li class="tws-ai-dashcam__impact-item">
+                <img class="tws-ai-dashcam__impact-icon"
+                  src="https://tawasul.tech/images/TawasulTech/image/check-icon.webp" alt=""
+                  onerror="this.onerror=null; this.src='https://placehold.co/24x24/00A738/00A738?text=+';" />
+                Improved regulatory compliance and insurance positioning.
+              </li>
+              <li class="tws-ai-dashcam__impact-item">
+                <img class="tws-ai-dashcam__impact-icon"
+                  src="https://tawasul.tech/images/TawasulTech/image/check-icon.webp" alt=""
+                  onerror="this.onerror=null; this.src='https://placehold.co/24x24/00A738/00A738?text=+';" />
+                Reduced operational and maintenance costs.
+              </li>
+              <li class="tws-ai-dashcam__impact-item">
+                <img class="tws-ai-dashcam__impact-icon"
+                  src="https://tawasul.tech/images/TawasulTech/image/check-icon.webp" alt=""
+                  onerror="this.onerror=null; this.src='https://placehold.co/24x24/00A738/00A738?text=+';" />
+                Stronger customer trust with a safer, smarter fleet.
+              </li>
+            </ul>
+          </div>
+
+          <!-- Right: Image -->
+          <div class="tws-ai-dashcam__impact-media" aria-label="Impact image">
+            <img src="https://tawasul.tech/images/TawasulTech/image/impact-fleet.webp" alt="Fleet impact"
+              onerror="this.onerror=null; this.src='https://placehold.co/470x470?text=Image+116';" />
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+<!-- =========================
+     MP4 Video Modal (added)
+     ========================= -->
+<div class="tws-video-modal" id="twsVideoModal" aria-hidden="true">
+  <div class="tws-video-backdrop"></div>
+  <div class="tws-video-dialog" role="dialog" aria-modal="true">
+    <button class="tws-video-close" aria-label="Close video">&times;</button>
+    <video id="twsModalVideo" controls playsinline preload="metadata">
+      <source src="" type="video/mp4" />
+    </video>
+  </div>
+</div>
+
+<style>
+.tws-video-modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;z-index:99999}
+.tws-video-modal.is-open{display:flex}
+.tws-video-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.75)}
+.tws-video-dialog{position:relative;width:min(960px,90%);background:#000}
+.tws-video-dialog video{width:100%;height:auto;display:block}
+.tws-video-close{position:absolute;top:-42px;right:0;background:none;border:0;color:#fff;font-size:32px;cursor:pointer}
+</style>
+
+<script>
+(function(){
+  const videos = [
+    "https://tawasul.tech/images/TawasulTech/DSM%28Final%29%20%281%29.mp4?_t=1758704255",
+    "https://tawasul.tech/images/TawasulTech/BSD%20%28Blind%20Spot%20Final.mp4",
+    "https://tawasul.tech/images/TawasulTech/ADAS%20Advanced%20Driving%20System%20%28Final%29.mp4"
+  ];
+
+  const modal = document.getElementById('twsVideoModal');
+  const video = document.getElementById('twsModalVideo');
+  const source = video.querySelector('source');
+  const closeBtn = modal.querySelector('.tws-video-close');
+
+  const mediaBlocks = document.querySelectorAll('.tws-ai-dashcam__s3-media');
+
+  mediaBlocks.forEach((media, i) => {
+    media.addEventListener('click', () => {
+      source.src = videos[i] || videos[0];
+      video.load();
+      modal.classList.add('is-open');
+      video.play().catch(()=>{});
+    });
+  });
+
+  function close(){
+    modal.classList.remove('is-open');
+    video.pause();
+    video.currentTime = 0;
+    source.src = "";
+  }
+
+  closeBtn.addEventListener('click', close);
+  modal.querySelector('.tws-video-backdrop').addEventListener('click', close);
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && modal.classList.contains('is-open')) close();
+  });
+})();
+</script>
+
+</body>
+
+</html>
