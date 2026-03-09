@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solutions Portfolio</title>
+    <style>
+  /* ==== NAMESPACE WRAPPER (important) ==== */
+  .tws-solutions-portfolio {
+    font-family: "Satoshi", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+      sans-serif !important;
+    color: #1e1e1e;
+  }
+  .tws-solutions-portfolio * {
+    box-sizing: border-box;
+  }
+  /* ==== SECTION LAYOUT ==== */
+  .tws-solutions-portfolio .solutions-section {
+    padding: 80px 16px;
+    display: flex;
+    justify-content: center;
+    background-color: #ffffff;
+  }
+  .tws-solutions-portfolio .solutions-container {
+    width: 100%;
+    max-width: 1170px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .tws-solutions-portfolio .solutions-heading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+    margin-bottom: 60px;
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+  }
+  .tws-solutions-portfolio .solutions-heading.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .tws-solutions-portfolio .solutions-heading h2 {
+    margin: 0;
+    font-weight: 500;
+    font-size: 48px;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    text-transform: capitalize;
+    color: #1e1e1e;
+  }
+  .tws-solutions-portfolio .solutions-heading p {
+    margin: 0;
+    max-width: 1028px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.5;
+    text-transform: capitalize;
+    color: #4c4c4c;
+  }
+  /* ==== TIMELINE COLUMN ==== */
+  .tws-solutions-portfolio .solutions-timeline {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+  }
+  .tws-solutions-portfolio .solutions-timeline::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 1px dashed #00a738;
+    border-image: repeating-linear-gradient(#00a738 0 10px, transparent 10px 20px) 1;
+  }
+  .tws-solutions-portfolio .solutions-item {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 130px;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+  .tws-solutions-portfolio .solutions-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .tws-solutions-portfolio .timeline-node {
+    position: absolute;
+    left: 50%;
+    width: 16px;
+    height: 16px;
+    background-color: #00a738;
+    transform: translateX(-50%) rotate(45deg);
+    top: 0;
+    opacity: 0;
+    transition: opacity 0.5s ease-out 0.15s;
+  }
+  .tws-solutions-portfolio .solutions-item.visible .timeline-node {
+    opacity: 1;
+  }
+  .tws-solutions-portfolio .solutions-item-image,
+  .tws-solutions-portfolio .solutions-item-content {
+    width: 100%;
+    max-width: 520px;
+  }
+  .tws-solutions-portfolio .solutions-item-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+  }
+  .tws-solutions-portfolio .solutions-item-content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .tws-solutions-portfolio .solutions-item-text-group {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .tws-solutions-portfolio .solutions-item-title {
+    margin: 0;
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    text-transform: capitalize;
+    color: #1e1e1e;
+  }
+  .tws-solutions-portfolio .solutions-item-subtitle {
+    margin: 0;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.5;
+    text-transform: none;
+    color: #4c4c4c;
+  }
+  /* ==== START TITLE + DESCRIPTION ANIMATION ==== */
+  .tws-solutions-portfolio .solutions-item-title,
+  .tws-solutions-portfolio .solutions-item-subtitle {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  .tws-solutions-portfolio .solutions-item.visible .solutions-item-title {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.05s;  /* title first */
+  }
+  .tws-solutions-portfolio .solutions-item.visible .solutions-item-subtitle {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.18s;  /* then description */
+  }
+ /* ==== END TITLE + DESCRIPTION ANIMATION ==== */
+  .tws-solutions-portfolio .solutions-item-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+  .tws-solutions-portfolio .solutions-item-list li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.5;
+    text-transform: none;
+    color: #4c4c4c;
+  }
+  .tws-solutions-portfolio .solutions-item-list-icon {
+    width: 20px;
+    height: 20px;
+    image-rendering: crisp-edges;
+    flex-shrink: 0;
+  }
+  .tws-solutions-portfolio .solutions-item-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 32px;
+    border: none;
+    background-color: #00a738;
+    color: #ffffff !important;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.5;
+    text-decoration: none !important;
+    cursor: pointer;
+    text-transform: capitalize;
+  }
+  /* ==== RESPONSIVE ==== */
+  @media (max-width: 992px) {
+    .tws-solutions-portfolio .solutions-heading h2 {
+      font-size: 36px;
+    }
+    .tws-solutions-portfolio .solutions-item {
+      flex-direction: column;
+      gap: 32px;
+      align-items: flex-start;
+    }
+    .tws-solutions-portfolio .solutions-timeline::before {
+      left: 8px;
+      transform: none;
+      border-left: 1px dashed #00a738;
+      border-image: repeating-linear-gradient(#00a738 0 10px, transparent 10px 20px) 1;
+    }
+    .tws-solutions-portfolio .timeline-node {
+      left: 8px;
+      transform: translateX(-50%) rotate(45deg);
+    }
+    .tws-solutions-portfolio .solutions-item-image,
+    .tws-solutions-portfolio .solutions-item-content {
+      max-width: 100%;
+      padding-left: 32px;
+    }
+    .tws-solutions-portfolio .solutions-item-image {
+      order: 1;
+    }
+    .tws-solutions-portfolio .solutions-item-content {
+      order: 2;
+    }
+  }
+  @media (max-width: 600px) {
+    .tws-solutions-portfolio .solutions-section {
+      padding: 48px 16px;
+    }
+    .tws-solutions-portfolio .solutions-heading h2 {
+      font-size: 30px;
+    }
+    .tws-solutions-portfolio .solutions-heading p {
+      font-size: 14px;
+    }
+    .tws-solutions-portfolio .solutions-item-title {
+      font-size: 28px;
+    }
+  }
+</style>
+</head>
+<body>
+    <div class="tws-solutions-portfolio">
+  <section class="solutions-section">
+    <div class="solutions-container">
+      <header class="solutions-heading visible">
+        <h2>Solutions Portfolio</h2>
+        <p>
+          A suite of independent platforms built to support logistics operations, fleet safety,
+          smart waste services, and immersive facility planning — each deployable on its own,
+          with the flexibility to expand as your needs grow.
+        </p>
+      </header>
+      <div class="solutions-timeline">
+        <!-- 1. Tawasul Logistics Marketplace -->
+        <article class="solutions-item visible">
+          <span class="timeline-node" aria-hidden="true" style="top: 44px;"></span>
+          <div class="solutions-item-image">
+            <img src="https://tawasul.tech/images/TawasulTech/image/tawasul-logistics-marketplace.webp" alt="Tawasul Logistics Marketplace dashboard" loading="lazy">
+          </div>
+          <div class="solutions-item-content">
+            <div class="solutions-item-text-group">
+              <h3 class="solutions-item-title">Tawasul Logistics Marketplace</h3>
+              <p class="solutions-item-subtitle">
+                A digital freight platform connecting shippers and transporters across Saudi Arabia.
+                Enable fair, transparent deals with end-to-end visibility from request to delivery.
+              </p>
+            </div>
+            <ul class="solutions-item-list">
+              <li>
+                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" class="solutions-item-list-icon">
+                Post on-demand truck requests in seconds
+              </li>
+              <li>
+                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" class="solutions-item-list-icon">
+                Receive competitive bids from verified transporters
+              </li>
+              <li>
+                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" class="solutions-item-list-icon">
+                Agree on transparent pricing and service levels
+              </li>
+              <li>
+                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" class="solutions-item-list-icon">
+                Track shipment status and ETAs in real time
+              </li>
+              <li>
+                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" class="solutions-item-list-icon">
+                Issue digital POD and automate invoicing
+              </li>
+            </ul>
+            <a href="/tawasul-logistics" class="solutions-item-cta">Explore marketplace</a>
+          </div>
+        </article>
+        <!-- 2. Fleet Management System (FMS) -->
+        <article class="solutions-item visible">
+          <span class="timeline-node" aria-hidden="true" style="top: 44px;"></span>
+          <div class="solutions-item-content">
+            <div class="solutions-item-text-group">
+              <h3 class="solutions-item-title">Fleet Management System (FMS)</h3>
+              <p class="solutions-item-subtitle">
+                A connected fleet operations layer for AVLs, trailers, and assets. Combine live tracking,
+                CAN-bus data, and service workflows in a single operational view.
+              </p>
+            </div>
+            <ul class="solutions-item-list">
+              <li>
+                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" class="solutions-item-list-icon">
+                Real-time GPS tracking for vehicles and trailers
+              </li>
+              <li>
+                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" class="solutions-item-list-icon">
+                Engine, odometer, and fuel data from CAN-bus / FMS
+              </li>
+              <li>
+                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" class="solutions-item-list-icon">
+                Configurable alerts for idling, speeding, and misuse
+              </li>
+              <li>
+                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" class="solutions-item-list-icon">
+                Maintenance planning by mileage, hours, or dates
+              </li>
+              <li>
+                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" class="solutions-item-list-icon">
+                Dashboards for fleet utilization and cost per km
+              </li>
+            </ul>
+            <a href="/tawasulfms-en/" class="solutions-item-cta">Explore FMS</a>
+          </div>
+          <div class="solutions-item-image">
+            <img src="https://tawasul.tech/images/TawasulTech/image/fms.jpg" alt="Fleet Management System live tracking" loading="lazy">
+          </div>
+        </article>
+        <!-- 3. AI & Driver Safety Telematics -->
+        <article class="solutions-item visible">
+          <span class="timeline-node" aria-hidden="true" style="top: 42px;"></span>
+          <div class="solutions-item-image">
+            <img src="https://tawasul.tech/images/TawasulTech/image/telematics.jpg" alt="AI-based driver safety telematics" loading="lazy">
+          </div>
+          <div class="solutions-item-content">
+            <div class="solutions-item-text-group">
+              <h3 class="solutions-item-title">AI &amp; Driver Safety Telematics</h3>
+              <p class="solutions-item-subtitle">
+                Strengthen road safety with driver-centric analytics. Combine trip scoring,
+                harsh-event detection, and coaching workflows to reward safer driving habits.
+              </p>
+            </div>
+            <ul class="solutions-item-list">
+              <li>
+                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" class="solutions-item-list-icon">
+                Harsh braking, acceleration, and cornering detection
+              </li>
+              <li>
+                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" class="solutions-item-list-icon">
+                Driver scorecards by trip, day, and fleet segment
+              </li>
+              <li>
+                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" class="solutions-item-list-icon">
+                Exception reports for high-risk drivers and routes
+              </li>
+              <li>
+                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" class="solutions-item-list-icon">
+                Optional in-cab alerts and coaching notifications
+              </li>
+              <li>
+                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" class="solutions-item-list-icon">
+                Evidence exports for safety and insurance teams
+              </li>
+            </ul>
+            <a href="/ai-camera" class="solutions-item-cta">Explore driver safety</a>
+          </div>
+        </article>
+        <!-- 4. Smart Waste Operations (SWMS) -->
+        <article class="solutions-item">
+          <span class="timeline-node" aria-hidden="true" style="top: 56px;"></span>
+          <div class="solutions-item-content">
+            <div class="solutions-item-text-group">
+              <h3 class="solutions-item-title">Smart Waste Operations (SWMS)</h3>
+              <p class="solutions-item-subtitle">
+                An operations system for waste haulers and municipalities. Optimize collection routes,
+                container pickups, and field crews with live status and SLAs.
+              </p>
+            </div>
+            <ul class="solutions-item-list">
+              <li>
+                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" class="solutions-item-list-icon">
+                Digitized work orders for collection and sweeping
+              </li>
+              <li>
+                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" class="solutions-item-list-icon">
+                Configurable routes with live truck progress
+              </li>
+              <li>
+                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" class="solutions-item-list-icon">
+                Container inventory with RFID / QR tagging options
+              </li>
+              <li>
+                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" class="solutions-item-list-icon">
+                Service-level tracking per zone, customer, or contract
+              </li>
+              <li>
+                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" class="solutions-item-list-icon">
+                Operations reports for regulators and municipalities
+              </li>
+            </ul>
+            <a href="/smart-waste-management/" class="solutions-item-cta">Explore SWMS</a>
+          </div>
+          <div class="solutions-item-image">
+            <img src="https://tawasul.tech/images/TawasulTech/image/swms.jpg" alt="Smart waste management operations view" loading="lazy">
+          </div>
+        </article>
+        <!-- 5. 3D Virtual Tours & Space Walkthroughs -->
+        <article class="solutions-item">
+          <span class="timeline-node" aria-hidden="true" style="top: 56px;"></span>
+          <div class="solutions-item-image">
+            <img src="https://tawasul.tech/images/TawasulTech/image/tours.jpg" alt="3D virtual tour and digital twin" loading="lazy">
+          </div>
+          <div class="solutions-item-content">
+            <div class="solutions-item-text-group">
+              <h3 class="solutions-item-title">3D Virtual Tours &amp; Space Walkthroughs</h3>
+              <p class="solutions-item-subtitle">
+                Immersive digital twins for facilities, yards, and sites. Plan layouts, inspections,
+                and stakeholder walkthroughs without needing everyone physically on location.
+              </p>
+            </div>
+            <ul class="solutions-item-list">
+              <li>
+                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" class="solutions-item-list-icon">
+                High-fidelity 3D scans of logistics hubs and depots
+              </li>
+              <li>
+                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" class="solutions-item-list-icon">
+                Interactive, browser-based walkthrough experiences
+              </li>
+              <li>
+                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" class="solutions-item-list-icon">
+                Hotspots for SOPs, safety notes, and assets in-place
+              </li>
+              <li>
+                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" class="solutions-item-list-icon">
+                Support for pre-handover and O&amp;M documentation
+              </li>
+              <li>
+                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" class="solutions-item-list-icon">
+                Embeds for websites, training portals, and reports
+              </li>
+            </ul>
+            <a href="/3d-virtual-tour" class="solutions-item-cta">Explore 3D tours</a>
+          </div>
+        </article>
+        <!-- 6. Tawasul Store – Hardware & Installation -->
+        <article class="solutions-item">
+          <span class="timeline-node" aria-hidden="true" style="top: 56px;"></span>
+          <div class="solutions-item-content">
+            <div class="solutions-item-text-group">
+              <h3 class="solutions-item-title">Tawasul Store – Hardware &amp; Installation</h3>
+              <p class="solutions-item-subtitle">
+                A curated catalogue of tracking devices, sensors, and accessories tuned for Saudi fleets.
+                From supply to installation and after-sales support under one roof.
+              </p>
+            </div>
+            <ul class="solutions-item-list">
+              <li>
+                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" class="solutions-item-list-icon">
+                AVL devices from leading global manufacturers
+              </li>
+              <li>
+                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" class="solutions-item-list-icon">
+                Fuel, temperature, and door sensors for cold-chain
+              </li>
+              <li>
+                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" class="solutions-item-list-icon">
+                Accessories for trailers, tankers, and special fleets
+              </li>
+              <li>
+                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" class="solutions-item-list-icon">
+                Certified installation teams across key regions
+              </li>
+              <li>
+                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" class="solutions-item-list-icon">
+                Local support for replacements, RMAs, and warranty
+              </li>
+            </ul>
+            <a href="#" class="solutions-item-cta">Explore Tawasul Store</a>
+          </div>
+          <div class="solutions-item-image">
+            <img src="https://tawasul.tech/images/TawasulTech/image/hardware.jpg" alt="Hardware catalogue and installation teams" loading="lazy">
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>
