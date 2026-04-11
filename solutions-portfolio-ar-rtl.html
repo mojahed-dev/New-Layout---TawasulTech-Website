@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>حلول تواصل التقنية – منظومة متكاملة</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+        html[lang="ar"] .ty-wysiwyg-content ul,
+        html[lang="ar"] .ty-wysiwyg-content ol {
+            margin-right: 0 !important;
+        }
+
+        .ty-wysiwyg-content h3 {
+            font-size: 40px;
+            font-weight: 500;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Cairo", "Tahoma", "Arial", "Satoshi", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background-color: #ffffff;
+            color: #1e1e1e;
+            direction: rtl;
+        }
+
+        .solutions-section {
+            padding: 80px 16px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .solutions-container {
+            width: 100%;
+            max-width: 1170px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .solutions-heading {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            text-align: center;
+            margin-bottom: 60px;
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        }
+
+        .solutions-heading.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .solutions-heading h2 {
+            margin: 0;
+            font-weight: 500;
+            font-size: 48px;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            color: #1e1e1e;
+        }
+
+        .solutions-heading p {
+            margin: 0;
+            max-width: 1028px;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 1.8;
+            color: #4c4c4c;
+        }
+
+        .solutions-timeline {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+        }
+
+        .solutions-timeline::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-left: 1px dashed #00a738;
+            border-left-width: 1px;
+            border-left-style: dashed;
+            border-image: repeating-linear-gradient(#00A738 0 10px,
+                    transparent 10px 20px) 1;
+        }
+
+        .solutions-item {
+            position: relative;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            gap: 130px;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .solutions-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-node {
+            position: absolute;
+            left: 50%;
+            width: 16px;
+            height: 16px;
+            background-color: #00a738;
+            transform: translateX(-50%) rotate(45deg);
+            top: 0;
+            opacity: 0;
+            transition: opacity 0.5s ease-out 0.15s;
+        }
+
+        .solutions-item.visible .timeline-node {
+            opacity: 1;
+        }
+
+        .solutions-item-image,
+        .solutions-item-content {
+            width: 100%;
+            max-width: 520px;
+        }
+
+        .solutions-item-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        .solutions-item-content {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            text-align: right;
+            align-items: flex-start;
+        }
+
+        .solutions-item-text-group {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .solutions-item-title {
+            margin: 0;
+            font-weight: 500;
+            font-size: 40px;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            color: #1e1e1e;
+        }
+
+        .solutions-item-subtitle {
+            margin: 0;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 1.8;
+            color: #4c4c4c;
+        }
+
+        .solutions-item-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            width: 100%;
+        }
+
+        .solutions-item-list li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 1.8;
+            color: #4c4c4c;
+            text-align: right;
+        }
+
+        .solutions-item-list-icon {
+            width: 20px;
+            height: 20px;
+            image-rendering: crisp-edges;
+            flex-shrink: 0;
+        }
+
+        .solutions-item-cta {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 32px;
+            border: none;
+            background-color: #00a738;
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 1.5;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        @media (max-width: 992px) {
+            .solutions-heading h2 {
+                font-size: 36px;
+            }
+
+            .solutions-item {
+                flex-direction: column;
+                gap: 32px;
+                align-items: flex-start;
+            }
+
+            .solutions-timeline::before {
+                right: 8px;
+                left: auto;
+                transform: none;
+                border-left: 1px dashed #00A738;
+                border-left-width: 1px;
+                border-left-style: dashed;
+                border-image: repeating-linear-gradient(#00A738 0 10px,
+                        transparent 10px 20px) 1;
+            }
+
+            .timeline-node {
+                right: 8px;
+                left: auto;
+                transform: translateX(50%) rotate(45deg);
+            }
+
+            .solutions-item-image,
+            .solutions-item-content {
+                max-width: 100%;
+                padding-right: 32px;
+                padding-left: 0;
+            }
+
+            .solutions-item-image {
+                order: 1;
+            }
+
+            .solutions-item-content {
+                order: 2;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .solutions-section {
+                padding: 48px 16px;
+            }
+
+            .solutions-heading h2 {
+                font-size: 30px;
+            }
+
+            .solutions-heading p {
+                font-size: 14px;
+            }
+
+            .solutions-item-title {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section class="solutions-section">
+        <div class="solutions-container">
+            <header class="solutions-heading">
+                <h2>محفظة الحلول</h2>
+                <p>
+                    مجموعة من المنصات المستقلة المصممة لدعم العمليات اللوجستية، وسلامة الأساطيل، وخدمات إدارة النفايات
+                    الذكية،
+                    والتخطيط التفاعلي للمرافق — ويمكن تشغيل كل حل بشكل مستقل، مع مرونة التوسع كلما نمت احتياجات أعمالكم
+                    في المملكة.
+                </p>
+            </header>
+
+            <div class="solutions-timeline">
+                <article class="solutions-item">
+                    <span class="timeline-node" aria-hidden="true"></span>
+
+                    <div class="solutions-item-image">
+                        <img src="https://tawasul.tech/images/TawasulTech/image/tawasul-logistics-marketplace.webp"
+                            alt="لوحة تحكم سوق تواصل للخدمات اللوجستية" loading="lazy" />
+                    </div>
+
+                    <div class="solutions-item-content">
+                        <div class="solutions-item-text-group">
+                            <h3 class="solutions-item-title">منصة تواصل اللوجستية</h3>
+                            <p class="solutions-item-subtitle">
+                                منصة شحن رقمية تربط بين الشاحنين والناقلين في مختلف مناطق المملكة العربية السعودية،
+                                وتدعم الصفقات العادلة والشفافة مع متابعة كاملة من الطلب حتى التسليم.
+                            </p>
+                        </div>
+
+                        <ul class="solutions-item-list">
+                            <li>
+                                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt=""
+                                    class="solutions-item-list-icon" loading="lazy" />
+                                <span>نشر طلبات الشاحنات عند الحاجة خلال ثوانٍ</span>
+                            </li>
+                            <li>
+                                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt=""
+                                    class="solutions-item-list-icon" loading="lazy" />
+                                <span>استقبال عروض أسعار تنافسية من ناقلين موثّقين</span>
+                            </li>
+                            <li>
+                                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt=""
+                                    class="solutions-item-list-icon" loading="lazy" />
+                                <span>الاتفاق على أسعار ومستويات خدمة بكل شفافية</span>
+                            </li>
+                            <li>
+                                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt=""
+                                    class="solutions-item-list-icon" loading="lazy" />
+                                <span>متابعة حالة الشحنة ووقت الوصول المتوقع بشكل مباشر</span>
+                            </li>
+                            <li>
+                                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt=""
+                                    class="solutions-item-list-icon" loading="lazy" />
+                                <span>إصدار إثبات تسليم رقمي وأتمتة الفوترة</span>
+                            </li>
+                        </ul>
+
+                        <a href="/tawasul-logistics" class="solutions-item-cta">استكشف المنصة</a>
+                    </div>
+                </article>
+
+                <article class="solutions-item">
+                    <span class="timeline-node" aria-hidden="true"></span>
+
+                    <div class="solutions-item-content">
+                        <div class="solutions-item-text-group">
+                            <h3 class="solutions-item-title">نظام إدارة الأسطول (FMS)</h3>
+                            <p class="solutions-item-subtitle">
+                                طبقة تشغيل مترابطة لإدارة الأساطيل والمقطورات والأصول. تجمع بين التتبع المباشر،
+                                وبيانات CAN-bus، وسير أعمال الصيانة والخدمة ضمن رؤية تشغيلية موحدة.
+                            </p>
+                        </div>
+
+                        <ul class="solutions-item-list">
+                            <li>
+                                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt=""
+                                    class="solutions-item-list-icon" loading="lazy" />
+                                <span>تتبع GPS مباشر للمركبات والمقطورات</span>
+                            </li>
+                            <li>
+                                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt=""
+                                    class="solutions-item-list-icon" loading="lazy" />
+                                <span>بيانات المحرك والعداد والوقود عبر CAN-bus / FMS</span>
+                            </li>
+                            <li>
+                                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt=""
+                                    class="solutions-item-list-icon" loading="lazy" />
+                                <span>تنبيهات قابلة للتخصيص للتوقف، والسرعة، وسوء الاستخدام</span>
+                            </li>
+                            <li>
+                                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt=""
+                                    class="solutions-item-list-icon" />
+                                <span>تخطيط الصيانة حسب المسافة أو ساعات التشغيل أو التواريخ</span>
+                            </li>
+                            <li>
+                                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt=""
+                                    class="solutions-item-list-icon" loading="lazy" />
+                                <span>لوحات متابعة لاستخدام الأسطول وتكلفة الكيلومتر</span>
+                            </li>
+                        </ul>
+
+                        <a href="/tawasulfms-en" class="solutions-item-cta">استكشف النظام</a>
+                    </div>
+
+                    <div class="solutions-item-image">
+                        <img src="https://tawasul.tech/images/TawasulTech/image/fms.jpg"
+                            alt="التتبع المباشر لنظام إدارة الأسطول" loading="lazy" />
+                    </div>
+                </article>
+
+                <article class="solutions-item">
+                    <span class="timeline-node" aria-hidden="true"></span>
+
+                    <div class="solutions-item-image">
+                        <img src="https://tawasul.tech/images/TawasulTech/image/telematics.jpg"
+                            alt="أنظمة ذكاء اصطناعي وسلامة السائق" loading="lazy" />
+                    </div>
+
+                    <div class="solutions-item-content">
+                        <div class="solutions-item-text-group">
+                            <h3 class="solutions-item-title">الذكاء الاصطناعي وسلامة السائق</h3>
+                            <p class="solutions-item-subtitle">
+                                عزّز السلامة على الطرق من خلال تحليلات تركز على السائق. اجمع بين تقييم الرحلات،
+                                واكتشاف السلوكيات الخطرة، وإجراءات التوجيه لتحسين عادات القيادة الآمنة.
+                            </p>
+                        </div>
+
+                        <ul class="solutions-item-list">
+                            <li>
+                                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt=""
+                                    class="solutions-item-list-icon" loading="lazy" />
+                                <span>رصد الكبح العنيف والتسارع والانعطافات الحادة</span>
+                            </li>
+                            <li>
+                                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt=""
+                                    class="solutions-item-list-icon" loading="lazy" />
+                                <span>بطاقات تقييم للسائق حسب الرحلة واليوم وفئة الأسطول</span>
+                            </li>
+                            <li>
+                                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt=""
+                                    class="solutions-item-list-icon" loading="lazy" />
+                                <span>تقارير استثنائية للسائقين والمسارات عالية الخطورة</span>
+                            </li>
+                            <li>
+                                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt=""
+                                    class="solutions-item-list-icon" loading="lazy" />
+                                <span>تنبيهات داخل المركبة وإشعارات توجيه اختيارية</span>
+                            </li>
+                            <li>
+                                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt=""
+                                    class="solutions-item-list-icon" loading="lazy" />
+                                <span>تصدير الأدلة لفرق السلامة والتأمين</span>
+                            </li>
+                        </ul>
+
+                        <a href="/ai-camera" class="solutions-item-cta">استكشف الحل</a>
+                    </div>
+                </article>
+
+                <article class="solutions-item">
+                    <span class="timeline-node" aria-hidden="true"></span>
+
+                    <div class="solutions-item-content">
+                        <div class="solutions-item-text-group">
+                            <h3 class="solutions-item-title">عمليات إدارة النفايات الذكية (SWMS)</h3>
+                            <p class="solutions-item-subtitle">
+                                نظام تشغيلي لشركات نقل النفايات والبلديات. يساعد على تحسين مسارات الجمع،
+                                وجدولة رفع الحاويات، وإدارة الفرق الميدانية مع حالة مباشرة ومستويات خدمة واضحة.
+                            </p>
+                        </div>
+
+                        <ul class="solutions-item-list">
+                            <li>
+                                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt=""
+                                    class="solutions-item-list-icon" loading="lazy" />
+                                <span>أوامر عمل رقمية لأعمال الجمع والكنس</span>
+                            </li>
+                            <li>
+                                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt=""
+                                    class="solutions-item-list-icon" loading="lazy" />
+                                <span>مسارات قابلة للتخصيص مع متابعة تقدم الشاحنات مباشرة</span>
+                            </li>
+                            <li>
+                                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt=""
+                                    class="solutions-item-list-icon" loading="lazy" />
+                                <span>إدارة الحاويات مع خيارات RFID / QR</span>
+                            </li>
+                            <li>
+                                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt=""
+                                    class="solutions-item-list-icon" loading="lazy" />
+                                <span>متابعة مستوى الخدمة حسب المنطقة أو العميل أو العقد</span>
+                            </li>
+                            <li>
+                                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt=""
+                                    class="solutions-item-list-icon" loading="lazy" />
+                                <span>تقارير تشغيلية للجهات التنظيمية والبلديات</span>
+                            </li>
+                        </ul>
+
+                        <a href="/smart-waste-management" class="solutions-item-cta">استكشف النظام</a>
+                    </div>
+
+                    <div class="solutions-item-image">
+                        <img src="https://tawasul.tech/images/TawasulTech/image/swms.jpg"
+                            alt="واجهة عمليات إدارة النفايات الذكية" loading="lazy" />
+                    </div>
+                </article>
+
+                <article class="solutions-item">
+                    <span class="timeline-node" aria-hidden="true"></span>
+
+                    <div class="solutions-item-image">
+                        <img src="https://tawasul.tech/images/TawasulTech/image/tours.jpg"
+                            alt="جولات افتراضية ثلاثية الأبعاد وتوأم رقمي" loading="lazy" />
+                    </div>
+
+                    <div class="solutions-item-content">
+                        <div class="solutions-item-text-group">
+                            <h3 class="solutions-item-title">الجولات الافتراضية ثلاثية الأبعاد</h3>
+                            <p class="solutions-item-subtitle">
+                                توائم رقمية تفاعلية للمرافق والساحات والمواقع. تساعد على تخطيط المساحات،
+                                وإجراء الجولات التفقدية، ومشاركة أصحاب المصلحة دون الحاجة إلى التواجد الفعلي في الموقع.
+                            </p>
+                        </div>
+
+                        <ul class="solutions-item-list">
+                            <li>
+                                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt=""
+                                    class="solutions-item-list-icon" loading="lazy" />
+                                <span>مسح ثلاثي الأبعاد عالي الدقة للمراكز والمستودعات اللوجستية</span>
+                            </li>
+                            <li>
+                                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt=""
+                                    class="solutions-item-list-icon" loading="lazy" />
+                                <span>تجارب تفاعلية عبر المتصفح بسهولة</span>
+                            </li>
+                            <li>
+                                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt=""
+                                    class="solutions-item-list-icon" loading="lazy" />
+                                <span>نقاط تفاعلية لإجراءات التشغيل والسلامة والأصول في مواقعها</span>
+                            </li>
+                            <li>
+                                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt=""
+                                    class="solutions-item-list-icon" loading="lazy" />
+                                <span>دعم التوثيق قبل التسليم ووثائق التشغيل والصيانة</span>
+                            </li>
+                            <li>
+                                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt=""
+                                    class="solutions-item-list-icon" />
+                                <span>إمكانية تضمينها في المواقع الإلكترونية وبوابات التدريب والتقارير</span>
+                            </li>
+                        </ul>
+
+                        <a href="/3d-virtual-tour" class="solutions-item-cta">استكشف الجولات</a>
+                    </div>
+                </article>
+
+                <article class="solutions-item">
+                    <span class="timeline-node" aria-hidden="true"></span>
+
+                    <div class="solutions-item-content">
+                        <div class="solutions-item-text-group">
+                            <h3 class="solutions-item-title">متجر تواصل – الأجهزة والتركيب</h3>
+                            <p class="solutions-item-subtitle">
+                                كتالوج مختار من أجهزة التتبع والحساسات والملحقات المناسبة لأساطيل المملكة.
+                                من التوريد إلى التركيب وخدمات ما بعد البيع تحت جهة واحدة.
+                            </p>
+                        </div>
+
+                        <ul class="solutions-item-list">
+                            <li>
+                                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt=""
+                                    class="solutions-item-list-icon" loading="lazy" />
+                                <span>أجهزة AVL من شركات عالمية رائدة</span>
+                            </li>
+                            <li>
+                                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt=""
+                                    class="solutions-item-list-icon" loading="lazy" />
+                                <span>حساسات الوقود والحرارة والأبواب لسلاسل التبريد</span>
+                            </li>
+                            <li>
+                                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt=""
+                                    class="solutions-item-list-icon" loading="lazy" />
+                                <span>ملحقات للمقطورات والصهاريج والأساطيل المتخصصة</span>
+                            </li>
+                            <li>
+                                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt=""
+                                    class="solutions-item-list-icon" loading="lazy" />
+                                <span>فرق تركيب معتمدة في المناطق الرئيسية</span>
+                            </li>
+                            <li>
+                                <img src="https://tawasul.tech/images/TawasulTech/image/Vector.png" alt=""
+                                    class="solutions-item-list-icon" loading="lazy" />
+                                <span>دعم محلي للاستبدال والضمان وخدمات ما بعد البيع</span>
+                            </li>
+                        </ul>
+
+                        <a href="/trackers" class="solutions-item-cta">استكشف المتجر</a>
+                    </div>
+
+                    <div class="solutions-item-image">
+                        <img src="https://tawasul.tech/images/TawasulTech/image/hardware.jpg"
+                            alt="كتالوج الأجهزة وفرق التركيب" loading="lazy" />
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        (function () {
+            function alignTimelineNodes() {
+                const items = document.querySelectorAll('.solutions-item');
+                items.forEach(function (item) {
+                    const title = item.querySelector('.solutions-item-title');
+                    const node = item.querySelector('.timeline-node');
+                    if (!title || !node) return;
+
+                    const itemRect = item.getBoundingClientRect();
+                    const titleRect = title.getBoundingClientRect();
+
+                    const offset = (titleRect.top - itemRect.top) + (titleRect.height / 2);
+                    node.style.top = offset + 'px';
+                });
+            }
+
+            window.addEventListener('load', function () {
+                alignTimelineNodes();
+
+                const heading = document.querySelector('.solutions-heading');
+                if (heading) heading.classList.add('visible');
+
+                const items = document.querySelectorAll('.solutions-item');
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.25
+                });
+
+                items.forEach(item => observer.observe(item));
+            });
+
+            window.addEventListener('resize', function () {
+                window.requestAnimationFrame(alignTimelineNodes);
+            });
+        })();
+    </script>
+</body>
+
+</html>
