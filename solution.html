@@ -499,6 +499,54 @@
       </div>
     </div>
   </section>
+
+
+   <script>
+        // Align each diamond node with the vertical center of its corresponding h3
+        (function () {
+            function alignTimelineNodes() {
+                const items = document.querySelectorAll('.solutions-item');
+                items.forEach(function (item) {
+                    const title = item.querySelector('.solutions-item-title');
+                    const node = item.querySelector('.timeline-node');
+                    if (!title || !node) return;
+
+                    const itemRect = item.getBoundingClientRect();
+                    const titleRect = title.getBoundingClientRect();
+
+                    const offset = (titleRect.top - itemRect.top) + (titleRect.height / 2);
+                    node.style.top = offset + 'px';
+                });
+            }
+
+            window.addEventListener('load', function () {
+                alignTimelineNodes();
+
+                // Heading fade-in
+                const heading = document.querySelector('.solutions-heading');
+                if (heading) heading.classList.add('visible');
+
+                // IntersectionObserver for items (fade + slide-up)
+                const items = document.querySelectorAll('.solutions-item');
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.25
+                });
+
+                items.forEach(item => observer.observe(item));
+            });
+
+            window.addEventListener('resize', function () {
+                window.requestAnimationFrame(alignTimelineNodes);
+            });
+        })();
+    </script>
 </div>
 </body>
 </html>
