@@ -434,12 +434,15 @@
                             </h1>
                             <div class="hero-side">
                                 <p class="hero-text">
-                                    مجموعة من المنصات المستقلة للخدمات اللوجستية، وإدارة الأساطيل، والتليماتكس المدعوم بالذكاء الاصطناعي،
-                                    وعمليات النفايات الذكية، والجولات الافتراضية ثلاثية الأبعاد للمرافق — جميعها ضمن منظومة سعودية
+                                    مجموعة من المنصات المستقلة للخدمات اللوجستية، وإدارة الأساطيل، والتليماتكس المدعوم
+                                    بالذكاء الاصطناعي،
+                                    وعمليات النفايات الذكية، والجولات الافتراضية ثلاثية الأبعاد للمرافق — جميعها ضمن
+                                    منظومة سعودية
                                     متكاملة للتنقل الذكي.
                                 </p>
                                 <div class="hero-buttons">
-                                    <a href="#solutions" class="btn btn-primary">استكشف الحلول</a>
+                                    <a href="javascript:void(0);" id="explore-solutions-btn"
+                                        class="btn btn-primary">استكشف الحلول</a>
                                     <a href="/contact-us" class="btn btn-outline">اطلب استشارة</a>
                                 </div>
                             </div>
@@ -462,11 +465,13 @@
                             </h1>
                             <div class="hero-side">
                                 <p class="hero-text">
-                                    عزّز كفاءة إدارة أسطولك وارتقِ بالأداء التشغيلي من خلال نظام إدارة الأسطول من تواصل —
+                                    عزّز كفاءة إدارة أسطولك وارتقِ بالأداء التشغيلي من خلال نظام إدارة الأسطول من تواصل
+                                    —
                                     TawasulFMS.
                                 </p>
                                 <div class="hero-buttons">
-                                    <a href="#solutions" class="btn btn-primary">استكشف الحلول</a>
+                                    <a href="javascript:void(0);" id="explore-solutions-btn"
+                                        class="btn btn-primary">استكشف الحلول</a>
                                     <a href="/contact-us" class="btn btn-outline">اطلب استشارة</a>
                                 </div>
                             </div>
@@ -494,7 +499,8 @@
                                     والشركات من إدارة النفايات بكفاءة وذكاء أكبر.
                                 </p>
                                 <div class="hero-buttons">
-                                    <a href="#solutions" class="btn btn-primary">استكشف الحلول</a>
+                                    <a href="javascript:void(0);" id="explore-solutions-btn"
+                                        class="btn btn-primary">استكشف الحلول</a>
                                     <a href="/contact-us" class="btn btn-outline">اطلب استشارة</a>
                                 </div>
                             </div>
@@ -521,7 +527,8 @@
                                     اكتشف حلولاً قوية لتخطيط المسارات في قطاع إدارة النفايات، بدعم من Sensoneo.
                                 </p>
                                 <div class="hero-buttons">
-                                    <a href="#solutions" class="btn btn-primary">استكشف الحلول</a>
+                                    <a href="javascript:void(0);" id="explore-solutions-btn"
+                                        class="btn btn-primary">استكشف الحلول</a>
                                     <a href="/contact-us" class="btn btn-outline">اطلب استشارة</a>
                                 </div>
                             </div>
@@ -595,6 +602,56 @@
 
             observer.observe(section);
         })();
+    </script>
+
+    <!-- <a href="#solutions" class="explore-solutions-btn">استكشف الحلول</a> -->
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const btn = document.querySelector(".btn-");
+            const target = document.getElementById("solutions");
+
+            if (!btn || !target) return;
+
+            btn.addEventListener("click", function (e) {
+                e.preventDefault();
+
+                const headerOffset =
+                    window.innerWidth <= 640 ? 80 :
+                        window.innerWidth <= 992 ? 100 : 120;
+
+                const y = target.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+
+                window.scrollTo({
+                    top: y,
+                    behavior: "smooth"
+                });
+            });
+        });
+    </script>
+
+    <!-- <a href="#solutions" class="explore-solutions-btn">استكشف الحلول</a> -->
+    <script>
+       document.addEventListener("click", function (e) {
+  const btn = e.target.closest("#explore-solutions-btn");
+  if (!btn) return;
+
+  e.preventDefault();
+
+  const target = document.getElementById("solutions");
+  if (!target) return;
+
+  const headerOffset =
+    window.innerWidth <= 640 ? 80 :
+    window.innerWidth <= 992 ? 100 : 120;
+
+  const y = target.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+
+  window.scrollTo({
+    top: y,
+    behavior: "smooth"
+  });
+});
     </script>
 </body>
 
