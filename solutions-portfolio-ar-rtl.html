@@ -11,6 +11,25 @@
             margin-right: 0 !important;
         }
 
+         /* Desktop */
+        #solutions {
+            scroll-margin-top: 120px;
+        }
+
+        /* Tablet */
+        @media (max-width: 992px) {
+            #solutions {
+                scroll-margin-top: 100px;
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 640px) {
+            #solutions {
+                scroll-margin-top: 80px;
+            }
+        }
+
         .ty-wysiwyg-content h3 {
             font-size: 40px;
             font-weight: 500;
@@ -282,7 +301,7 @@
 </head>
 
 <body>
-    <section class="solutions-section">
+    <section id="solutions" class="solutions-section">
         <div class="solutions-container">
             <header class="solutions-heading">
                 <h2>محفظة الحلول</h2>
