@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Smart Waste Management</title>
+  <title>إدارة النفايات الذكية</title>
 
   <style>
     /* =========================================================
@@ -171,6 +171,34 @@
       outline: 3px solid rgba(0, 167, 56, 0.35);
       outline-offset: 2px;
     }
+
+
+    /* ===============================
+       Button Hover Effects (Premium)
+       =============================== */
+    .tws-swm-btn {
+      transition: all 0.3s ease;
+    }
+
+    .tws-swm-btn--primary:hover {
+      background-color: #008a2e;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 167, 56, 0.3);
+    }
+
+    .tws-swm-btn--outline:hover {
+      background-color: #00A738;
+      color: #fff !important;
+      border-color: #00A738 !important;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 167, 56, 0.25);
+    }
+
+    .tws-swm-btn:active {
+      transform: scale(0.96);
+      box-shadow: none;
+    }
+
 
     /* =========================================================
        Section 2: Waste Fill-Level Monitoring
@@ -526,7 +554,7 @@
     }
 
     /* =========================================================
-       Section 4: Intelligent Analytics (Image + Copy)
+       Section 4: التحليلات الذكية (Image + Copy)
        Notes:
        - Uses existing .tws-swm tokens from the main page
        - Unique class namespace to avoid collisions
@@ -662,8 +690,8 @@
        ========================================================= */
 
     /* .tws-swm-cta { */
-      /* Tokens */
-      /* --cta-font: "Satoshi", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    /* Tokens */
+    /* --cta-font: "Satoshi", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       --cta-bg: #71BB82;
       --cta-ink: #1E1E1E;
       --cta-accent: #00A738;
@@ -799,6 +827,77 @@
       font-family: var(--cta-font);
     } */
   </style>
+
+  <style id="tws-swm-rtl-overrides">
+    html[lang="ar"],
+    body {
+      direction: rtl;
+    }
+
+    body {
+      margin: 0;
+      text-align: right;
+      overflow-x: hidden;
+    }
+
+    .tws-swm,
+    .tws-swm * {
+      direction: rtl;
+    }
+
+    .tws-swm-header__title,
+    .tws-swm-header__lead,
+    .tws-swm-feature__text,
+    .tws-swm-waste-monitor__title,
+    .tws-swm-waste-monitor__p,
+    .tws-swm__title,
+    .tws-swm__desc,
+    .tws-swm__footTitle,
+    .tws-swm__footText,
+    .tws-swm-ia__title,
+    .tws-swm-ia__desc,
+    .tws-swm-ia__highlightTitle,
+    .tws-swm-ia__highlightText {
+      text-align: right;
+    }
+
+    .tws-swm-header__container,
+    .tws-swm-waste-monitor__container,
+    .tws-swm-ia__card {
+      direction: rtl;
+    }
+
+    .tws-swm-feature {
+      flex-direction: row;
+    }
+
+    .tws-swm-actions {
+      justify-content: flex-start;
+    }
+
+    .tws-swm-btn--outline {
+      border-color: var(--swm-text-strong) !important;
+    }
+
+    @media (max-width: 900px) {
+
+      .tws-swm-waste-monitor__container,
+      .tws-swm-ia__card {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+
+      .tws-swm-header__container,
+      .tws-swm-waste-monitor__container,
+      .tws-swm__grid,
+      .tws-swm-ia__card {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+
 </head>
 
 <body style="margin:0;">
@@ -806,39 +905,40 @@
   <!-- =========================
        Section 1: Header
        ========================= -->
-  <section class="tws-swm tws-swm-header" aria-label="Smart waste management header">
+  <section class="tws-swm tws-swm-header" aria-label="رأس صفحة إدارة النفايات الذكية">
     <div class="tws-swm-header__container">
-      <h1 class="tws-swm-header__title">Smart waste management</h1>
+      <h1 class="tws-swm-header__title">إدارة النفايات الذكية</h1>
 
       <div class="tws-swm-header__right">
-        <p class="tws-swm-header__lead">Smart IoT sensors and software apps ready to manage your waste smarter.</p>
+        <p class="tws-swm-header__lead">حساسات إنترنت الأشياء الذكية وتطبيقات برمجية متطورة لإدارة النفايات بكفاءة أعلى
+          وبأسلوب أذكى.</p>
 
         <ul class="tws-swm-features">
           <li class="tws-swm-feature">
             <img class="tws-swm-feature__icon" src="https://tawasul.tech/images/TawasulTech/image/check-icon.webp"
               alt="Check Icon" loading="lazy" />
-            <p class="tws-swm-feature__text">Smart Analytics</p>
+            <p class="tws-swm-feature__text">التحليلات الذكية</p>
           </li>
           <li class="tws-swm-feature">
             <img class="tws-swm-feature__icon" src="https://tawasul.tech/images/TawasulTech/image/check-icon.webp"
               alt="Check Icon" loading="lazy" />
-            <p class="tws-swm-feature__text">Smart Sensors</p>
+            <p class="tws-swm-feature__text">الحساسات الذكية</p>
           </li>
           <li class="tws-swm-feature">
             <img class="tws-swm-feature__icon" src="https://tawasul.tech/images/TawasulTech/image/check-icon.webp"
               alt="Check Icon" loading="lazy" />
-            <p class="tws-swm-feature__text">Smart Route Planning</p>
+            <p class="tws-swm-feature__text">التخطيط الذكي للمسارات</p>
           </li>
           <li class="tws-swm-feature">
             <img class="tws-swm-feature__icon" src="https://tawasul.tech/images/TawasulTech/image/check-icon.webp"
               alt="Check Icon" loading="lazy" />
-            <p class="tws-swm-feature__text">Citizen App</p>
+            <p class="tws-swm-feature__text">تطبيق المستفيدين</p>
           </li>
         </ul>
 
         <div class="tws-swm-actions">
-          <a class="tws-swm-btn tws-swm-btn--primary" href="#demo">Request a Demo</a>
-          <a class="tws-swm-btn tws-swm-btn--outline" href="https://wa.me/966566667713">Talk to Our Smart City Experts</a>
+          <a class="tws-swm-btn tws-swm-btn--primary" href="#demo">اطلب عرضاً تجريبياً</a>
+          <a class="tws-swm-btn tws-swm-btn--outline" href="https://wa.me/966566667713">تحدث مع خبراء المدن الذكية</a>
         </div>
       </div>
     </div>
@@ -847,32 +947,32 @@
   <!-- =========================
        Section 2: Waste Monitoring
        ========================= -->
-  <section class="tws-swm tws-swm-waste-monitor" aria-label="Waste fill-level monitoring">
+  <section class="tws-swm tws-swm-waste-monitor" aria-label="مراقبة مستوى امتلاء النفايات">
     <div class="tws-swm-waste-monitor__container">
       <div class="tws-swm-waste-monitor__media">
         <!-- image 130 placeholder -->
         <img src="https://tawasul.tech/images/TawasulTech/image/waste-fill-level.webp"
-          alt="Waste monitoring illustration" loading="lazy" />
+          alt="صورة توضيحية لمراقبة النفايات" loading="lazy" />
       </div>
 
       <div class="tws-swm-waste-monitor__content">
-        <h2 class="tws-swm-waste-monitor__title">Waste fill-level monitoring</h2>
+        <h2 class="tws-swm-waste-monitor__title">مراقبة مستوى امتلاء الحاويات</h2>
 
         <div class="tws-swm-waste-monitor__text">
-          <p class="tws-swm-waste-monitor__p">Sensoneo Waste Monitoring solution allows cities and businesses to uncover
-            and understand the complex dynamics of their waste production. The solution provides real-time online access
-            to data related to monitored bins, boxes, or containers. Waste Monitoring solution combines Smart Sensors,
-            Smart Waste Management Software System, and Citizen App.</p>
+          <p class="tws-swm-waste-monitor__p">يتيح نظام Sensoneo لمراقبة النفايات للمدن والجهات التشغيلية فهم وتحليل
+            ديناميكيات إنتاج النفايات بشكل دقيق. ويوفر النظام وصولاً فورياً عبر الإنترنت إلى البيانات الخاصة بالحاويات
+            والصناديق والمستوعبات التي تتم مراقبتها. ويجمع هذا الحل بين الحساسات الذكية، ونظام إدارة النفايات الذكي،
+            وتطبيق المستفيدين ضمن منصة واحدة متكاملة.</p>
 
-          <p class="tws-swm-waste-monitor__p">The Smart Sensors and Monitors use ultrasound technology to measure the
-            fill levels (along with other data) in bins several times a day. Using a variety of IoT networks (Sigfox,
-            NB-IoT, LoRaWAN, GPRS), the sensors send the data to Sensoneo’s Smart Waste Management Software System, a
-            powerful cloud-based platform for data-driven daily operations, available also as a waste management app.
-          </p>
+          <p class="tws-swm-waste-monitor__p">تعتمد الحساسات وأجهزة المراقبة الذكية على تقنية الموجات فوق الصوتية لقياس
+            مستوى امتلاء الحاويات عدة مرات يومياً، إلى جانب جمع بيانات تشغيلية أخرى مهمة. ويتم إرسال هذه البيانات عبر
+            شبكات إنترنت الأشياء المختلفة مثل (Sigfox، NB-IoT، LoRaWAN، GPRS) إلى نظام إدارة النفايات الذكي، وهو منصة
+            سحابية متقدمة تدعم العمليات اليومية المبنية على البيانات، ومتوفر أيضاً كتطبيق لإدارة النفايات.</p>
 
-          <p class="tws-swm-waste-monitor__p">Customers are provided data-driven decision making, and optimization of
-            waste collection routes, frequencies, and vehicle loads. We focus on tailored solutions—share your specific
-            challenges with us so we can assess the benefits our solution can bring to your waste management processes.
+          <p class="tws-swm-waste-monitor__p">يمنح هذا الحل الجهات المشغلة القدرة على اتخاذ قرارات مبنية على البيانات،
+            وتحسين مسارات جمع النفايات، وتحديد عدد مرات الجمع المناسبة، ورفع كفاءة أحمال المركبات. نحن نركز على الحلول
+            المصممة حسب الاحتياج، لذا شاركنا تحدياتك التشغيلية لنوضح كيف يمكن لحلولنا أن تطور أعمال إدارة النفايات لديك
+            داخل المملكة.
           </p>
         </div>
       </div>
@@ -882,7 +982,7 @@
   <!-- =========================
        Section 3: Feature Cards
        ========================= -->
-  <section class="tws-swm tws-swm__section" aria-label="Smart waste management feature cards">
+  <section class="tws-swm tws-swm__section" aria-label="إدارة النفايات الذكية feature cards">
     <div class="tws-swm__container">
       <div class="tws-swm__grid">
 
@@ -890,27 +990,26 @@
         <article class="tws-swm__card">
           <div class="tws-swm__media">
             <!-- Placeholder image -->
-            <img src="https://tawasul.tech/images/TawasulTech/image/intelligence-analytics.webp"
-              alt="Intelligent Analytics" loading="lazy" />
+            <img src="https://tawasul.tech/images/TawasulTech/image/intelligence-analytics.webp" alt="التحليلات الذكية"
+              loading="lazy" />
           </div>
 
           <div class="tws-swm__content">
             <div class="tws-swm__body">
-              <h3 class="tws-swm__title">Intelligent Analytics</h3>
+              <h3 class="tws-swm__title">التحليلات الذكية</h3>
               <p class="tws-swm__desc">
-                Our analytics tool captures ‘big data’ to help make informed decisions. It generates statistics,
-                reports, and measurements about containers, contents, and collection paths. By consolidating data from
-                sensors, vehicles, and operational systems, the platform provides real-time visibility into waste
-                operations across the city. Municipal teams can monitor performance trends, identify inefficiencies, and
-                optimize collection strategies with confidence. Clear dashboards and actionable insights support
-                proactive planning, improve service reliability, and enable cost-effective, scalable waste management
-                for smart city environments.
+                تجمع أداة التحليلات لدينا البيانات الضخمة لمساعدتك على اتخاذ قرارات أكثر دقة. فهي توفر إحصاءات وتقارير
+                وقياسات مرتبطة بالحاويات ومحتوياتها ومسارات الجمع. ومن خلال توحيد البيانات القادمة من الحساسات والمركبات
+                والأنظمة التشغيلية، تمنح المنصة رؤية لحظية واضحة لعمليات النفايات على مستوى المدينة. ويمكن للفرق البلدية
+                متابعة مؤشرات الأداء، واكتشاف جوانب القصور، وتحسين استراتيجيات الجمع بثقة أكبر. كما تدعم لوحات المعلومات
+                الواضحة والرؤى العملية التخطيط الاستباقي ورفع موثوقية الخدمة وتحقيق إدارة نفايات ذكية قابلة للتوسع
+                وفعالة من حيث التكلفة.
               </p>
             </div>
 
             <div class="tws-swm__foot">
-              <p class="tws-swm__footTitle">Make Data-Driven Decisions</p>
-              <p class="tws-swm__footText">Get valuable insights and truly understand the waste you manage.</p>
+              <p class="tws-swm__footTitle">اتخذ قرارات مبنية على البيانات</p>
+              <p class="tws-swm__footText">احصل على رؤى قيّمة وافهم النفايات التي تديرها بصورة أدق.</p>
             </div>
           </div>
         </article>
@@ -920,24 +1019,23 @@
           <div class="tws-swm__media">
             <!-- Placeholder image -->
             <img src="https://tawasul.tech/images/TawasulTech/image/smart-waste-software.webp"
-              alt="Smart Waste Management Software System" loading="lazy" />
+              alt="نظام إدارة النفايات الذكي" loading="lazy" />
           </div>
 
           <div class="tws-swm__content">
             <div class="tws-swm__body">
-              <h3 class="tws-swm__title">Smart Waste Management Software System</h3>
+              <h3 class="tws-swm__title">نظام إدارة النفايات الذكي</h3>
               <p class="tws-swm__desc">
-                The powerful cloud-based waste management software system enables the customer to configure, monitor and
-                manage daily operations of a waste management company. In addition, to live data from Waste monitoring,
-                the tool can also hold complex bin database, plan the optimal collection routes, predict filling cycles,
-                and manage reports from employees and citizens. The solution is hosted in the Microsoft Azure cloud,
-                belongs to one of the most modern waste management software on the market.
+                يتيح نظام إدارة النفايات السحابي المتطور للجهة المشغلة إعداد العمليات اليومية ومتابعتها وإدارتها بكفاءة
+                عالية. وبالإضافة إلى البيانات اللحظية القادمة من مراقبة النفايات، يمكن للنظام إدارة قاعدة بيانات متقدمة
+                للحاويات، والتخطيط للمسارات المثلى للجمع، والتنبؤ بدورات الامتلاء، واستقبال بلاغات الموظفين والمستفيدين.
+                ويستضيف الحل على سحابة Microsoft Azure، ويعد من أحدث أنظمة إدارة النفايات المتوفرة في السوق.
               </p>
             </div>
 
             <div class="tws-swm__foot">
-              <p class="tws-swm__footTitle">Manage Waste Smarter</p>
-              <p class="tws-swm__footText">Powerful and exceptional digital tools to manage waste smarter.</p>
+              <p class="tws-swm__footTitle">أدر النفايات بذكاء أعلى</p>
+              <p class="tws-swm__footText">أدوات رقمية قوية ومتطورة لإدارة النفايات بكفاءة وذكاء.</p>
             </div>
           </div>
         </article>
@@ -947,26 +1045,27 @@
   </section>
 
   <!-- =========================
-       Section 4: Intelligent Analytics (Image + Copy)
+       Section 4: التحليلات الذكية (Image + Copy)
        ========================= -->
-  <section class="tws-swm tws-swm-ia" aria-label="Intelligent Analytics">
+  <section class="tws-swm tws-swm-ia" aria-label="التحليلات الذكية">
     <div class="tws-swm-ia__container">
       <div class="tws-swm-ia__card">
         <div class="tws-swm-ia__media">
           <img src="https://tawasul.tech/images/TawasulTech/image/intelligent-analytics-preview.webp"
-            alt="Intelligent analytics preview" loading="lazy" />
+            alt="معاينة التحليلات الذكية" loading="lazy" />
         </div>
 
         <div class="tws-swm-ia__content">
           <div class="tws-swm-ia__head">
-            <h2 class="tws-swm-ia__title">Intelligent Analytics</h2>
-            <p class="tws-swm-ia__desc">Automatically organizes waste collection using predefined data on fleets,
-              warehouses, and landfills. It maximizes vehicle efficiency and minimizes time and costs.</p>
+            <h2 class="tws-swm-ia__title">التحليلات الذكية</h2>
+            <p class="tws-swm-ia__desc">ينظّم عمليات جمع النفايات تلقائياً بالاعتماد على بيانات محددة مسبقاً عن الأساطيل
+              والمستودعات ومواقع الطمر، مما يرفع كفاءة المركبات ويقلل الوقت والتكاليف.</p>
           </div>
 
           <div class="tws-swm-ia__highlight">
-            <p class="tws-swm-ia__highlightTitle"><a href="https://tawasul.tech/ar/tawasul-fms-ar/">Fleet Management</a></p>
-            <p class="tws-swm-ia__highlightText">Resources are used where and when needed — in real time.</p>
+            <p class="tws-swm-ia__highlightTitle"><a href="https://tawasul.tech/ar/tawasul-fms-ar/">إدارة الأسطول</a>
+            </p>
+            <p class="tws-swm-ia__highlightText">يتم توجيه الموارد إلى المكان والوقت المناسبين لحظياً.</p>
           </div>
         </div>
       </div>
@@ -976,32 +1075,31 @@
   <!-- =========================
        Section 3: Feature Cards
        ========================= -->
-  <section class="tws-swm tws-swm__section" aria-label="Smart waste management feature cards">
+  <section class="tws-swm tws-swm__section" aria-label="إدارة النفايات الذكية feature cards">
     <div class="tws-swm__container">
       <div class="tws-swm__grid">
 
         <!-- Card 1 -->
         <article class="tws-swm__card">
           <div class="tws-swm__media-2">
-            <img src="https://tawasul.tech/images/TawasulTech/image/smart-sensors.webp" alt="Smart Sensors and Monitor"
-              loading="lazy" />
+            <img src="https://tawasul.tech/images/TawasulTech/image/smart-sensors.webp"
+              alt="الحساسات وأجهزة المراقبة الذكية" loading="lazy" />
           </div>
 
           <div class="tws-swm__content">
             <div class="tws-swm__body">
-              <h3 class="tws-swm__title">Smart Sensors and Monitors</h3>
+              <h3 class="tws-swm__title">الحساسات وأجهزة المراقبة الذكية</h3>
               <p class="tws-swm__desc">
-                Smart Sensors and Monitors are designed for monitoring fill level in smart trash bins and containers
-                using ultrasonic technology. Sensors and Monitors transfer data very simple via all currently available
-                IoT networks and/or GPRS. Sensors monitor all types of waste in bins and containers of different sizes.
-                They are robust, water and shock-resistant. Fire alarm, tilt recognition and other features are
-                included.
+                تم تصميم الحساسات وأجهزة المراقبة الذكية لمتابعة مستوى الامتلاء في الحاويات باستخدام تقنية الموجات فوق
+                الصوتية. وتقوم هذه الأجهزة بإرسال البيانات بسهولة عبر جميع شبكات إنترنت الأشياء المتاحة أو عبر GPRS، كما
+                يمكنها مراقبة مختلف أنواع النفايات في حاويات بأحجام متعددة. وتتميز هذه الأجهزة بالمتانة ومقاومة الماء
+                والصدمات، بالإضافة إلى دعم ميزات مثل إنذار الحريق واكتشاف الميلان وغيرها.
               </p>
             </div>
 
             <div class="tws-swm__foot">
-              <p class="tws-swm__footTitle">Remote bin monitoring</p>
-              <p class="tws-swm__footText">Remote control over fill level in bins and containers.</p>
+              <p class="tws-swm__footTitle">المراقبة عن بُعد للحاويات</p>
+              <p class="tws-swm__footText">تحكم ومتابعة عن بُعد لمستوى الامتلاء في الحاويات والمستوعبات.</p>
             </div>
           </div>
         </article>
@@ -1010,24 +1108,24 @@
         <article class="tws-swm__card">
           <div class="tws-swm__media-2">
             <!-- Placeholder image -->
-            <img src="https://tawasul.tech/images/TawasulTech/image/citizen-application.webp" alt="Citizen Application"
+            <img src="https://tawasul.tech/images/TawasulTech/image/citizen-application.webp" alt="تطبيق المستفيدين"
               loading="lazy" />
           </div>
 
           <div class="tws-swm__content">
             <div class="tws-swm__body">
-              <h3 class="tws-swm__title">Citizen Application</h3>
+              <h3 class="tws-swm__title">تطبيق المستفيدين</h3>
               <p class="tws-swm__desc">
-                Citizens app provides access to data from Smart Sensors and Monitors to citizens. The mobile app informs
-                about the location and fill level of monitored bins and enables you to find the nearest available bin
-                for disposal of garbage or report an issue. Logged users can access even more information about the
-                bins, request a pickup or maintenance. Available for free on Android and iOS.
+                يوفر تطبيق المستفيدين إمكانية الوصول إلى بيانات الحساسات وأجهزة المراقبة الذكية، حيث يتيح معرفة مواقع
+                الحاويات ومستوى امتلائها، ومساعدة المستخدم في العثور على أقرب حاوية متاحة للتخلص من النفايات أو الإبلاغ
+                عن مشكلة. كما يمكن للمستخدمين المسجلين الوصول إلى معلومات إضافية، وطلب جمع النفايات أو أعمال الصيانة.
+                التطبيق متاح مجاناً على أنظمة Android و iOS.
               </p>
             </div>
 
             <div class="tws-swm__foot">
-              <p class="tws-swm__footTitle">Engage citizens in Smart Waste</p>
-              <p class="tws-swm__footText">Get valuable insights and truly understand the waste you manage.</p>
+              <p class="tws-swm__footTitle">أشرك المستفيدين في إدارة النفايات الذكية</p>
+              <p class="tws-swm__footText">احصل على رؤى قيّمة وافهم النفايات التي تديرها بصورة أدق.</p>
             </div>
           </div>
         </article>
@@ -1037,27 +1135,5 @@
       </div>
     </div>
   </section>
-
-
-
-  <!-- =========================
-       Section 5: CTA — Speak With Our Solutions Team
-       ========================= -->
-  <!-- <section class="tws-swm-cta" aria-label="Speak with our solutions team">
-    <div class="tws-swm-cta__wrap">
-
-      <div class="tws-swm-cta__head">
-        <h2 class="tws-swm-cta__title">Speak With Our Solutions Team</h2>
-        <p class="tws-swm-cta__sub">Get guidance on which TawasulTech solution fits your operational needs.</p>
-      </div>
-
-      <a class="tws-swm-cta__btn" href="#" aria-label="Chat on WhatsApp">
-        <img class="tws-swm-cta__icon" src="https://tawasul.tech/images/TawasulTech/image/whatsapp-icon.webp"
-          alt="WhatsApp" loading="lazy" />
-        <span class="tws-swm-cta__btnText">Chat on WhatsApp</span>
-      </a>
-
-    </div>
-  </section> -->
 
 </html>
