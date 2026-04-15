@@ -1,0 +1,402 @@
+<style>
+
+    /******************************************
+
+Arabic Font
+
+
+*****************************************/
+
+
+
+html[lang="ar"] body,
+html[lang="ar"] p,
+html[lang="ar"] a,
+html[lang="ar"] li,
+html[lang="ar"] span,
+html[lang="ar"] div,
+html[lang="ar"] input,
+html[lang="ar"] textarea,
+html[lang="ar"] select,
+html[lang="ar"] button,
+html[lang="ar"] h1,
+html[lang="ar"] h2,
+html[lang="ar"] h3,
+html[lang="ar"] h4,
+html[lang="ar"] h5,
+html[lang="ar"] h6 {
+  font-family: 'Cairo', sans-serif !important;
+}
+
+html[lang="ar"] {
+  direction: rtl;
+}
+
+html[lang="ar"] body {
+  text-align: right;
+}
+
+html[lang="ar"] .tt-header-bar .ty-menu__item .ty-menu__item-link {
+  font-family: 'Cairo', sans-serif !important;
+}
+
+/*************
+
+Customize Scroll 
+
+*************/
+
+::-webkit-scrollbar {
+  width: 8px !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #00A738, #15803d) !important;
+  border-radius: 20px !important;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/*
+#solutions {
+  scroll-margin-top: 120px;
+} */
+
+
+/* Header - Remove the default padding*/
+#tygh_main_container .tygh-header > [class*=container] > div:nth-child(1) {
+padding:0px
+}
+
+
+/* English / default * - Submenu icon */
+.ty-menu__item.cm-menu-item-responsive:not(.ty-menu__item-nodrop) > .ty-menu__item-link::after {
+    content: "";
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    margin-left: 6px;
+    border-right: 2px solid #333;
+    border-bottom: 2px solid #333;
+    transform: rotate(45deg);
+    vertical-align: middle;
+    transition: transform 0.2s ease;
+}
+
+/* English hover */
+.ty-menu__item.cm-menu-item-responsive:not(.ty-menu__item-nodrop):hover > .ty-menu__item-link::after {
+    transform: rotate(224deg);
+}
+
+/* Arabic RTL fix */
+html[dir="rtl"] .ty-menu__item.cm-menu-item-responsive:not(.ty-menu__item-nodrop) > .ty-menu__item-link::after {
+    margin-left: 5px;
+    margin-right: 6px;
+    border-right: 2px solid #333;
+    border-bottom: 2px solid #333;
+    transform: rotate(-45deg); 
+}
+
+/* Arabic hover */
+html[dir="rtl"] .ty-menu__item.cm-menu-item-responsive:not(.ty-menu__item-nodrop):hover > .ty-menu__item-link::after {
+    transform: rotate(132deg); /* same as English */
+}
+
+/* removing border from submenu */
+.ty-menu__submenu-items {border: none !important;}
+
+/*********************************************************
+ *  HEADER – HOMEPAGE V3
+ *********************************************************/
+/* Hamburger Mobile gap between logo */
+
+@media (max-width: 768px) {
+    .tygh-header > [class*=container] > div:nth-child(1) .row-fluid, .tygh-header > [class*=container] > div:nth-child(1) [class*=span], .tygh-header > [class*=container] > div:nth-child(1) [class*=span] > [class*=ty-float], .tygh-header > [class*=container] > div:nth-child(1) [class*=span] > [class*=hidden-], .tygh-header > [class*=container] > div:nth-child(1) [class*=span] > .bm-block-manager__block .bm-block-manager__block-content, .tygh-header > [class*=container] > div:nth-child(1) [class*=span] > [id^=snapping_id_], .tygh-header > [class*=container] > div:nth-child(1) .top-buttons-grid {
+        column-gap: 170px;
+    }
+}
+
+/* Hamburger Menu */
+.ut2-sp-n [class*=ut2-icon], .tygh-header .ut2-btn-search [class*=ut2-icon], .ut2-top-compared-products [class*=ut2-icon], .ut2-top-wishlist-count [class*=ut2-icon], .ut2-pn__wrap [class*=ut2-icon], .tygh-header .ty-dropdown-box__title[id] [class*=ut2-icon] {
+color: #00a738;
+font-size: 56px;
+}
+
+/*  Centering the header content */
+.ty-helper-container .tygh-header > [class*=container] .row-fluid, .ty-helper-container .tygh-header > [class*=container] [class*=span].span16 {justify-content:center;}
+
+/* breadcrumbs layout */
+.ty-breadcrumbs {
+ display: flex;
+flex-direction: row;
+flex-wrap:wrap;
+height: 52px;
+justify-content: flex-start;
+align-items: center;
+padding: 0px 72px;
+border-bottom:0px !important;
+margin-bottom:0px !important;
+border-bottom: 1px solid #e2e2e2 !important;
+}
+
+/* Removing the padding at the bottom after the Main Content */
+
+.row-fluid [class*="span"]:first-child {padding: 0px;}
+
+/* Whole header background */
+.tygh-header.header-grid.light-header {
+    background: #FFFFFF !important;
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+/* Fix Spacing Border bottom  Header*/
+html.sticky-top-panel .tygh-header > [class*=container]::after {block-size:0px}
+
+/* Main header container (span12) */
+.tt-header-bar {
+    background: #FFFFFF !important;
+    border-bottom: 1px solid #E2E2E2 !important;
+    padding: 16px 51px !important;       /* top/bottom, left/right */
+    height: auto !important;
+    box-sizing: border-box !important;
+width: 1440px !important;
+}
+
+/* Turn inner row into 3-column flex: logo | menu | auth */
+.tt-header-bar > .row-fluid {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+    margin: 0 !important;
+}
+
+/* Remove old float/grid behaviour from spans */
+.tt-header-bar > .row-fluid > [class*="span"] {
+    float: none !important;
+    width: auto !important;
+    max-width: none !important;
+    display: flex !important;
+    align-items: center !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Logo block (left) – content width only */
+.tt-header-bar > .row-fluid > .span4:first-child {
+    flex: 0 0 auto !important;
+}
+
+/* Menu block (middle) – takes remaining space and centers menu */
+.tt-header-bar > .row-fluid > .span8 {
+    flex: 1 1 auto !important;
+    justify-content: center !important;   /* center the UL inside */
+}
+
+/* Auth block (right) – content width only */
+.tt-header-bar > .row-fluid > .span4:last-child {
+    flex: 0 0 auto !important;
+}
+
+/**********************
+ * LOGO
+ **********************/
+.tt-header-bar .ty-logo-container img {
+    width: auto !important;
+    max-height: 36px !important;
+}
+
+/**********************
+ * MAIN MENU (center)
+ **********************/
+
+/* Wrapper of menu (snapping block) – no extra padding */
+#snapping_id_2134,
+#snapping_id_2134 > div {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: auto !important;
+}
+
+/* UL that holds all menu items */
+.tt-header-bar ul.ty-menu__items.cm-responsive-menu {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 30px !important;                     /* Figma gap */
+    padding: 0 !important;
+    margin: 0 !important;
+    background: transparent !important;
+    height: auto !important;
+    line-height: normal !important;
+}
+
+/* Remove legacy floats/padding from li */
+.tt-header-bar ul.ty-menu__items > li {
+    float: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    height: auto !important;
+    white-space: nowrap
+}
+
+/* Menu item text */
+.tt-header-bar .ty-menu__item .ty-menu__item-link {
+    color: #1E1E1E !important;
+    background: transparent !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    font-family: "Satoshi", system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif !important;
+    font-size: 16px !important;
+    font-weight: 500 !important;       /* Medium */
+    line-height: 24px !important;      /* aligns nicely vertically */
+    height: 24px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+}
+
+/* Hover + active state */
+.tt-header-bar .ty-menu__item:hover > .ty-menu__item-link,
+.tt-header-bar .ty-menu__item.ty-menu__item-active > .ty-menu__item-link {
+    color: #00A738 !important;
+}
+
+/**********************
+ * AUTH SECTION (right)
+ **********************/
+.tt-header-auth {
+    display: flex !important;
+    align-items: center !important;
+    gap: 20px !important;              /* Figma gap */
+}
+
+/* Sign In text */
+.tt-header-auth__signin {
+    font-family: "Satoshi", system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif !important;
+    font-size: 16px !important;
+    font-weight: 700 !important;       /* Bold */
+    line-height: 24px !important;
+    color: #1E1E1E !important;
+    text-decoration: none !important;
+    display: inline-flex !important;
+    align-items: center !important;
+}
+
+/* Create Account button */
+.tt-header-auth__register {
+    background: #00A738 !important;
+    color: #FFFFFF !important;
+    font-family: "Satoshi", system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif !important;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    line-height: 24px !important;
+    padding: 12px 24px !important;
+    height: 48px !important;
+    min-width: 164px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-decoration: none !important;
+    box-sizing: border-box !important;
+}
+
+.tt-header-auth__register:hover {
+    opacity: 0.9;
+}
+
+/*********************************************************
+ *  REMOVE GAP ABOVE HERO ON HOMEPAGE
+ *********************************************************/
+.homepage .tygh-content,
+.homepage #tygh_content {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+
+/* START Kill UniTheme fixed header height that creates white strip */
+.homepage .tygh-header > [class*="container"] > div:nth-child(1) {
+    block-size: auto !important;   /* logical height */
+    height: auto !important;       /* fallback */
+    min-height: 0 !important;
+}
+
+/* END Kill UniTheme fixed header height that creates white strip */
+
+/*  global padding */
+
+.ut2-extra-block-title .ty-mainbox-title, 
+.ut2-extra-block-title .ty-breadcrumbs,
+html.sticky-fc-panel .top-sticky-panel__filters,
+#snapping_id_2044, .ty-tabs__content {padding: 0px 72px}
+
+.ty-tabs {padding: 25px 72px}
+
+/* Category Menu in left */
+#snapping_id_2058 {padding: 0px 72px 0px 0px}
+/* Category Content in the right */
+.cat-content-grid .side-grid {padding: 0px 0px 0px 72px}
+
+/* Recently Viewed Button */
+.ty-tabs .ty-tabs__item.active{padding: 0px 12px}
+
+
+@media (max-width: 1024px) {
+  .ut2-extra-block-title .ty-breadcrumbs,
+  html.sticky-fc-panel .top-sticky-panel__filters,
+  #snapping_id_2044,
+  .ty-tabs__content {
+    padding: 0 48px;
+  }
+
+  .ty-tabs {
+    padding: 20px 48px;
+  }
+
+  #snapping_id_2058 {
+    padding: 0 48px 0 0;
+  }
+
+  .cat-content-grid .side-grid {
+    padding: 0 0 0 48px;
+  }
+}
+
+
+@media (max-width: 767px) {
+  .ut2-extra-block-title .ty-breadcrumbs,
+  html.sticky-fc-panel .top-sticky-panel__filters,
+  #snapping_id_2044,
+  .ty-tabs__content, .ty-pagination-container, .ty-breadcrumbs {
+    padding: 0 20px;
+  }
+
+  .ty-tabs {
+    padding: 16px 20px;
+  }
+
+  /* Sidebar stacks on top in mobile */
+  #snapping_id_2058 {
+    padding: 0;
+  }
+
+  .cat-content-grid .side-grid {
+    padding: 0;
+  }
+}
+
+
+
+
+
+
+</style>
